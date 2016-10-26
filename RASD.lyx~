@@ -134,34 +134,8 @@ Introduction
 Purpose
 \end_layout
 
-\begin_layout Standard
-This document is the Requirements Analysis and Specification Document (hereinaft
-er abbreviated RASD.
- The aim of RASD is to give a complete and robust description of the requirement
-s that our system has to fulfil adopting the IEEE-STD-830-1993 standard.
- It also introduces the functional and non-functional requirements via UML
- diagrams.
- In the last part of this document it presents the formal model of the specifica
-tion using Alloy analysis (language).
- 
-\end_layout
-
-\begin_layout Standard
-The information in this document are intended for the customer and the developer
-s of the project.
- For the customer this document represents a description useful to understand
- the project development and is the equivalent of an agreement legally binding;
- meanwhile for the developers it’s an useful way to coordinate the development
- and show the matching between the stakeholders’ requests and the developed
- solution.
-\end_layout
-
 \begin_layout Subsection
 Scope
-\end_layout
-
-\begin_layout Standard
-The 
 \end_layout
 
 \begin_layout Subsection
