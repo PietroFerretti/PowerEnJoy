@@ -136,9 +136,10 @@ Purpose
 
 \begin_layout Standard
 This document is the Requirements Analysis and Specification Document (hereinaft
-er abbreviated RASD.
- The aim of RASD is to give a complete and robust description of the requirement
-s that our system has to fulfil adopting the IEEE-STD-830-1993 standard.
+er abbreviated as RASD).
+ The aim of the RASD is to give a complete and robust description of the
+ requirements that our system has to fulfil adopting the SO/IEC/IEEE 29148
+ dated Dec 2011 standard.
  It also introduces the functional and non-functional requirements via UML
  diagrams.
  In the last part of this document it presents the formal model of the specifica
@@ -158,10 +159,6 @@ s of the project.
 
 \begin_layout Subsection
 Scope
-\end_layout
-
-\begin_layout Standard
-The 
 \end_layout
 
 \begin_layout Subsection
@@ -204,11 +201,7 @@ Product Perspective
 \end_layout
 
 \begin_layout Subsection
-Product Functions (Goals)
-\end_layout
-
-\begin_layout Subsection
-(Actors)
+Product Functions
 \end_layout
 
 \begin_layout Subsection
@@ -258,36 +251,20 @@ Communication Interfaces
 Functional Requirements
 \end_layout
 
-\begin_layout Subsection
-Scenarios
+\begin_layout Standard
+(use cases, con sequence/activity diagrams)
 \end_layout
 
 \begin_layout Subsection
-Use Cases
+Performance Requirements
 \end_layout
 
 \begin_layout Subsection
-UML Models
-\end_layout
-
-\begin_layout Subsubsection
-Class Diagram 
-\end_layout
-
-\begin_layout Subsubsection
-State Machine/Activity Diagram(s)
+Design Constraints
 \end_layout
 
 \begin_layout Subsection
-Alloy Model
-\end_layout
-
-\begin_layout Subsection
-Non-functional Requirements
-\end_layout
-
-\begin_layout Subsubsection
-Performance
+Software System Attributes
 \end_layout
 
 \begin_layout Subsubsection
@@ -299,6 +276,10 @@ Availability
 \end_layout
 
 \begin_layout Subsubsection
+Security
+\end_layout
+
+\begin_layout Subsubsection
 Maintainability
 \end_layout
 
@@ -306,12 +287,12 @@ Maintainability
 Portability
 \end_layout
 
-\begin_layout Subsubsection
-Security
+\begin_layout Subsection
+(Scenarios?)
 \end_layout
 
-\begin_layout Subsubsection
-Design Constraints
+\begin_layout Subsection
+Alloy Model
 \end_layout
 
 \begin_layout Standard
