@@ -123,7 +123,7 @@
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G7]\\
+		Goal & [G5]\\
 		\hline
 		PreConditions & The user is nearby the car he reserved.\\
 		\hline
@@ -143,7 +143,7 @@
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G7]\\
+		Goal & [G5]\\
 		\hline
 		PreConditions & The user is nearby the car he reserved and has the localization activated.\\
 		\hline
@@ -156,6 +156,28 @@
 		\hline
 		Exceptions & 1. The user is nearby a car he didn't reserve.\newline
 								 2. The user is far from the car he reserved\newline\\
+		\hline
+	\end{tabularx}
+
+	\subsubsection{A user parks the car without end the ride}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G9]\\
+		\hline
+		PreConditions & The user is employing the car.\\
+		\hline
+		Execution Flow & 1. The user stops the car and turns it off.\newline
+										 2. The display shows to the user the option:\newline\tab
+										 					a) to end the ride;\newline\tab
+															b) to stand without losing the control of the car.\newline
+										 3. The user presses the button b).\newline
+										 4. The user closed the car, keeping the key.\\
+		\hline
+		Postconditions & The car is stopped in a parking lot, ready to be used again.\\
+		\hline
+		Exceptions & non me ne vengono\\
 		\hline
 	\end{tabularx}
 
