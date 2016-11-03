@@ -5,75 +5,158 @@
 \begin{document}
 	\section{Section 1}
 	\subsection{Subsection 1}
-	\subsubsection{Use Case 1}
+
+	\subsubsection{A guest registers to PowerEnJoy}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
-		Actor & 1\\
+		Actor & Guest\\
 		\hline
-		Goal & center\\
+		Goal & [G1]\\
 		\hline
-		PreConditions & bottom\\
+		PreConditions & The guest had never been registered before\\
 		\hline
-		Execution Flow & \\
+		Execution Flow & 1. The guest on the home page clicks on “register” button to start the registration process.\newline
+						 				 2. The guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).\newline
+						 			 	 3. The guest uploads a photo of the driving license or inserts manually the informations.\newline
+										 4. The guest inserts the number of the credit card and the relative CVV.
+						  		 	 5. The system verifies the correctness of the inserted data\newline
+						 			 	 6. The guest clicks on “confirm” button.\newline
+						 			 	 7. The system generates a password and provides it to the user.\newline
+						 			 	 8. The system will save the data in the DB.\newline
+						 			 	 9. The system notifies the registration and sends the user to the profile management page.\\
 		\hline
-		Postconditions & asdf \\
+		Postconditions & The guest successfully ends registration process and become a user. From now on he can log in to the application using his credential and start using PowerEnjoy.\\
+		\hline
+		Exceptions & 1. The guest is already registered.\newline
+					 			 2. The guest inserts invalid information.\newline
+					 		   3. The guest inserts a username used by another user.\newline
+					 		   4. The guest inserts an email used by another user.\newline
+					 		 	 5. The guest doesn't confirm the registration.\newline\newline
+					 Each exception is handled warning the guest of the problem and the Execution Flow comes back to the point 2.\\
 		\hline
 	\end{tabularx}
-	\subsubsection{Use Case 1}
+
+	\subsubsection{A user logs in the PowerEnjoy application}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
-		Actor & 1\\
+		Actor & Guest\\
 		\hline
-		Goal & center\\
+		Goal & G[2]\\
 		\hline
-		PreConditions & bottom\\
+		PreConditions & The user must be registered in the system.\\
 		\hline
-		Execution Flow & \\
+		Execution Flow & 1. The guest opens the PowerEnjoy application and presses on the login button.\newline
+										 2. The guest inserts the username or email and password received during registration.\newline
+										 3. The system checks the couple inserted by the user.\newline
+										 4. The guest, from now user, is redirected to the page where he can search a car.\\
 		\hline
-		Postconditions & asdf \\
+		Postconditions & The guest is now a user, he is logged in and can use all the functionality of the system.\\
+		\hline
+		Exceptions & 1. The guest inserts invalid credentials.\\
 		\hline
 	\end{tabularx}
-	\subsubsection{Use Case 1}
+
+	\subsubsection{A user searches an available car near his position}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
-		Actor & 1\\
+		Actor & User\\
 		\hline
-		Goal & center\\
+		Goal & [G3a]\\
 		\hline
-		PreConditions & bottom\\
+		PreConditions & The user is logged in to the system and he has activated the GPS.\\
 		\hline
-		Execution Flow & \\
+		Execution Flow & 1. The user presses the button to be localized on the map.\newline
+										 2. The system receives the user's position and checks in the DB all the available cars nearby the user.\newline
+										 3. The system shows on the application all the available cars.\newline
+										 4. The user navigates on the map to search a car.\\
 		\hline
-		Postconditions & asdf \\
+		Postconditions & The user finds a car most suitable for him.\\
+		\hline
+		Exceptions & 1. There aren't any available cars and the system suggests to the user to search in another location.\\
 		\hline
 	\end{tabularx}
-	\subsubsection{Use Case 1}
+
+	\subsubsection{A user searches an available car in a specific position}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
-		Actor & 1\\
+		Actor & User\\
 		\hline
-		Goal & center\\
+		Goal & [G3b]\\
 		\hline
-		PreConditions & bottom\\
+		PreConditions & The user is logged in to the system\\
 		\hline
-		Execution Flow & \\
+		Execution Flow & 1. The user presses the search bar to insert a location.\newline
+										 2. The user inserts an address (street, building, place (vorrei intendere pub, bar, discoteche))\newline
+										 3. The system receives the address inserted by the user and checks in the DB all the available cars nearby the location.\newline
+										 4. The system shows on the application all the available cars.\newline
+										 5. The user navigates on the map to search a car.\\
 		\hline
-		Postconditions & asdf \\
+		Postconditions & The user finds a car most suitable for him.\\
+		\hline
+		Exceptions & 1. The address inserted by the user doesn't exist.\newline
+								 2. There aren't any available cars and the system suggests to the user to search in another location.\\
 		\hline
 	\end{tabularx}
-	\subsubsection{Use Case 1}
+
+	\subsubsection{A user reserves a car}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
-		Actor & 1\\
+		Actor & User\\
 		\hline
-		Goal & center\\
+		Goal & [G4]\\
 		\hline
-		PreConditions & bottom\\
+		PreConditions & The user is logged and there is at least an available car.\\
 		\hline
-		Execution Flow & \\
+		Execution Flow & 1. The user selects a car in the map.\newline
+										 2. The system shows to the user the battery remaining charge.\newline
+										 3. The user confirms to reserve the car.\\
 		\hline
-		Postconditions & asdf \\
+		Postconditions & The car is reserved for the user for an hour. \\
+		\hline
+		Exceptions & 1. The car is reserved by an another user before the user confirm the reservation.\newline
+								 2. The user doesn't confirm the reservation (non so se è un'eccezione)\\
 		\hline
 	\end{tabularx}
-	
+
+	\subsubsection{A user unlocks the car with the QR code printed on the car}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G7]\\
+		\hline
+		PreConditions & The user is nearby the car he reserved.\\
+		\hline
+		Execution Flow & 1. The user presses on the camera button and sends the QR code to the system.\newline
+										 2. The system identifies the car with the QR code and checks the reservation.\newline
+										 3. The system enables the button to unlock the car on the application.\newline
+										 4. The user presses the button.\\
+		\hline
+		Postconditions & The car is ready to be ignite.\\
+		\hline
+		Exceptions & 1. The user sent a QR code of a car he didn't reserve.\\
+		\hline
+	\end{tabularx}
+
+	\subsubsection{A user unlocks the car using his position}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G7]\\
+		\hline
+		PreConditions & The user is nearby the car he reserved and has the localization activated.\\
+		\hline
+		Execution Flow & 1. The user presses on the localization button and sends to the system his position.\newline
+										 2. The system checks the user's position and the reservation.\newline
+										 3. The system enables the button to unlock the car on the application.\newline
+										 4. The user presses the button.\\
+		\hline
+		Postconditions & The car is ready to be ignite.\\
+		\hline
+		Exceptions & 1. The user is nearby a car he didn't reserve.\newline
+								 2. The user is far from the car he reserved\newline\\
+		\hline
+	\end{tabularx}
+
 \end{document}
