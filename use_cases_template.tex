@@ -181,4 +181,32 @@
 		\hline
 	\end{tabularx}
 
+	\subsubsection{The system suggests to the user a PGS to park the car and save money}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & System, user\\
+		\hline
+		Goal & [G11]\\
+		\hline
+		PreConditions & The user is employing the car.\\
+		\hline
+		Execution Flow & 1. The user stops the car and turns it off.\newline
+										 2. The display shows to the user the option:\newline\tab
+										 					a) to end the ride;\newline\tab
+															b) to stand without losing the control of the car.\newline
+										 3. The user presses the button a).\newline
+										 4. The system obtains the position of the car.\newline
+										 5. The system search the nearest PGS and suggests it to the user through the display.\newline
+										 6. The user drives to the PGS, parks the car and ends the ride.\newline
+										 7. The user plugs in the car in the power grid.\newline
+										 8. The system detects that the car is charging.\newline
+										 9. The system applies a discount on the amount the user must pay.\\
+		\hline
+		Postconditions & The car is parked, ready to be used again and the user has a discount.\\
+		\hline
+		Exceptions & 1. There isn't an available PGS.\newline
+								 2. The user decides to park the car where he is.\\
+		\hline
+	\end{tabularx}
+
 \end{document}
