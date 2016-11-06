@@ -5,11 +5,14 @@
 \save_transient_properties true
 \origin unavailable
 \textclass article
+\begin_preamble
+\usepackage{tabularx}
+\end_preamble
 \use_default_options true
 \maintain_unincluded_children false
 \language english
 \language_package default
-\inputencoding auto
+\inputencoding utf8
 \fontencoding global
 \font_roman "default" "default"
 \font_sans "default" "default"
@@ -253,6 +256,673 @@ Functional Requirements
 
 \begin_layout Standard
 (use cases, con sequence/activity diagrams)
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A guest registers to PowerEnJoy} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & Guest
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G1]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The guest had never been registered before
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The guest on the home page clicks on “register” button to start the registratio
+n process.
+\backslash
+newline 						 				 2.
+ The guest fills in at least all mandatory fields with the required informations
+(name, surname, username, email address, DOB).
+\backslash
+newline 						 			 	 3.
+ The guest uploads a photo of the driving license or inserts manually the
+ informations.
+\backslash
+newline 										 4.
+ The guest inserts the number of the credit card and the relative CVV.
+ 						  		 	 5.
+ The system verifies the correctness of the inserted data
+\backslash
+newline 						 			 	 6.
+ The guest clicks on “confirm” button.
+\backslash
+newline 						 			 	 7.
+ The system generates a password and provides it to the user.
+\backslash
+newline 						 			 	 8.
+ The system will save the data in the DB.
+\backslash
+newline 						 			 	 9.
+ The system notifies the registration and sends the user to the profile
+ management page.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The guest successfully ends registration process
+ and become a user.
+ From now on he can log in to the application using his credential and start
+ using PowerEnjoy.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ The guest is already registered.
+\backslash
+newline 					 			 2.
+ The guest inserts invalid information.
+\backslash
+newline 					 		   3.
+ The guest inserts a username used by another user.
+\backslash
+newline 					 		   4.
+ The guest inserts an email used by another user.
+\backslash
+newline 					 		 	 5.
+ The guest doesn't confirm the registration.
+\backslash
+newline
+\backslash
+newline 					 Each exception is handled warning the guest of the problem
+ and the Execution Flow comes back to the point 2.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A user logs in the PowerEnjoy application} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & Guest
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & G[2]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user must be registered in the system.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The guest opens the PowerEnjoy application and presses on the login button.
+\backslash
+newline 										 2.
+ The guest inserts the username or email and password received during registrati
+on.
+\backslash
+newline 										 3.
+ The system checks the couple inserted by the user.
+\backslash
+newline 										 4.
+ The guest, from now user, is redirected to the page where he can search
+ a car.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The guest is now a user, he is logged in and can
+ use all the functionality of the system.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ The guest inserts invalid credentials.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A user searches an available car near his position} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & User
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G3a]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user is logged in to the system and he has activated
+ the GPS.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The user presses the button to be localized on the map.
+\backslash
+newline 										 2.
+ The system receives the user's position and checks in the DB all the available
+ cars nearby the user.
+\backslash
+newline 										 3.
+ The system shows on the application all the available cars.
+\backslash
+newline 										 4.
+ The user navigates on the map to search a car.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The user finds a car most suitable for him.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ There aren't any available cars and the system suggests to the user to
+ search in another location.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A user searches an available car in a specific position} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & User
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G3b]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user is logged in to the system
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The user presses the search bar to insert a location.
+\backslash
+newline 										 2.
+ The user inserts an address (street, building, place (vorrei intendere
+ pub, bar, discoteche))
+\backslash
+newline 										 3.
+ The system receives the address inserted by the user and checks in the
+ DB all the available cars nearby the location.
+\backslash
+newline 										 4.
+ The system shows on the application all the available cars.
+\backslash
+newline 										 5.
+ The user navigates on the map to search a car.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The user finds a car most suitable for him.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ The address inserted by the user doesn't exist.
+\backslash
+newline 								 2.
+ There aren't any available cars and the system suggests to the user to
+ search in another location.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A user reserves a car} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & User
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G4]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user is logged and there is at least an available
+ car.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The user selects a car in the map.
+\backslash
+newline 										 2.
+ The system shows to the user the battery remaining charge.
+\backslash
+newline 										 3.
+ The user confirms to reserve the car.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The car is reserved for the user for an hour.
+ 
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ The car is reserved by an another user before the user confirm the reservation.
+\backslash
+newline 								 2.
+ The user doesn't confirm the reservation (non so se è un'eccezione)
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A user unlocks the car with the QR code printed on the car}
+ 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & User
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G5]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user is nearby the car he reserved.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The user presses on the camera button and sends the QR code to the system.
+\backslash
+newline 										 2.
+ The system identifies the car with the QR code and checks the reservation.
+\backslash
+newline 										 3.
+ The system enables the button to unlock the car on the application.
+\backslash
+newline 										 4.
+ The user presses the button.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The car is ready to be ignite.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ The user sent a QR code of a car he didn't reserve.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A user unlocks the car using his position} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & User
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G5]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user is nearby the car he reserved and has the
+ localization activated.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The user presses on the localization button and sends to the system his
+ position.
+\backslash
+newline 										 2.
+ The system checks the user's position and the reservation.
+\backslash
+newline 										 3.
+ The system enables the button to unlock the car on the application.
+\backslash
+newline 										 4.
+ The user presses the button.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The car is ready to be ignite.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ The user is nearby a car he didn't reserve.
+\backslash
+newline 								 2.
+ The user is far from the car he reserved
+\backslash
+newline
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{A user parks the car without end the ride} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & User
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G9]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user is employing the car.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The user stops the car and turns it off.
+\backslash
+newline 										 2.
+ The display shows to the user the option:
+\backslash
+newline
+\backslash
+tab 										 					a) to end the ride;
+\backslash
+newline
+\backslash
+tab 															b) to stand without losing the control of the car.
+\backslash
+newline 										 3.
+ The user presses the button b).
+\backslash
+newline 										 4.
+ The user closed the car, keeping the key.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The car is stopped in a parking lot, ready to be
+ used again.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & non me ne vengono
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\begin_layout Plain Layout
+
+	
+\backslash
+subsubsection{The system suggests to the user a PGS to park the car and
+ save money} 	
+\backslash
+begin{tabularx}{
+\backslash
+textwidth}{  l  X  } 		
+\backslash
+hline 		Actor & System, user
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Goal & [G11]
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		PreConditions & The user is employing the car.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Execution Flow & 1.
+ The user stops the car and turns it off.
+\backslash
+newline 										 2.
+ The display shows to the user the option:
+\backslash
+newline
+\backslash
+tab 										 					a) to end the ride;
+\backslash
+newline
+\backslash
+tab 															b) to stand without losing the control of the car.
+\backslash
+newline 										 3.
+ The user presses the button a).
+\backslash
+newline 										 4.
+ The system obtains the position of the car.
+\backslash
+newline 										 5.
+ The system search the nearest PGS and suggests it to the user through the
+ display.
+\backslash
+newline 										 6.
+ The user drives to the PGS, parks the car and ends the ride.
+\backslash
+newline 										 7.
+ The user plugs in the car in the power grid.
+\backslash
+newline 										 8.
+ The system detects that the car is charging.
+\backslash
+newline 										 9.
+ The system applies a discount on the amount the user must pay.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Postconditions & The car is parked, ready to be used again and the
+ user has a discount.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 		Exceptions & 1.
+ There isn't an available PGS.
+\backslash
+newline 								 2.
+ The user decides to park the car where he is.
+\backslash
+
+\backslash
+ 		
+\backslash
+hline 	
+\backslash
+end{tabularx}
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
