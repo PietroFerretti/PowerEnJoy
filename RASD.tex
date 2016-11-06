@@ -78,9 +78,65 @@ solution.
 
 \subsection{Constraints}
 
+To provide all the functionalities specified in this document, all the cars must have:\\
+a reliable GPS tracker\\
+a mobile Internet connection (for example a 3G or 4G connection)\\
+sensors to collect data from the engine and the battery\\
+an electronic switch to lock and unlock the doors\\
+a weight sensor on each seat\\
+a screen to offer a dedicated interface to users\\
+an internal system to control these components and communicate\\ with the central system\\
+
+
+[+ un qr code stampato sulla macchina perché è comodo per sbloccare]\\
+
+
+The web application needs an Internet connection to work, for example to connect to the database and find available cars.\\
+
+
+The mobile application will need at least an Internet connection to receive data from and communicate with the central system. Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality.\\
+
 \subsection{Assumptions and Dependencies}
 
-\newpage{}
+See 2.4 Constraints for hardware assumptions.\\
+
+
+The system has a predefined list of all the safe areas and their locations.\\
+The system has a predefined list of all the power grid stations and their locations.\\
+The system knows how many plugs are present and how many of them are free.\\
+
+
+The car’s data connection is always working and stable\\
+The car’s gps signal is always available and precise\\
+
+
+After unlocking a car users turn on the engine shortly after.\\
+
+
+When the user has ended the reservation or chosen to temporarily park from the car’s screen, we assume that the users and all the passengers have exited the car before the last door is closed.\\
+
+
+When the weight measured by a seat weight sensor exceeds a certain threshold, it means that a person is present on that seat (and not an object).\\
+
+
+When a car is unlocked by force or moves without being reserved, the car is flagged as stolen and made unavailable for reservation. \\
+The matter is handled by someone else (police, lawyers)\\
+-> users wil always find the car if marked available\\
+
+
+non richiesti da goals: (non pertinenti?)\\
+A phone line is available in case of car accidents or damage to the car.\\
+-> insurance, assistance, fines\\
+If a car is involved in a car accident or otherwise damaged, it is marked as not available.\\
+
+
+An external agency is entrusted with the task of charging cars with low or dead batteries.\\
+
+
+An external agency is entrusted with the task of regularly cleaning the inside and outside of cars.\\
+
+
+\newpage
 
 \section{Specific Requirements}
 
