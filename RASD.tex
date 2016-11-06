@@ -143,6 +143,9 @@ solution.
 	\item{[RE.4.1] The system must offer an interface that shows to the user the cars available for reservation (e.g. the search results specified in RE.3a.3) and allow the user to select a car}
 	\item{[RE.4.2] When a user selects a car for reservation the system must mark the car as reserved by that user}
 	\item{[RE.4.3] If the car has not been unlocked for an hour after reservation, the system must mark the car as available and charge the user a fixed amount}
+	
+UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
+
 \end{itemize}
 }
 
@@ -170,11 +173,12 @@ solution.
 \end{itemize}
 }
 
-\item{[G8] The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car without notifying the system they are temporarily parking.
+\item{[G8] The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car after ending the reservation.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.8.2] If a reserved car has been parked in a safe area and the user has chosen to end the reservation, then the moment the last door has been closed the system must carry out the transaction for the amount that the system calculated, with the method of payment specified by the user on registration.}
+	\item{[RE.8.2] If a reserved car has been parked in a safe area and the user has chosen to end the reservation, then  the system must carry out the transaction for the amount that the system calculated, with the method of payment specified by the user on registration.}
+	\item{[RE.8.3] If the transaction}
 -> si ricorda l’assunzione che quando tutte le porte sono chiuse dopo aver terminato, allora i passeggeri sono tutti usciti
 \end{itemize}
 }
@@ -211,7 +215,7 @@ solution.
 \end{itemize}
 }
 
-\item{[G13] The system must apply a discount of 10% on the last ride if the user took at least two other passengers onto the car.
+\item{[G13] The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.13.1] If the weight sensors in the car seats detect at least two passengers (excluding the driver) for at least half of the time the car has been driving, then the system must apply a discount of 10\% at the end of the reservation on the amount the user has to pay.}
@@ -238,6 +242,8 @@ se la macchina ha terminato la corsa (utente ha indicato di aver finito ed è us
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 se la macchina ha terminato la corsa (utente ha indicato di aver finito ed è uscito dalla macchina) e il sistema rileva che è stata parcheggiata a più di 3km di distanza da una qualsiasi stazione, oppure è rimasta meno del 20\% di carica, il sistema chargia 30\% di più sul totale da pagare alla fine del viaggio
 	\item{[RE.16.1]}
+	
+se la macchina ha meno di 20\% di carica, la rendiamo non disponibile?
 \end{itemize}
 }
 
