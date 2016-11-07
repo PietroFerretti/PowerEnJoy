@@ -1,5 +1,3 @@
-%% LyX 2.2.1 created this file.  For more info, see http://www.lyx.org/.
-%% Do not edit unless you really know what you are doing.
 \documentclass[english]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -9,12 +7,8 @@
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
  {hyperref}
 \usepackage{breakurl}
-
-\makeatletter
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
 \usepackage{tabularx}
 
-\makeatother
 
 \begin{document}
 
@@ -288,7 +282,6 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \item{[G15] The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-se la macchina ha terminato la corsa (utente ha indicato di aver finito ed è uscito dalla macchina) ed è stata parcheggiata a una stazione con ricarica, ed è attaccata alla presa, il sistema applica il 30\% di sconto sul totale da pagare alla fine del viaggio
 	\item{[RE.15.1] When the car has been parked in a power grid station, has been plugged in the power grid and the user has chosen to end the reservation, the system must apply a discount of 30\% on the amount the user has to pay.}
 \end{itemize}
 }
@@ -297,7 +290,7 @@ se la macchina ha terminato la corsa (utente ha indicato di aver finito ed è us
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 se la macchina ha terminato la corsa (utente ha indicato di aver finito ed è uscito dalla macchina) e il sistema rileva che è stata parcheggiata a più di 3km di distanza da una qualsiasi stazione, oppure è rimasta meno del 20\% di carica, il sistema chargia 30\% di più sul totale da pagare alla fine del viaggio
-	\item{[RE.16.1]}
+	\item{[RE.16.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge, the system must increase the amount the user has to pay by 30\%.}
 	
 se la macchina ha meno di 20\% di carica, la rendiamo non disponibile?
 \end{itemize}
@@ -305,6 +298,8 @@ se la macchina ha meno di 20\% di carica, la rendiamo non disponibile?
 
 \end{itemize}
 
+\newpage
+\subsection{Use Cases}
 (use cases, con sequence/activity diagrams)
 
 	\subsubsection{A guest registers to PowerEnJoy} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & Guest\\ 		\hline 		Goal & [G1]\\ 		\hline 		PreConditions & The guest had never been registered before\\ 		\hline 		Execution Flow & 1. The guest on the home page clicks on “register” button to start the registration process.\newline 						 				 2. The guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).\newline 						 			 	 3. The guest uploads a photo of the driving license or inserts manually the informations.\newline 										 4. The guest inserts the number of the credit card and the relative CVV. 						  		 	 5. The system verifies the correctness of the inserted data\newline 						 			 	 6. The guest clicks on “confirm” button.\newline 						 			 	 7. The system generates a password and provides it to the user.\newline 						 			 	 8. The system will save the data in the DB.\newline 						 			 	 9. The system notifies the registration and sends the user to the profile management page.\\ 		\hline 		Postconditions & The guest successfully ends registration process and become a user. From now on he can log in to the application using his credential and start using PowerEnjoy.\\ 		\hline 		Exceptions & 1. The guest is already registered.\newline 					 			 2. The guest inserts invalid information.\newline 					 		   3. The guest inserts a username used by another user.\newline 					 		   4. The guest inserts an email used by another user.\newline 					 		 	 5. The guest doesn't confirm the registration.\newline\newline 					 Each exception is handled warning the guest of the problem and the Execution Flow comes back to the point 2.\\ 		\hline 	\end{tabularx}
