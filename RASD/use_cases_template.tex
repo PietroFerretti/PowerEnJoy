@@ -7,7 +7,7 @@
 	\section{Section 1}
 	\subsection{Subsection 1}
 
-	\subsubsection{A guest registers to PowerEnJoy}
+	\subsubsection{A guest registers to PowerEnJoy.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & Guest\\
@@ -18,8 +18,10 @@
 		\hline
 		Execution Flow & \begin{enumerate}
                      \item{The guest on the home page clicks on “register” button to start the registration process.}
-						 				 \item{The guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).}
-						 			 	 \item{The guest uploads a photo of the driving license or inserts manually the informations.}
+                     \item{The guest chooses among "Sign up with Google", "Sign up with Facebook" or insert manually the data.}
+						 				 \item{In the case of manually inserting, the guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).}
+                     \item{In the other case, the guest presses the button and system will take the data from the option he chose.}
+                     \item{The guest uploads a photo of the driving license or inserts manually the informations.}
 										 \item{The guest inserts the number of the credit card and the relative CVV}.
 						  		 	 \item{The system verifies the correctness of the inserted data.}
 						 			 	 \item{The guest clicks on “confirm” button.}
@@ -41,7 +43,7 @@
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user logs in the PowerEnjoy application}
+	\subsubsection{A user logs in the PowerEnjoy application.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & Guest\\
@@ -51,7 +53,7 @@
 		Preconditions & The user must be registered in the system.\\
 		\hline
 		Execution Flow & \begin{enumerate}
-			\item{The guest opens the PowerEnjoy application and presses on the login button.}
+			               \item{The guest opens the PowerEnjoy application and presses on the login button.}
 										 \item{The guest inserts the username or email and password received during registration.}
 										 \item{The system checks the couple inserted by the user.}
 										 \item{The guest, from now user, is redirected to the page where he can search a car.}
@@ -59,13 +61,13 @@
 		\hline
 		Postconditions & The guest is now a user, he is logged in and can use all the functionality of the system.\\
 		\hline
-		Exceptions & \begin{enumerate} 
+		Exceptions & \begin{enumerate}
 			\item{The guest inserts invalid credentials.}
 			\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user searches an available car near his position}
+	\subsubsection{A user searches an available car near his position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -89,7 +91,7 @@
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user searches an available car in a specific position}
+	\subsubsection{A user searches an available car in a specific position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -101,7 +103,9 @@
 		Execution Flow & \begin{enumerate}
 			\item{The user presses the search bar to insert a location.}
 										 \item{The user inserts an address (street, building, place (vorrei intendere pub, bar, discoteche))}
-										 \item{The system receives the address inserted by the user and checks in the DB all the available cars nearby the location.}
+										 \item{The system receives the address inserted by the user.}
+                     \item{The system interprets the address and converts it into a position.}
+                     \item{The system checks in the DB all the available cars nearby the location.}
 										 \item{The system shows on the application all the available cars.}
 										 \item{The user navigates on the map to search a car.}
 										\end{enumerate}\\
@@ -115,7 +119,7 @@
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user reserves a car}
+	\subsubsection{A user reserves a car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -134,17 +138,41 @@
 		\hline
 		Exceptions & \begin{enumerate}
 			\item{The car is reserved by an another user before the user confirm the reservation.}
-								 \item{The user doesn't confirm the reservation (non so se è un'eccezione)}
+								 \item{The user is suspended by the system. In this case, the application remembers him to pay his pending bill.}
 								\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user unlocks the car with the QR code printed on the car}
+  \subsubsection{A user cancels a reservation for a car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G5]\\
+		Goal & [G4]\\
+		\hline
+		Preconditions & The user is logged and he reserved a car.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			               \item{The user goes to the main page of the application.}
+                     \item{The user presses the "Cancel reservation" button.}
+										 \item{The user confirms to cancel reservation.}
+                     \item{The system set the car available again.}
+										\end{enumerate}\\
+		\hline
+		Postconditions & The car is ready to be used. \\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The reservation is expired.}
+								\end{enumerate}\\
+		\hline
+	\end{tabularx}
+
+	\subsubsection{A user unlocks the car with the QR code printed on the car.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G6]\\
 		\hline
 		Preconditions & The user is nearby the car he reserved.\\
 		\hline
@@ -163,12 +191,12 @@
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user unlocks the car using his position}
+	\subsubsection{A user unlocks the car using his position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G5]\\
+		Goal & [G6]\\
 		\hline
 		Preconditions & The user is nearby the car he reserved and has the localization activated.\\
 		\hline
@@ -187,24 +215,58 @@
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user parks the car without ending the ride}
+  \subsubsection{A user ends the ride.}
+  \begin{tabularx}{\textwidth}{  l  X  }
+    \hline
+    Actor & User\\
+    \hline
+    Goal & [G9]\\
+    \hline
+    Preconditions & The user is using the car.\\
+    \hline
+    Execution Flow & \begin{enumerate}
+      \item{If the user is driving he stops the car and turns it off.}
+                     \item{The display shows to the user two options:
+                     \begin{description}
+                              \item[a)]{ to end the ride;}
+                              \item[b)]{ to park the car temporarily.}
+            \end{description}}
+     \item{The user presses the button a).}
+     \item{The user exits the car and closes the doors.}
+     \item{The system locks the car automatically.}
+     \item{The system locks the car automatically.}
+     \item{The system stops charging the user.}
+     \item{The system sets the car available.}
+     \item{The system carries out the payment transaction.}
+            \end{enumerate}\\
+    \hline
+    Postconditions & The car is stopped in a safe area, ready to be used again.\\
+    \hline
+    Exceptions & \begin{itemize}
+      \item{The user drives away instead of exiting the car. In this case the stop is canceled.}
+    \end{itemize}The user drives away instead of exiting the car. In this case\\
+    \hline
+  \end{tabularx}
+
+	\subsubsection{A user parks the car without ending the ride.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G9]\\
+		Goal & [G10]\\
 		\hline
 		Preconditions & The user is using the car.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{If the user is driving he stops the car and turns it off.}
 										 \item{The display shows to the user two options:
-										 \begin{description} 
+										 \begin{description}
 										 					\item[a)]{ to end the ride;}
 															\item[b)]{ to park the car temporarily.}
 						\end{description}}
 		 \item{The user presses the button b).}
-		 \item{The user exits the car, that locks automatically.}
+		 \item{The user exits the car and closes the doors}
+     \item{The system locks the car automatically.}
 						\end{enumerate}\\
 		\hline
 		Postconditions & The car is stopped in a safe area, ready to be used again.\\
@@ -215,12 +277,13 @@
 		\hline
 	\end{tabularx}
 
-	\subsubsection{The system suggests to the user a PGS to park the car and save money}
+
+	\subsubsection{The system suggests to the user a PGS to park the car and save money.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & System, user\\
 		\hline
-		Goal & [G11]\\
+		Goal & [G12]\\
 		\hline
 		Preconditions & The user is using the car.\\
 		\hline
@@ -245,5 +308,61 @@
 	\end{enumerate}\\
 		\hline
 	\end{tabularx}
+
+  \subsubsection{Payment.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & System, Payment API\\
+		\hline
+		Goal & --\\
+		\hline
+		Preconditions & The user ended a ride and there is a bill pending on him.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user inserts the destination.}
+                     \item{The system begins the transaction.}
+                     \item{The system sends the user's account data to the Payment API.}
+                     \item{The system sends the amount of the bill to the Payment API.}
+                     \item{The API acknowledges the payment.}
+										 \item{The system closes the transaction.}
+										\end{enumerate}\\
+		\hline
+		Postconditions & The bill is paid\\
+		\hline
+		Exceptions & \begin{enumerate}
+				\item{The Payment API is not available. In this case, the system the bill is still marked as "pending".}
+				\item{The transaction is rejected. In this case, the system suspends the user until he pays the pending bill.}
+	\end{enumerate}\\
+		\hline
+	\end{tabularx}
+
+  \subsubsection{User pays a pending bill.}
+  \begin{tabularx}{\textwidth}{  l  X  }
+    \hline
+    Actor & User, System, Payment API\\
+    \hline
+    Goal & [G18]\\
+    \hline
+    Preconditions & The user has a pending bill.\\
+    \hline
+    Execution Flow & \begin{enumerate}
+      \item{The user goes to his profile page.}
+                     \item{The user selects the pending bill.}
+                     \item{The user inserts the payment method.}
+                     \item{The user inserts all the mandatory data.}
+                     \item{The user submits the data to the system.}
+                     \item{The system carries out the payment.}
+                     \item{The API acknowledges the payment.}
+                     \item{The system cancels the suspension.}
+                    \end{enumerate}\\
+    \hline
+    Postconditions & The bill is paid\\
+    \hline
+    Exceptions & \begin{enumerate}
+        \item{The Payment API is not available. In this case, the system the bill is still marked as "pending".}
+        \item{The transaction is rejected. In this case, the users remains suspended.}
+  \end{enumerate}\\
+    \hline
+  \end{tabularx}
 
 \end{document}
