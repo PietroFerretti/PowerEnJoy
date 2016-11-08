@@ -1,4 +1,4 @@
-\documentclass{article}
+ \documentclass{article}
 \usepackage[a4paper]{geometry}
 \usepackage{tabularx}
 \usepackage{lipsum}
@@ -190,13 +190,11 @@
 		\hline
 		PreConditions & The user is employing the car.\\
 		\hline
-		Execution Flow & 1. The user stops the car and turns it off.\newline
-										 2. The display shows to the user the option:\newline\tab
-										 					a) to end the ride;\newline\tab
-															b) to stand without losing the control of the car.\newline
-										 3. The user presses the button a).\newline
-										 4. The system obtains the position of the car.\newline
-										 5. The system search the nearest PGS and suggests it to the user through the display.\newline
+		Execution Flow & 1. The user inserts the destination.\newline
+                     2. The user starts the ride.\newline
+                     3. The user chooses the option "save money!"\newline
+										 4. The system calculates the best solution, so it searches the nearest PGS to the destination keeping in mind a uniform distribution of the cars.\newline
+										 5. The system suggests the PGS to the user through the display.\newline
 										 6. The user drives to the PGS, parks the car and ends the ride.\newline
 										 7. The user plugs in the car in the power grid.\newline
 										 8. The system detects that the car is charging.\newline
@@ -204,8 +202,7 @@
 		\hline
 		Postconditions & The car is parked, ready to be used again and the user has a discount.\\
 		\hline
-		Exceptions & 1. There isn't an available PGS.\newline
-								 2. The user decides to park the car where he is.\\
+		Exceptions & 1. There isn't an available PGS.\\
 		\hline
 	\end{tabularx}
 
