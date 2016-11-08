@@ -2,6 +2,7 @@
 \usepackage[a4paper]{geometry}
 \usepackage{tabularx}
 \usepackage{lipsum}
+\renewcommand{\arraystretch}{1.4}
 \begin{document}
 	\section{Section 1}
 	\subsection{Subsection 1}
@@ -13,7 +14,7 @@
 		\hline
 		Goal & [G1]\\
 		\hline
-		PreConditions & The guest had never been registered before\\
+		Preconditions & The guest had never been registered before\\
 		\hline
 		Execution Flow & \begin{enumerate}
                      \item{The guest on the home page clicks on “register” button to start the registration process.}
@@ -45,9 +46,9 @@
 		\hline
 		Actor & Guest\\
 		\hline
-		Goal & G[2]\\
+		Goal & [G2]\\
 		\hline
-		PreConditions & The user must be registered in the system.\\
+		Preconditions & The user must be registered in the system.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The guest opens the PowerEnjoy application and presses on the login button.}
@@ -71,7 +72,7 @@
 		\hline
 		Goal & [G3a]\\
 		\hline
-		PreConditions & The user is logged in to the system and he has activated the GPS.\\
+		Preconditions & The user is logged in to the system and he has activated the GPS.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user presses the button to be localized on the map.}
@@ -95,7 +96,7 @@
 		\hline
 		Goal & [G3b]\\
 		\hline
-		PreConditions & The user is logged in to the system\\
+		Preconditions & The user is logged in to the system\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user presses the search bar to insert a location.}
@@ -121,7 +122,7 @@
 		\hline
 		Goal & [G4]\\
 		\hline
-		PreConditions & The user is logged and there is at least an available car.\\
+		Preconditions & The user is logged and there is at least an available car.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user selects a car in the map.}
@@ -145,10 +146,10 @@
 		\hline
 		Goal & [G5]\\
 		\hline
-		PreConditions & The user is nearby the car he reserved.\\
+		Preconditions & The user is nearby the car he reserved.\\
 		\hline
 		Execution Flow & \begin{enumerate}
-			\item{The user presses on the camera button and sends the QR code to the system.}
+			\item{The user presses on the camera button, takes a picture of the QR code and submits it to the system.}
 										 \item{The system identifies the car with the QR code and checks the reservation.}
 										 \item{The system enables the button to unlock the car on the application.}
 										 \item{The user presses the button.}
@@ -169,7 +170,7 @@
 		\hline
 		Goal & [G5]\\
 		\hline
-		PreConditions & The user is nearby the car he reserved and has the localization activated.\\
+		Preconditions & The user is nearby the car he reserved and has the localization activated.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user presses on the localization button and sends to the system his position.}
@@ -178,38 +179,39 @@
 										 \item{The user presses the button.}
 										\end{enumerate}\\
 		\hline
-		Postconditions & The car is ready to be ignite.\\
+		Postconditions & The car is ready to be turned on.\\
 		\hline
 		Exceptions & \begin{enumerate}
-			\item{The user is nearby a car he didn't reserve.}
 								 \item{The user is far from the car he reserved}
 								\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
-	\subsubsection{A user parks the car without end the ride}
+	\subsubsection{A user parks the car without ending the ride}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
 		\hline
 		Goal & [G9]\\
 		\hline
-		PreConditions & The user is employing the car.\\
+		Preconditions & The user is using the car.\\
 		\hline
 		Execution Flow & \begin{enumerate}
-			\item{The user stops the car and turns it off.}
-										 \item{The display shows to the user the option:
+			\item{If the user is driving he stops the car and turns it off.}
+										 \item{The display shows to the user two options:
 										 \begin{description} 
 										 					\item[a)]{ to end the ride;}
-															\item[b)]{ to stand without losing the control of the car.}
-										\end{description}}
-										 \item{The user presses the button b).}
-										 \item{The user closed the car, keeping the key.}
-										\end{enumerate}\\
+															\item[b)]{ to park the car temporarily.}
+						\end{description}}
+		 \item{The user presses the button b).}
+		 \item{The user exits the car, that locks automatically.}
+						\end{enumerate}\\
 		\hline
-		Postconditions & The car is stopped in a parking lot, ready to be used again.\\
+		Postconditions & The car is stopped in a safe area, ready to be used again.\\
 		\hline
-		Exceptions & non me ne vengono\\
+		Exceptions & \begin{itemize}
+			\item{The user drives away instead of exiting the car. In this case the stop is canceled.}
+		\end{itemize}The user drives away instead of exiting the car. In this case\\
 		\hline
 	\end{tabularx}
 
@@ -220,7 +222,7 @@
 		\hline
 		Goal & [G11]\\
 		\hline
-		PreConditions & The user is employing the car.\\
+		Preconditions & The user is using the car.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user inserts the destination.}
@@ -230,14 +232,16 @@
 										 \item{The system suggests the PGS to the user through the display.}
 										 \item{The user drives to the PGS, parks the car and ends the ride.}
 										 \item{The user plugs in the car in the power grid.}
-										 \item{The system detects that the car is charging.}
+										 \item{The system detects that the car is charging at the right PGS.}
 										 \item{The system applies a discount on the amount the user must pay.}
 										\end{enumerate}\\
 		\hline
-		Postconditions & The car is parked, ready to be used again and the user has a discount.\\
+		Postconditions & The car is parked, ready to be used again and the user receives a discount.\\
 		\hline
 		Exceptions & \begin{enumerate}
-			\item{There isn't an available PGS.}
+				\item{There isn't any available PGS.}
+				\item{The user doesn't park the car at the PGS suggested by the system.}
+				\item{The user doesn't plug the car in the power grid.}
 	\end{enumerate}\\
 		\hline
 	\end{tabularx}
