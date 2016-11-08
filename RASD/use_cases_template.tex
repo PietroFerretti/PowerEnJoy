@@ -15,23 +15,24 @@
 		\hline
 		PreConditions & The guest had never been registered before\\
 		\hline
-		Execution Flow & 1. The guest on the home page clicks on “register” button to start the registration process.\newline
-						 				 2. The guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).\newline
-						 			 	 3. The guest uploads a photo of the driving license or inserts manually the informations.\newline
-										 4. The guest inserts the number of the credit card and the relative CVV.
-						  		 	 5. The system verifies the correctness of the inserted data\newline
-						 			 	 6. The guest clicks on “confirm” button.\newline
-						 			 	 7. The system generates a password and provides it to the user.\newline
-						 			 	 8. The system will save the data in the DB.\newline
-						 			 	 9. The system notifies the registration and sends the user to the profile management page.\\
+		Execution Flow & \begin{enumerate}
+                     \item{The guest on the home page clicks on “register” button to start the registration process.}
+						 				 \item{The guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).}
+						 			 	 \item{The guest uploads a photo of the driving license or inserts manually the informations.}
+										 \item{The guest inserts the number of the credit card and the relative CVV}.
+						  		 	 \item{The system verifies the correctness of the inserted data.}
+						 			 	 \item{The guest clicks on “confirm” button.}
+						 			 	 \item{The system generates a password and provides it to the user.}
+						 			 	 \item{The system will save the data in the DB.}
+						 			 	 \item{The system notifies the registration and sends the user to the profile management page.}\\
 		\hline
 		Postconditions & The guest successfully ends registration process and become a user. From now on he can log in to the application using his credential and start using PowerEnjoy.\\
 		\hline
-		Exceptions & 1. The guest is already registered.\newline
-					 			 2. The guest inserts invalid information.\newline
-					 		   3. The guest inserts a username used by another user.\newline
-					 		   4. The guest inserts an email used by another user.\newline
-					 		 	 5. The guest doesn't confirm the registration.\newline\newline
+		Exceptions & \item{The guest is already registered.}
+					 			 \item{The guest inserts invalid information.}
+					 		   \item{The guest inserts a username used by another user.}
+					 		   \item{The guest inserts an email used by another user.}
+					 		 	 \item{The guest doesn't confirm the registration.}}
 					 Each exception is handled warning the guest of the problem and the Execution Flow comes back to the point 2.\\
 		\hline
 	\end{tabularx}
@@ -45,14 +46,14 @@
 		\hline
 		PreConditions & The user must be registered in the system.\\
 		\hline
-		Execution Flow & 1. The guest opens the PowerEnjoy application and presses on the login button.\newline
-										 2. The guest inserts the username or email and password received during registration.\newline
-										 3. The system checks the couple inserted by the user.\newline
-										 4. The guest, from now user, is redirected to the page where he can search a car.\\
+		Execution Flow & \item{The guest opens the PowerEnjoy application and presses on the login button.}
+										 \item{The guest inserts the username or email and password received during registration.}
+										 \item{The system checks the couple inserted by the user.}
+										 \item{The guest, from now user, is redirected to the page where he can search a car.}\\
 		\hline
 		Postconditions & The guest is now a user, he is logged in and can use all the functionality of the system.\\
 		\hline
-		Exceptions & 1. The guest inserts invalid credentials.\\
+		Exceptions & \item{The guest inserts invalid credentials.}\\
 		\hline
 	\end{tabularx}
 
@@ -65,14 +66,14 @@
 		\hline
 		PreConditions & The user is logged in to the system and he has activated the GPS.\\
 		\hline
-		Execution Flow & 1. The user presses the button to be localized on the map.\newline
-										 2. The system receives the user's position and checks in the DB all the available cars nearby the user.\newline
-										 3. The system shows on the application all the available cars.\newline
-										 4. The user navigates on the map to search a car.\\
+		Execution Flow & \item{The user presses the button to be localized on the map.}
+										 \item{The system receives the user's position and checks in the DB all the available cars nearby the user.}
+										 \item{The system shows on the application all the available cars.}
+										 \item{The user navigates on the map to search a car.}\\
 		\hline
 		Postconditions & The user finds a car most suitable for him.\\
 		\hline
-		Exceptions & 1. There aren't any available cars and the system suggests to the user to search in another location.\\
+		Exceptions & \item{There aren't any available cars and the system suggests to the user to search in another location.}\\
 		\hline
 	\end{tabularx}
 
@@ -85,16 +86,16 @@
 		\hline
 		PreConditions & The user is logged in to the system\\
 		\hline
-		Execution Flow & 1. The user presses the search bar to insert a location.\newline
-										 2. The user inserts an address (street, building, place (vorrei intendere pub, bar, discoteche))\newline
-										 3. The system receives the address inserted by the user and checks in the DB all the available cars nearby the location.\newline
-										 4. The system shows on the application all the available cars.\newline
-										 5. The user navigates on the map to search a car.\\
+		Execution Flow & \item{The user presses the search bar to insert a location.}
+										 \item{The user inserts an address (street, building, place (vorrei intendere pub, bar, discoteche))}
+										 \item{The system receives the address inserted by the user and checks in the DB all the available cars nearby the location.}
+										 \item{The system shows on the application all the available cars.}
+										 \item{The user navigates on the map to search a car.}\\
 		\hline
 		Postconditions & The user finds a car most suitable for him.\\
 		\hline
-		Exceptions & 1. The address inserted by the user doesn't exist.\newline
-								 2. There aren't any available cars and the system suggests to the user to search in another location.\\
+		Exceptions & \item{The address inserted by the user doesn't exist.}
+								 \item{There aren't any available cars and the system suggests to the user to search in another location.}\\
 		\hline
 	\end{tabularx}
 
@@ -107,14 +108,14 @@
 		\hline
 		PreConditions & The user is logged and there is at least an available car.\\
 		\hline
-		Execution Flow & 1. The user selects a car in the map.\newline
-										 2. The system shows to the user the battery remaining charge.\newline
-										 3. The user confirms to reserve the car.\\
+		Execution Flow & \item{The user selects a car in the map.}
+										 \item{The system shows to the user the battery remaining charge.}
+										 \item{The user confirms to reserve the car.}\\
 		\hline
 		Postconditions & The car is reserved for the user for an hour. \\
 		\hline
-		Exceptions & 1. The car is reserved by an another user before the user confirm the reservation.\newline
-								 2. The user doesn't confirm the reservation (non so se è un'eccezione)\\
+		Exceptions & \item{The car is reserved by an another user before the user confirm the reservation.}
+								 \item{The user doesn't confirm the reservation (non so se è un'eccezione)}\\
 		\hline
 	\end{tabularx}
 
@@ -127,14 +128,14 @@
 		\hline
 		PreConditions & The user is nearby the car he reserved.\\
 		\hline
-		Execution Flow & 1. The user presses on the camera button and sends the QR code to the system.\newline
-										 2. The system identifies the car with the QR code and checks the reservation.\newline
-										 3. The system enables the button to unlock the car on the application.\newline
-										 4. The user presses the button.\\
+		Execution Flow & \item{The user presses on the camera button and sends the QR code to the system.}
+										 \item{The system identifies the car with the QR code and checks the reservation.}
+										 \item{The system enables the button to unlock the car on the application.}
+										 \item{The user presses the button.}\\
 		\hline
 		Postconditions & The car is ready to be ignite.\\
 		\hline
-		Exceptions & 1. The user sent a QR code of a car he didn't reserve.\\
+		Exceptions & \item{The user sent a QR code of a car he didn't reserve.}\\
 		\hline
 	\end{tabularx}
 
@@ -147,15 +148,15 @@
 		\hline
 		PreConditions & The user is nearby the car he reserved and has the localization activated.\\
 		\hline
-		Execution Flow & 1. The user presses on the localization button and sends to the system his position.\newline
-										 2. The system checks the user's position and the reservation.\newline
-										 3. The system enables the button to unlock the car on the application.\newline
-										 4. The user presses the button.\\
+		Execution Flow & \item{The user presses on the localization button and sends to the system his position.}
+										 \item{The system checks the user's position and the reservation.}
+										 \item{The system enables the button to unlock the car on the application.}
+										 \item{The user presses the button.}\\
 		\hline
 		Postconditions & The car is ready to be ignite.\\
 		\hline
-		Exceptions & 1. The user is nearby a car he didn't reserve.\newline
-								 2. The user is far from the car he reserved\newline\\
+		Exceptions & \item{The user is nearby a car he didn't reserve.}
+								 \item{The user is far from the car he reserved}\\
 		\hline
 	\end{tabularx}
 
@@ -168,12 +169,12 @@
 		\hline
 		PreConditions & The user is employing the car.\\
 		\hline
-		Execution Flow & 1. The user stops the car and turns it off.\newline
-										 2. The display shows to the user the option:\newline
-										 					a) to end the ride;\newline
-															b) to stand without losing the control of the car.\newline
-										 3. The user presses the button b).\newline
-										 4. The user closed the car, keeping the key.\\
+		Execution Flow & \item{The user stops the car and turns it off.}
+										 \item{The display shows to the user the option:}
+										 					a) to end the ride;}
+															b) to stand without losing the control of the car.}
+										 \item{The user presses the button b).}
+										 \item{The user closed the car, keeping the key.}\\
 		\hline
 		Postconditions & The car is stopped in a parking lot, ready to be used again.\\
 		\hline
@@ -190,19 +191,19 @@
 		\hline
 		PreConditions & The user is employing the car.\\
 		\hline
-		Execution Flow & 1. The user inserts the destination.\newline
-                     2. The user starts the ride.\newline
-                     3. The user chooses the option "save money!"\newline
-										 4. The system calculates the best solution, so it searches the nearest PGS to the destination keeping in mind a uniform distribution of the cars.\newline
-										 5. The system suggests the PGS to the user through the display.\newline
-										 6. The user drives to the PGS, parks the car and ends the ride.\newline
-										 7. The user plugs in the car in the power grid.\newline
-										 8. The system detects that the car is charging.\newline
-										 9. The system applies a discount on the amount the user must pay.\\
+		Execution Flow & \item{The user inserts the destination.}
+                     \item{The user starts the ride.}
+                     \item{The user chooses the option "save money!"}
+										 \item{The system calculates the best solution, so it searches the nearest PGS to the destination keeping in mind a uniform distribution of the cars.}
+										 \item{The system suggests the PGS to the user through the display.}
+										 \item{The user drives to the PGS, parks the car and ends the ride.}
+										 \item{The user plugs in the car in the power grid.}
+										 \item{The system detects that the car is charging.}
+										 \item{The system applies a discount on the amount the user must pay.}\\
 		\hline
 		Postconditions & The car is parked, ready to be used again and the user has a discount.\\
 		\hline
-		Exceptions & 1. There isn't an available PGS.\\
+		Exceptions & \item{There isn't an available PGS.}\\
 		\hline
 	\end{tabularx}
 
