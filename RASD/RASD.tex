@@ -4,9 +4,8 @@
 \usepackage{babel}
 \usepackage[unicode=true,pdfusetitle,
  bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
- breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ breaklinks=true,pdfborder={0 0 1},backref=false,colorlinks=false]
  {hyperref}
-\usepackage{breakurl}
 \usepackage{tabularx}
 
 
@@ -33,7 +32,7 @@ Software Engineering 2: “PowerEnJoy” \\
 This document is the Requirements Analysis and Specification Document
 (hereinafter abbreviated as RASD). The aim of the RASD is to give
 a complete and robust description of the requirements that our system
-has to fulfil adopting the SO/IEC/IEEE 29148 dated Dec 2011 standard.
+has to fulfil adopting the ISO/IEC/IEEE 29148 dated Dec 2011 standard.
 It also introduces the functional and non-functional requirements
 via UML diagrams. In the last part of this document it presents the
 formal model of the specification using Alloy analysis (language). 
@@ -161,7 +160,7 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \item{[RE.1.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit the data needed for registration: personal data (first name, last name, date of birth [more?]), a driving license ID or a photo of one, and a payment method.}
 \item{[RE.1.2] The system must verify that the data provided by a user on registration is valid [...]}
 \item{[RE.1.3] When a user registers the system must randomly generate a safe password and associate it to the user’s account.}
-\item{[RE.1.4] After a password is generated when a user registers the system must send the password to the user via email at the email address the user provided.}
+\item{[RE.1.4] After a user is registered the system must send the generated password to the user via email at the email address they provided.}
 \end{itemize}
 }
 
@@ -177,8 +176,8 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 
 \item{[G3a] Users must be able to find the locations of available cars within a certain distance from their current location.
 \begin{itemize}
-	\item{[RE.3a.1] The system must offer an interface where the user can (activate the option) to look for nearby available cars if the user’s location is available (ex. gps)}
-	\item{[RE.3a.2] When the user activates the option to find nearby available cars, the system must look in the database for every available car near the the user’s location.}
+	\item{[RE.3a.1] The system must offer an interface where the user can (activate the option) to look for nearby available cars if the user’s location is available (ex. gps).}
+	\item{[RE.3a.2] When the user activates the option to find nearby available cars, the system must look in the database for every available car near the user’s location.}
 	\item{[RE.3a.3] The system must show the results of the search for nearby available cars on a suitable *interface* (ex. a map)}
 \end{itemize}
 }
@@ -187,7 +186,7 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \begin{itemize}
 	\item{[RE.3b.1] The system must offer an interface where the user can submit an address and search for available cars near that location.}
 	\item{[RE.3b.2] When the user starts a search for available cars near a certain address, the system must look in the database for every available car close to the address provided by the user.}
-	\item{[RE.3b.3] The system must show the results of the search for available cars on a suitable *interface* (e.g. a map)}
+	\item{[RE.3b.3] The system must show the results of the search for available cars on a suitable *interface* (e.g. a map).}
 \end{itemize}
 }
 
@@ -229,9 +228,8 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.8.2] If a reserved car has been parked in a safe area and the user has chosen to end the reservation, then  the system must carry out the transaction for the amount that the system calculated, with the method of payment specified by the user on registration.}
+	\item{[RE.8.2] If a reserved car has been parked in a safe area and the user has chosen to end the reservation, then after the user has closed the doors the system must carry out the transaction for the amount that the system calculated, with the method of payment specified by the user on registration.}
 	\item{[RE.8.3] If the transaction} se la transazione non va buon fine sospendere l'utente
--> si ricorda l’assunzione che quando tutte le porte sono chiuse dopo aver terminato, allora i passeggeri sono tutti usciti
 \end{itemize}
 }
 
