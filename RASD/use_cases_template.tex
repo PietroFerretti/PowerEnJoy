@@ -24,15 +24,18 @@
 						 			 	 \item{The guest clicks on “confirm” button.}
 						 			 	 \item{The system generates a password and provides it to the user.}
 						 			 	 \item{The system will save the data in the DB.}
-						 			 	 \item{The system notifies the registration and sends the user to the profile management page.}\\
+						 			 	 \item{The system notifies the registration and sends the user to the profile management page.}
+						 \end{enumerate}\\
 		\hline
 		Postconditions & The guest successfully ends registration process and become a user. From now on he can log in to the application using his credential and start using PowerEnjoy.\\
 		\hline
-		Exceptions & \item{The guest is already registered.}
+		Exceptions & \begin{enumerate}
+			 \item{The guest is already registered.}
 					 			 \item{The guest inserts invalid information.}
 					 		   \item{The guest inserts a username used by another user.}
 					 		   \item{The guest inserts an email used by another user.}
-					 		 	 \item{The guest doesn't confirm the registration.}}
+					 		 	 \item{The guest doesn't confirm the registration.}
+					 		 \end{enumerate}
 					 Each exception is handled warning the guest of the problem and the Execution Flow comes back to the point 2.\\
 		\hline
 	\end{tabularx}
@@ -46,14 +49,18 @@
 		\hline
 		PreConditions & The user must be registered in the system.\\
 		\hline
-		Execution Flow & \item{The guest opens the PowerEnjoy application and presses on the login button.}
+		Execution Flow & \begin{enumerate}
+			\item{The guest opens the PowerEnjoy application and presses on the login button.}
 										 \item{The guest inserts the username or email and password received during registration.}
 										 \item{The system checks the couple inserted by the user.}
-										 \item{The guest, from now user, is redirected to the page where he can search a car.}\\
+										 \item{The guest, from now user, is redirected to the page where he can search a car.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The guest is now a user, he is logged in and can use all the functionality of the system.\\
 		\hline
-		Exceptions & \item{The guest inserts invalid credentials.}\\
+		Exceptions & \begin{enumerate} 
+			\item{The guest inserts invalid credentials.}
+			\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
@@ -66,14 +73,18 @@
 		\hline
 		PreConditions & The user is logged in to the system and he has activated the GPS.\\
 		\hline
-		Execution Flow & \item{The user presses the button to be localized on the map.}
+		Execution Flow & \begin{enumerate}
+			\item{The user presses the button to be localized on the map.}
 										 \item{The system receives the user's position and checks in the DB all the available cars nearby the user.}
 										 \item{The system shows on the application all the available cars.}
-										 \item{The user navigates on the map to search a car.}\\
+										 \item{The user navigates on the map to search a car.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The user finds a car most suitable for him.\\
 		\hline
-		Exceptions & \item{There aren't any available cars and the system suggests to the user to search in another location.}\\
+		Exceptions & \begin{enumerate}
+			\item{There aren't any available cars and the system suggests to the user to search in another location.}
+			\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
@@ -86,16 +97,20 @@
 		\hline
 		PreConditions & The user is logged in to the system\\
 		\hline
-		Execution Flow & \item{The user presses the search bar to insert a location.}
+		Execution Flow & \begin{enumerate}
+			\item{The user presses the search bar to insert a location.}
 										 \item{The user inserts an address (street, building, place (vorrei intendere pub, bar, discoteche))}
 										 \item{The system receives the address inserted by the user and checks in the DB all the available cars nearby the location.}
 										 \item{The system shows on the application all the available cars.}
-										 \item{The user navigates on the map to search a car.}\\
+										 \item{The user navigates on the map to search a car.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The user finds a car most suitable for him.\\
 		\hline
-		Exceptions & \item{The address inserted by the user doesn't exist.}
-								 \item{There aren't any available cars and the system suggests to the user to search in another location.}\\
+		Exceptions & \begin{enumerate}
+				\item{The address inserted by the user doesn't exist.}
+								 \item{There aren't any available cars and the system suggests to the user to search in another location.}
+					\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
@@ -108,14 +123,18 @@
 		\hline
 		PreConditions & The user is logged and there is at least an available car.\\
 		\hline
-		Execution Flow & \item{The user selects a car in the map.}
+		Execution Flow & \begin{enumerate}
+			\item{The user selects a car in the map.}
 										 \item{The system shows to the user the battery remaining charge.}
-										 \item{The user confirms to reserve the car.}\\
+										 \item{The user confirms to reserve the car.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The car is reserved for the user for an hour. \\
 		\hline
-		Exceptions & \item{The car is reserved by an another user before the user confirm the reservation.}
-								 \item{The user doesn't confirm the reservation (non so se è un'eccezione)}\\
+		Exceptions & \begin{enumerate}
+			\item{The car is reserved by an another user before the user confirm the reservation.}
+								 \item{The user doesn't confirm the reservation (non so se è un'eccezione)}
+								\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
@@ -128,14 +147,18 @@
 		\hline
 		PreConditions & The user is nearby the car he reserved.\\
 		\hline
-		Execution Flow & \item{The user presses on the camera button and sends the QR code to the system.}
+		Execution Flow & \begin{enumerate}
+			\item{The user presses on the camera button and sends the QR code to the system.}
 										 \item{The system identifies the car with the QR code and checks the reservation.}
 										 \item{The system enables the button to unlock the car on the application.}
-										 \item{The user presses the button.}\\
+										 \item{The user presses the button.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The car is ready to be ignite.\\
 		\hline
-		Exceptions & \item{The user sent a QR code of a car he didn't reserve.}\\
+		Exceptions & \begin{enumerate}
+			\item{The user sent a QR code of a car he didn't reserve.}
+	\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
@@ -148,15 +171,19 @@
 		\hline
 		PreConditions & The user is nearby the car he reserved and has the localization activated.\\
 		\hline
-		Execution Flow & \item{The user presses on the localization button and sends to the system his position.}
+		Execution Flow & \begin{enumerate}
+			\item{The user presses on the localization button and sends to the system his position.}
 										 \item{The system checks the user's position and the reservation.}
 										 \item{The system enables the button to unlock the car on the application.}
-										 \item{The user presses the button.}\\
+										 \item{The user presses the button.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The car is ready to be ignite.\\
 		\hline
-		Exceptions & \item{The user is nearby a car he didn't reserve.}
-								 \item{The user is far from the car he reserved}\\
+		Exceptions & \begin{enumerate}
+			\item{The user is nearby a car he didn't reserve.}
+								 \item{The user is far from the car he reserved}
+								\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
@@ -169,12 +196,16 @@
 		\hline
 		PreConditions & The user is employing the car.\\
 		\hline
-		Execution Flow & \item{The user stops the car and turns it off.}
-										 \item{The display shows to the user the option:}
-										 					a) to end the ride;}
-															b) to stand without losing the control of the car.}
+		Execution Flow & \begin{enumerate}
+			\item{The user stops the car and turns it off.}
+										 \item{The display shows to the user the option:
+										 \begin{description} 
+										 					\item[a)]{ to end the ride;}
+															\item[b)]{ to stand without losing the control of the car.}
+										\end{description}}
 										 \item{The user presses the button b).}
-										 \item{The user closed the car, keeping the key.}\\
+										 \item{The user closed the car, keeping the key.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The car is stopped in a parking lot, ready to be used again.\\
 		\hline
@@ -191,7 +222,8 @@
 		\hline
 		PreConditions & The user is employing the car.\\
 		\hline
-		Execution Flow & \item{The user inserts the destination.}
+		Execution Flow & \begin{enumerate}
+			\item{The user inserts the destination.}
                      \item{The user starts the ride.}
                      \item{The user chooses the option "save money!"}
 										 \item{The system calculates the best solution, so it searches the nearest PGS to the destination keeping in mind a uniform distribution of the cars.}
@@ -199,11 +231,14 @@
 										 \item{The user drives to the PGS, parks the car and ends the ride.}
 										 \item{The user plugs in the car in the power grid.}
 										 \item{The system detects that the car is charging.}
-										 \item{The system applies a discount on the amount the user must pay.}\\
+										 \item{The system applies a discount on the amount the user must pay.}
+										\end{enumerate}\\
 		\hline
 		Postconditions & The car is parked, ready to be used again and the user has a discount.\\
 		\hline
-		Exceptions & \item{There isn't an available PGS.}\\
+		Exceptions & \begin{enumerate}
+			\item{There isn't an available PGS.}
+	\end{enumerate}\\
 		\hline
 	\end{tabularx}
 
