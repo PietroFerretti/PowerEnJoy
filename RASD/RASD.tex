@@ -170,6 +170,7 @@ An external agency is entrusted with the task of charging cars with low or dead 
 
 An external agency is entrusted with the task of regularly cleaning the inside and outside of cars.
 
+Users always report dirty or damaged cars
 
 \newpage
 
@@ -234,100 +235,126 @@ a username of their choice, their personal data (first name, last name, date of 
 	\item{[RE.4.1] The system must offer an interface that shows to the user the cars available for reservation (e.g. the search results specified in RE.3a.3) and allow the user to select a car.}
 	\item{[RE.4.2] When a user selects a car for reservation the system must mark the car as reserved by that user.}
 	\item{[RE.4.3] If the car has not been unlocked for an hour after reservation, the system must mark the car as available and charge the user a fixed amount (1 EUR).}
-	\item{[RE.4.4] Suspended users must not be allowed to reserve cars.}
 \end{itemize}
 }
 
-\item[{[G5]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
+\item[{[G5]}]{Users must be able to cancel a reservation if they decide to not actually use the car.}
+
+\item[{[G6]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
 \begin{itemize}
-	\item{[RE.5.1] The system must offer an interface to unlock the car, with their position or the car's qr code.}
-	\item{[RE.5.2] If the user is within a certain distance from the car, their device location is available and they choose from the interface to unlock the car with the position, the system must unlock the car.}
-	\item{[RE.5.3] If the user chooses from the interface to unlock the car with the qr code and the user takes a clear picture of the qr code of the right car, the system must unlock the car.}
+	\item{[RE.6.1] The system must offer an interface to unlock the car, with their position or the car's qr code.}
+	\item{[RE.6.2] If the user is within a certain distance from the car, their device location is available and they choose from the interface to unlock the car with the position, the system must unlock the car.}
+	\item{[RE.6.3] If the user chooses from the interface to unlock the car with the qr code and the user takes a clear picture of the qr code of the right car, the system must unlock the car.}
 \end{itemize}
 }
 
-\item[{[G6]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.
+\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.6.2] The system starts to **charge the user** -> ambiguo, non paga subito  the moment the reserved car’s engine is ignited after unlocking the car.}
-	\item{[RE.6.3] The amount charged by the system depends on the time elapsed and the distance traveled by the user, following specific rules.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.7.2] The system starts to **charge the user** -> ambiguo, non paga subito  the moment the reserved car’s engine is ignited after unlocking the car.}
+	\item{[RE.7.3] The amount charged by the system depends on the time elapsed and the distance traveled by the user, following specific rules.}
 \end{itemize}
 }
 
-\item[{[G7]}]{The system must allow the user to see the amount they’re being charged through a screen on the car.
+\item[{[G8]}]{The system must allow the user to see the amount they’re being charged through a screen on the car.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.7.1] After the system has started keeping track of the amount that the user has to pay, the system must show it in a clear way on the car screen while the car is in use and the reservation hasn’t ended.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.8.1] After the system has started keeping track of the amount that the user has to pay, the system must show it in a clear way on the car screen while the car is in use and the reservation hasn’t ended.}
 \end{itemize}
 }
 
-\item[{[G8]}]{The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car after ending the reservation.
+\item[{[G9]}]{The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car after ending the reservation.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.8.2] If a reserved car has been parked in a safe area and the user has chosen to end the reservation, then after the user has closed the doors the system must carry out the transaction for the amount that the system calculated, with the method of payment specified by the user on registration.}
-	\item{[RE.8.3] If the transaction fails the user must be suspended until the outstanding bill is paid.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.9.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
+	\item{[RE.9.2] If a reserved car has been parked in a safe area and the user has chosen to end the reservation, then after the user has closed the doors the system must carry out the transaction for the amount that the system calculated, with the method of payment specified by the user on registration.}
 \end{itemize}
 }
 
-\item[goal pagamento bills]{A interface to pay outstanding bills must be available, ok if the transaction is successful, still suspended if it fails}
-
-\item[{[G9]}]{Users must be able to leave a car in a safe area without losing the reservation by informing the system that they’re only temporarily parking; in this case the system keeps charging the user.
+\item[{[G10]}]{Users must be able to leave a car in a safe area without losing the reservation by informing the system that they’re only temporarily parking; in this case the system keeps charging the user.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.9.1] When a car is temporarily parked and locked, the system keeps on charging the user but with different rules than those used in RE.6.3, this time depending only on time elapsed while parked.}
-	\item{[RE.9.2] After a temporarily parked car is unlocked by the user and the engine is turned on, the system starts charging the user with the rules used in RE.6.3 again.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.9.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
+	\item{[RE.10.1] When a car is temporarily parked and locked, the system keeps on charging the user but with different rules than those used in RE.7.3, this time depending only on time elapsed while parked.}
+	\item{[RE.10.2] After a temporarily parked car is unlocked by the user and the engine is turned on, the system starts charging the user with the rules used in RE.7.3 again.}
 \end{itemize}
 }
 
-\item[{[G10]}]{The system must lock the car automatically after the user exits the car.
+\item[{[G11]}]{The system must lock the car automatically after the user exits the car.
 \begin{itemize}
-	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.10.1] The system must lock the car when the last door has been closed after the user chose to end their reservation or park temporarily.}
+	\item{[RE.9.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
+	\item{[RE.11.1] The system must lock the car when the last door has been closed after the user chose to end their reservation or park temporarily.}
 \end{itemize}
 }
 
-\item[{[G11]}]{The system must provide a money saving option to the user, proposing a suitable power grid station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.
+\item[{[G12]}]{The system must provide a money saving option to the user, proposing a suitable power grid station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.
 \begin{itemize}
-	\item{[RE.11.1] The system must offer an interface where the user can select the money saving option and submit their final destination.}
-	\item{[RE.11.2] When the user submits their final destination for the money saving option, the system must find a suitable power grid station near the ones close to the destination that have at least one free spot.}
-	\item{[RE.11.3] The system must show on the car screen (e.g. on a map) the location of the power grid station chosen for the money saving option.}
-	\item{[RE.11.4] The system must apply a discount on the amount the user has to pay if they selected the power saving option and they parked in the station the system chose for them.}
+	\item{[RE.12.1] The system must offer an interface where the user can select the money saving option and submit their final destination.}
+	\item{[RE.12.2] When the user submits their final destination for the money saving option, the system must find a suitable power grid station near the ones close to the destination that have at least one free spot.}
+	\item{[RE.12.3] The system must show on the car screen (e.g. on a map) the location of the power grid station chosen for the money saving option.}
+	\item{[RE.12.4] The system must apply a discount on the amount the user has to pay if they selected the power saving option and they parked in the station the system chose for them.}
 \end{itemize}
 }
 
-\item[{[G12]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
+\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
 \begin{itemize}
-	\item{[RE.12.1] To choose a station in the process specified in RE.11.2, the system selects among all the stations with free spots within a certain distance of the user’s final destination (e.g. a 10-minutes walk) the one with the fewest available cars nearby.}
+	\item{[RE.13.1] To choose a station in the process specified in RE.12.2, the system selects among all the stations with free spots within a certain distance of the user’s final destination (e.g. a 10-minutes walk) the one with the fewest available cars nearby.}
 \end{itemize}
 }
 
-\item[{[G13]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
+\item[{[G14]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.13.1] If the weight sensors in the car seats detect at least two passengers (excluding the driver) for at least half of the time the car has been driving, then the system must apply a discount of 10\% at the end of the reservation on the amount the user has to pay.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.14.1] If the weight sensors in the car seats detect at least two passengers (excluding the driver) for at least half of the time the car has been driving, then the system must apply a discount of 10\% at the end of the reservation on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item[{[G14]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
+\item[{[G15]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.14.1] When the car has been parked in a safe area and the user has chosen to end the reservation, the system must apply a discount of 20\% on the amount the user has to pay if the car is left with more than 50\% remaining battery charge.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.15.1] When the car has been parked in a safe area and the user has chosen to end the reservation, the system must apply a discount of 20\% on the amount the user has to pay if the car is left with more than 50\% remaining battery charge.}
 \end{itemize}
 }
 
-\item[{[G15]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
+\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.15.1] When the car has been parked in a power grid station, has been plugged in the power grid and the user has chosen to end the reservation, the system must apply a discount of 30\% on the amount the user has to pay.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.16.1] When the car has been parked in a power grid station, has been plugged in the power grid and the user has chosen to end the reservation, the system must apply a discount of 30\% on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item[{[G16]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
+\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
 \begin{itemize}
-	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.16.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge, the system must increase the amount the user has to pay by 30\%.}
+	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
+	\item{[RE.17.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge, the system must increase the amount the user has to pay by 30\%.}
+\end{itemize}
+}
+
+\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.
+\begin{itemize}
+	\item{[RE.18.1] If a transaction fails the user must be marked as suspended until the outstanding bill is paid.}
+	\item{[RE.18.2] Suspended users must not be allowed to reserve cars.}
+\end{itemize}
+}
+
+\item[{[G19]}]{Users with outstanding bills should have a way to pay them.
+\begin{itemize}
+	\item{[RE.19.1] Users must have an option on the application to pay their outstanding bills.}
+	\item{[RE.19.2] When the user chooses to pay their outstanding bills, if the transaction succeeds they are no longer marked as suspended, otherwise the user is notified and they remain suspended.}
+	\item{[RE.19.3] Users must have a way to change the method of payment saved on the system through a dedicated option on the application.}
+\end{itemize}
+}
+
+\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)
+\begin{itemize}
+	\item{[RE.20.1] Users should have a way to report problems with a car they reserved (excessive dirtiness, damage, etc.) through the interface on the car's display.}
+	\item{[RE.20.2] If a user reports a car, the system will mark it as unavailable and ends the user's reservation.}
+	\item{[RE.20.3] If a car is unlocked by force or moves without any reservation, the system will consider it stolen and mark it as unavailable.}
+	\item{[RE.20.4] If a car is repaired, cleaned or otherwise fixed, an employee will mark it as available through a dedicated interface.}
+	
+	COME HA FATTO LO USE CASE DANILO?
+	
+	the assumptions we made about external agencies
 \end{itemize}
 }
 
