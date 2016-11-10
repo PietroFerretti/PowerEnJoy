@@ -354,6 +354,7 @@ a username of their choice, their personal data (first name, last name, date of 
 	\item{[RE.20.3] If a car has less than 20\% battery charge at the end of a trip, the system will mark the car as unavailable and notify the employees in charge of recharging cars.}
 	\item{[RE.20.4] If a car is unlocked by force or moves without any reservation, the system will consider it stolen and mark it as unavailable. The system notifies the people in charge of handling theft.}
 	\item{[RE.20.5] If a car is repaired, cleaned or otherwise fixed, an employee will mark it as available through a dedicated interface.}
+	\item{[RE.20.6] If a car flagged as unavailable because of low battery reaches 50\% of battery charge, the system will mark it as available again.}
 \end{itemize}
 }
 
@@ -361,7 +362,7 @@ a username of their choice, their personal data (first name, last name, date of 
 
 
 \subsection{Use Cases}
-	\subsubsection{A guest registers to PowerEnJoy.}
+	\subsubsection{[UC.1] A guest registers to PowerEnJoy.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & Guest\\
@@ -401,7 +402,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user logs in to the PowerEnJoy application.}
+	\subsubsection{[UC.2] A user logs in to the PowerEnJoy application.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -425,7 +426,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user searches for available cars near his position.}
+	\subsubsection{[UC.3] A user searches for available cars near his position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -450,7 +451,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user searches for available cars in a specific position.}
+	\subsubsection{[UC.4] A user searches for available cars in a specific position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -479,7 +480,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user reserves a car.}
+	\subsubsection{[UC.5] A user reserves a car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -503,7 +504,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user cancels a reservation for a car.}
+	\subsubsection{[UC.6] A user cancels a reservation for a car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -527,7 +528,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user unlocks the car with the QR code printed on the car.}
+	\subsubsection{[UC.7] A user unlocks the car with the QR code printed on the car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -552,7 +553,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user unlocks the car using his position.}
+	\subsubsection{[UC.8] A user unlocks the car using his position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -577,7 +578,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user ends a ride.}
+	\subsubsection{[UC.9] A user ends a ride.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -611,7 +612,7 @@ a username of their choice, their personal data (first name, last name, date of 
 			\hline
 		\end{tabularx}
 		
-		\subsubsection{A user parks the car without ending the ride.}
+		\subsubsection{[UC.10] A user parks the car without ending the ride.}
 		\begin{tabularx}{\textwidth}{  l  X  }
 			\hline
 			Actor & User\\
@@ -643,7 +644,7 @@ a username of their choice, their personal data (first name, last name, date of 
 			\end{tabularx}
 			
 			
-		\subsubsection{The system suggests to the user a PGS to park the car at and save money.}
+		\subsubsection{[UC.11] The system suggests to the user a PGS to park the car at and save money.}
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, User\\
@@ -664,7 +665,7 @@ a username of their choice, their personal data (first name, last name, date of 
 					\item{The system applies a discount on the amount the user has to pay.}
 				\end{enumerate}\\
 				\hline
-				Postconditions & The car is ready to be locked, transaction hasn't happened yet\\
+				Postconditions & The car is ready to be locked.\\
 				\hline
 				Exceptions & \begin{enumerate}
 					\item{There isn't any available PGS near the user's destination.}
@@ -675,7 +676,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 			\end{tabularx}
 			
-			\subsubsection{Payment}
+			\subsubsection{[UC.12] Payment}
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, Payment API\\
@@ -702,7 +703,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 			\end{tabularx}
 			
-			\subsubsection{User pays a pending bill.}
+			\subsubsection{[UC.13] User pays a pending bill.}
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & User, System, Payment API\\
@@ -730,7 +731,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 			\end{tabularx}
 			
-  \subsubsection{A user reports a problem to the system.}
+  \subsubsection{[UC.14] A user reports a problem to the system.}
   \begin{tabularx}{\textwidth}{  l  X  }
   	\hline
   	Actor & User, System\\
