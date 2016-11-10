@@ -336,7 +336,7 @@
 		\hline
 	\end{tabularx}
 
-  \subsubsection{User pays a pending bill.}
+  \subsubsection{A user pays a pending bill.}
   \begin{tabularx}{\textwidth}{  l  X  }
     \hline
     Actor & User, System, Payment API\\
@@ -361,6 +361,33 @@
     Exceptions & \begin{enumerate}
         \item{The Payment API is not available. In this case, the system the bill is still marked as "pending".}
         \item{The transaction is rejected. In this case, the users remains suspended.}
+  \end{enumerate}\\
+    \hline
+  \end{tabularx}
+
+  \subsubsection{A user informs the system of a problem.}
+  \begin{tabularx}{\textwidth}{  l  X  }
+    \hline
+    Actor & User, System\\
+    \hline
+    Goal & [20]\\
+    \hline
+    Preconditions & The user is logged in\\
+    \hline
+    Execution Flow & \begin{enumerate}
+      \item{The user goes to the highlighting page.(il termine più formale che ho trovato)}
+                     \item{The user selects the type of problem he meets with.}
+                     \item{The user identifies the car through the QR.}
+                     \item{The user inserts the position of the car.}
+                     \item{The user confirms and submits the data to the system.}
+                     \item{The system checks the data inserted by the user.}
+                     \item{The system sets the car as unavailable.}
+                    \end{enumerate}\\
+    \hline
+    Postconditions & The car is unavailable.\\
+    \hline
+    Exceptions & \begin{enumerate}
+        \item{The user inserts wrong data.}
   \end{enumerate}\\
     \hline
   \end{tabularx}
