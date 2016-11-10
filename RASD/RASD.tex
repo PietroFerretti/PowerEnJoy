@@ -375,7 +375,7 @@ a username of their choice, their personal data (first name, last name, date of 
 			\item{The guest chooses between "Sign up with Google", "Sign up with Facebook" or inserting the data manually.}
 			\item{In the case of manually inserting, the guest fills in at least all mandatory fields with the required information (first name, last name, username, email address, DOB).}
 			\item{In the other cases, the guest connects to Google or Facebook and gives the system permission to take the data from there.}
-			\item{The guest uploads a photo of his or her driving license or inserts the information manually.}
+			\item{The guest uploads a photo of his driving license or inserts the information manually.}
 			\item{The guest inserts the number of the credit card and the corresponding CVV}.
 			\item{The system verifies the correctness of the inserted data.}
 			\item{The guest gives their consent to the processing of their personal data by checking a box.}
@@ -388,7 +388,7 @@ a username of their choice, their personal data (first name, last name, date of 
 	\end{tabularx}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
-		Postconditions & The guest successfully completes the registration process and become a user. From now on he can log in to the application using his credentials and use PowerEnJoy.\\
+		Postconditions & The guest successfully completes the registration process and become a user. From now on he or she can log in to the application using his credentials and use PowerEnJoy.\\
 		\hline
 		Exceptions & \begin{enumerate}
 			\item{The guest is already registered.}
@@ -401,7 +401,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user logs in the PowerEnJoy application.}
+	\subsubsection{A user logs in to the PowerEnJoy application.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -425,7 +425,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user looks for an available car near his position.}
+	\subsubsection{A user searches for available cars near his position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -450,7 +450,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 	
-	\subsubsection{A user looks for an available car in a specific position.}
+	\subsubsection{A user searches for available cars in a specific position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -486,7 +486,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 		Goal & [G4]\\
 		\hline
-		Preconditions & The user is logged and there is at least an available car.\\
+		Preconditions & The user is logged in and there is at least an available car.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user selects a car on the map.}
@@ -510,7 +510,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 		Goal & [G4]\\
 		\hline
-		Preconditions & The user is logged, has reserved a car and hasn't unlocked the car yet.\\
+		Preconditions & The user is logged in, has reserved a car and hasn't unlocked the car yet.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user goes to the main page of the application.}
@@ -534,7 +534,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 		Goal & [G6]\\
 		\hline
-		Preconditions & The user is close to the car he reserved.\\
+		Preconditions & The user is logged in and close to the car he reserved.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{The user presses on the camera button, takes a picture of the QR code printed on the car and submits it to the system.}
@@ -562,7 +562,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		Preconditions & The user is close to the car he reserved and has the localization activated.\\
 		\hline
 		Execution Flow & \begin{enumerate}
-			\item{The user presses on the localization button and sends his or her position to the system.}
+			\item{The user presses on the localization button and sends his position to the system.}
 			\item{The system checks if the user's position is close to the car's.}
 			\item{The system enables the button to unlock the car on the application.}
 			\item{The user presses the button.}
@@ -584,7 +584,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 		Goal & [G9]\\
 		\hline
-		Preconditions & The user is  using the car.\\
+		Preconditions & The user is using the car.\\
 		\hline
 		Execution Flow & \begin{enumerate}
 			\item{If the user is driving he or her stops the car and turns the engine off.}
@@ -709,7 +709,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 				Goal & [G18]\\
 				\hline
-				Preconditions & The user has a pending bill and is suspended.\\
+				Preconditions & The user is logged in, has a pending bill and is suspended.\\
 				\hline
 				Execution Flow & \begin{enumerate}
 					\item{The user goes to his profile page.}
@@ -729,6 +729,33 @@ a username of their choice, their personal data (first name, last name, date of 
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
+			
+  \subsubsection{A user reports a problem to the system.}
+  \begin{tabularx}{\textwidth}{  l  X  }
+  	\hline
+  	Actor & User, System\\
+  	\hline
+  	Goal & [G20]\\
+  	\hline
+  	Preconditions & The user is logged in and has reserved a car\\
+  	\hline
+  	Execution Flow & \begin{enumerate}
+  		\item{The user goes to the reporting page of the application.}
+  		\item{The user selects the type of problem the car has (dirty, damaged, ...).}
+  		\item{The user confirms and submits the data to the system.}
+  		\item{The system checks the data inserted by the user.}
+  		\item{The system sets the car as unavailable.}
+  		\item{The system ends the user's reservation and ride.}
+  	\end{enumerate}\\
+  	\hline
+  	Postconditions & The car is marked as unavailable and the user has no reservation.\\
+  	\hline
+  	Exceptions & \begin{enumerate}
+  		\item{The user inserts wrong data.}
+  	\end{enumerate}\\
+  	\hline
+  \end{tabularx}
+
 
 \subsection{Performance Requirements}
 
