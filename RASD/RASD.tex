@@ -172,6 +172,8 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 
 Users always report dirty or damaged cars
 
+Users don't let the cars run out of battery before parking in a safe area. (Otherwise they call a phone line and pay a fee)
+
 \newpage
 
 \section{Specific Requirements}
@@ -348,13 +350,10 @@ a username of their choice, their personal data (first name, last name, date of 
 \item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)
 \begin{itemize}
 	\item{[RE.20.1] Users should have a way to report problems with a car they reserved (excessive dirtiness, damage, etc.) through the interface on the car's display.}
-	\item{[RE.20.2] If a user reports a car, the system will mark it as unavailable and ends the user's reservation.}
-	\item{[RE.20.3] If a car is unlocked by force or moves without any reservation, the system will consider it stolen and mark it as unavailable.}
-	\item{[RE.20.4] If a car is repaired, cleaned or otherwise fixed, an employee will mark it as available through a dedicated interface.}
-	
-	COME HA FATTO LO USE CASE DANILO?
-	
-	the assumptions we made about external agencies
+	\item{[RE.20.2] If a user reports a car for dirtiness or damage, the system will mark it as unavailable, end the user's reservation and notify an employee to solve the problem.}
+	\item{[RE.20.3] If a car has less than 20\% battery charge at the end of a trip, the system will mark the car as unavailable and notify the employees in charge of recharging cars.}
+	\item{[RE.20.4] If a car is unlocked by force or moves without any reservation, the system will consider it stolen and mark it as unavailable. The system notifies the people in charge of handling theft.}
+	\item{[RE.20.5] If a car is repaired, cleaned or otherwise fixed, an employee will mark it as available through a dedicated interface.}
 \end{itemize}
 }
 
@@ -630,7 +629,7 @@ a username of their choice, their personal data (first name, last name, date of 
 						\item[b)]{ to park the car temporarily.}
 					\end{description}}
 					\item{The user presses the button b).}
-					\item{The user exits the car and closes the doors}
+					\item{The user exits the car and closes the doors.}
 					\item{The system locks the car automatically.}
 				\end{enumerate}\\
 				\hline
@@ -658,7 +657,7 @@ a username of their choice, their personal data (first name, last name, date of 
 					\item{The user chooses the option "save money!"}
 					\item{The system calculates the best solution, so it searches the nearest PGS to the destination keeping in mind a uniform distribution of the cars.}
 					\item{The system suggests the PGS to the user through the display.}
-					\item{The user drives to the PGS, parks the car and turns the engine off}
+					\item{The user drives to the PGS, parks the car and turns the engine off.}
 					\item{The user plugs the car in the power grid.}
 					\item{The user chooses from the car's display to end the ride.}
 					\item{The system detects that the car's position corresponds to the right PGS and that the car is plugged in.}
@@ -668,36 +667,36 @@ a username of their choice, their personal data (first name, last name, date of 
 				Postconditions & The car is ready to be locked, transaction hasn't happened yet\\
 				\hline
 				Exceptions & \begin{enumerate}
-					\item{There isn't any available PGS.}
+					\item{There isn't any available PGS near the user's destination.}
 					\item{The user doesn't park the car at the PGS suggested by the system.}
 					\item{The user doesn't plug the car in the power grid.}
-					\item{the user drives away after choosing to end the ride. the discount is canceled}
+					\item{The user drives away after choosing to end the ride. The discount is canceled.}
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
 			
-			\subsubsection{Payment.}
+			\subsubsection{Payment}
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, Payment API\\
 				\hline
-				Goal & --\\
+				Goal & [G9], [G19]\\
 				\hline
-				Preconditions & The user ended a ride and there is a bill pending on him.\\
+				Preconditions & The user ended a ride and has a pending charge.\\
 				\hline
 				Execution Flow & \begin{enumerate}
-					\item{The user inserts the destination.}
-					\item{The system begins the transaction.}
-					\item{The system sends the user's account data to the Payment API.}
-					\item{The system sends the amount of the bill to the Payment API.}
-					\item{The API acknowledges the payment.}
+					\item{The system starts the transaction.}
+					\item{The system sends its credentials to the Payment API.}
+					\item{The system sends the user's account data to the API.}
+					\item{The system sends the amount to receive to the API.}
+					\item{The API confirms the payment.}
 					\item{The system closes the transaction.}
 				\end{enumerate}\\
 				\hline
 				Postconditions & The bill is paid\\
 				\hline
 				Exceptions & \begin{enumerate}
-					\item{The Payment API is not available. In this case, the system the bill is still marked as "pending".}
+					\item{The Payment API is not available. In this case, the system marks the bill as "waiting" and retries later.}
 					\item{The transaction is rejected. In this case, the system suspends the user until he pays the pending bill.}
 				\end{enumerate}\\
 				\hline
@@ -710,24 +709,23 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 				Goal & [G18]\\
 				\hline
-				Preconditions & The user has a pending bill.\\
+				Preconditions & The user has a pending bill and is suspended.\\
 				\hline
 				Execution Flow & \begin{enumerate}
 					\item{The user goes to his profile page.}
 					\item{The user selects the pending bill.}
-					\item{The user inserts the payment method.}
-					\item{The user inserts all the mandatory data.}
-					\item{The user submits the data to the system.}
-					\item{The system carries out the payment.}
-					\item{The API acknowledges the payment.}
+					\item{The user selects the payment method.}
+					\item{The user confirms the transaction.}
+					\item{The system carries out the payment as in the "Payment" use case.}
+					\item{The API confirms the payment.}
 					\item{The system cancels the suspension.}
 				\end{enumerate}\\
 				\hline
-				Postconditions & The bill is paid\\
+				Postconditions & The bill is paid and the user is no longer suspended.\\
 				\hline
 				Exceptions & \begin{enumerate}
-					\item{The Payment API is not available. In this case, the system the bill is still marked as "pending".}
-					\item{The transaction is rejected. In this case, the users remains suspended.}
+					\item{The Payment API is not available. In this case, the system marks the bill as "waiting" and retries later.}
+					\item{The transaction is rejected. In this case, the user is notified of the problem and remains suspended.}
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
