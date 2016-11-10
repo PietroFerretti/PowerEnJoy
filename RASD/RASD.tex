@@ -45,7 +45,7 @@ The aim of this project is to specify in detail a new digital management softwar
 
 \paragraph{}
 Users must be able to register to PowerEnJoy providing their personal data, driving license and payment information.
-After registering, users should be able to look for available cars near them or to a specific location. If they find a car that matches their needs, they can reserve the car up to one hour before using it. After approaching a reserved car users can unlock the car and enter it. 
+After registering, users should be able to look for available cars near them or to a specific location. If they find a car that matches their needs, they can reserve the car up to one hour before using it. After approaching a reserved car users should have a way to unlock the car and enter it. 
 While using a car users are charged a certain amount of money depending on distance traveled and time elapsed; while driving the car a display will inform the user of the amount of money they will have to pay at the end of the ride.
 The system stops charging the user after the car is parked in a safe area.
 Furthermore the system incentivizes virtuous behaviours by offering several discounts if certain conditions are met (e.g. charging a car at a power grid station).
@@ -87,10 +87,10 @@ The PowerEnJoy application will offer many different functionalities; specifical
 	\item[{[G2]}]{Users must be able to login with the username/email inserted and the password received on registration.}
 	\item[{[G3a]}]{Users must be able to find the location and battery charge of all available cars within a certain distance from their current location.}
 	\item[{[G3b]}]{Users must be able to find the location and battery charge of all available cars around a specified location.}
-	\item[{[G4]}]{Users must be able to reserve a car for up to one hour before they pick it up.}
+	\item[{[G4]}]{Users must be able to reserve a car for up to one hour before they pick it up. If they don't take the car before the time expires they are charged a fixed fee of 1 EUR.}
 	\item[{[G5]}]{Users must be able to cancel a reservation if they decide to not actually use the car.}
-	\item[{[G6]}]{A user that reaches a reserved car must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.}
-	\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it.}
+	\item[{[G6]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.}
+	\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.}
 	\item[{[G8]}]{The system must allow the user to see the amount they’re being charged through a screen on the car.}
 	\item[{[G9]}]{The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car notifying the system that they ended their ride.}
 	\item[{[G10]}]{Users must be able to leave a car without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user. The user should be able to end the ride without coming back to the car if they so choose.}
@@ -101,14 +101,14 @@ The PowerEnJoy application will offer many different functionalities; specifical
 	\item[{[G15]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.}
 	\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.}
 	\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
-	\item[{[G18]}]{Users should be able to pay a pending bill that the system couldn’t resolve automatically.}
-	\item{A GPS navigation device should be available on the car for the user's comfort.}
-	\item{Car with low battery should be unavailable for users, waiting for recharging}
+	\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
+	\item[{[G19]}]{Users with outstanding bills should have a way to pay them.}
+	\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)}
 \end{description}
 
 \subsection{User Characteristics}
 
-\subsection{Constraints}
+\subsection{Constraints}\label{constraints}
 
 To provide all the functionalities specified in this document, every car must have:
 \begin{itemize}
@@ -122,48 +122,53 @@ To provide all the functionalities specified in this document, every car must ha
 	\item{a unique qr code printed on the outside of the car}
 \end{itemize}
 
+\paragraph{}
+\emph{and we need a GPS navigator on the car because I say so}
+
+\paragraph{}
 The web application needs an Internet connection to work, for example to connect to the database and find available cars.
 
+\paragraph{}
 The mobile application will need at least an Internet connection to receive data from and communicate with the central system. Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality.
 
 \subsection{Assumptions and Dependencies}
 
-See 2.4 Constraints for hardware assumptions.\\
+\emph{See section \ref{constraints} for hardware assumptions.}
 
 
-The system has a predefined list of all the safe areas and their locations.\\
-The system has a predefined list of all the power grid stations and their locations.\\
-The system knows how many plugs are present and how many of them are free.\\
+The system has a predefined list of all the safe areas and their locations.
+
+The system has a predefined list of all the power grid stations and their locations.
+
+The system knows how many plugs are present in each station and how many of them are free in a given moment.
 
 
-The car’s data connection is always working and stable\\
-The car’s gps signal is always available and precise\\
+The car’s data connection is always working and stable
+
+The car’s gps signal is always available and precise
 
 
-After unlocking a car users turn on the engine shortly after.\\
+After unlocking a car users turn on the engine shortly after (i.e. the user doesn't stand in the car idly for long periods of time). We suppose that the user wants to get to their destination as soon as possible.
 
 
-When the user has ended the reservation or chosen to temporarily park from the car’s screen, we assume that the users and all the passengers have exited the car before the last door is closed.\\
+When the user has ended the reservation or chosen to temporarily park from the car’s screen, we assume that the users and all the passengers have exited the car before the last door is closed.
 
 
-When the weight measured by a seat weight sensor exceeds a certain threshold, it means that a person is present on that seat (and not an object).\\
+When the weight measured by a seat weight sensor exceeds a certain threshold, it means that a person is present on that seat (and not an object).
 
 
-When a car is unlocked by force or moves without being reserved, the car is flagged as stolen and made unavailable for reservation. \\
-The matter is handled by someone else (police, lawyers)\\
--> users wil always find the car if marked available\\
+Stolen cars are handled by someone else (police, lawyers)
 
 
-non richiesti da goals: (non pertinenti?)\\
-A phone line is available in case of car accidents or damage to the car.\\
--> insurance, assistance, fines\\
-If a car is involved in a car accident or otherwise damaged, it is marked as not available.\\
+A phone line is available in case of car accidents or damage to the car.
+
+-> insurance, assistance, fines
 
 
-An external agency is entrusted with the task of charging cars with low or dead batteries.\\
+An external agency is entrusted with the task of charging cars with low or dead batteries.
 
 
-An external agency is entrusted with the task of regularly cleaning the inside and outside of cars.\\
+An external agency is entrusted with the task of regularly cleaning the inside and outside of cars.
 
 
 \newpage
@@ -191,28 +196,28 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \item[{[G1]}]{Guests must be able to register as a user by choosing a username and providing their personal data, driving license and payment information. They will receive a password at the email address they specified.
 	
 \begin{itemize}
-\item{[RE.1.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit the data needed for registration: personal data (first name, last name, date of birth [more?]), a driving license ID or a photo of one, and a payment method.}
-\item{[RE.1.2] The system must verify that the data provided by a user on registration is valid [...]}
+\item{[RE.1.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit the data needed for registration:
+a username of their choice, their personal data (first name, last name, date of birth), a driving license ID or a photo of one, and a payment method.}
+\item{[RE.1.2] The system must verify that the data provided by a user on registration is valid.}
 \item{[RE.1.3] When a user registers the system must randomly generate a safe password and associate it to the user’s account.}
 \item{[RE.1.4] After a user is registered the system must send the generated password to the user via email at the email address they provided.}
 \end{itemize}
 }
 
-\item[{[G2]}]{Users must be able to log in with the username/email they submitted and the password received on registration.
+\item[{[G2]}]{Users must be able to log in with the username/email they submitted on registration and the password they received.
 \begin{itemize}
-	\item{[RE.2.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit his credentials (username/email and password) to log in.}
-	\item{[RE.2.2] The system must compare the credentials submitted by the user and compare them with the ones saved in the database.}
+	\item{[RE.2.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit their credentials (username/email and password) to log in.}
+	\item{[RE.2.2] The system must compare the credentials submitted by the user with the ones saved in the database.}
 	\item{[RE.2.3] If the credentials submitted on login are valid, the system authenticates the user and allows them to use the available functionalities.}
-	\item{[RE.2.4] If the credentials submitted on login are not valid, the system denies the user access and notifies the user of the error.}
-[+ offre di riprovare?]
+	\item{[RE.2.4] If the credentials submitted on login are not valid, the system denies access to the user and notifies them of the error.}
 \end{itemize}
 }
 
 \item[{[G3a]}]{Users must be able to find the locations of available cars within a certain distance from their current location.
 \begin{itemize}
-	\item{[RE.3a.1] The system must offer an interface where the user can (activate the option) to look for nearby available cars if the user’s location is available (ex. gps).}
-	\item{[RE.3a.2] When the user activates the option to find nearby available cars, the system must look in the database for every available car near the user’s location.}
-	\item{[RE.3a.3] The system must show the results of the search for nearby available cars on a suitable *interface* (ex. a map)}
+	\item{[RE.3a.1] The system must offer an interface where the user can activate the option to look for nearby available cars if the user’s location is available (e.g. thanks to a GPS receiver).}
+	\item{[RE.3a.2] When the user activates the option to find nearby available cars, the system must get the user's location and look in the database for every available car near them.}
+	\item{[RE.3a.3] The system must show the results of the search for nearby available cars on a suitable interface (e.g. a map).}
 \end{itemize}
 }
 
@@ -220,7 +225,7 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \begin{itemize}
 	\item{[RE.3b.1] The system must offer an interface where the user can submit an address and search for available cars near that location.}
 	\item{[RE.3b.2] When the user starts a search for available cars near a certain address, the system must look in the database for every available car close to the address provided by the user.}
-	\item{[RE.3b.3] The system must show the results of the search for available cars on a suitable *interface* (e.g. a map).}
+	\item{[RE.3b.3] The system must show the results of the search for available cars on a suitable interface (e.g. a map).}
 \end{itemize}
 }
 
@@ -229,17 +234,15 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 	\item{[RE.4.1] The system must offer an interface that shows to the user the cars available for reservation (e.g. the search results specified in RE.3a.3) and allow the user to select a car.}
 	\item{[RE.4.2] When a user selects a car for reservation the system must mark the car as reserved by that user.}
 	\item{[RE.4.3] If the car has not been unlocked for an hour after reservation, the system must mark the car as available and charge the user a fixed amount (1 EUR).}
-	
-UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
-
+	\item{[RE.4.4] Suspended users must not be allowed to reserve cars.}
 \end{itemize}
 }
 
-\item[{[G5]}]{A user that reaches a reserved car must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
+\item[{[G5]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
 \begin{itemize}
 	\item{[RE.5.1] The system must offer an interface to unlock the car, with their position or the car's qr code.}
 	\item{[RE.5.2] If the user is within a certain distance from the car, their device location is available and they choose from the interface to unlock the car with the position, the system must unlock the car.}
-	\item{[RE.5.3] If the user chooses from the interface to unlock the car with the qr code and the user takes a clear picture of the qr code corresponding to the car, the system must unlock the car.}
+	\item{[RE.5.3] If the user chooses from the interface to unlock the car with the qr code and the user takes a clear picture of the qr code of the right car, the system must unlock the car.}
 \end{itemize}
 }
 
@@ -254,7 +257,7 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \item[{[G7]}]{The system must allow the user to see the amount they’re being charged through a screen on the car.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.7.1] After the system has started keeping track of the amount that the user has to pay, the system must show it in a clear way on the car screen while the car is unlocked and the reservation hasn’t ended.}
+	\item{[RE.7.1] After the system has started keeping track of the amount that the user has to pay, the system must show it in a clear way on the car screen while the car is in use and the reservation hasn’t ended.}
 \end{itemize}
 }
 
@@ -263,39 +266,40 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
 	\item{[RE.8.2] If a reserved car has been parked in a safe area and the user has chosen to end the reservation, then after the user has closed the doors the system must carry out the transaction for the amount that the system calculated, with the method of payment specified by the user on registration.}
-	\item{[RE.8.3] If the transaction} se la transazione non va buon fine sospendere l'utente
+	\item{[RE.8.3] If the transaction fails the user must be suspended until the outstanding bill is paid.}
 \end{itemize}
 }
 
-\item[{[G9]}]{Users must be able to leave a car in a safe area without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user.
+\item[goal pagamento bills]{A interface to pay outstanding bills must be available, ok if the transaction is successful, still suspended if it fails}
+
+\item[{[G9]}]{Users must be able to leave a car in a safe area without losing the reservation by informing the system that they’re only temporarily parking; in this case the system keeps charging the user.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.9.1] When a car is temporarily parked and locked, the system keeps on *charging* the user but with different rules than those used in RE.6.3, this time depending only on time elapsed while parked.}
+	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
+	\item{[RE.9.1] When a car is temporarily parked and locked, the system keeps on charging the user but with different rules than those used in RE.6.3, this time depending only on time elapsed while parked.}
 	\item{[RE.9.2] After a temporarily parked car is unlocked by the user and the engine is turned on, the system starts charging the user with the rules used in RE.6.3 again.}
 \end{itemize}
 }
 
 \item[{[G10]}]{The system must lock the car automatically after the user exits the car.
 \begin{itemize}
-	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
+	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
 	\item{[RE.10.1] The system must lock the car when the last door has been closed after the user chose to end their reservation or park temporarily.}
 \end{itemize}
 }
 
-\item[{[G11]}]{The system must provide a money saving option to the user, offering a suitable power grid station near the user’s final destination such that the user will get a discount if they park the car there and plug it in the power grid.
+\item[{[G11]}]{The system must provide a money saving option to the user, proposing a suitable power grid station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.
 \begin{itemize}
-	\item{[RE.11.1] The system must offer an interface where the user can select the money saving option, (submitting their final destination).}
+	\item{[RE.11.1] The system must offer an interface where the user can select the money saving option and submit their final destination.}
 	\item{[RE.11.2] When the user submits their final destination for the money saving option, the system must find a suitable power grid station near the ones close to the destination that have at least one free spot.}
 	\item{[RE.11.3] The system must show on the car screen (e.g. on a map) the location of the power grid station chosen for the money saving option.}
 	\item{[RE.11.4] The system must apply a discount on the amount the user has to pay if they selected the power saving option and they parked in the station the system chose for them.}
--> c’è un problemino se due utenti si dirigono entrambi a una stazione con 1 posto libero, risolvibile “prenotando” i posti
 \end{itemize}
 }
 
 \item[{[G12]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
 \begin{itemize}
-	\item{[RE.12.1] To choose a station in the process specified in RE.11.2, the system selects among all the stations with free spots within a certain distance of the user’s final destination (e.g. 10 minutes by foot) the one with the fewest available cars nearby.}
+	\item{[RE.12.1] To choose a station in the process specified in RE.11.2, the system selects among all the stations with free spots within a certain distance of the user’s final destination (e.g. a 10-minutes walk) the one with the fewest available cars nearby.}
 \end{itemize}
 }
 
@@ -324,8 +328,6 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.16.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge, the system must increase the amount the user has to pay by 30\%.}
-	
-se la macchina ha meno di 20\% di carica, la rendiamo non disponibile?
 \end{itemize}
 }
 
