@@ -1,4 +1,5 @@
 \documentclass[english]{article}
+%\usepackage[a4paper]{geometry} % senza abbiamo problemi con le tabelle
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
@@ -7,7 +8,7 @@
  breaklinks=true,pdfborder={0 0 1},backref=false,colorlinks=false]
  {hyperref}
 \usepackage{tabularx}
-
+\renewcommand{\arraystretch}{1.4}
 
 \begin{document}
 
@@ -71,6 +72,31 @@ solution.
 \subsection{Product Perspective}
 
 \subsection{Product Functions}
+
+The PowerEnJoy application will offer many different functionalities; specifically, the goals we want to accomplish are the following:
+\begin{description}
+	\item[{[G1]}]{Guests must be able to register as users by choosing a username and providing their personal data, driving license and payment information. They will receive a password at the email address they specified.}
+	\item[{[G2]}]{Users must be able to login with the username/email inserted and the password received on registration.}
+	\item[{[G3a]}]{Users must be able to find the location and battery charge of all available cars within a certain distance from their current location.}
+	\item[{[G3b]}]{Users must be able to find the location and battery charge of all available cars around a specified location.}
+	\item[{[G4]}]{Users must be able to reserve a car for up to one hour before they pick it up.}
+	\item[{[G5]}]{Users must be able to cancel a reservation if they decide to not actually use the car.}
+	\item[{[G6]}]{A user that reaches a reserved car must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.}
+	\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it.}
+	\item[{[G8]}]{The system must allow the user to see the amount they’re being charged through a screen on the car.}
+	\item[{[G9]}]{The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car notifying the system that they ended their ride.}
+	\item[{[G10]}]{Users must be able to leave a car without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user. The user should be able to end the ride without coming back to the car if they so choose.}
+	\item[{[G11]}]{The system must lock the car automatically after the user exits the car.}
+	\item[{[G12]}]{The system must provide a money saving option to the user, proposing a suitable power grid station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.}
+	\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.}
+	\item[{[G14]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.}
+	\item[{[G15]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.}
+	\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.}
+	\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
+	\item[{[G18]}]{Users should be able to pay a pending bill that the system couldn’t resolve automatically.}
+	\item{A GPS navigation device should be available on the car for the user's comfort.}
+	\item{Car with low battery should be unavailable for users, waiting for recharging}
+\end{description}
 
 \subsection{User Characteristics}
 
@@ -149,12 +175,12 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \newpage
 \subsection{Functional Requirements}
 
-\subsubsection{Requisiti}
+\subsubsection{Requirements}
 
 
-\begin{itemize}
+\begin{description}
 
-\item{[G1] Guests must be able to register as a user by choosing a username and providing their personal data, driving license and payment information. They will receive a password at the email address they specified.
+\item[{[G1]}]{Guests must be able to register as a user by choosing a username and providing their personal data, driving license and payment information. They will receive a password at the email address they specified.
 	
 \begin{itemize}
 \item{[RE.1.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit the data needed for registration: personal data (first name, last name, date of birth [more?]), a driving license ID or a photo of one, and a payment method.}
@@ -164,7 +190,7 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \end{itemize}
 }
 
-\item{[G2] Users must be able to log in with the username/email they submitted and the password received on registration.
+\item[{[G2]}]{Users must be able to log in with the username/email they submitted and the password received on registration.
 \begin{itemize}
 	\item{[RE.2.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit his credentials (username/email and password) to log in.}
 	\item{[RE.2.2] The system must compare the credentials submitted by the user and compare them with the ones saved in the database.}
@@ -174,7 +200,7 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \end{itemize}
 }
 
-\item{[G3a] Users must be able to find the locations of available cars within a certain distance from their current location.
+\item[{[G3a]}]{Users must be able to find the locations of available cars within a certain distance from their current location.
 \begin{itemize}
 	\item{[RE.3a.1] The system must offer an interface where the user can (activate the option) to look for nearby available cars if the user’s location is available (ex. gps).}
 	\item{[RE.3a.2] When the user activates the option to find nearby available cars, the system must look in the database for every available car near the user’s location.}
@@ -182,7 +208,7 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \end{itemize}
 }
 
-\item{[G3b] Users must be able to find the locations of available cars in a specified location.
+\item[{[G3b]}]{Users must be able to find the locations of available cars in a specified location.
 \begin{itemize}
 	\item{[RE.3b.1] The system must offer an interface where the user can submit an address and search for available cars near that location.}
 	\item{[RE.3b.2] When the user starts a search for available cars near a certain address, the system must look in the database for every available car close to the address provided by the user.}
@@ -190,7 +216,7 @@ An external agency is entrusted with the task of regularly cleaning the inside a
 \end{itemize}
 }
 
-\item{[G4] Users must be able to reserve a car for up to one hour before they pick it up.
+\item[{[G4]}]{Users must be able to reserve a car for up to one hour before they pick it up.
 \begin{itemize}
 	\item{[RE.4.1] The system must offer an interface that shows to the user the cars available for reservation (e.g. the search results specified in RE.3a.3) and allow the user to select a car.}
 	\item{[RE.4.2] When a user selects a car for reservation the system must mark the car as reserved by that user.}
@@ -201,7 +227,7 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \end{itemize}
 }
 
-\item{[G5] A user that reaches a reserved car must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
+\item[{[G5]}]{A user that reaches a reserved car must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
 \begin{itemize}
 	\item{[RE.5.1] The system must offer an interface to unlock the car, with their position or the car's qr code.}
 	\item{[RE.5.2] If the user is within a certain distance from the car, their device location is available and they choose from the interface to unlock the car with the position, the system must unlock the car.}
@@ -209,7 +235,7 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \end{itemize}
 }
 
-\item{[G6] The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.
+\item[{[G6]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.6.2] The system starts to **charge the user** -> ambiguo, non paga subito  the moment the reserved car’s engine is ignited after unlocking the car.}
@@ -217,14 +243,14 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \end{itemize}
 }
 
-\item{[G7] The system must allow the user to see the amount they’re being charged through a screen on the car.
+\item[{[G7]}]{The system must allow the user to see the amount they’re being charged through a screen on the car.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.7.1] After the system has started keeping track of the amount that the user has to pay, the system must show it in a clear way on the car screen while the car is unlocked and the reservation hasn’t ended.}
 \end{itemize}
 }
 
-\item{[G8] The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car after ending the reservation.
+\item[{[G8]}]{The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car after ending the reservation.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
@@ -233,7 +259,7 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \end{itemize}
 }
 
-\item{[G9] Users must be able to leave a car in a safe area without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user.
+\item[{[G9]}]{Users must be able to leave a car in a safe area without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
@@ -242,14 +268,14 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \end{itemize}
 }
 
-\item{[G10] The system must lock the car automatically after the user exits the car.
+\item[{[G10]}]{The system must lock the car automatically after the user exits the car.
 \begin{itemize}
 	\item{[RE.8.1] The moment a car is parked in a safe area, the system must ask through *an interface* on the car screen if the user wants to end the reservation or just park temporarily.}
 	\item{[RE.10.1] The system must lock the car when the last door has been closed after the user chose to end their reservation or park temporarily.}
 \end{itemize}
 }
 
-\item{[G11] The system must provide a money saving option to the user, offering a suitable power grid station near the user’s final destination such that the user will get a discount if they park the car there and plug it in the power grid.
+\item[{[G11]}]{The system must provide a money saving option to the user, offering a suitable power grid station near the user’s final destination such that the user will get a discount if they park the car there and plug it in the power grid.
 \begin{itemize}
 	\item{[RE.11.1] The system must offer an interface where the user can select the money saving option, (submitting their final destination).}
 	\item{[RE.11.2] When the user submits their final destination for the money saving option, the system must find a suitable power grid station near the ones close to the destination that have at least one free spot.}
@@ -259,34 +285,34 @@ UTENTI BANNATI NON POSSONO RISERVARE MACCHINE
 \end{itemize}
 }
 
-\item{[G12] The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
+\item[{[G12]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
 \begin{itemize}
 	\item{[RE.12.1] To choose a station in the process specified in RE.11.2, the system selects among all the stations with free spots within a certain distance of the user’s final destination (e.g. 10 minutes by foot) the one with the fewest available cars nearby.}
 \end{itemize}
 }
 
-\item{[G13] The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
+\item[{[G13]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.13.1] If the weight sensors in the car seats detect at least two passengers (excluding the driver) for at least half of the time the car has been driving, then the system must apply a discount of 10\% at the end of the reservation on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item{[G14] The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
+\item[{[G14]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.14.1] When the car has been parked in a safe area and the user has chosen to end the reservation, the system must apply a discount of 20\% on the amount the user has to pay if the car is left with more than 50\% remaining battery charge.}
 \end{itemize}
 }
 
-\item{[G15] The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
+\item[{[G15]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.15.1] When the car has been parked in a power grid station, has been plugged in the power grid and the user has chosen to end the reservation, the system must apply a discount of 30\% on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item{[G16] The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
+\item[{[G16]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
 \begin{itemize}
 	\item{[RE.6.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.16.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge, the system must increase the amount the user has to pay by 30\%.}
@@ -295,21 +321,367 @@ se la macchina ha meno di 20\% di carica, la rendiamo non disponibile?
 \end{itemize}
 }
 
-\end{itemize}
+\end{description}
 
-\newpage
+
 \subsection{Use Cases}
-(use cases, con sequence/activity diagrams)
-
-	\subsubsection{A guest registers to PowerEnJoy} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & Guest\\ 		\hline 		Goal & [G1]\\ 		\hline 		PreConditions & The guest had never been registered before\\ 		\hline 		Execution Flow & 1. The guest on the home page clicks on “register” button to start the registration process.\newline 						 				 2. The guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).\newline 						 			 	 3. The guest uploads a photo of the driving license or inserts manually the informations.\newline 										 4. The guest inserts the number of the credit card and the relative CVV. 						  		 	 5. The system verifies the correctness of the inserted data\newline 						 			 	 6. The guest clicks on “confirm” button.\newline 						 			 	 7. The system generates a password and provides it to the user.\newline 						 			 	 8. The system will save the data in the DB.\newline 						 			 	 9. The system notifies the registration and sends the user to the profile management page.\\ 		\hline 		Postconditions & The guest successfully ends registration process and become a user. From now on he can log in to the application using his credential and start using PowerEnjoy.\\ 		\hline 		Exceptions & 1. The guest is already registered.\newline 					 			 2. The guest inserts invalid information.\newline 					 		   3. The guest inserts a username used by another user.\newline 					 		   4. The guest inserts an email used by another user.\newline 					 		 	 5. The guest doesn't confirm the registration.\newline\newline 					 Each exception is handled warning the guest of the problem and the Execution Flow comes back to the point 2.\\ 		\hline 	\end{tabularx}
-	\subsubsection{A user logs in the PowerEnjoy application} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & Guest\\ 		\hline 		Goal & G[2]\\ 		\hline 		PreConditions & The user must be registered in the system.\\ 		\hline 		Execution Flow & 1. The guest opens the PowerEnjoy application and presses on the login button.\newline 										 2. The guest inserts the username or email and password received during registration.\newline 										 3. The system checks the couple inserted by the user.\newline 										 4. The guest, from now user, is redirected to the page where he can search a car.\\ 		\hline 		Postconditions & The guest is now a user, he is logged in and can use all the functionality of the system.\\ 		\hline 		Exceptions & 1. The guest inserts invalid credentials.\\ 		\hline 	\end{tabularx}
-	\subsubsection{A user searches an available car near his position} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & User\\ 		\hline 		Goal & [G3a]\\ 		\hline 		PreConditions & The user is logged in to the system and he has activated the GPS.\\ 		\hline 		Execution Flow & 1. The user presses the button to be localized on the map.\newline 										 2. The system receives the user's position and checks in the DB all the available cars nearby the user.\newline 										 3. The system shows on the application all the available cars.\newline 										 4. The user navigates on the map to search a car.\\ 		\hline 		Postconditions & The user finds a car most suitable for him.\\ 		\hline 		Exceptions & 1. There aren't any available cars and the system suggests to the user to search in another location.\\ 		\hline 	\end{tabularx}
-	\subsubsection{A user searches an available car in a specific position} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & User\\ 		\hline 		Goal & [G3b]\\ 		\hline 		PreConditions & The user is logged in to the system\\ 		\hline 		Execution Flow & 1. The user presses the search bar to insert a location.\newline 										 2. The user inserts an address (street, building, place (vorrei intendere pub, bar, discoteche))\newline 										 3. The system receives the address inserted by the user and checks in the DB all the available cars nearby the location.\newline 										 4. The system shows on the application all the available cars.\newline 										 5. The user navigates on the map to search a car.\\ 		\hline 		Postconditions & The user finds a car most suitable for him.\\ 		\hline 		Exceptions & 1. The address inserted by the user doesn't exist.\newline 								 2. There aren't any available cars and the system suggests to the user to search in another location.\\ 		\hline 	\end{tabularx}
-	\subsubsection{A user reserves a car} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & User\\ 		\hline 		Goal & [G4]\\ 		\hline 		PreConditions & The user is logged and there is at least an available car.\\ 		\hline 		Execution Flow & 1. The user selects a car in the map.\newline 										 2. The system shows to the user the battery remaining charge.\newline 										 3. The user confirms to reserve the car.\\ 		\hline 		Postconditions & The car is reserved for the user for an hour. \\ 		\hline 		Exceptions & 1. The car is reserved by an another user before the user confirm the reservation.\newline 								 2. The user doesn't confirm the reservation (non so se è un'eccezione)\\ 		\hline 	\end{tabularx}
-	\subsubsection{A user unlocks the car with the QR code printed on the car} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & User\\ 		\hline 		Goal & [G5]\\ 		\hline 		PreConditions & The user is nearby the car he reserved.\\ 		\hline 		Execution Flow & 1. The user presses on the camera button and sends the QR code to the system.\newline 										 2. The system identifies the car with the QR code and checks the reservation.\newline 										 3. The system enables the button to unlock the car on the application.\newline 										 4. The user presses the button.\\ 		\hline 		Postconditions & The car is ready to be ignite.\\ 		\hline 		Exceptions & 1. The user sent a QR code of a car he didn't reserve.\\ 		\hline 	\end{tabularx}
-	\subsubsection{A user unlocks the car using his position} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & User\\ 		\hline 		Goal & [G5]\\ 		\hline 		PreConditions & The user is nearby the car he reserved and has the localization activated.\\ 		\hline 		Execution Flow & 1. The user presses on the localization button and sends to the system his position.\newline 										 2. The system checks the user's position and the reservation.\newline 										 3. The system enables the button to unlock the car on the application.\newline 										 4. The user presses the button.\\ 		\hline 		Postconditions & The car is ready to be ignite.\\ 		\hline 		Exceptions & 1. The user is nearby a car he didn't reserve.\newline 								 2. The user is far from the car he reserved\newline\\ 		\hline 	\end{tabularx}
-	\subsubsection{A user parks the car without end the ride} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & User\\ 		\hline 		Goal & [G9]\\ 		\hline 		PreConditions & The user is employing the car.\\ 		\hline 		Execution Flow & 1. The user stops the car and turns it off.\newline 										 2. The display shows to the user the option:\newline 										 					a) to end the ride;\newline 															b) to stand without losing the control of the car.\newline 										 3. The user presses the button b).\newline 										 4. The user closed the car, keeping the key.\\ 		\hline 		Postconditions & The car is stopped in a parking lot, ready to be used again.\\ 		\hline 		Exceptions & non me ne vengono\\ 		\hline 	\end{tabularx}
-	\subsubsection{The system suggests to the user a PGS to park the car and save money} 	\begin{tabularx}{\textwidth}{  l  X  } 		\hline 		Actor & System, user\\ 		\hline 		Goal & [G11]\\ 		\hline 		PreConditions & The user is employing the car.\\ 		\hline 		Execution Flow & 1. The user stops the car and turns it off.\newline 										 2. The display shows to the user the option:\newline 										 					a) to end the ride;\newline 															b) to stand without losing the control of the car.\newline 										 3. The user presses the button a).\newline 										 4. The system obtains the position of the car.\newline 										 5. The system search the nearest PGS and suggests it to the user through the display.\newline 										 6. The user drives to the PGS, parks the car and ends the ride.\newline 										 7. The user plugs in the car in the power grid.\newline 										 8. The system detects that the car is charging.\newline 										 9. The system applies a discount on the amount the user must pay.\\ 		\hline 		Postconditions & The car is parked, ready to be used again and the user has a discount.\\ 		\hline 		Exceptions & 1. There isn't an available PGS.\newline 								 2. The user decides to park the car where he is.\\ 		\hline 	\end{tabularx}
+	\subsubsection{A guest registers to PowerEnJoy.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & Guest\\
+		\hline
+		Goal & [G1]\\
+		\hline
+		Preconditions & The guest had never been registered before\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The guest on the home page clicks on “register” button to start the registration process.}
+			\item{The guest chooses among "Sign up with Google", "Sign up with Facebook" or insert manually the data.}
+			\item{In the case of manually inserting, the guest fills in at least all mandatory fields with the required informations(name, surname, username, email address, DOB).}
+			\item{In the other case, the guest presses the button and system will take the data from the option he chose.}
+			\item{The guest uploads a photo of the driving license or inserts manually the informations.}
+			\item{The guest inserts the number of the credit card and the relative CVV}.
+			\item{The system verifies the correctness of the inserted data.}
+			\item{The guest clicks on “confirm” button.}
+			\item{The system generates a password and provides it to the user.}
+			\item{The system will save the data in the DB.}
+			\item{The system notifies the registration and sends the user to the profile management page.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The guest successfully ends registration process and become a user. From now on he can log in to the application using his credential and start using PowerEnjoy.\\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The guest is already registered.}
+			\item{The guest inserts invalid information.}
+			\item{The guest inserts a username used by another user.}
+			\item{The guest inserts an email used by another user.}
+			\item{The guest doesn't confirm the registration.}
+		\end{enumerate}
+		Each exception is handled warning the guest of the problem and the Execution Flow comes back to the point 2.\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user logs in the PowerEnjoy application.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & Guest\\
+		\hline
+		Goal & [G2]\\
+		\hline
+		Preconditions & The user must be registered in the system.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The guest opens the PowerEnjoy application and presses on the login button.}
+			\item{The guest inserts the username or email and password received during registration.}
+			\item{The system checks the couple inserted by the user.}
+			\item{The guest, from now user, is redirected to the page where he can search a car.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The guest is now a user, he is logged in and can use all the functionality of the system.\\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The guest inserts invalid credentials.}
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user searches an available car near his position.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G3a]\\
+		\hline
+		Preconditions & The user is logged in to the system and he has activated the GPS.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user presses the button to be localized on the map.}
+			\item{The system receives the user's position and checks in the DB all the available cars nearby the user.}
+			\item{The system shows on the application all the available cars.}
+			\item{The user navigates on the map to search a car.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The user finds a car most suitable for him.\\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{There aren't any available cars and the system suggests to the user to search in another location.}
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user searches an available car in a specific position.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G3b]\\
+		\hline
+		Preconditions & The user is logged in to the system\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user presses the search bar to insert a location.}
+			\item{The user inserts an address (street, building, place (vorrei intendere pub, bar, discoteche))}
+			\item{The system receives the address inserted by the user.}
+			\item{The system interprets the address and converts it into a position.}
+			\item{The system checks in the DB all the available cars nearby the location.}
+			\item{The system shows on the application all the available cars.}
+			\item{The user navigates on the map to search a car.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The user finds a car most suitable for him.\\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The address inserted by the user doesn't exist.}
+			\item{There aren't any available cars and the system suggests to the user to search in another location.}
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user reserves a car.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G4]\\
+		\hline
+		Preconditions & The user is logged and there is at least an available car.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user selects a car in the map.}
+			\item{The system shows to the user the battery remaining charge.}
+			\item{The user confirms to reserve the car.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The car is reserved for the user for an hour. \\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The car is reserved by an another user before the user confirm the reservation.}
+			\item{The user is suspended by the system. In this case, the application remembers him to pay his pending bill.}
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user cancels a reservation for a car.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G4]\\
+		\hline
+		Preconditions & The user is logged and he reserved a car.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user goes to the main page of the application.}
+			\item{The user presses the "Cancel reservation" button.}
+			\item{The user confirms to cancel reservation.}
+			\item{The system set the car available again.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The car is ready to be used. \\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The reservation is expired.}
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user unlocks the car with the QR code printed on the car.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G6]\\
+		\hline
+		Preconditions & The user is nearby the car he reserved.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user presses on the camera button, takes a picture of the QR code and submits it to the system.}
+			\item{The system identifies the car with the QR code and checks the reservation.}
+			\item{The system enables the button to unlock the car on the application.}
+			\item{The user presses the button.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The car is ready to be ignite.\\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The user sent a QR code of a car he didn't reserve.}
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user unlocks the car using his position.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G6]\\
+		\hline
+		Preconditions & The user is nearby the car he reserved and has the localization activated.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user presses on the localization button and sends to the system his position.}
+			\item{The system checks the user's position and the reservation.}
+			\item{The system enables the button to unlock the car on the application.}
+			\item{The user presses the button.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The car is ready to be turned on.\\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{The user is far from the car he reserved}
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+	
+	\subsubsection{A user ends the ride.}
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G9]\\
+		\hline
+		Preconditions & The user is using the car.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{If the user is driving he stops the car and turns it off.}
+			\item{The display shows to the user two options:
+				\begin{description}
+					\item[a)]{ to end the ride;}
+					\item[b)]{ to park the car temporarily.}
+				\end{description}}
+				\item{The user presses the button a).}
+				\item{The user exits the car and closes the doors.}
+				\item{The system locks the car automatically.}
+				\item{The system locks the car automatically.}
+				\item{The system stops charging the user.}
+				\item{The system sets the car available.}
+				\item{The system carries out the payment transaction.}
+			\end{enumerate}\\
+			\hline
+			Postconditions & The car is stopped in a safe area, ready to be used again.\\
+			\hline
+			Exceptions & \begin{itemize}
+				\item{The user drives away instead of exiting the car. In this case the stop is canceled.}
+			\end{itemize}The user drives away instead of exiting the car. In this case\\
+			\hline
+		\end{tabularx}
+		
+		\subsubsection{A user parks the car without ending the ride.}
+		\begin{tabularx}{\textwidth}{  l  X  }
+			\hline
+			Actor & User\\
+			\hline
+			Goal & [G10]\\
+			\hline
+			Preconditions & The user is using the car.\\
+			\hline
+			Execution Flow & \begin{enumerate}
+				\item{If the user is driving he stops the car and turns it off.}
+				\item{The display shows to the user two options:
+					\begin{description}
+						\item[a)]{ to end the ride;}
+						\item[b)]{ to park the car temporarily.}
+					\end{description}}
+					\item{The user presses the button b).}
+					\item{The user exits the car and closes the doors}
+					\item{The system locks the car automatically.}
+				\end{enumerate}\\
+				\hline
+				Postconditions & The car is stopped in a safe area, ready to be used again.\\
+				\hline
+				Exceptions & \begin{itemize}
+					\item{The user drives away instead of exiting the car. In this case the stop is canceled.}
+				\end{itemize}The user drives away instead of exiting the car. In this case\\
+				\hline
+			\end{tabularx}
+			
+			
+			\subsubsection{The system suggests to the user a PGS to park the car and save money.}
+			\begin{tabularx}{\textwidth}{  l  X  }
+				\hline
+				Actor & System, user\\
+				\hline
+				Goal & [G12]\\
+				\hline
+				Preconditions & The user is using the car.\\
+				\hline
+				Execution Flow & \begin{enumerate}
+					\item{The user inserts the destination.}
+					\item{The user starts the ride.}
+					\item{The user chooses the option "save money!"}
+					\item{The system calculates the best solution, so it searches the nearest PGS to the destination keeping in mind a uniform distribution of the cars.}
+					\item{The system suggests the PGS to the user through the display.}
+					\item{The user drives to the PGS, parks the car and ends the ride.}
+					\item{The user plugs in the car in the power grid.}
+					\item{The system detects that the car is charging at the right PGS.}
+					\item{The system applies a discount on the amount the user must pay.}
+				\end{enumerate}\\
+				\hline
+				Postconditions & The car is parked, ready to be used again and the user receives a discount.\\
+				\hline
+				Exceptions & \begin{enumerate}
+					\item{There isn't any available PGS.}
+					\item{The user doesn't park the car at the PGS suggested by the system.}
+					\item{The user doesn't plug the car in the power grid.}
+				\end{enumerate}\\
+				\hline
+			\end{tabularx}
+			
+			\subsubsection{Payment.}
+			\begin{tabularx}{\textwidth}{  l  X  }
+				\hline
+				Actor & System, Payment API\\
+				\hline
+				Goal & --\\
+				\hline
+				Preconditions & The user ended a ride and there is a bill pending on him.\\
+				\hline
+				Execution Flow & \begin{enumerate}
+					\item{The user inserts the destination.}
+					\item{The system begins the transaction.}
+					\item{The system sends the user's account data to the Payment API.}
+					\item{The system sends the amount of the bill to the Payment API.}
+					\item{The API acknowledges the payment.}
+					\item{The system closes the transaction.}
+				\end{enumerate}\\
+				\hline
+				Postconditions & The bill is paid\\
+				\hline
+				Exceptions & \begin{enumerate}
+					\item{The Payment API is not available. In this case, the system the bill is still marked as "pending".}
+					\item{The transaction is rejected. In this case, the system suspends the user until he pays the pending bill.}
+				\end{enumerate}\\
+				\hline
+			\end{tabularx}
+			
+			\subsubsection{User pays a pending bill.}
+			\begin{tabularx}{\textwidth}{  l  X  }
+				\hline
+				Actor & User, System, Payment API\\
+				\hline
+				Goal & [G18]\\
+				\hline
+				Preconditions & The user has a pending bill.\\
+				\hline
+				Execution Flow & \begin{enumerate}
+					\item{The user goes to his profile page.}
+					\item{The user selects the pending bill.}
+					\item{The user inserts the payment method.}
+					\item{The user inserts all the mandatory data.}
+					\item{The user submits the data to the system.}
+					\item{The system carries out the payment.}
+					\item{The API acknowledges the payment.}
+					\item{The system cancels the suspension.}
+				\end{enumerate}\\
+				\hline
+				Postconditions & The bill is paid\\
+				\hline
+				Exceptions & \begin{enumerate}
+					\item{The Payment API is not available. In this case, the system the bill is still marked as "pending".}
+					\item{The transaction is rejected. In this case, the users remains suspended.}
+				\end{enumerate}\\
+				\hline
+			\end{tabularx}
 
 \subsection{Performance Requirements}
 
