@@ -75,7 +75,8 @@ A central system will manage the cars and the reservations, and will communicate
 		\item{the time period between the moment a reservation is requested and the moment the user unlocks the car, or the reservation is canceled.}
 	\end{itemize}
 }
-\item{\textit{Ride}: the time period from the moment a reserved car is unlocked to the moment the user notifies that he wants to stop using the car and closes all the doors. Until the ride has ended only the user who originally reserved the car can use it. A ride doesn’t stop when a car is temporarily parked, but continues until the user chooses to leave the car definitely.}
+\item{\textit{Ride}: the time period from the moment a reserved car is unlocked to the moment the user notifies that he wants to stop using the car and closes all the doors. A ride doesn’t stop when a car is temporarily parked, but continues until the user chooses to leave the car definitely.}
+\item{\textit{Possession}: users that have reserved and unlocked a car are said to have possession of the car. While a user has possession of a car they are the only person that can drive it, lock or unlock it, and no other person can take possession of it until the user frees it. Users lose possession of a car when their ride ends.}
 \item{\textit{Temporary parking}: the act of parking a car in a safe area and, after notifying the system, locking it and leaving it for a finite amount of time. The user that does this retains the right to use the car and can unlock it later to use it again.}
 \item{\textit{Bill}: a record of the money owed by the user at the end of a ride.}
 \item{\textit{Outstanding bill}: a bill that hasn’t been paid yet. }
