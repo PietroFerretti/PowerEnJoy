@@ -60,9 +60,43 @@ A central system will manage the cars and the reservations, and will communicate
 
 \subsubsection{Definitions}
 
+\begin{itemize}
+\item{\textit{Guest}: a person that is not registered to the system.}
+\item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
+\item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas are predefined by the system.}
+\item{\textit{Power grid station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
+\item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don’t have dead batteries.}
+\item{\textit{Reservation}: 
+	\begin{itemize}
+		\item{the operation of making a car reserved for a user, i.e. giving permission to unlock and use the car only for that user, forbidding reservations by other users.}
+		\item{the time period between the moment a reservation is requested and the moment the user unlocks the car, or the reservation is canceled.}
+	\end{itemize}
+}
+\item{\textit{Ride}: the time period from the moment a reserved car is unlocked to the moment the user notifies that he wants to stop using the car and closes all the doors. Until the ride has ended only the user who originally reserved the car can use it. A ride doesn’t stop when a car is temporarily parked, but continues until the user chooses to leave the car definitely.}
+\item{\textit{Temporary parking}: the act of parking a car in a safe area and, after notifying the system, locking it and leaving it for a finite amount of time. The user that does this retains the right to use the car and can unlock it later to use it again.}
+\item{\textit{Bill}: a record of the money owed by the user at the end of a ride.}
+\item{\textit{Outstanding bill}: a bill that hasn’t been paid yet. }
+\item{\textit{Suspended user}: a user that cannot reserve or use cars. Usually users are suspended because they have outstanding bills.}
+\item{\textit{Payment method}: a way to transfer money from the user to the system. Our system will only accept credit cards and online accounts like Paypal.}
+\item{\textit{Payment API}: an interface to carry out money transactions, offered by the external provider associated to the payment method used (e.g. a bank).}
+\end{itemize}
+
 \subsubsection{Acronyms}
+\begin{itemize}
+\item{\textbf{RASD}: Requirements Analysis and Specification Document}
+\item{\textbf{DB}: Database}
+\item{\textbf{CVV}: Card Verification Value}
+\item{\textbf{DOB}: Date of birth}
+\item{\textbf{PGS}: Power Grid Station}
+\item{\textbf{GPS}: Global Positioning System}
+\end{itemize}
 
 \subsubsection{Abbreviations}
+\begin{itemize}
+\item{\textbf{[Gx]}: Goal}
+\item{\textbf{[RE.x]}: Functional Requirement}
+\item{\textbf{[UC.x]}: Use Case}
+\end{itemize}
 
 \subsection{Reference Documents}
 
