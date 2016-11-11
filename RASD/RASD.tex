@@ -34,11 +34,11 @@ Software Engineering 2: “PowerEnJoy” \\
 \subsection{Purpose}
 
 \paragraph{}
-The purpose of this document is to provide a detailed description and specification of a digital management system for PowerEnJoy, an electric car sharing service. This document will 
+The purpose of this document is to provide a detailed description and specification of a digital management system for PowerEnJoy, an electric car sharing service. This document will
 illustrate functional and non-functional requirements of the software to-be, outlining costraints, showing potential user interfaces for the software, and explaining the domain assumptions made. Additionally, at the end of the document we will present an Alloy model to further specificate the world and environment our system will have to manage.
 
 \paragraph{}
-This document is first and foremost a description of the project for all interested stakeholders and a reference for future development, but can also be used as a basis for legally binding agreements. 
+This document is first and foremost a description of the project for all interested stakeholders and a reference for future development, but can also be used as a basis for legally binding agreements.
 
 
 \subsection{Scope}
@@ -48,7 +48,7 @@ The aim of this project is to specify in detail a new digital management softwar
 
 \paragraph{}
 Users must be able to register to PowerEnJoy providing their personal data, driving license and payment information.
-After registering, users should be able to look for available cars near them or to a specific location. If they find a car that matches their needs, they can reserve the car up to one hour before using it. After approaching a reserved car users should have a way to unlock the car and enter it. 
+After registering, users should be able to look for available cars near them or to a specific location. If they find a car that matches their needs, they can reserve the car up to one hour before using it. After approaching a reserved car users should have a way to unlock the car and enter it.
 While using a car users are charged a certain amount of money depending on distance traveled and time elapsed; while driving the car a display will inform the user of the amount of money they will have to pay at the end of the ride.
 The system stops charging the user after the car is parked in a safe area.
 Furthermore the system incentivizes virtuous behaviours by offering several discounts if certain conditions are met (e.g. charging a car at a power grid station).
@@ -69,7 +69,7 @@ A central system will manage the cars and the reservations, and will communicate
 \item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas are predefined by the system.}
 \item{\textit{Power grid station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
 \item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don’t have dead batteries.}
-\item{\textit{Reservation}: 
+\item{\textit{Reservation}:
 	\begin{itemize}
 		\item{the operation of making a car reserved for a user, i.e. giving permission to unlock and use the car only for that user, forbidding reservations by other users.}
 		\item{the time period between the moment a reservation is requested and the moment the user unlocks the car, or the reservation is canceled.}
@@ -234,7 +234,7 @@ Users don't let the cars run out of battery before parking in a safe area. (Othe
 \begin{description}
 
 \item[{[G1]}]{Guests must be able to register as a user by choosing a username and providing their personal data, driving license and payment information. They will receive a password at the email address they specified.
-	
+
 \begin{itemize}
 \item{[RE.1.1] The system must offer an interface (e.g. a form on a web page or on the mobile application) where the user can enter and submit the data needed for registration:
 a username of their choice, their personal data (first name, last name, date of birth), a driving license ID or a photo of one, and a payment method.}
@@ -399,16 +399,16 @@ a username of their choice, their personal data (first name, last name, date of 
 
 
 \subsection{Use Cases}
-	
+
 	\begin{figure}
 		\centering
 		\makebox[\textwidth][c]{
-			\def\svgwidth{500pt}		
+			\def\svgwidth{500pt}
 			\input{images/use_case_diag.pdf_tex}
 		}
 		\caption{Use Cases Diagram}
 	\end{figure}
-	
+
 	\subsubsection{[UC.1] A guest registers to PowerEnJoy.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -448,7 +448,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		Each exception is handled by warning the guest of the problem and letting them insert the data again.\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.2] A user logs in to the PowerEnJoy application.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -472,7 +472,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.3a] A user searches for available cars near his position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -497,7 +497,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.3b] A user searches for available cars in a specific position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -526,7 +526,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.4] A user reserves a car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -550,7 +550,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.5] A user cancels a reservation for a car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -574,7 +574,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.6a] A user unlocks the car with the QR code printed on the car.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -599,7 +599,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.6b] A user unlocks the car using his position.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -624,7 +624,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\subsubsection{[UC.7] A user ends a ride.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -658,7 +658,7 @@ a username of their choice, their personal data (first name, last name, date of 
 			\end{itemize}\\
 			\hline
 		\end{tabularx}
-		
+
 \subsubsection{[UC.8] A user parks the car without ending the ride.}
 		\begin{tabularx}{\textwidth}{  l  X  }
 			\hline
@@ -689,8 +689,31 @@ a username of their choice, their personal data (first name, last name, date of 
 				\end{itemize}\\
 				\hline
 		\end{tabularx}
-						
-		\subsubsection{[UC.9] The system suggests to the user a PGS to park the car at and save money.}
+
+    \subsubsection{[UC.9] A user ends a ride while the car is temporarily parked.}
+    		\begin{tabularx}{\textwidth}{  l  X  }
+    			\hline
+    			Actor & User\\
+    			\hline
+    			Goal & [G10]\\
+    			\hline
+    			Preconditions & The user is logged in, using the car.\\
+    			\hline
+    			Execution Flow & \begin{enumerate}
+    				\item{The user goes to the main page of the application.}
+    				\item{The user presses the "End ride" button.}
+    				\item{The system sets the car available.}
+    				\end{enumerate}\\
+    				\hline
+    				Postconditions & The car is stopped in a safe area, ready to be used again.\\
+    				\hline
+    				Exceptions & \begin{itemize}
+    					-\\
+    				\end{itemize}\\
+    				\hline
+    		\end{tabularx}
+
+		\subsubsection{[UC.10] The system suggests to the user a PGS to park the car at and save money.}
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, User\\
@@ -723,8 +746,8 @@ a username of their choice, their personal data (first name, last name, date of 
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-			
-			\subsubsection{[UC.10] Payment}
+
+			\subsubsection{[UC.11] Payment}
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, Payment API\\
@@ -750,8 +773,8 @@ a username of their choice, their personal data (first name, last name, date of 
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-			
-			\subsubsection{[UC.11] User pays a pending bill.}
+
+			\subsubsection{[UC.12] User pays a pending bill.}
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & User, System, Payment API\\
@@ -778,8 +801,8 @@ a username of their choice, their personal data (first name, last name, date of 
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-			
-  \subsubsection{[UC.12] A user reports a problem to the system.}
+
+  \subsubsection{[UC.13] A user reports a problem to the system.}
   \begin{tabularx}{\textwidth}{  l  X  }
   	\hline
   	Actor & User, System\\
