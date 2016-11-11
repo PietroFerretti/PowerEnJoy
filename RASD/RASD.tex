@@ -23,11 +23,12 @@ Software Engineering 2: “PowerEnJoy” \\
 \author{Pietro Ferretti, Nicole Gervasoni, Danilo Labanca}
 
 \maketitle
-\newpage{}
+
+\newpage
 
 \tableofcontents{}
 
-\newpage{}
+\newpage
 
 \section{Introduction}
 
@@ -146,22 +147,31 @@ The PowerEnJoy application will offer many different functionalities; specifical
 
 \subsection{User Characteristics}
 
+Users need a car to get to a destination\\
+Users have a device to access the application\\
+The app needs to be user-friendly and well designed to avoid confusion\\
+many\\
+many\\
+lines\\
+dfsf\\
+ff\\
+fffff\\
+
+\newpage
 \subsection{Constraints}\label{constraints}
 
 To provide all the functionalities specified in this document, every car must have:
 \begin{itemize}
-	\item{a reliable GPS tracker}
-	\item{a mobile Internet connection (for example a 3G or 4G connection)}
-	\item{sensors to collect data from the engine and the battery}
-	\item{an electronic switch to lock and unlock the doors}
-	\item{a weight sensor on each seat}
-	\item{a touchscreen to offer a dedicated interface to users}
-	\item{an internal system to control these components and communicate\\ with the central system}
-	\item{a unique qr code printed on the outside of the car}
+	\item{a reliable GPS tracker;}
+	\item{a mobile Internet connection (for example a 3G or 4G connection);}
+	\item{sensors to collect data from the engine and the battery;}
+	\item{an electronic switch to lock and unlock the doors;}
+	\item{a weight sensor on each seat;}
+	\item{a touchscreen to offer a dedicated interface to users;}
+	\item{a GPS navigator to show the position of the power grid stations to the user and guide him;}
+	\item{an internal system to control these components and communicate with the central system;}
+	\item{a unique QR code printed on the outside of the car.}
 \end{itemize}
-
-\paragraph{}
-\emph{and we need a GPS navigator on the car to find power grid stations}
 
 \paragraph{}
 The web application needs an Internet connection to work, for example to connect to the database and find available cars.
@@ -169,48 +179,47 @@ The web application needs an Internet connection to work, for example to connect
 \paragraph{}
 The mobile application will need at least an Internet connection to receive data from and communicate with the central system. Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality.
 
+\paragraph{}
+Power grid stations must have a sensor on each plug to know if it's free or in use, and an Internet connection to communicate this information to the system.
+
+\newpage
 \subsection{Assumptions and Dependencies}
 
 \emph{See section \ref{constraints} for hardware assumptions.}
 
+\paragraph{Predefined data}
+The system has a predefined list of all the safe areas and their locations, list that can be changed by the people in control of the system. Likewise, the system has a predefined list of all the power grid stations, their locations and the number of plugs present in each station.
 
-The system has a predefined list of all the safe areas and their locations.
+\paragraph{Perfect signal}
+The car’s data connection is always working and stable. \\
+The car’s GPS signal is always available and precise.
 
-The system has a predefined list of all the power grid stations and their locations.
+\paragraph{No idle users}
+After unlocking a car users turn on the engine shortly after (i.e. the user doesn't stand in the car idly for long periods of time). We'd prefer if this happened rarely, because users aren't charged until the engine is ignited.
+We suppose that users want to get to their destination as soon as possible. 
 
-The system knows how many plugs are present in each station and how many of them are free in a given moment.
+\paragraph{Users leave the car after parking}
+When a user ends a ride or parks temporarily, we assume that the users and all the passengers have already exited the car when the last door is closed and the lock timeout expires. \\
+This keeps the user or the passengers from getting stuck in the car when the system locks it automatically.
 
+\paragraph{No cheating on the weight sensors}
+When the weight measured by a seat weight sensor exceeds a certain threshold, we suppose that a person is present on that seat (and not an object).
 
-The car’s data connection is always working and stable
+\paragraph{Cars are recharged}
+An external agency is entrusted with the task of recharging cars with low or dead batteries. The task of recharging cars doesn't involve our system, except for when a car is flagged as available again.
 
-The car’s GPS signal is always available and precise
+\paragraph{Users report problems}
+Users always report dirty or damaged cars they find. Moreover, we trust users to never submit false reports.
 
+\paragraph{Problems are fixed}
+If a car is reported for a problem, an external agency is entrusted with the tasks of cleaning, repairing or fixing the car's problem. After the problem is fixed the agency marks the car as available in the system manually.
 
-After unlocking a car users turn on the engine shortly after (i.e. the user doesn't stand in the car idly for long periods of time). We suppose that the user wants to get to their destination as soon as possible.
+\paragraph{Theft is handled independently}
+There is an office in charge of handling the cases when a car is flagged or reported as stolen.
+We suppose they're autonomous and don't need to interact with the system.
 
-
-When the user has ended the reservation or chosen to temporarily park from the car’s screen, we assume that the users and all the passengers have exited the car before the last door is closed.
-
-
-When the weight measured by a seat weight sensor exceeds a certain threshold, it means that a person is present on that seat (and not an object).
-
-
-Stolen cars are handled by someone else (police, lawyers)
-
-
-A phone line is available in case of car accidents or damage to the car.
-
--> insurance, assistance, fines
-
-
-An external agency is entrusted with the task of charging cars with low or dead batteries.
-
-
-An external agency is entrusted with the task of regularly cleaning the inside and outside of cars.
-
-Users always report dirty or damaged cars
-
-Users don't let the cars run out of battery before parking in a safe area. (Otherwise they call a phone line and pay a fee)
+\paragraph{Cars aren't abandoned in bad spots}
+We suppose users are reliable and never let the cars run out of battery before parking in a safe area.
 
 \newpage
 
@@ -219,6 +228,11 @@ Users don't let the cars run out of battery before parking in a safe area. (Othe
 \subsection{External Interface Requirements}
 
 \subsubsection{User Interfaces}
+
+%%%%%%%%%%%%%%%
+% Le immagini su latex tendono a disporsi dove c'è spazio, sistemeremo la posizione alla fine
+%%%%%%%%%%%%%%%
+
 web
 \begin{figure}
 	\centering
@@ -245,37 +259,27 @@ web
 mobile
 \begin{figure}[h]
 	\centering
-	\makebox[\textwidth][c]{	
-		\includegraphics[width=\textwidth]{mobile/localization.png}
-	}
+	\includegraphics[width=100pt]{mobile/localization.png}
 	\caption{*mappa*}
 \end{figure}
 \begin{figure}
-	\centering
-	\makebox[\textwidth][c]{	
-		\includegraphics[width=\textwidth]{mobile/MenuSX.png}
-	}
+	\centering		
+	\includegraphics[width=100pt]{mobile/MenuSX.png}
 	\caption{*menu*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
-		\includegraphics[width=\textwidth]{mobile/FreeReservation.png}
-	}
+	\includegraphics[width=100pt]{mobile/FreeReservation.png}
 	\caption{*reservation*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
-		\includegraphics[width=\textwidth]{mobile/FreeReservationEnded.png}
-	}
+	\includegraphics[width=100pt]{mobile/FreeReservationEnded.png}
 	\caption{*reservation expired*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
-		\includegraphics[width=\textwidth]{mobile/Unlock.png}
-	}
+	\includegraphics[width=100pt]{mobile/Unlock.png}
 	\caption{*unlocking*}
 \end{figure}
 
@@ -287,6 +291,7 @@ car's display
 	}
 	\caption{*car's display*}
 \end{figure}
+
 \subsubsection{Hardware Interfaces}
 
 \subsubsection{Software Interfaces (API)}
@@ -349,9 +354,9 @@ a username of their choice, their personal data (first name, last name, date of 
 
 \item[{[G6]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
 \begin{itemize}
-	\item{[RE.6.1] The system must offer an interface to unlock the car, with their position or the car's qr code.}
+	\item{[RE.6.1] The system must offer an interface to unlock the car, with their position or the car's QR code.}
 	\item{[RE.6.2] If the user is within a certain distance from the car, their device location is available and they choose from the interface to unlock the car with the position, the system must unlock the car.}
-	\item{[RE.6.3] If the user chooses from the interface to unlock the car with the qr code and the user takes a clear picture of the qr code of the right car, the system must unlock the car.}
+	\item{[RE.6.3] If the user chooses from the interface to unlock the car with the QR code and the user takes a clear picture of the QR code of the right car, the system must unlock the car.}
 \end{itemize}
 }
 
@@ -390,7 +395,7 @@ a username of their choice, their personal data (first name, last name, date of 
 \item[{[G11]}]{The system must lock the car automatically after the user exits the car.
 \begin{itemize}
 	\item{[RE.9.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.11.1] The system must lock the car when the last door has been closed after the user chose to end their reservation or park temporarily.}
+	\item{[RE.11.1] After the user chose to end their reservation or park temporarily, the system must lock the car after 30 seconds from the moment the last door has been closed.}
 \end{itemize}
 }
 
@@ -459,7 +464,7 @@ a username of their choice, their personal data (first name, last name, date of 
 	\item{[RE.20.3] If a car has less than 20\% battery charge at the end of a trip, the system will mark the car as unavailable and notify the employees in charge of recharging cars.}
 	\item{[RE.20.4] If a car is unlocked by force or moves without any reservation, the system will consider it stolen and mark it as unavailable. The system notifies the people in charge of handling theft.}
 	\item{[RE.20.5] If a car is repaired, cleaned or otherwise fixed, an employee will mark it as available through a dedicated interface.}
-	\item{[RE.20.6] If a car flagged as unavailable because of low battery reaches 50\% of battery charge, the system will mark it as available again.}
+	\item{[RE.20.6] If a car flagged as unavailable because of low battery reaches 50\% of battery charge while charging, the system will mark it as available again.}
 \end{itemize}
 }
 
