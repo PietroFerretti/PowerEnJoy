@@ -426,9 +426,10 @@ a username of their choice, their personal data (first name, last name, date of 
 			\item{In the other cases, the guest connects to Google or Facebook and gives the system permission to take the data from there.}
 			\item{The guest uploads a photo of his driving license or inserts the information manually.}
 			\item{The guest inserts the number of the credit card and the corresponding CVV}.
-			\item{The system verifies the correctness of the inserted data.}
 			\item{The guest gives their consent to the processing of their personal data by checking a box.}
 			\item{The guest clicks on the “confirm” button and submits the data.}
+      \item{In the case the guest uploads a photo, the system uses an OCR application to extract the data.}
+      \item{The system connects to the \textit{Motorizzazione}'s data center to prove the validity of the driving license.}
 			\item{The system generates a password and sends it to the user's email address.}
 			\item{The system  saves the data in the DB.}
 			\item{The system informs the user of the successful registration and redirects the user to the profile management page.}
@@ -631,7 +632,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G9]\\
+		Goal & [G9], [G15], [G16], [G17]\\
 		\hline
 		Preconditions & The user is using the car.\\
 		\hline
@@ -647,6 +648,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\item{The user exits the car and closes the doors.}
 				\item{The system locks the car.}
 				\item{The system stops charging the user.}
+        \item{The system verifies if one or more discount can be applied and in that case applies them.}
 				\item{The system sets the car as available.}
 				\item{The system carries out the payment transaction.}
 			\end{enumerate}\\
@@ -696,14 +698,17 @@ a username of their choice, their personal data (first name, last name, date of 
     			\hline
     			Actor & User\\
     			\hline
-    			Goal & [G10]\\
+    			Goal & [G10], [G15], [G16], [G17]\\
     			\hline
     			Preconditions & The user is logged in, using the car.\\
     			\hline
     			Execution Flow & \begin{enumerate}
     				\item{The user goes to the main page of the application.}
     				\item{The user presses the "End ride" button.}
-    				\item{The system sets the car available.}
+            \item{The system stops charging the user.}
+            \item{The system verifies if one or more discount can be applied and in that case applies them.}
+    				\item{The system sets the car as available.}
+    				\item{The system carries out the payment transaction.}
     				\end{enumerate}\\
     				\hline
     				Postconditions & The car is stopped in a safe area, ready to be used again.\\
