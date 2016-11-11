@@ -411,7 +411,6 @@ a username of their choice, their personal data (first name, last name, date of 
 		\caption{Use Case Diagram}
 	\end{figure}
 	\newpage
-	
 	\subsubsection{[UC.1] A guest registers to PowerEnJoy.}
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -700,19 +699,17 @@ a username of their choice, their personal data (first name, last name, date of 
     			\hline
     			Goal & [G10]\\
     			\hline
-    			Preconditions & The user is logged in, using the car.\\
+    			Preconditions & The user is logged in, and the car is locked and temporarily parked.\\
     			\hline
     			Execution Flow & \begin{enumerate}
     				\item{The user goes to the main page of the application.}
     				\item{The user presses the "End ride" button.}
-    				\item{The system sets the car available.}
+    				\item{The system sets the car as available.}
     				\end{enumerate}\\
     				\hline
     				Postconditions & The car is stopped in a safe area, ready to be used again.\\
     				\hline
-    				Exceptions & \begin{itemize}
-    					-\\
-    				\end{itemize}\\
+    				Exceptions & -\\
     				\hline
     		\end{tabularx}
 
