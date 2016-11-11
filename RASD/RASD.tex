@@ -9,7 +9,7 @@
  {hyperref}
 \usepackage{tabularx}
 \usepackage{graphicx}
-\graphicspath{{images/}}
+\graphicspath{{images/}{Mockups/}}
 \usepackage{svg}
 \renewcommand{\arraystretch}{1.4}
 
@@ -219,7 +219,74 @@ Users don't let the cars run out of battery before parking in a safe area. (Othe
 \subsection{External Interface Requirements}
 
 \subsubsection{User Interfaces}
+web
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{web/Signup.png}
+	}
+	\caption{*signup*}
+\end{figure}
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{web/Login.png}
+	}
+	\caption{*login*}
+\end{figure}
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{web/HomepageLogged.png}
+	}
+	\caption{*homepage*}
+\end{figure}
+	
+mobile
+\begin{figure}[h]
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{mobile/localization.png}
+	}
+	\caption{*mappa*}
+\end{figure}
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{mobile/MenuSX.png}
+	}
+	\caption{*menu*}
+\end{figure}
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{mobile/FreeReservation.png}
+	}
+	\caption{*reservation*}
+\end{figure}
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{mobile/FreeReservationEnded.png}
+	}
+	\caption{*reservation expired*}
+\end{figure}
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{mobile/Unlock.png}
+	}
+	\caption{*unlocking*}
+\end{figure}
 
+car's display
+\begin{figure}
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=\textwidth]{car/car.png}
+	}
+	\caption{*car's display*}
+\end{figure}
 \subsubsection{Hardware Interfaces}
 
 \subsubsection{Software Interfaces (API)}
@@ -291,7 +358,7 @@ a username of their choice, their personal data (first name, last name, date of 
 \item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.7.2] The system starts to **charge the user** -> ambiguo, non paga subito  the moment the reserved car’s engine is ignited after unlocking the car.}
+	\item{[RE.7.2] The system starts to charge the user the moment the reserved car’s engine is ignited after unlocking the car.}
 	\item{[RE.7.3] The amount charged by the system depends on the time elapsed and the distance traveled by the user, following specific rules.}
 \end{itemize}
 }
