@@ -37,7 +37,7 @@
 		\LARGE
 		\includegraphics[width=250pt]{../other/Logo_blu.png}\\[\bigskipamount]~\\[\bigskipamount]
 	}
-	\posttitle{\end{center}}
+\posttitle{\end{center}}
 
 \begin{document}
 
@@ -85,7 +85,7 @@ To accomplish these goals we need to bridge the gap between the world (cars and 
 The users will be able to access the system functionalities through a web and a mobile application, and a dedicated touchscreen installed in every car.
 A central system will manage the cars and the reservations, and will communicate with the cars through the Internet. The system will follow the cars’ movements thanks to the GPS tracker installed in every car. Furthermore all cars will be equipped with a great variety of sensors to check the cars’ status at any time.
 
-
+\newpage
 \subsection{Definitions, Acronyms, Abbreviations}
 
 \subsubsection{Definitions}
@@ -138,7 +138,16 @@ A central system will manage the cars and the reservations, and will communicate
 	\item{Specification document: “Assignments AA 2016-2017.pdf”}
 \end{itemize}
 
+\newpage{}
+
 \subsection{Document Overview}
+This document is structured as follows:
+\begin{itemize}
+\item{\textbf{Section 1 - Introduction:} it is a presentation of the document and the product; it contains the information needed to understand the whole document.}
+\item{\textbf{Section 2 - Overall Description:} gives general information about the software product with more focus about constraints and assumptions.}
+\item{\textbf{Section 3 - Specific Requirements:} it contains the product requirements list, use cases and associated UML diagrams; this section will delve deeper into the software functionalities. In addition, it includes some application mockups in order to produce a clearer vision on how the final product will look like.}
+\item{\textbf{Section 4 - Appendix:} it contains an Alloy model of the application domain, a list of all tools used to draw up this document and the hours of work each collaborator put into the creation of this document.}
+\end{itemize}
 
 \newpage{}
 
@@ -148,16 +157,16 @@ A central system will manage the cars and the reservations, and will communicate
 
 \subsubsection{Integration with external systems}
 
-Since there are no constrictions from a previous version of the system, PowerEnjoy will be a standalone system.
-The PowerEnjoy software will use APIs in order to accomplish few specific goals such as the driving licence verification and the card payment processing, more details about it could be found in section \ref{apis}.
-In the first deployment, the PowerEnjoy system will not offer any APIs to external systems.
+Since there are no existing modules our system will need to integrate, PowerEnjoy is mainly a standalone system.
+The PowerEnjoy software will use APIs in order to accomplish few specific goals such as  driving licence verification and card payment processing, more details about it can be found in section \ref{apis}.
+The PowerEnjoy system is not planned to offer any APIs to external systems.
 
 The whole system, software and databases, will be stored on the central servers. These will communicate with the car software which will control the car application given the sensors' feedbacks.
 Every request or data query from the application (both web and mobile version) will be sent to and elaborated by the servers.
 
 \subsubsection{Domain model}
 
-Here are presented both the state chart and the class diagram models in order to obtain a more formal and rigorous description of how the system will work and will be developed.
+Here are presented both the state chart and the class diagram models in order to show a more formal and rigorous description of how the system will work and will be developed.
 
 class diagram
 %\begin{figure}[H]
