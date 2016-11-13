@@ -12,6 +12,24 @@
 \usepackage{svg}
 \usepackage{float}
 \usepackage{titling}
+
+\usepackage{listings}
+\usepackage{alloy}
+\usepackage{color}
+\definecolor{alloy-keyword}{rgb}{0.23, 0.23, 0.7}
+\definecolor{alloy-comment}{rgb}{0.18, 0.64, 0.18}
+\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}     
+\lstset{
+	language=alloy,
+	numbers=left,
+	numberstyle=\tiny,
+	stepnumber=2,
+	tabsize=4,
+	keywordstyle=\color{alloy-keyword}\bfseries,
+	commentstyle=\color{alloy-comment},
+	stringstyle=\color{alloy-string},
+	basicstyle=\small\fontfamily{pcr}\selectfont,
+}
 \renewcommand{\arraystretch}{1.4}
 
 \pretitle{%
@@ -1276,7 +1294,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 \section{Appendix}
 
 \subsection{Alloy Model}
-
+\lstinputlisting{PowerEnjoy_v3.als}
 \subsection{Software and tools used}
 
 \subsection{Hours of work}
