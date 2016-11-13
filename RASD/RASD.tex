@@ -1,5 +1,4 @@
 \documentclass[english]{article}
-%\usepackage[a4paper]{geometry} % senza abbiamo problemi con le tabelle
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
@@ -12,7 +11,15 @@
 \graphicspath{{images/}{Mockups/}}
 \usepackage{svg}
 \usepackage{float}
+\usepackage{titling}
 \renewcommand{\arraystretch}{1.4}
+
+\pretitle{%
+	\begin{center}
+		\LARGE
+		\includegraphics[width=250pt]{../other/Logo_blu.png}\\[\bigskipamount]~\\[\bigskipamount]
+	}
+	\posttitle{\end{center}}
 
 \begin{document}
 
@@ -22,7 +29,7 @@ Software Engineering 2: “PowerEnJoy” \\
 \emph{Requirements Analysis and Specification Document}}
 
 \author{Pietro Ferretti, Nicole Gervasoni, Danilo Labanca}
-
+\date{November 13, 2016}
 \maketitle
 
 \newpage
@@ -228,6 +235,7 @@ To provide all the functionalities specified in this document, the application m
   \item{a GPS sensor. (Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality).}
   \item{40 MB of space for map and app package.}
   \item{a QR code scanner.}
+\end{itemize}
 
 \subsubsection{Criticality of the application}
 The system is not used in life-critical applications.
@@ -1133,7 +1141,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 
 \begin{itemize}
 
-  \item{\textit{Response Time}: we want that our software will satisfy the 100% of requests in maximum 0.5 seconds.
+  \item{\textit{Response Time}: we want that our software will satisfy the 100\% of requests in maximum 0.5 seconds.
   For this reason, the software, in order to guarantee a good grade of usability, has to be very reactive
   and we assume that the user's perception is bounded to his connection and his device.}
 
@@ -1141,6 +1149,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 
   We assume that our software will be able to manage a large number of connection
   - we estimates the the peak load could be about 3000 connections - between users and the system.}
+\end{itemize}
 
 \subsubsection{Software System Attributes}
 
@@ -1150,16 +1159,16 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
     The use interface has to be as simple and intuitive as possible because
     the application could also be used by users that could feel uncomfortable with the technology.}
 
-  \item{\textit{Reliability}: we assume that our software will give the right result at the 99% of the requests.}
+  \item{\textit{Reliability}: we assume that our software will give the right result at the 99\% of the requests.}
 
-  \item{\textit{Availability}: we assume that our software will be available with a rate of 99%.
+  \item{\textit{Availability}: we assume that our software will be available with a rate of 99\%.
                                In order to ensure that rate, potential patches will deployed during the night.}
 
   \item{\textit{Security}:
     \begin{itemize}
       \item{each message exchanged between the system and the user will be protected by using TLS protocol.}
       \item{sensitive data as username, password, driving license ID and so on will be saved on the database and masquerade by using SHA-256 algorithm.}
-\end{itemize}
+\end{itemize}}
   \item{\textit{Maintainability}: our software will be followed by a complete JavaDoc so other developers should easily correct or improve the code
                                   or integrate new functions.}
 
