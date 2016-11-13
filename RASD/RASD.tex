@@ -85,6 +85,7 @@ A central system will manage the cars and the reservations, and will communicate
 \item{\textit{Suspended user}: a user that cannot reserve or use cars. Usually users are suspended because they have outstanding bills.}
 \item{\textit{Payment method}: a way to transfer money from the user to the system. Our system will only accept credit cards and online accounts like Paypal.}
 \item{\textit{Payment API}: an interface to carry out money transactions, offered by the external provider associated to the payment method used (e.g. a bank).}
+\item{\textit{CAN bus}: a vehicle bus standard designed to allow micro controllers and devices to communicate with each other.}
 \end{itemize}
 
 \subsubsection{Acronyms}
@@ -129,7 +130,7 @@ A central system will manage the cars and the reservations, and will communicate
 %faces can be helpful."
 
 \subsubsection{Integration with external systems}
-The PowerEnJoy system is 
+The PowerEnJoy system is
 
 a standalone system, completely new
 offers no api to external systems
@@ -142,7 +143,7 @@ i database e tutto sono su dei server centrali
 c'è un sistema sulla macchina che controlla tutti i sensori, controlla l'applicazione a schermo e comunica con i server centrali
 l'applicazione web comunica con i server centrali per avere accesso a dati/database
 l'applicazione mobile pure
-]] non credo c'entri ma forse 
+]] non credo c'entri ma forse
 \subsubsection{Domain model}
 
 qui testo per presentare i diagrammi
@@ -151,7 +152,7 @@ qui testo per presentare i diagrammi
 class diagram
 %\begin{figure}[H]
 %	\centering
-%	\makebox[\textwidth][c]{	
+%	\makebox[\textwidth][c]{
 %		\includegraphics[width=450pt]{CLASSDIAGRAMHERE.png}
 %	}
 %	\caption{Class diagram}
@@ -160,7 +161,7 @@ class diagram
 
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=450pt]{statechart.png}
 	}
 	\caption{State Chart for cars}
@@ -200,7 +201,7 @@ Users will use our application mainly to borrow cars and drive from one place to
 
 Nonetheless, our users' level of skill and technological expertise can vary widely, from the young 20-something digital native with a modern smartphone, to the old couple that has some trouble with mobile applications and technology.
 
-This means that our apps/interfaces must be as user-friendly as possible to allow a wide audience of people to easily use our applications and system. 
+This means that our apps/interfaces must be as user-friendly as possible to allow a wide audience of people to easily use our applications and system.
 
 \newpage
 \subsection{Constraints}\label{constraints}
@@ -288,7 +289,7 @@ The system has a predefined list of all the safe areas and their locations, list
 
 \paragraph{No idle users}
 After unlocking a car users turn on the engine shortly after (i.e. the user doesn't stand in the car idly for long periods of time). We'd prefer if this happened rarely, because users aren't charged until the engine is ignited.
-We suppose that users want to get to their destination as soon as possible. 
+We suppose that users want to get to their destination as soon as possible.
 
 \paragraph{Users leave the car after parking}
 When a user ends a ride or parks temporarily, we assume that the users and all the passengers have already exited the car when the last door is closed and the lock timeout expires. \\
@@ -321,34 +322,32 @@ We suppose users are reliable and never let the cars run out of battery before p
 
 \subsubsection{User Interfaces}
 
-
-%"This should specify the following:
-%a) The logical characteristics of each interface between the software product and its users. This
-%includes those conÞguration characteristics (e.g., required screen formats, page or window layouts,
-%content of any reports or menus, or availability of programmable function keys) necessary to accom-
-%plish the software requirements.
-%b) All the aspects of optimizing the interface with the person who must use the system. This may simply
-%comprise a list of doÕs and donÕts on how the system will appear to the user. One example may be a
-%requirement for the option of long or short error messages. Like all others, these requirements
-%should be veriÞable, e.g., Òa clerk typist grade 4 can do function X in Z min after 1 h of trainingÓ
-%rather than Òa typist can do function X. Ó (This may also be speciÞed in the Software System
-%Attributes under a section titled Ease of Use.)"
-
 \paragraph{}
 Our software will provide 3 main user interfaces: a mobile application, a web application and an application for the car's display.
 Through these interfaces the users must be able to access all the functionalities listed in section \ref{goals}.
 
 \paragraph{}
-The interfaces must be user-friendly and easy to use. Every element's function must be clear, so that users can intuitively navigate the application without any confusion.
+The design of:
+\begin{itemize}
+  \item{web application must follow W3C standard about HTML5 and CSS.}
+  \item{iOS application must follow iOS Human Interface Guidelines described by Apple.}
+  \item{Android application must follow Android Interface Guidelines about Material Design.}
+\end{itemize}
 
+\paragraph{}
+The interfaces must be user-friendly and easy to use.
+Every element's function must be clear, so that users can intuitively navigate the application without any confusion.
+
+\paragraph{}
 To avoid clunkiness and make the application easy to use, every functionality must be reachable in a maximum of 3 clicks and/or taps from any page.
+
 
 
 %%%%%%%%%%%%%%%
 % Le immagini su latex tendono a disporsi dove c'è spazio, sistemeremo la posizione alla fine
 %%%%%%%%%%%%%%%
  \paragraph{}
- 
+
 \begin{itemize}
 	\item{\textbf{Web Application UI}}
 \end{itemize}
@@ -359,21 +358,21 @@ a mobile version for people who don't have the mobile application and just visit
 
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{web/Signup.png}
 	}
 	\caption{The web Sign Up form}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{web/Login.png}
 	}
 	\caption{The web Login page}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{web/HomepageLogged.png}
 	}
 	\caption{The dashboard, after logging in}
@@ -392,7 +391,7 @@ a mobile version for people who don't have the mobile application and just visit
 		\caption{Map showing available cars}
 	\end{minipage}%
 	\begin{minipage}{.5\textwidth}
-		\centering		
+		\centering
 		\includegraphics[width=100pt]{mobile/MenuSX.png}
 		\caption{The mobile application menu}
 	\end{minipage}
@@ -424,14 +423,14 @@ a mobile version for people who don't have the mobile application and just visit
 \end{itemize}
 
 something about the car's display user interface
-emphasis on the navigator, to let the user follow 
+emphasis on the navigator, to let the user follow
 the amount of money to pay is visible
 the battery charge must be visible
 scavkjsfa
 
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{car/car.png}
 	}
 	\caption{The car's display while a user is driving}
@@ -440,66 +439,47 @@ scavkjsfa
 
 \subsubsection{Hardware Interfaces}
 
-"This should specify the logical characteristics of each interface between the software product and the hard-
-ware components of the system. This includes conÞguration characteristics (number of ports, instruction
-sets, etc.). It also covers such matters as what devices are to be supported, how they are to be supported, and
-protocols. For example, terminal support may specify full-screen support as opposed to line-by-line support."
-
-the car's system must interface with the the car's CANBUS to get information about the engine, the battery level, the position
-
-Every car's internal system/controller will have a direct interface to the car's CAN bus (a vehicle bus standard designed to allow microcontrollers and devices to communicate with each other) to collect information about the engine, the battery level and all the sensors installed on the car (GPS, weight sensors).
+\paragraph{}
+The car's system must interface with the the car's CANBUS to collect information about the engine,
+the battery level and all the sensors installed on the car (GPS, weight sensors).
 
 \subsubsection{Software Interfaces (API)}\label{apis}
 
-"This should specify the use of other required software products (e.g., a data management system, an operat-
-ing system, or a mathematical package), and interfaces with other application systems (e.g., the linkage
-between an accounts receivable system and a general ledger system). For each required software product, the
-following should be provided:
-Name;
-Mnemonic;
-SpeciÞcation number;
-Version number;
-Source."
+\href{<url>}{<text to display>}
 
-"For each interface, the following should be provided:
-Discussion of the purpose of the interfacing software as related to this software product.
-DeÞnition of the interface in terms of message content and format. It is not necessary to detail any
-well-documented interface, but a reference to the document deÞning the interface is required."
+The system requires:
+\paragraph{}
+\being{itemize}
+  \item{\textit{Payment API}:\newline
+      \begin{itemize}
+        \item{\textit{VISA circuit API}\newline
+          \href{https://developer.visa.com}{<VISA Developper Center>}}
+        \item{\textit{MasterCard circuit API}\newline
+          \href{https://developer.mastercard.com/apis}{<MasterCard Developper Center>}}
+        \item{\textit{PayPal API}\newline
+          \href{https://developer.paypal.com/docs/api/overview/}{<PayPal API Overview>}}
+      \end{itemize}}
+    \item{\textit{Driving License Validation API}:\newline
+      \begin{itemize}
+        \item{\textit{Eucaris API}:\newline
+          \href{https://www.eucaris.net}{<Eucaris>}}}
+      \end{itemize}}
+\end{itemize}
 
-interface con:
-
-Circuito VISA
-Circuito Mastercard
-Paypal
-
-interface con EUCARIS per il controllo patenti
-
-
-      Payments API
-      Stripe
-      https://stripe.com/it
-
-      Driver License Validation API
-      EUCARIS
-      https://www.eucaris.net/
-
-
-the mobile application must interface with the operating system:
-android
-ios
-windows phone
-
-
+\paragraph{}
+The mobile application must interface with the operating system:
+\begin{itemize}
+  \item{\textit{iOS}}
+  \item{\textit{Android}}
+  \item{\textit{Windows Phone}}
+\end{itemize}
 
 \subsubsection{Communication Interfaces}
-This should specify the various interfaces to communications such as local network protocols, etc.
 
-communication between mobile application <-> our central servers
-communication between browsers <-> web servers
-communication between cars <-> our central servers
-
+All the communications between web application and system server or mobile application must be HTTPS request/response. 
 
 \newpage
+
 \subsection{Functional Requirements}
 
 \subsubsection{Requirements}
@@ -692,7 +672,7 @@ We identified the following use cases for our software:
 		\item{\textbf{[UC.12]} A user pays a pending bill.}
 		\item{\textbf{[UC.13]} A user reports a problem to the system.}
 	\end{itemize}
-	
+
 \paragraph{}
 Figure \ref{use_case_diagram} shows the relationships between use cases and involved actors.
 
@@ -707,7 +687,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\label{use_case_diagram}
 	\end{figure}
 	\newpage
-	
+
 	\paragraph{[UC.1] A guest registers to PowerEnJoy.}
 	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
