@@ -50,7 +50,7 @@ The aim of this project is to specify in detail a new digital management softwar
 \paragraph{}
 Users must be able to register to PowerEnJoy providing their personal data, driving license and payment information.
 After registering, users should be able to look for available cars near them or to a specific location. If they find a car that matches their needs, they can reserve the car up to one hour before using it. After approaching a reserved car users should have a way to unlock the car and enter it.
-While using a car users are charged a certain amount of money depending on distance traveled and time elapsed; while driving the car a display will inform the user of the amount of money they will have to pay at the end of the ride.
+While using a car users are charged for a given amount of money per minute; a display on the car will inform the user of the amount of money they will have to pay at the end of the ride.
 The system stops charging the user after the car is parked in a safe area.
 Furthermore the system incentivizes virtuous behaviours by offering several discounts if certain conditions are met (e.g. charging a car at a power grid station).
 
@@ -94,6 +94,7 @@ A central system will manage the cars and the reservations, and will communicate
 \item{\textbf{DOB}: Date of birth}
 \item{\textbf{PGS}: Power Grid Station}
 \item{\textbf{GPS}: Global Positioning System}
+\item{\textbf{CAN bus}: Controller Area Network bus}
 \end{itemize}
 
 \subsubsection{Abbreviations}
@@ -118,7 +119,21 @@ A central system will manage the cars and the reservations, and will communicate
 
 \subsection{Product Perspective}
 
-\subsection{Product Functions}
+"This subsection of the SRS should put the product into perspective with other related products. If the product
+is independent and totally self-contained, it should be so stated here. If the SRS deÞnes a product that is a
+component of a larger system, as frequently occurs, then this subsection should relate the requirements of
+that larger system to functionality of the software and should identify interfaces between that system and the
+software.
+A block diagram showing the major components of the larger system, interconnections, and external inter-
+faces can be helpful."
+
+idee:
+i database e tutto sono su dei server centrali
+c'è un sistema sulla macchina che controlla tutti i sensori, controlla l'applicazione a schermo e comunica con i server centrali
+l'applicazione web comunica con i server centrali per avere accesso a dati/database
+l'applicazione mobile pure
+
+\subsection{Product Functions}\label{goals}
 
 The PowerEnJoy application will offer many different functionalities; specifically, the goals we want to accomplish are the following:
 \begin{description}
@@ -129,7 +144,7 @@ The PowerEnJoy application will offer many different functionalities; specifical
 	\item[{[G4]}]{Users must be able to reserve a car for up to one hour before they pick it up. If they don't take the car before the time expires they are charged a fixed fee of 1 EUR.}
 	\item[{[G5]}]{Users must be able to cancel a reservation if they decide to not actually use the car.}
 	\item[{[G6]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.}
-	\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.}
+	\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The user is charged for a given	amount of money per minute.}
 	\item[{[G8]}]{The system must allow the user to see the amount they’re being charged through a screen on the car.}
 	\item[{[G9]}]{The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car notifying the system that they ended their ride.}
 	\item[{[G10]}]{Users must be able to leave a car without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user. The user should be able to end the ride without coming back to the car if they so choose.}
@@ -147,18 +162,37 @@ The PowerEnJoy application will offer many different functionalities; specifical
 
 \subsection{User Characteristics}
 
+"This subsection of the SRS should describe those general characteristics of the intended users of the product
+including educational level, experience, and technical expertise. It should not be used to state specific
+requirements, but rather should provide the reasons why certain specific requirements are later specified in
+Section 3 of the SRS."
+
+users are people who registered to our system
+users can drive (they have a valid driving license)
+users want to get to a place to another
+users prefer to have access to ready available cars
+users 
+
 Users need a car to get to a destination\\
 Users have a device to access the application\\
 The app needs to be user-friendly and well designed to avoid confusion\\
-many\\
-many\\
-lines\\
-dfsf\\
-ff\\
-fffff\\
 
 \newpage
 \subsection{Constraints}\label{constraints}
+
+
+I COSTRAINTS SONO LIMITI AL SOFTWARE PER REGOLAMENTAZIONI, LIMITAZIONI DELL'HARDWARE ECC.
+
+interfacce con altre applicazioni
+operazioni in parallelo
+funzioni di controllo
+protocolli di handshake (why)
+requisiti di reliability
+criticalità
+CONSIDERAZIONI SULLA SICUREZZA FISICA (safety) DEGLI UTENTI
+
+come è fatto l'hardware lo spostiamo in assumptions?
+
 
 To provide all the functionalities specified in this document, every car must have:
 \begin{itemize}
@@ -292,11 +326,92 @@ car's display
 	\caption{*car's display*}
 \end{figure}
 
+"This should specify the following:
+a) The logical characteristics of each interface between the software product and its users. This
+includes those conÞguration characteristics (e.g., required screen formats, page or window layouts,
+content of any reports or menus, or availability of programmable function keys) necessary to accom-
+plish the software requirements.
+b) All the aspects of optimizing the interface with the person who must use the system. This may simply
+comprise a list of doÕs and donÕts on how the system will appear to the user. One example may be a
+requirement for the option of long or short error messages. Like all others, these requirements
+should be veriÞable, e.g., Òa clerk typist grade 4 can do function X in Z min after 1 h of trainingÓ
+rather than Òa typist can do function X. Ó (This may also be speciÞed in the Software System
+Attributes under a section titled Ease of Use.)"
+
+Our software will offer to the users a wide choice (2 of them) of interfaces:
+A mobile application
+A web application
+
+Additionally an application on the car's display when the user is in the car
+
+This is what they will look like:
+the users will be able to perform all the functions listed in section \ref{goals} 
+
+the interfaces will be user-friendly and well designed
+every button's function must be clear and evident
+
+every function will be reachable in a maximum of 3 clicks/presses/taps
+
 \subsubsection{Hardware Interfaces}
+
+"This should specify the logical characteristics of each interface between the software product and the hard-
+ware components of the system. This includes conÞguration characteristics (number of ports, instruction
+sets, etc.). It also covers such matters as what devices are to be supported, how they are to be supported, and
+protocols. For example, terminal support may specify full-screen support as opposed to line-by-line support."
+
+the car's system must interface with the the car's CANBUS to get information about the engine, the battery level, the position
+
+Every car's internal system/controller will have a direct interface to the car's CAN bus (a vehicle bus standard designed to allow microcontrollers and devices to communicate with each other) to collect information about the engine, the battery level and all the sensors installed on the car (GPS, weight sensors).
 
 \subsubsection{Software Interfaces (API)}
 
+"This should specify the use of other required software products (e.g., a data management system, an operat-
+ing system, or a mathematical package), and interfaces with other application systems (e.g., the linkage
+between an accounts receivable system and a general ledger system). For each required software product, the
+following should be provided:
+Name;
+Mnemonic;
+SpeciÞcation number;
+Version number;
+Source."
+
+"For each interface, the following should be provided:
+Discussion of the purpose of the interfacing software as related to this software product.
+DeÞnition of the interface in terms of message content and format. It is not necessary to detail any
+well-documented interface, but a reference to the document deÞning the interface is required."
+
+interface con:
+
+Circuito VISA
+Circuito Mastercard
+Paypal
+
+interface con EUCARIS per il controllo patenti
+
+
+      Payments API
+      Stripe
+      https://stripe.com/it
+
+      Driver License Validation API
+      EUCARIS
+      https://www.eucaris.net/
+
+
+the mobile application must interface with the operating system:
+android
+ios
+windows phone
+
+
+
 \subsubsection{Communication Interfaces}
+This should specify the various interfaces to communications such as local network protocols, etc.
+
+communication between mobile application <-> our central servers
+communication between browsers <-> web servers
+communication between cars <-> our central servers
+
 
 \newpage
 \subsection{Functional Requirements}
@@ -360,11 +475,11 @@ a username of their choice, their personal data (first name, last name, date of 
 \end{itemize}
 }
 
-\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The amount charged depends on the distance traveled and time elapsed.
+\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The user is charged for a given	amount of money per minute.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.7.2] The system starts to charge the user the moment the reserved car’s engine is ignited after unlocking the car.}
-	\item{[RE.7.3] The amount charged by the system depends on the time elapsed and the distance traveled by the user, following specific rules.}
+	\item{[RE.7.3] The system increases the total amount charged by a given amount per minute.}
 \end{itemize}
 }
 
