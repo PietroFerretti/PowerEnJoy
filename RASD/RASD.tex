@@ -120,21 +120,52 @@ A central system will manage the cars and the reservations, and will communicate
 
 \subsection{Product Perspective}
 
-"This subsection of the SRS should put the product into perspective with other related products. If the product
-is independent and totally self-contained, it should be so stated here. If the SRS deÞnes a product that is a
-component of a larger system, as frequently occurs, then this subsection should relate the requirements of
-that larger system to functionality of the software and should identify interfaces between that system and the
-software.
-A block diagram showing the major components of the larger system, interconnections, and external inter-
-faces can be helpful."
+%"This subsection of the SRS should put the product into perspective with other related products. If the product
+%is independent and totally self-contained, it should be so stated here. If the SRS deÞnes a product that is a
+%component of a larger system, as frequently occurs, then this subsection should relate the requirements of
+%that larger system to functionality of the software and should identify interfaces between that system and the
+%software.
+%A block diagram showing the major components of the larger system, interconnections, and external inter-
+%faces can be helpful."
 
+\subsubsection{Integration with external systems}
 The PowerEnJoy system is 
 
-idee:
+a standalone system, completely new
+offers no api to external systems
+uses apis for driving licence verification and payment processing, more details in section \ref{apis}
+
+
+
+[[idee:
 i database e tutto sono su dei server centrali
 c'è un sistema sulla macchina che controlla tutti i sensori, controlla l'applicazione a schermo e comunica con i server centrali
 l'applicazione web comunica con i server centrali per avere accesso a dati/database
 l'applicazione mobile pure
+]] non credo c'entri ma forse 
+\subsubsection{Domain model}
+
+qui testo per presentare i diagrammi
+
+
+class diagram
+%\begin{figure}[H]
+%	\centering
+%	\makebox[\textwidth][c]{	
+%		\includegraphics[width=450pt]{CLASSDIAGRAMHERE.png}
+%	}
+%	\caption{Class diagram}
+%	\label{classdiagram}
+%\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{	
+		\includegraphics[width=450pt]{statechart.png}
+	}
+	\caption{State Chart for cars}
+	\label{statechart}
+\end{figure}
 
 \subsection{Product Functions}\label{goals}
 
@@ -174,16 +205,29 @@ This means that our apps/interfaces must be as user-friendly as possible to allo
 \newpage
 \subsection{Constraints}\label{constraints}
 
+%This subsection of the SRS should provide a general description of any other items that will limit the devel-
+%operÕs options. These include
+%Regulatory policies;
+%Hardware limitations (e.g., signal timing requirements);
+%Interfaces to other applications;
+%Parallel operation;
+%Audit functions;
+%Control functions;
+%Higher-order language requirements;
+%Signal handshake protocols (e.g., XON-XOFF, ACK-NACK);
+%Reliability requirements;
+%Criticality of the application;
+%Safety and security considerations.
 
-I COSTRAINTS SONO LIMITI AL SOFTWARE PER REGOLAMENTAZIONI, LIMITAZIONI DELL'HARDWARE ECC.
 
+regolamentazioni
+limitazioni dell'hardware (poca potenza)
 interfacce con altre applicazioni
 operazioni in parallelo
 funzioni di controllo
-protocolli di handshake (why)
 requisiti di reliability
 criticalità
-CONSIDERAZIONI SULLA SICUREZZA FISICA (safety) DEGLI UTENTI
+sicurezza fisica degli utenti
 
 
 \newpage
@@ -385,7 +429,7 @@ the car's system must interface with the the car's CANBUS to get information abo
 
 Every car's internal system/controller will have a direct interface to the car's CAN bus (a vehicle bus standard designed to allow microcontrollers and devices to communicate with each other) to collect information about the engine, the battery level and all the sensors installed on the car (GPS, weight sensors).
 
-\subsubsection{Software Interfaces (API)}
+\subsubsection{Software Interfaces (API)}\label{apis}
 
 "This should specify the use of other required software products (e.g., a data management system, an operat-
 ing system, or a mathematical package), and interfaces with other application systems (e.g., the linkage
