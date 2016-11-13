@@ -608,7 +608,29 @@ a username of their choice, their personal data (first name, last name, date of 
 \end{description}
 
 \newpage
-\subsection{Use Cases}
+\subsubsection{Use Cases}
+
+We identified the following use cases for our software:
+	\begin{itemize}
+		\item{\textbf{[UC.1]} A guest registers to PowerEnJoy.}
+		\item{\textbf{[UC.2]} A user logs in to the PowerEnJoy application.}
+		\item{\textbf{[UC.3a]} A user searches for available cars near his position.}
+		\item{\textbf{[UC.3b]} A user searches for available cars in a specific position.}
+		\item{\textbf{[UC.4]} A user reserves a car.}
+		\item{\textbf{[UC.5]} A user cancels a reservation for a car.}
+		\item{\textbf{[UC.6a]} A user unlocks the car with the QR code printed on the car.}
+		\item{\textbf{[UC.6b]} A user unlocks the car using his position.}
+		\item{\textbf{[UC.7]} A user ends a ride.}
+		\item{\textbf{[UC.8]} A user parks the car without ending the ride.}
+		\item{\textbf{[UC.9]} A user ends a ride while the car is temporarily parked.}
+		\item{\textbf{[UC.10]} The system suggests to the user a PGS to park the car at and save money.}
+		\item{\textbf{[UC.11]} Payment}
+		\item{\textbf{[UC.12]} A user pays a pending bill.}
+		\item{\textbf{[UC.13]} A user reports a problem to the system.}
+	\end{itemize}
+	
+\paragraph{}
+Figure \ref{use_case_diagram} shows the relationships between use cases and involved actors.
 
 	\begin{figure}
 		\centering
@@ -618,6 +640,7 @@ a username of their choice, their personal data (first name, last name, date of 
 			\input{images/use_case_diag.pdf_tex}
 		}
 		\caption{Use Case Diagram}
+		\label{use_case_diagram}
 	\end{figure}
 	\newpage
 	
@@ -994,7 +1017,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 			\end{tabularx}
 
-			\paragraph{[UC.12] User pays a pending bill.}	~\\
+			\paragraph{[UC.12] A user pays a pending bill.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & User, System, Payment API\\
@@ -1048,7 +1071,7 @@ a username of their choice, their personal data (first name, last name, date of 
   	\hline
   \end{tabularx}
 
-
+\newpage
 \subsection{Performance Requirements}
 
 \subsection{Design Constraints}
