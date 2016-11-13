@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \graphicspath{{images/}{Mockups/}}
 \usepackage{svg}
+\usepackage{float}
 \renewcommand{\arraystretch}{1.4}
 
 \begin{document}
@@ -127,6 +128,8 @@ software.
 A block diagram showing the major components of the larger system, interconnections, and external inter-
 faces can be helpful."
 
+The PowerEnJoy system is 
+
 idee:
 i database e tutto sono su dei server centrali
 c'è un sistema sulla macchina che controlla tutti i sensori, controlla l'applicazione a schermo e comunica con i server centrali
@@ -162,20 +165,11 @@ The PowerEnJoy application will offer many different functionalities; specifical
 
 \subsection{User Characteristics}
 
-"This subsection of the SRS should describe those general characteristics of the intended users of the product
-including educational level, experience, and technical expertise. It should not be used to state specific
-requirements, but rather should provide the reasons why certain specific requirements are later specified in
-Section 3 of the SRS."
+Users will use our application mainly to borrow cars and drive from one place to another to reach their destination. Considering that the users will have to drive cars, the typical user will at the very least have a driving license and be able to drive; users will also be necessarily of age.
 
-users are people who registered to our system
-users can drive (they have a valid driving license)
-users want to get to a place to another
-users prefer to have access to ready available cars
-users 
+Nonetheless, our users' level of skill and technological expertise can vary widely, from the young 20-something digital native with a modern smartphone, to the old couple that has some trouble with mobile applications and technology.
 
-Users need a car to get to a destination\\
-Users have a device to access the application\\
-The app needs to be user-friendly and well designed to avoid confusion\\
+This means that our apps/interfaces must be as user-friendly as possible to allow a wide audience of people to easily use our applications and system. 
 
 \newpage
 \subsection{Constraints}\label{constraints}
@@ -191,9 +185,11 @@ requisiti di reliability
 criticalità
 CONSIDERAZIONI SULLA SICUREZZA FISICA (safety) DEGLI UTENTI
 
-come è fatto l'hardware lo spostiamo in assumptions?
 
+\newpage
+\subsection{Assumptions and Dependencies}
 
+\paragraph{Hardware dependencies}
 To provide all the functionalities specified in this document, every car must have:
 \begin{itemize}
 	\item{a reliable GPS tracker;}
@@ -207,26 +203,24 @@ To provide all the functionalities specified in this document, every car must ha
 	\item{a unique QR code printed on the outside of the car.}
 \end{itemize}
 
-\paragraph{}
+\paragraph{Connection to the Internet}
 The web application needs an Internet connection to work, for example to connect to the database and find available cars.
 
-\paragraph{}
 The mobile application will need at least an Internet connection to receive data from and communicate with the central system. Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality.
 
-\paragraph{}
+\paragraph{Power grid stations}
 Power grid stations must have a sensor on each plug to know if it's free or in use, and an Internet connection to communicate this information to the system.
 
-\newpage
-\subsection{Assumptions and Dependencies}
 
-\emph{See section \ref{constraints} for hardware assumptions.}
 
-\paragraph{Predefined data}
-The system has a predefined list of all the safe areas and their locations, list that can be changed by the people in control of the system. Likewise, the system has a predefined list of all the power grid stations, their locations and the number of plugs present in each station.
+
 
 \paragraph{Perfect signal}
 The car’s data connection is always working and stable. \\
 The car’s GPS signal is always available and precise.
+
+\paragraph{Predefined data}
+The system has a predefined list of all the safe areas and their locations, list that can be changed by the people in control of the system. Likewise, the system has a predefined list of all the power grid stations, their locations and the number of plugs present in each station.
 
 \paragraph{No idle users}
 After unlocking a car users turn on the engine shortly after (i.e. the user doesn't stand in the car idly for long periods of time). We'd prefer if this happened rarely, because users aren't charged until the engine is ignited.
@@ -263,94 +257,122 @@ We suppose users are reliable and never let the cars run out of battery before p
 
 \subsubsection{User Interfaces}
 
+
+%"This should specify the following:
+%a) The logical characteristics of each interface between the software product and its users. This
+%includes those conÞguration characteristics (e.g., required screen formats, page or window layouts,
+%content of any reports or menus, or availability of programmable function keys) necessary to accom-
+%plish the software requirements.
+%b) All the aspects of optimizing the interface with the person who must use the system. This may simply
+%comprise a list of doÕs and donÕts on how the system will appear to the user. One example may be a
+%requirement for the option of long or short error messages. Like all others, these requirements
+%should be veriÞable, e.g., Òa clerk typist grade 4 can do function X in Z min after 1 h of trainingÓ
+%rather than Òa typist can do function X. Ó (This may also be speciÞed in the Software System
+%Attributes under a section titled Ease of Use.)"
+
+\paragraph{}
+Our software will provide 3 main user interfaces: a mobile application, a web application and an application for the car's display.
+Through these interfaces the users must be able to access all the functionalities listed in section \ref{goals}.
+
+\paragraph{}
+The interfaces must be user-friendly and easy to use. Every element's function must be clear, so that users can intuitively navigate the application without any confusion.
+
+To avoid clunkiness and make the application easy to use, every functionality must be reachable in a maximum of 3 clicks and/or taps from any page.
+
+
 %%%%%%%%%%%%%%%
 % Le immagini su latex tendono a disporsi dove c'è spazio, sistemeremo la posizione alla fine
 %%%%%%%%%%%%%%%
+ \paragraph{}
+ 
+\begin{itemize}
+	\item{\textbf{Web Application UI}}
+\end{itemize}
+something about the web user interface
+responsive, usable on every type of screen
+a mobile version for people who don't have the mobile application and just visit the web page
 
-web
-\begin{figure}
+
+\begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{web/Signup.png}
 	}
-	\caption{*signup*}
+	\caption{The web Sign Up form}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{web/Login.png}
 	}
-	\caption{*login*}
+	\caption{The web Login page}
 \end{figure}
-\begin{figure}
+\begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{web/HomepageLogged.png}
 	}
-	\caption{*homepage*}
-\end{figure}
-	
-mobile
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=100pt]{mobile/localization.png}
-	\caption{*mappa*}
-\end{figure}
-\begin{figure}
-	\centering		
-	\includegraphics[width=100pt]{mobile/MenuSX.png}
-	\caption{*menu*}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=100pt]{mobile/FreeReservation.png}
-	\caption{*reservation*}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=100pt]{mobile/FreeReservationEnded.png}
-	\caption{*reservation expired*}
-\end{figure}
-\begin{figure}
-	\centering
-	\includegraphics[width=100pt]{mobile/Unlock.png}
-	\caption{*unlocking*}
+	\caption{The dashboard, after logging in}
 \end{figure}
 
-car's display
-\begin{figure}
+\newpage
+\begin{itemize}
+	\item{\textbf{Mobile application UI}}
+\end{itemize}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{.55\textwidth}
+		\centering
+		\includegraphics[width=100pt]{mobile/localization.png}
+		\caption{Map showing available cars}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+		\centering		
+		\includegraphics[width=100pt]{mobile/MenuSX.png}
+		\caption{The mobile application menu}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{.55\textwidth}
+	\centering
+	\includegraphics[width=100pt]{mobile/FreeReservation.png}
+	\caption{A car has been reserved}
+	\end{minipage}%
+	\begin{minipage}{.5\textwidth}
+	\centering
+	\includegraphics[width=100pt]{mobile/Unlock.png}
+	\caption{When the user is close to the car an unlock button is available}
+	\end{minipage}
+\end{figure}
+
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=100pt]{mobile/FreeReservationEnded.png}
+%	\caption{*reservation expired*}
+%\end{figure}
+
+\newpage
+\begin{itemize}
+	\item{\textbf{Car's display application UI}}
+\end{itemize}
+
+something about the car's display user interface
+emphasis on the navigator, to let the user follow 
+the amount of money to pay is visible
+the battery charge must be visible
+scavkjsfa
+
+\begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{car/car.png}
 	}
-	\caption{*car's display*}
+	\caption{The car's display while a user is driving}
 \end{figure}
 
-"This should specify the following:
-a) The logical characteristics of each interface between the software product and its users. This
-includes those conÞguration characteristics (e.g., required screen formats, page or window layouts,
-content of any reports or menus, or availability of programmable function keys) necessary to accom-
-plish the software requirements.
-b) All the aspects of optimizing the interface with the person who must use the system. This may simply
-comprise a list of doÕs and donÕts on how the system will appear to the user. One example may be a
-requirement for the option of long or short error messages. Like all others, these requirements
-should be veriÞable, e.g., Òa clerk typist grade 4 can do function X in Z min after 1 h of trainingÓ
-rather than Òa typist can do function X. Ó (This may also be speciÞed in the Software System
-Attributes under a section titled Ease of Use.)"
-
-Our software will offer to the users a wide choice (2 of them) of interfaces:
-A mobile application
-A web application
-
-Additionally an application on the car's display when the user is in the car
-
-This is what they will look like:
-the users will be able to perform all the functions listed in section \ref{goals} 
-
-the interfaces will be user-friendly and well designed
-every button's function must be clear and evident
-
-every function will be reachable in a maximum of 3 clicks/presses/taps
 
 \subsubsection{Hardware Interfaces}
 
@@ -553,7 +575,7 @@ a username of their choice, their personal data (first name, last name, date of 
 \item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
-	\item{[RE.17.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge, the system must increase the amount the user has to pay by 30\%.}
+	\item{[RE.17.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge and is not plugged in the power grid, the system must increase the amount the user has to pay by 30\%.}
 \end{itemize}
 }
 
@@ -598,7 +620,9 @@ a username of their choice, their personal data (first name, last name, date of 
 		\caption{Use Case Diagram}
 	\end{figure}
 	\newpage
-	\subsubsection{[UC.1] A guest registers to PowerEnJoy.}
+	
+	\paragraph{[UC.1] A guest registers to PowerEnJoy.}
+	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & Guest\\
@@ -639,7 +663,8 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.2] A user logs in to the PowerEnJoy application.}
+	\paragraph{[UC.2] A user logs in to the PowerEnJoy application.}
+	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -663,7 +688,8 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.3a] A user searches for available cars near his position.}
+	\paragraph{[UC.3a] A user searches for available cars near his position.}
+	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -688,7 +714,8 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.3b] A user searches for available cars in a specific position.}
+	\paragraph{[UC.3b] A user searches for available cars in a specific position.}
+		~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -717,7 +744,8 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.4] A user reserves a car.}
+	\paragraph{[UC.4] A user reserves a car.}
+		~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -741,7 +769,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.5] A user cancels a reservation for a car.}
+	\paragraph{[UC.5] A user cancels a reservation for a car.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -765,7 +793,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.6a] A user unlocks the car with the QR code printed on the car.}
+	\paragraph{[UC.6a] A user unlocks the car with the QR code printed on the car.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -790,7 +818,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.6b] A user unlocks the car using his position.}
+	\paragraph{[UC.6b] A user unlocks the car using his position.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -815,7 +843,7 @@ a username of their choice, their personal data (first name, last name, date of 
 		\hline
 	\end{tabularx}
 
-	\subsubsection{[UC.7] A user ends a ride.}
+	\paragraph{[UC.7] A user ends a ride.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -850,7 +878,7 @@ a username of their choice, their personal data (first name, last name, date of 
 			\hline
 		\end{tabularx}
 
-\subsubsection{[UC.8] A user parks the car without ending the ride.}
+\paragraph{[UC.8] A user parks the car without ending the ride.}	~\\
 		\begin{tabularx}{\textwidth}{  l  X  }
 			\hline
 			Actor & User\\
@@ -881,7 +909,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 		\end{tabularx}
 
-    \subsubsection{[UC.9] A user ends a ride while the car is temporarily parked.}
+    \paragraph{[UC.9] A user ends a ride while the car is temporarily parked.}	~\\
     		\begin{tabularx}{\textwidth}{  l  X  }
     			\hline
     			Actor & User\\
@@ -905,7 +933,7 @@ a username of their choice, their personal data (first name, last name, date of 
     				\hline
     		\end{tabularx}
 
-		\subsubsection{[UC.10] The system suggests to the user a PGS to park the car at and save money.}
+		\paragraph{[UC.10] The system suggests to the user a PGS to park the car at and save money.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, User\\
@@ -916,7 +944,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 				Execution Flow & \begin{enumerate}
 					\item{The user inserts the destination on the car's navigator.}
-					\item{The user chooses the option "save money!"}
+					\item{The user chooses the option "Find charging station"}
 					\item{The system calculates the best solution, so it searches the nearest PGS to the destination keeping in mind a uniform distribution of the cars.}
 					\item{The system suggests the PGS to the user through the display.}
 					\item{The user drives to the PGS, parks the car and turns the engine off.}
@@ -939,7 +967,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 			\end{tabularx}
 
-			\subsubsection{[UC.11] Payment}
+			\paragraph{[UC.11] Payment}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, Payment API\\
@@ -966,7 +994,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 			\end{tabularx}
 
-			\subsubsection{[UC.12] User pays a pending bill.}
+			\paragraph{[UC.12] User pays a pending bill.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & User, System, Payment API\\
@@ -994,7 +1022,7 @@ a username of their choice, their personal data (first name, last name, date of 
 				\hline
 			\end{tabularx}
 
-  \subsubsection{[UC.13] A user reports a problem to the system.}
+  \paragraph{[UC.13] A user reports a problem to the system.}	~\\
   \begin{tabularx}{\textwidth}{  l  X  }
   	\hline
   	Actor & User, System\\
