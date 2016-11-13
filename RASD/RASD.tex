@@ -129,24 +129,17 @@ A central system will manage the cars and the reservations, and will communicate
 %faces can be helpful."
 
 \subsubsection{Integration with external systems}
-The PowerEnJoy system is 
 
-a standalone system, completely new
-offers no api to external systems
-uses apis for driving licence verification and payment processing, more details in section \ref{apis}
+Since there are no constrictions from a previous version of the system, PowerEnjoy will be a standalone system.
+The PowerEnjoy software will use APIs in order to accomplish few specific goals such as the driving licence verification and the card payment processing, more details about it could be found in section \ref{apis}.
+In the first deployment, the PowerEnjoy system will not offer any APIs to external systems.
 
+The whole system, software and databases, will be stored on the central servers. These will communicate with the car software which will control the car application given the sensors' feedbacks.
+Every request or data query from the application (both web and mobile version) will be sent to and elaborated by the servers.
 
-
-[[idee:
-i database e tutto sono su dei server centrali
-c'è un sistema sulla macchina che controlla tutti i sensori, controlla l'applicazione a schermo e comunica con i server centrali
-l'applicazione web comunica con i server centrali per avere accesso a dati/database
-l'applicazione mobile pure
-]] non credo c'entri ma forse 
 \subsubsection{Domain model}
 
-qui testo per presentare i diagrammi
-
+Here are presented both the state chart and the class diagram models in order to obtain a more formal and rigorous description of how the system will work and will be developed.
 
 class diagram
 %\begin{figure}[H]
