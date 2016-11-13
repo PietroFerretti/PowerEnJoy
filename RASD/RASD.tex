@@ -51,7 +51,7 @@ Users must be able to register to PowerEnJoy providing their personal data, driv
 After registering, users should be able to look for available cars near them or to a specific location. If they find a car that matches their needs, they can reserve the car up to one hour before using it. After approaching a reserved car users should have a way to unlock the car and enter it.
 While using a car users are charged a certain amount of money depending on distance traveled and time elapsed; while driving the car a display will inform the user of the amount of money they will have to pay at the end of the ride.
 The system stops charging the user after the car is parked in a safe area.
-Furthermore the system incentivizes virtuous behaviours by offering several discounts if certain conditions are met (e.g. charging a car at a power grid station).
+Furthermore the system incentivizes virtuous behaviors by offering several discounts if certain conditions are met (e.g. charging a car at a power grid station).
 
 \paragraph{}
 To accomplish these goals we need to bridge the gap between the world (cars and passengers) and our system (servers, databases, etc.).
@@ -150,26 +150,49 @@ The PowerEnJoy application will offer many different functionalities; specifical
 
 \subsection{Constraints}\label{constraints}
 
+\subsubsection{Regulatory policies}
+
+\paragraph{}
+All the users are responsible for their behavior, from the insertion of truthful data to the respect of traffic laws.
+
+\paragraph{}
+The system must obtain the agreement from the user to acquire, process and store data.\newline
+The system must grant to the user the chance to delete the account and so remove from the DB each data concerning the user.\newline
+All the sensitive data are stored and transmitted to third parts society in accordance to the law.\newline
+
+\subsubsection{Hardware limitations}
+
 To provide all the functionalities specified in this document, every car must have:
 \begin{itemize}
-	\item{a reliable GPS tracker}
-	\item{a mobile Internet connection (for example a 3G or 4G connection)}
-	\item{sensors to collect data from the engine and the battery}
-	\item{an electronic switch to lock and unlock the doors}
-	\item{a weight sensor on each seat}
-	\item{a touchscreen to offer a dedicated interface to users}
-	\item{an internal system to control these components and communicate\\ with the central system}
-	\item{a unique qr code printed on the outside of the car}
+	\item{a reliable GPS tracker.}
+	\item{a mobile Internet connection (for example a 3G or 4G connection) to receive data from and communicate with the central system.}
+	\item{sensors to collect data from the engine and the battery.}
+	\item{an electronic switch to lock and unlock the doors.}
+	\item{a weight sensor on each seat.}
+	\item{a touchscreen display to offer a dedicated interface to users.}
+	\item{an internal system to control these components and communicate with the central system}
+	\item{a unique QR code printed on the outside of the car}
 \end{itemize}
 
+To provide all the functionalities specified in this document, the application must have:
+\begin{itemize}
+  \item{a mobile Internet connection (for example a 3G or 4G connection).}
+  \item{a GPS sensor. (Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality).}
+  \item{40 MB of space for map and app package.}
+  \item{a QR code scanner.}
+
+\subsubsection{Criticality of the application}
+The system is not used in life-critical applications.
+
+\subsubsection{Parallel operations}
+The system must be able to respond multiple and simultaneous requests from users.
+
+\subsubsection{Safety and security considerations}
 \paragraph{}
-\emph{and we need a GPS navigator on the car to find power grid stations}
+All the knowledge regarding user's credentials, reservations, rides and bills must be kept private and accessible only to the user.
 
 \paragraph{}
-The web application needs an Internet connection to work, for example to connect to the database and find available cars.
-
-\paragraph{}
-The mobile application will need at least an Internet connection to receive data from and communicate with the central system. Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality.
+The position of a car could be accessible also both to employee and the user that reserved the car.
 
 \subsection{Assumptions and Dependencies}
 
@@ -943,8 +966,6 @@ a username of their choice, their personal data (first name, last name, date of 
                               while the web app will be compatible with the most used browser as Chrome, Firefox, Opera, Safari, etc..}
 
 \end{itemize}
-
-\subsection{Design Constraints}
 
 \newpage{}
 
