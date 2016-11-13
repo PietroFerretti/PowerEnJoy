@@ -1,0 +1,63 @@
+\select@language {english}
+\contentsline {section}{\numberline {1}Introduction}{4}{section.1}
+\contentsline {subsection}{\numberline {1.1}Purpose}{4}{subsection.1.1}
+\contentsline {paragraph}{}{4}{section*.2}
+\contentsline {paragraph}{}{4}{section*.3}
+\contentsline {subsection}{\numberline {1.2}Scope}{4}{subsection.1.2}
+\contentsline {paragraph}{}{4}{section*.4}
+\contentsline {paragraph}{}{4}{section*.5}
+\contentsline {paragraph}{}{4}{section*.6}
+\contentsline {subsection}{\numberline {1.3}Definitions, Acronyms, Abbreviations}{5}{subsection.1.3}
+\contentsline {subsubsection}{\numberline {1.3.1}Definitions}{5}{subsubsection.1.3.1}
+\contentsline {subsubsection}{\numberline {1.3.2}Acronyms}{6}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.3}Abbreviations}{6}{subsubsection.1.3.3}
+\contentsline {subsection}{\numberline {1.4}Reference Documents}{6}{subsection.1.4}
+\contentsline {subsection}{\numberline {1.5}Document Overview}{6}{subsection.1.5}
+\contentsline {section}{\numberline {2}Overall Description}{7}{section.2}
+\contentsline {subsection}{\numberline {2.1}Product Perspective}{7}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Product Functions}{7}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}User Characteristics}{8}{subsection.2.3}
+\contentsline {subsection}{\numberline {2.4}Constraints}{8}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Regulatory policies}{8}{subsubsection.2.4.1}
+\contentsline {paragraph}{}{8}{section*.7}
+\contentsline {paragraph}{}{8}{section*.8}
+\contentsline {subsubsection}{\numberline {2.4.2}Hardware limitations}{9}{subsubsection.2.4.2}
+\contentsline {subsubsection}{\numberline {2.4.3}Criticality of the application}{9}{subsubsection.2.4.3}
+\contentsline {subsubsection}{\numberline {2.4.4}Parallel operations}{9}{subsubsection.2.4.4}
+\contentsline {subsubsection}{\numberline {2.4.5}Safety and security considerations}{9}{subsubsection.2.4.5}
+\contentsline {paragraph}{}{9}{section*.9}
+\contentsline {paragraph}{}{10}{section*.10}
+\contentsline {subsection}{\numberline {2.5}Assumptions and Dependencies}{10}{subsection.2.5}
+\contentsline {section}{\numberline {3}Specific Requirements}{11}{section.3}
+\contentsline {subsection}{\numberline {3.1}External Interface Requirements}{11}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}User Interfaces}{11}{subsubsection.3.1.1}
+\contentsline {subsubsection}{\numberline {3.1.2}Hardware Interfaces}{11}{subsubsection.3.1.2}
+\contentsline {subsubsection}{\numberline {3.1.3}Software Interfaces (API)}{11}{subsubsection.3.1.3}
+\contentsline {subsubsection}{\numberline {3.1.4}Communication Interfaces}{11}{subsubsection.3.1.4}
+\contentsline {subsection}{\numberline {3.2}Functional Requirements}{13}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}Requirements}{13}{subsubsection.3.2.1}
+\contentsline {subsection}{\numberline {3.3}Use Cases}{19}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}[UC.1] A guest registers to PowerEnJoy.}{20}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}[UC.2] A user logs in to the PowerEnJoy application.}{21}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}[UC.3a] A user searches for available cars near his position.}{22}{subsubsection.3.3.3}
+\contentsline {subsubsection}{\numberline {3.3.4}[UC.3b] A user searches for available cars in a specific position.}{23}{subsubsection.3.3.4}
+\contentsline {subsubsection}{\numberline {3.3.5}[UC.4] A user reserves a car.}{24}{subsubsection.3.3.5}
+\contentsline {subsubsection}{\numberline {3.3.6}[UC.5] A user cancels a reservation for a car.}{25}{subsubsection.3.3.6}
+\contentsline {subsubsection}{\numberline {3.3.7}[UC.6a] A user unlocks the car with the QR code printed on the car.}{26}{subsubsection.3.3.7}
+\contentsline {subsubsection}{\numberline {3.3.8}[UC.6b] A user unlocks the car using his position.}{27}{subsubsection.3.3.8}
+\contentsline {subsubsection}{\numberline {3.3.9}[UC.7] A user ends a ride.}{28}{subsubsection.3.3.9}
+\contentsline {subsubsection}{\numberline {3.3.10}[UC.8] A user parks the car without ending the ride.}{29}{subsubsection.3.3.10}
+\contentsline {subsubsection}{\numberline {3.3.11}[UC.9] A user ends a ride while the car is temporarily parked.}{30}{subsubsection.3.3.11}
+\contentsline {subsubsection}{\numberline {3.3.12}[UC.10] The system suggests to the user a PGS to park the car at and save money.}{31}{subsubsection.3.3.12}
+\contentsline {subsubsection}{\numberline {3.3.13}[UC.11] Payment}{32}{subsubsection.3.3.13}
+\contentsline {subsubsection}{\numberline {3.3.14}[UC.12] User pays a pending bill.}{33}{subsubsection.3.3.14}
+\contentsline {subsubsection}{\numberline {3.3.15}[UC.13] A user reports a problem to the system.}{34}{subsubsection.3.3.15}
+\contentsline {subsection}{\numberline {3.4}Non Functional Requirements}{34}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Performance Requirements}{34}{subsection.3.5}
+\contentsline {subsubsection}{\numberline {3.5.1}Software System Attributes}{34}{subsubsection.3.5.1}
+\contentsline {section}{\numberline {4}Appendix}{36}{section.4}
+\contentsline {subsection}{\numberline {4.1}Alloy Model}{36}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Software and tools used}{36}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Hours of work}{36}{subsection.4.3}
+\contentsline {section}{\numberline {5}Revisions}{37}{section.5}
+\contentsline {subsection}{\numberline {5.1}Changelog}{37}{subsection.5.1}
