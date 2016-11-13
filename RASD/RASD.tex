@@ -18,7 +18,7 @@
 \usepackage{color}
 \definecolor{alloy-keyword}{rgb}{0.23, 0.23, 0.7}
 \definecolor{alloy-comment}{rgb}{0.18, 0.64, 0.18}
-\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}     
+\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}
 \lstset{
 	language=alloy,
 	numbers=left,
@@ -228,24 +228,11 @@ All the sensitive data are stored and transmitted to third parts society in acco
 
 \subsubsection{Hardware limitations}
 
-To provide all the functionalities specified in this document, every car must have:
-\begin{itemize}
-	\item{a reliable GPS tracker.}
-	\item{a mobile Internet connection (for example a 3G or 4G connection) to receive data from and communicate with the central system.}
-	\item{sensors to collect data from the engine and the battery.}
-	\item{an electronic switch to lock and unlock the doors.}
-	\item{a weight sensor on each seat.}
-	\item{a touchscreen display to offer a dedicated interface to users.}
-	\item{an internal system to control these components and communicate with the central system}
-	\item{a unique QR code printed on the outside of the car}
-\end{itemize}
+The system has to run under the following worst-case conditions:
 
-To provide all the functionalities specified in this document, the application must have:
 \begin{itemize}
-  \item{a mobile Internet connection (for example a 3G or 4G connection).}
-  \item{a GPS sensor. (Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality).}
-  \item{40 MB of space for map and app package.}
-  \item{a QR code scanner.}
+  \item{a mobile Internet connection (for example a 3G or 4G connection) that guarantee 1Mb/s.}
+  \item{50 MB of space}
 \end{itemize}
 
 \subsubsection{Criticality of the application}
@@ -265,7 +252,7 @@ The position of a car could be accessible also both to employee and the user tha
 \newpage
 \subsection{Assumptions and Dependencies}
 
-\paragraph{Hardware dependencies}
+\paragraph{Car hardware dependencies}
 To provide all the functionalities specified in this document, every car must have:
 \begin{itemize}
 	\item{a reliable GPS tracker;}
@@ -279,10 +266,12 @@ To provide all the functionalities specified in this document, every car must ha
 	\item{a unique QR code printed on the outside of the car.}
 \end{itemize}
 
-\paragraph{Connection to the Internet}
+\paragraph{Web application dependencies}
 The web application needs an Internet connection to work, for example to connect to the database and find available cars.
 
+\paragraph{Mobile application dependencies}
 The mobile application will need at least an Internet connection to receive data from and communicate with the central system. Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality.
+The mobile device will need a QR scanner to unlock the cars.
 
 \paragraph{Power grid stations}
 Power grid stations must have a sensor on each plug to know if it's free or in use, and an Internet connection to communicate this information to the system.
@@ -742,7 +731,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		Each exception is handled by warning the guest of the problem and letting them insert the data again.\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -750,7 +739,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_guest_registers_to_PowerEnJoy.pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.2] A user logs in to the PowerEnJoy application.}
 	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -775,7 +764,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -783,7 +772,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_user_logs_in_the_PowerEnjoy_application.pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.3a] A user searches for available cars near his position.}
 	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -809,7 +798,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -817,7 +806,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_user_searches_an_available_car_near_his_position..pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.3b] A user searches for available cars in a specific position.}
 	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -847,7 +836,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -855,7 +844,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_user_searches_an_available_car_in_a_specific_position..pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.4] A user reserves a car.}
 	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -880,7 +869,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -888,7 +877,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_user_reserves_a_car..pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.5] A user cancels a reservation for a car.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -912,7 +901,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -920,7 +909,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_user_cancels_a_reservation_for_a_car..pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.6a] A user unlocks the car with the QR code printed on the car.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -945,7 +934,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -953,7 +942,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_user_unlocks_the_car_with_the_QR_code_printed_on_the_car..pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.6b] A user unlocks the car using his position.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -978,7 +967,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-	
+
 	\begin{figure}[H]
 		\centering
 		\makebox[\textwidth][c]{
@@ -986,7 +975,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\input{images/A_user_unlocks_the_car_using_his_position..pdf_tex}
 		}
 	\end{figure}
-	
+
 	\paragraph{[UC.7] A user ends a ride.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
@@ -1021,7 +1010,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\end{itemize}\\
 			\hline
 		\end{tabularx}
-		
+
 		\begin{figure}[H]
 			\centering
 			\makebox[\textwidth][c]{
@@ -1029,7 +1018,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\input{images/A_user_ends_the_ride..pdf_tex}
 			}
 		\end{figure}
-		
+
 		\paragraph{[UC.8] A user parks the car without ending the ride.}	~\\
 		\begin{tabularx}{\textwidth}{  l  X  }
 			\hline
@@ -1060,7 +1049,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{itemize}\\
 				\hline
 			\end{tabularx}
-			
+
 			\begin{figure}[H]
 				\centering
 				\makebox[\textwidth][c]{
@@ -1068,7 +1057,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 					\input{images/A_user_parks_the_car_without_ending_the_ride..pdf_tex}
 				}
 			\end{figure}
-			
+
 			\paragraph{[UC.9] A user ends a ride while the car is temporarily parked.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
@@ -1092,7 +1081,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				Exceptions & -\\
 				\hline
 			\end{tabularx}
-			
+
 			\begin{figure}[H]
 				\centering
 				\makebox[\textwidth][c]{
@@ -1100,7 +1089,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 					\input{images/A_user_ends_a_ride_after_choose_to_park_the_car_temporally..pdf_tex}
 				}
 			\end{figure}
-			
+
 			\paragraph{[UC.10] The system suggests to the user a PGS to park the car at and save money.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
@@ -1134,7 +1123,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-			
+
 			\begin{figure}[H]
 				\centering
 				\makebox[\textwidth][c]{
@@ -1142,7 +1131,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 					\input{images/The_system_suggests_to_the_user_a_PGS_to_park_the_car_and_save_money..pdf_tex}
 				}
 			\end{figure}
-			
+
 			\paragraph{[UC.11] Payment}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
@@ -1169,7 +1158,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-			
+
 			\begin{figure}[H]
 				\centering
 				\makebox[\textwidth][c]{
@@ -1177,7 +1166,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 					\input{images/Payment..pdf_tex}
 				}
 			\end{figure}
-			
+
 			\paragraph{[UC.12] A user pays a pending bill.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
@@ -1205,7 +1194,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-			
+
 			\begin{figure}[H]
 				\centering
 				\makebox[\textwidth][c]{
@@ -1213,7 +1202,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 					\input{images/User_pays_a_pending_bill..pdf_tex}
 				}
 			\end{figure}
-			
+
 			\paragraph{[UC.13] A user reports a problem to the system.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
@@ -1239,7 +1228,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-			
+
 			\begin{figure}[H]
 				\centering
 				\makebox[\textwidth][c]{
