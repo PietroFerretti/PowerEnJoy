@@ -107,6 +107,8 @@ A central system will manage the cars and the reservations, and will communicate
 \begin{itemize}
 	\item{ISO/IEC/IEEE Std. 29148:2011, “Systems and software engineering -- Life cycle processes -- Requirements engineering”}
 	\item{Specification document: “Assignments AA 2016-2017.pdf”}
+  \item{\href{https://www.nngroup.com/articles/response-times-3-important-limits/}{\textit{Response Times: The 3 Important Limits}}
+   by Jakob Nielsen, January 1, 1993.}
 \end{itemize}
 
 \subsection{Document Overview}
@@ -222,58 +224,58 @@ Users don't let the cars run out of battery before parking in a safe area. (Othe
 web
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{web/Signup.png}
 	}
 	\caption{*signup*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{web/Login.png}
 	}
 	\caption{*login*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{web/HomepageLogged.png}
 	}
 	\caption{*homepage*}
 \end{figure}
-	
+
 mobile
 \begin{figure}[h]
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{mobile/localization.png}
 	}
 	\caption{*mappa*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{mobile/MenuSX.png}
 	}
 	\caption{*menu*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{mobile/FreeReservation.png}
 	}
 	\caption{*reservation*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{mobile/FreeReservationEnded.png}
 	}
 	\caption{*reservation expired*}
 \end{figure}
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{mobile/Unlock.png}
 	}
 	\caption{*unlocking*}
@@ -282,7 +284,7 @@ mobile
 car's display
 \begin{figure}
 	\centering
-	\makebox[\textwidth][c]{	
+	\makebox[\textwidth][c]{
 		\includegraphics[width=\textwidth]{car/car.png}
 	}
 	\caption{*car's display*}
@@ -900,22 +902,49 @@ a username of their choice, their personal data (first name, last name, date of 
   	\hline
   \end{tabularx}
 
+\subsection{Non Functional Requirements}
 
 \subsection{Performance Requirements}
 
+\begin{itemize}
+
+  \item{\textit{Response Time}: we want that our software will satisfy the 100% of requests in maximum 0.5 seconds.
+  For this reason, the software, in order to guarantee a good grade of usability, has to be very reactive
+  and we assume that the user's perception is bounded to his connection and his device.}
+
+  \item{\textit{Workload}: we assume that the workload will distributed following the profile below: <mettere immagine>\newline
+
+  We assume that our software will be able to manage a large number of connection
+  - we estimates the the peak load could be about 3000 connections - between users and the system.}
+
+\subsubsection{Software System Attributes}
+
+\begin{itemize}
+
+  \item{\textit{User Friendliness}:
+    The use interface has to be as simple and intuitive as possible because
+    the application could also be used by users that could feel uncomfortable with the technology.}
+
+  \item{\textit{Reliability}: we assume that our software will give the right result at the 99% of the requests.}
+
+  \item{\textit{Availability}: we assume that our software will be available with a rate of 99%.
+                               In order to ensure that rate, potential patches will deployed during the night.}
+
+  \item{\textit{Security}:
+    \begin{itemize}
+      \item{each message exchanged between the system and the user will be protected by using TLS protocol.}
+      \item{sensitive data as username, password, driving license ID and so on will be saved on the database and masquerade by using SHA-256 algorithm.}
+
+  \item{\textit{Maintainability}: our software will be followed by a complete JavaDoc so other developers should easily correct or improve the code
+                                  or integrate new functions.}
+
+  \item{\textit{Portability}: in the matter of server-side, we will implement our software in order to be executed on the most commercial server;
+                              instead for the client-side the software will be compatible with iOS, Android and Windows Phone in regard of mobile application,
+                              while the web app will be compatible with the most used browser as Chrome, Firefox, Opera, Safari, etc..}
+
+\end{itemize}
+
 \subsection{Design Constraints}
-
-\subsection{Software System Attributes}
-
-\subsubsection{Reliability}
-
-\subsubsection{Availability}
-
-\subsubsection{Security}
-
-\subsubsection{Maintainability}
-
-\subsubsection{Portability}
 
 \newpage{}
 
@@ -924,6 +953,12 @@ a username of their choice, their personal data (first name, last name, date of 
 \subsection{Alloy Model}
 
 \subsection{Software and tools used}
+
+\begin{itemize}
+  \item{Astah professional for UML diagram}
+  \item{TeXStudio}
+  \item{Balsamiq for mockups}
+  \item{Alloy}
 
 \subsection{Hours of work}
 
