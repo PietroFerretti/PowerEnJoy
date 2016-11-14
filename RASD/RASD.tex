@@ -12,7 +12,6 @@
 \usepackage{svg}
 \usepackage{float}
 \usepackage{titling}
-
 \usepackage{listings}
 \usepackage{alloy}
 \usepackage{color}
@@ -29,6 +28,7 @@
 	commentstyle=\color{alloy-comment},
 	stringstyle=\color{alloy-string},
 	basicstyle=\small\fontfamily{pcr}\selectfont,
+	linewidth=8cm
 }
 \renewcommand{\arraystretch}{1.4}
 
@@ -453,13 +453,12 @@ scavkjsfa
 \subsubsection{Hardware Interfaces}
 
 \paragraph{}
-The car's system must interface with the the car's CANBUS to collect information about the engine,
+The car's system must interface with the the car's CAN bus to collect information about the engine,
 the battery level and all the sensors installed on the car (GPS, weight sensors).
 
 \subsubsection{Software Interfaces (API)}\label{apis}
 
 The system requires:
-\paragraph{}
 \begin{itemize}
   \item{\textit{Payment API}:
       \begin{itemize}
@@ -1300,7 +1299,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 
 \subsection{Alloy Model}
 
-\lstinputlisting{PowerEnjoy_v3.als}
+\lstinputlisting{powerenjoy_alloy.als}
 
 
 \begin{figure}[H]
