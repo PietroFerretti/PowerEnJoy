@@ -168,15 +168,14 @@ Every request or data query from the application (both web and mobile version) w
 
 Here are presented both the state chart and the class diagram models in order to show a more formal and rigorous description of how the system will work and will be developed.
 
-class diagram
-%\begin{figure}[H]
-%	\centering
-%	\makebox[\textwidth][c]{
-%		\includegraphics[width=450pt]{CLASSDIAGRAMHERE.png}
-%	}
-%	\caption{Class diagram}
-%	\label{classdiagram}
-%\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=450pt]{ClassDiagram.png}
+	}
+	\caption{Class diagram}
+	\label{classdiagram}
+\end{figure}
 
 \begin{figure}[H]
 	\centering
@@ -222,7 +221,7 @@ Nonetheless, our users' level of skill and technological expertise can vary wide
 
 This means that our apps/interfaces must be as user-friendly as possible to allow a wide audience of people to easily use our applications and system.
 
-\newpage
+
 \subsection{Constraints}\label{constraints}
 
 \subsubsection{Regulatory policies}
@@ -231,9 +230,12 @@ This means that our apps/interfaces must be as user-friendly as possible to allo
 All the users are responsible for their behavior, from the insertion of truthful data to the respect of traffic laws.
 
 \paragraph{}
-The system must obtain the agreement from the user to acquire, process and store data.\newline
-The system must grant to the user the chance to delete the account and so remove from the DB each data concerning the user.\newline
-All the sensitive data are stored and transmitted to third parts society in accordance to the law.\newline
+The system must obtain the agreement from the user to acquire, process and store data.
+
+The system must grant to the user the chance to delete the account and so remove from the DB each data concerning the user.
+
+All the sensitive data are stored and transmitted to third parts society in accordance to the law.
+
 
 \subsubsection{Hardware limitations}
 
@@ -245,7 +247,7 @@ The system has to run under the following worst-case conditions:
 \end{itemize}
 
 \subsubsection{Criticality of the application}
-The system is not used in life-critical applications.
+The system is not used in life-critical applications. The software doesn't have access to any critical hardware that could interfere with the car's functioning.
 
 \subsubsection{Parallel operations}
 The system must be able to respond multiple and simultaneous requests from users.
@@ -693,13 +695,9 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\caption{Use Case Diagram}
 		\label{use_case_diagram}
 	\end{figure}
-<<<<<<< HEAD
-	\newpage	\paragraph{[UC.1] A guest registers to PowerEnJoy.}
-=======
 	\newpage
 
 	\paragraph{[UC.1] A guest registers to PowerEnJoy.}
->>>>>>> 1a1f4964818aa72ee2008959edd0a53ead49ef42
 	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
