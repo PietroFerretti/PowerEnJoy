@@ -453,8 +453,9 @@ scavkjsfa
 \subsubsection{Hardware Interfaces}
 
 \paragraph{}
-The car's system must interface with the the car's CAN bus to collect information about the engine,
-the battery level and all the sensors installed on the car (GPS, weight sensors).
+The car's internal system must interface with the car's CAN bus to collect information about the engine, battery and all the sensors installed on the car (GPS, weight sensors, etc.). The car's system will communicate this information to the central servers.
+
+The car should also have a physical port to update the car's software if needed.
 
 \subsubsection{Software Interfaces (API)}\label{apis}
 
@@ -463,16 +464,16 @@ The system requires:
   \item{\textit{Payment API}:
       \begin{itemize}
         \item{\textit{VISA circuit API}:
-          \href{https://developer.visa.com}{<VISA Developer Center>}}
+          \href{https://developer.visa.com}{\underline{VISA Developer Center}}}
         \item{\textit{MasterCard circuit API}:
-          \href{https://developer.mastercard.com/apis}{<MasterCard Developer Center>}}
-        \item{\textit{PayPal API}ì
-          \href{https://developer.paypal.com/docs/api/overview/}{<PayPal API Overview>}}
+          \href{https://developer.mastercard.com/apis}{\underline{MasterCard Developer Center}}}
+        \item{\textit{PayPal API}
+          \href{https://developer.paypal.com/docs/api/overview/}{\underline{PayPal API Overview}}}
       \end{itemize}}
     \item{\textit{Driving License Validation API}:
       \begin{itemize}
         \item{\textit{Eucaris API}:
-          \href{https://www.eucaris.net}{<Eucaris>}}
+          \href{https://www.eucaris.net}{\underline{Eucaris}}}
       \end{itemize}}
 \end{itemize}
 
@@ -1282,9 +1283,9 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
   \item{\textit{Security}:
     \begin{itemize}
       \item{each message exchanged between the system and the user will be protected by using TLS protocol.}
-      \item{sensitive data as username, password, driving license ID and so on will be saved on the database and masquerade by using SHA-256 algorithm.}
+      \item{sensitive data as username, password, driving license ID and so on will be saved on the database and hashed using the SHA-256 algorithm.}
 \end{itemize}}
-  \item{\textit{Maintainability}: our software will be followed by a complete JavaDoc so other developers should easily correct or improve the code
+  \item{\textit{Maintainability}: our software will be followed by a complete documentation so other developers should easily correct or improve the code
                                   or integrate new functions.}
 
   \item{\textit{Portability}: in the matter of server-side, we will implement our software in order to be executed on the most commercial server;
@@ -1298,6 +1299,9 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 \section{Appendix}
 
 \subsection{Alloy Model}
+
+We developed an Alloy model following the requirements we specified to check if they were consistent. This section contains the entire source code of our model and a picture of the world it generated.
+The original file can be found in the same directory where this document was published, with the name \verb|'powerenjoy_alloy.als'|.
 
 \lstinputlisting{powerenjoy_alloy.als}
 
@@ -1315,7 +1319,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
   \item{Astah professional for UML diagrams.}
   \item{GitHub for version control.}
   \item{\TeX Studio as a \LaTeX editor.}
-  \item{Google Docs for draft}
+  \item{Google Docs for the draft}
 \end{itemize}
 
 \subsection{Hours of work}
