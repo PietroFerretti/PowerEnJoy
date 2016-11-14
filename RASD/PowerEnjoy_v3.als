@@ -7,8 +7,8 @@
 6. gestire sig Used, TemporaryBreak
 7. FACT EachReservationHasCorrespondingUser, mi serve?
 8. MSO implies reserved Plug
-9. quando parcheggio (sia lì che da un'altra parte) tolgo il reserved + aggiungere facts
-10. controllare che chargeneeded non può esssere prenotata
+9. quando parcheggio (sia l che da un'altra parte) tolgo il reserved + aggiungere facts
+10. controllare che chargeneeded non pu esssere prenotata
 */
 
 open util/integer as integer
@@ -106,7 +106,7 @@ sig ReservationCode{}
 sig Licence{}
 //TODO suspeded
 sig User{//estendo con registered user?
-	licenceNumber : one Licence, //mai usato però
+	licenceNumber : one Licence, //mai usato per
 	curPos : one Position, //o lone
 	curRes : lone Reservation, //FACT no reservation se sta usando una macchina //CHECK forse basta il fatto che sia lone
 	ride : lone Ride,
@@ -114,9 +114,9 @@ sig User{//estendo con registered user?
 	//TO DO providing credentials and payment infos
 } {
 	curRes != none implies ride = none //?? ha senso?
-	ride != none implies curRes = none //non posso prenotare mentre sto già usando una macchina
+	ride != none implies curRes = none //non posso prenotare mentre sto gi usando una macchina
 //una carta per user? forse meglio di no 
-//They receive back a password that can be used to access the system PW È UNICA FACT(ma no, cazzata)
+//They receive back a password that can be used to access the system PW  UNICA FACT(ma no, cazzata)
 }
 
 sig Minute{}
