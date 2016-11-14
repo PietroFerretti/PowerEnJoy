@@ -1,4 +1,5 @@
 \documentclass[english]{article}
+%\usepackage[a4paper]{geometry} % senza abbiamo problemi con le tabelle
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{babel}
@@ -11,13 +12,12 @@
 \graphicspath{{images/}{Mockups/}}
 \usepackage{svg}
 \usepackage{float}
-\usepackage{titling}
 \usepackage{listings}
 \usepackage{alloy}
 \usepackage{color}
 \definecolor{alloy-keyword}{rgb}{0.23, 0.23, 0.7}
 \definecolor{alloy-comment}{rgb}{0.18, 0.64, 0.18}
-\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}
+\definecolor{alloy-string}{rgb}{0.71, 0.18, 0.71}     
 \lstset{
 	language=alloy,
 	numbers=left,
@@ -28,16 +28,9 @@
 	commentstyle=\color{alloy-comment},
 	stringstyle=\color{alloy-string},
 	basicstyle=\small\fontfamily{pcr}\selectfont,
-	linewidth=8cm
 }
-\renewcommand{\arraystretch}{1.4}
 
-\pretitle{%
-	\begin{center}
-		\LARGE
-		\includegraphics[width=250pt]{../other/Logo_blu.png}\\[\bigskipamount]~\\[\bigskipamount]
-	}
-\posttitle{\end{center}}
+\renewcommand{\arraystretch}{1.4}
 
 \begin{document}
 
@@ -47,7 +40,7 @@ Software Engineering 2: “PowerEnJoy” \\
 \emph{Requirements Analysis and Specification Document}}
 
 \author{Pietro Ferretti, Nicole Gervasoni, Danilo Labanca}
-\date{November 13, 2016}
+
 \maketitle
 
 \newpage
@@ -61,7 +54,7 @@ Software Engineering 2: “PowerEnJoy” \\
 \subsection{Purpose}
 
 \paragraph{}
-The purpose of this document is to provide a complete and detailed description and specification of a digital management system for PowerEnJoy, an electric car sharing service. This document will
+The purpose of this document is to provide a detailed description and specification of a digital management system for PowerEnJoy, an electric car sharing service. This document will
 illustrate functional and non-functional requirements of the software to-be, outlining costraints, showing potential user interfaces for the software, and explaining the domain assumptions made. Additionally, at the end of the document we will present an Alloy model to further specificate the world and environment our system will have to manage.
 
 \paragraph{}
@@ -76,7 +69,7 @@ The aim of this project is to specify in detail a new digital management softwar
 \paragraph{}
 Users must be able to register to PowerEnJoy providing their personal data, driving license and payment information.
 After registering, users should be able to look for available cars near them or to a specific location. If they find a car that matches their needs, they can reserve the car up to one hour before using it. After approaching a reserved car users should have a way to unlock the car and enter it.
-While using a car, users are charged for a given amount of money per minute; a display on the car will inform the user of the amount of money they will have to pay at the end of the ride.
+While using a car users are charged for a given amount of money per minute; a display on the car will inform the user of the amount of money they will have to pay at the end of the ride.
 The system stops charging the user after the car is parked in a safe area.
 Furthermore the system incentivizes virtuous behaviours by offering several discounts if certain conditions are met (e.g. charging a car at a power grid station).
 
@@ -85,7 +78,7 @@ To accomplish these goals we need to bridge the gap between the world (cars and 
 The users will be able to access the system functionalities through a web and a mobile application, and a dedicated touchscreen installed in every car.
 A central system will manage the cars and the reservations, and will communicate with the cars through the Internet. The system will follow the cars’ movements thanks to the GPS tracker installed in every car. Furthermore all cars will be equipped with a great variety of sensors to check the cars’ status at any time.
 
-\newpage
+
 \subsection{Definitions, Acronyms, Abbreviations}
 
 \subsubsection{Definitions}
@@ -93,7 +86,7 @@ A central system will manage the cars and the reservations, and will communicate
 \begin{itemize}
 \item{\textit{Guest}: a person that is not registered to the system.}
 \item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
-\item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas is predefined by the system.}
+\item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas are predefined by the system.}
 \item{\textit{Power grid station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
 \item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don’t have dead batteries.}
 \item{\textit{Reservation}:
@@ -110,7 +103,6 @@ A central system will manage the cars and the reservations, and will communicate
 \item{\textit{Suspended user}: a user that cannot reserve or use cars. Usually users are suspended because they have outstanding bills.}
 \item{\textit{Payment method}: a way to transfer money from the user to the system. Our system will only accept credit cards and online accounts like Paypal.}
 \item{\textit{Payment API}: an interface to carry out money transactions, offered by the external provider associated to the payment method used (e.g. a bank).}
-\item{\textit{CAN bus}: a vehicle bus standard designed to allow micro controllers and devices to communicate with each other.}
 \end{itemize}
 
 \subsubsection{Acronyms}
@@ -138,16 +130,7 @@ A central system will manage the cars and the reservations, and will communicate
 	\item{Specification document: “Assignments AA 2016-2017.pdf”}
 \end{itemize}
 
-\newpage{}
-
 \subsection{Document Overview}
-This document is structured as follows:
-\begin{itemize}
-\item{\textbf{Section 1 - Introduction:} it is a presentation of the document and the product; it contains the information needed to understand the whole document.}
-\item{\textbf{Section 2 - Overall Description:} gives general information about the software product with more focus about constraints and assumptions.}
-\item{\textbf{Section 3 - Specific Requirements:} it contains the product requirements list, use cases and associated UML diagrams; this section will delve deeper into the software functionalities. In addition, it includes some application mockups in order to produce a clearer vision on how the final product will look like.}
-\item{\textbf{Section 4 - Appendix:} it contains an Alloy model of the application domain, a list of all tools used to draw up this document and the hours of work each collaborator put into the creation of this document.}
-\end{itemize}
 
 \newpage{}
 
@@ -155,39 +138,53 @@ This document is structured as follows:
 
 \subsection{Product Perspective}
 
+%"This subsection of the SRS should put the product into perspective with other related products. If the product
+%is independent and totally self-contained, it should be so stated here. If the SRS deÞnes a product that is a
+%component of a larger system, as frequently occurs, then this subsection should relate the requirements of
+%that larger system to functionality of the software and should identify interfaces between that system and the
+%software.
+%A block diagram showing the major components of the larger system, interconnections, and external inter-
+%faces can be helpful."
+
 \subsubsection{Integration with external systems}
+The PowerEnJoy system is 
 
-Since there are no existing modules our system will need to integrate, PowerEnjoy is mainly a standalone system.
-The PowerEnjoy software will use APIs in order to accomplish few specific goals such as  driving licence verification and card payment processing, more details about it can be found in section \ref{apis}.
-The PowerEnjoy system is not planned to offer any APIs to external systems.
+a standalone system, completely new
+offers no api to external systems
+uses apis for driving licence verification and payment processing, more details in section \ref{apis}
 
-The whole system, software and databases, will be stored on the central servers. These will communicate with the car software which will control the car application given the sensors' feedbacks.
-Every request or data query from the application (both web and mobile version) will be sent to and elaborated by the servers.
 
+
+[[idee:
+i database e tutto sono su dei server centrali
+c'è un sistema sulla macchina che controlla tutti i sensori, controlla l'applicazione a schermo e comunica con i server centrali
+l'applicazione web comunica con i server centrali per avere accesso a dati/database
+l'applicazione mobile pure
+]] non credo c'entri ma forse 
 \subsubsection{Domain model}
 
-Here are presented both the state chart and the class diagram models in order to show a more formal and rigorous description of how the system will work and will be developed.
+qui testo per presentare i diagrammi
+
+
+class diagram
+%\begin{figure}[H]
+%	\centering
+%	\makebox[\textwidth][c]{	
+%		\includegraphics[width=450pt]{CLASSDIAGRAMHERE.png}
+%	}
+%	\caption{Class diagram}
+%	\label{classdiagram}
+%\end{figure}
 
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{
+	\makebox[\textwidth][c]{	
 		\includegraphics[width=450pt]{statechart.png}
 	}
 	\caption{State Chart for cars}
 	\label{statechart}
 \end{figure}
 
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[width=450pt]{ClassDiagram.png}
-	}
-	\caption{Class diagram}
-	\label{classdiagram}
-\end{figure}
-
-
-\newpage
 \subsection{Product Functions}\label{goals}
 
 The PowerEnJoy application will offer many different functionalities; specifically, the goals we want to accomplish are the following:
@@ -212,7 +209,7 @@ The PowerEnJoy application will offer many different functionalities; specifical
 	\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
 	\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
 	\item[{[G19]}]{Users with outstanding bills should have a way to pay them.}
-	\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery).}
+	\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)}
 \end{description}
 
 \subsection{User Characteristics}
@@ -221,51 +218,40 @@ Users will use our application mainly to borrow cars and drive from one place to
 
 Nonetheless, our users' level of skill and technological expertise can vary widely, from the young 20-something digital native with a modern smartphone, to the old couple that has some trouble with mobile applications and technology.
 
-This means that our apps/interfaces must be as user-friendly as possible to allow a wide audience of people to easily use our applications and system.
+This means that our apps/interfaces must be as user-friendly as possible to allow a wide audience of people to easily use our applications and system. 
 
 \newpage
 \subsection{Constraints}\label{constraints}
 
-\subsubsection{Regulatory policies}
+%This subsection of the SRS should provide a general description of any other items that will limit the devel-
+%operÕs options. These include
+%Regulatory policies;
+%Hardware limitations (e.g., signal timing requirements);
+%Interfaces to other applications;
+%Parallel operation;
+%Audit functions;
+%Control functions;
+%Higher-order language requirements;
+%Signal handshake protocols (e.g., XON-XOFF, ACK-NACK);
+%Reliability requirements;
+%Criticality of the application;
+%Safety and security considerations.
 
-\paragraph{}
-All the users are responsible for their behavior, from the insertion of truthful data to the respect of traffic laws.
 
-\paragraph{}
-The system must obtain the agreement from the user to acquire, process and store data.
-
-The system must grant to the user the chance to delete the account and so remove from the DB each data concerning the user.
-
-All the sensitive data are stored and transmitted to third parts society in accordance to the law.
-
-
-\subsubsection{Hardware limitations}
-
-The system has to run under the following worst-case conditions:
-
-\begin{itemize}
-  \item{a mobile Internet connection (for example a 3G or 4G connection) that guarantee 1Mb/s.}
-  \item{50 MB of space}
-\end{itemize}
-
-\subsubsection{Criticality of the application}
-The system is not used in life-critical applications. The software doesn't have access to any critical hardware that could interfere with the car's functioning.
-
-\subsubsection{Parallel operations}
-The system must be able to respond multiple and simultaneous requests from users.
-
-\subsubsection{Safety and security considerations}
-\paragraph{}
-All the knowledge regarding user's credentials, reservations, rides and bills must be kept private and accessible only to the user.
-
-\paragraph{}
-The position of a car could be accessible also both to employee and the user that reserved the car.
+regolamentazioni
+limitazioni dell'hardware (poca potenza)
+interfacce con altre applicazioni
+operazioni in parallelo
+funzioni di controllo
+requisiti di reliability
+criticalità
+sicurezza fisica degli utenti
 
 
 \newpage
 \subsection{Assumptions and Dependencies}
 
-\paragraph{Car hardware dependencies}
+\paragraph{Hardware dependencies}
 To provide all the functionalities specified in this document, every car must have:
 \begin{itemize}
 	\item{a reliable GPS tracker;}
@@ -279,12 +265,10 @@ To provide all the functionalities specified in this document, every car must ha
 	\item{a unique QR code printed on the outside of the car.}
 \end{itemize}
 
-\paragraph{Web application dependencies}
+\paragraph{Connection to the Internet}
 The web application needs an Internet connection to work, for example to connect to the database and find available cars.
 
-\paragraph{Mobile application dependencies}
 The mobile application will need at least an Internet connection to receive data from and communicate with the central system. Access to the device’s location is not mandatory, but is needed to provide the “find available cars near me” functionality.
-The mobile device will need a QR scanner to unlock the cars.
 
 \paragraph{Power grid stations}
 Power grid stations must have a sensor on each plug to know if it's free or in use, and an Internet connection to communicate this information to the system.
@@ -302,7 +286,7 @@ The system has a predefined list of all the safe areas and their locations, list
 
 \paragraph{No idle users}
 After unlocking a car users turn on the engine shortly after (i.e. the user doesn't stand in the car idly for long periods of time). We'd prefer if this happened rarely, because users aren't charged until the engine is ignited.
-We suppose that users want to get to their destination as soon as possible.
+We suppose that users want to get to their destination as soon as possible. 
 
 \paragraph{Users leave the car after parking}
 When a user ends a ride or parks temporarily, we assume that the users and all the passengers have already exited the car when the last door is closed and the lock timeout expires. \\
@@ -335,55 +319,59 @@ We suppose users are reliable and never let the cars run out of battery before p
 
 \subsubsection{User Interfaces}
 
+
+%"This should specify the following:
+%a) The logical characteristics of each interface between the software product and its users. This
+%includes those conÞguration characteristics (e.g., required screen formats, page or window layouts,
+%content of any reports or menus, or availability of programmable function keys) necessary to accom-
+%plish the software requirements.
+%b) All the aspects of optimizing the interface with the person who must use the system. This may simply
+%comprise a list of doÕs and donÕts on how the system will appear to the user. One example may be a
+%requirement for the option of long or short error messages. Like all others, these requirements
+%should be veriÞable, e.g., Òa clerk typist grade 4 can do function X in Z min after 1 h of trainingÓ
+%rather than Òa typist can do function X. Ó (This may also be speciÞed in the Software System
+%Attributes under a section titled Ease of Use.)"
+
 \paragraph{}
 Our software will provide 3 main user interfaces: a mobile application, a web application and an application for the car's display.
 Through these interfaces the users must be able to access all the functionalities listed in section \ref{goals}.
 
 \paragraph{}
-The design of:
-\begin{itemize}
-  \item{web application must follow W3C standard about HTML5 and CSS.}
-  \item{iOS application must follow iOS Human Interface Guidelines described by Apple.}
-  \item{Android application must follow Android Interface Guidelines about Material Design.}
-\end{itemize}
+The interfaces must be user-friendly and easy to use. Every element's function must be clear, so that users can intuitively navigate the application without any confusion.
 
-\paragraph{}
-The interfaces must be user-friendly and easy to use.
-Every element's function must be clear, so that users can intuitively navigate the application without any confusion.
-
-\paragraph{}
 To avoid clunkiness and make the application easy to use, every functionality must be reachable in a maximum of 3 clicks and/or taps from any page.
-
 
 
 %%%%%%%%%%%%%%%
 % Le immagini su latex tendono a disporsi dove c'è spazio, sistemeremo la posizione alla fine
 %%%%%%%%%%%%%%%
  \paragraph{}
-
+ 
 \begin{itemize}
 	\item{\textbf{Web Application UI}}
 \end{itemize}
+something about the web user interface
+responsive, usable on every type of screen
+a mobile version for people who don't have the mobile application and just visit the web page
 
-The application will have a responsive interface to ensure the optimal view for every device screen. In this way owning the mobile application will not be mandatory in order to reserved a car.
 
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{
+	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{web/Signup.png}
 	}
 	\caption{The web Sign Up form}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{
+	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{web/Login.png}
 	}
 	\caption{The web Login page}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{
+	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{web/HomepageLogged.png}
 	}
 	\caption{The dashboard, after logging in}
@@ -402,7 +390,7 @@ The application will have a responsive interface to ensure the optimal view for 
 		\caption{Map showing available cars}
 	\end{minipage}%
 	\begin{minipage}{.5\textwidth}
-		\centering
+		\centering		
 		\includegraphics[width=100pt]{mobile/MenuSX.png}
 		\caption{The mobile application menu}
 	\end{minipage}
@@ -433,11 +421,15 @@ The application will have a responsive interface to ensure the optimal view for 
 	\item{\textbf{Car's display application UI}}
 \end{itemize}
 
-The car's application interface, while driving, will always show the map, the battery level, the current cost of the journey and the number of passengers detected by the car's sensors. 
+something about the car's display user interface
+emphasis on the navigator, to let the user follow 
+the amount of money to pay is visible
+the battery charge must be visible
+scavkjsfa
 
 \begin{figure}[H]
 	\centering
-	\makebox[\textwidth][c]{
+	\makebox[\textwidth][c]{	
 		\includegraphics[width=\textwidth]{car/car.png}
 	}
 	\caption{The car's display while a user is driving}
@@ -446,53 +438,66 @@ The car's application interface, while driving, will always show the map, the ba
 
 \subsubsection{Hardware Interfaces}
 
-\paragraph{}
-The car's internal system must interface with the car's CAN bus to collect information about the engine, battery and all the sensors installed on the car (GPS, weight sensors, etc.). The car's system will communicate this information to the central servers.
+"This should specify the logical characteristics of each interface between the software product and the hard-
+ware components of the system. This includes conÞguration characteristics (number of ports, instruction
+sets, etc.). It also covers such matters as what devices are to be supported, how they are to be supported, and
+protocols. For example, terminal support may specify full-screen support as opposed to line-by-line support."
 
-The car should also have a physical port to update the car's software if needed.
+the car's system must interface with the the car's CANBUS to get information about the engine, the battery level, the position
+
+Every car's internal system/controller will have a direct interface to the car's CAN bus (a vehicle bus standard designed to allow microcontrollers and devices to communicate with each other) to collect information about the engine, the battery level and all the sensors installed on the car (GPS, weight sensors).
 
 \subsubsection{Software Interfaces (API)}\label{apis}
 
-The system requires:
-\begin{itemize}
-  \item{\textit{Payment APIs}:
-      \begin{itemize}
-        \item{\textit{VISA circuit API}:
-          \href{https://developer.visa.com}{\underline{VISA Developer Center}}}
-        \item{\textit{MasterCard circuit API}:
-          \href{https://developer.mastercard.com/apis}{\underline{MasterCard Developer Center}}}
-        \item{\textit{PayPal API}:
-          \href{https://developer.paypal.com/docs/api/overview/}{\underline{PayPal API Overview}}}
-      \end{itemize}}
-    \item{\textit{Driving License Validation API}:
-      \begin{itemize}
-        \item{\textit{Eucaris API}:
-          \href{https://www.eucaris.net}{\underline{Eucaris}}}
-      \end{itemize}}
-      \item{\textit{Sign Up APIs}:
-      	\begin{itemize}
-      		\item{\textit{Facebook API}:
-      			\href{https://developers.facebook.com/docs/facebook-login/}{\underline{Login with Facebook}}}
-      		\item{\textit{Google API}:
-      			\href{https://developers.google.com/identity/}{\underline{Google Identity Platform}}}
-      	\end{itemize}
-    }
-\end{itemize}
+"This should specify the use of other required software products (e.g., a data management system, an operat-
+ing system, or a mathematical package), and interfaces with other application systems (e.g., the linkage
+between an accounts receivable system and a general ledger system). For each required software product, the
+following should be provided:
+Name;
+Mnemonic;
+SpeciÞcation number;
+Version number;
+Source."
 
-\paragraph{}
-The mobile application must interface with the operating system:
-\begin{itemize}
-  \item{\textit{iOS}}
-  \item{\textit{Android}}
-  \item{\textit{Windows Phone}}
-\end{itemize}
+"For each interface, the following should be provided:
+Discussion of the purpose of the interfacing software as related to this software product.
+DeÞnition of the interface in terms of message content and format. It is not necessary to detail any
+well-documented interface, but a reference to the document deÞning the interface is required."
+
+interface con:
+
+Circuito VISA
+Circuito Mastercard
+Paypal
+
+interface con EUCARIS per il controllo patenti
+
+
+      Payments API
+      Stripe
+      https://stripe.com/it
+
+      Driver License Validation API
+      EUCARIS
+      https://www.eucaris.net/
+
+
+the mobile application must interface with the operating system:
+android
+ios
+windows phone
+
+
 
 \subsubsection{Communication Interfaces}
+This should specify the various interfaces to communications such as local network protocols, etc.
 
-All the communications between web application and system server or mobile application must be HTTPS request/response.
+communication between mobile application <-> our central servers
+communication between browsers <-> web servers
+communication between cars <-> our central servers
+
 
 \newpage
-
 \subsection{Functional Requirements}
 
 \subsubsection{Requirements}
@@ -545,10 +550,6 @@ a username of their choice, their personal data (first name, last name, date of 
 }
 
 \item[{[G5]}]{Users must be able to cancel a reservation if they decide to not actually use the car.}
-\begin{itemize}
-	\item{[RE.5.1] If the user has reserved a car the system must offer an interface to cancel the reservation.}
-	\item{[RE.5.2] When the user selects to cancel the reservation, the system must free the car and allow the user to reserve another car.}
-\end{itemize}
 
 \item[{[G6]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.
 \begin{itemize}
@@ -585,8 +586,8 @@ a username of their choice, their personal data (first name, last name, date of 
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.9.1] The moment a car is parked in a safe area, the system must ask through an interface on the car screen if the user wants to end the reservation or just park temporarily.}
-	\item{[RE.10.1] When a car is temporarily parked and locked, the system keeps on charging the user but with a different rate than that used in RE.7.3.}
-	\item{[RE.10.2] After a temporarily parked car is unlocked by the user and the engine is turned on, the system starts charging the user with the rate used in RE.7.3 again.}
+	\item{[RE.10.1] When a car is temporarily parked and locked, the system keeps on charging the user but with different rules than those used in RE.7.3, this time depending only on time elapsed while parked.}
+	\item{[RE.10.2] After a temporarily parked car is unlocked by the user and the engine is turned on, the system starts charging the user with the rules used in RE.7.3 again.}
 \end{itemize}
 }
 
@@ -689,14 +690,14 @@ We identified the following use cases for our software:
 		\item{\textbf{[UC.12]} A user pays a pending bill.}
 		\item{\textbf{[UC.13]} A user reports a problem to the system.}
 	\end{itemize}
-
+	
 \paragraph{}
 Figure \ref{use_case_diagram} shows the relationships between use cases and involved actors.
 
 	\begin{figure}
 		\centering
 		\makebox[\textwidth][c]{
-			\def\svgwidth{500pt}
+			\def\svgwidth{450pt}
 
 			\input{images/use_case_diag.pdf_tex}
 		}
@@ -704,7 +705,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\label{use_case_diagram}
 	\end{figure}
 	\newpage
-
+	
 	\paragraph{[UC.1] A guest registers to PowerEnJoy.}
 	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -724,8 +725,8 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\item{The guest inserts the number of the credit card and the corresponding CVV}.
 			\item{The guest gives their consent to the processing of their personal data by checking a box.}
 			\item{The guest clicks on the “confirm” button and submits the data.}
-			\item{In the case the guest uploads a photo, the system uses an OCR application to extract the data.}
-			\item{The system connects to the \textit{Motorizzazione}'s data center to prove the validity of the driving license.}
+      \item{In the case the guest uploads a photo, the system uses an OCR application to extract the data.}
+      \item{The system connects to the \textit{Motorizzazione}'s data center to prove the validity of the driving license.}
 			\item{The system generates a password and sends it to the user's email address.}
 			\item{The system  saves the data in the DB.}
 			\item{The system informs the user of the successful registration and redirects the user to the profile management page.}
@@ -746,14 +747,14 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		Each exception is handled by warning the guest of the problem and letting them insert the data again.\\
 		\hline
 	\end{tabularx}
-
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_guest_registers_to_PowerEnJoy.pdf_tex}
-		}
-	\end{figure}
+	
+		\begin{figure}[H]
+			\centering
+			\makebox[\textwidth][c]{
+				\def\svgwidth{450pt}
+				\input{images/A_guest_registers_to_PowerEnJoy.pdf_tex}
+			}
+		\end{figure}
 
 	\paragraph{[UC.2] A user logs in to the PowerEnJoy application.}
 	~\\
@@ -780,13 +781,13 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\hline
 	\end{tabularx}
 
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_user_logs_in_the_PowerEnjoy_application.pdf_tex}
-		}
-	\end{figure}
+		\begin{figure}[H]
+			\centering
+			\makebox[\textwidth][c]{
+				\def\svgwidth{450pt}
+				\input{images/A_user_logs_in_the_PowerEnjoy_application.pdf_tex}
+			}
+		\end{figure}
 
 	\paragraph{[UC.3a] A user searches for available cars near his position.}
 	~\\
@@ -813,17 +814,17 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_user_searches_an_available_car_near_his_position..pdf_tex}
-		}
-	\end{figure}
+	
+		\begin{figure}[H]
+			\centering
+			\makebox[\textwidth][c]{
+				\def\svgwidth{450pt}
+				\input{images/A_user_searches_an_available_car_near_his_position..pdf_tex}
+			}
+		\end{figure}
 
 	\paragraph{[UC.3b] A user searches for available cars in a specific position.}
-	~\\
+		~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -852,16 +853,16 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\hline
 	\end{tabularx}
 
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_user_searches_an_available_car_in_a_specific_position..pdf_tex}
-		}
-	\end{figure}
+		\begin{figure}[H]
+			\centering
+			\makebox[\textwidth][c]{
+				\def\svgwidth{450pt}
+				\input{images/A_user_searches_an_available_car_in_a_specific_position..pdf_tex}
+			}
+		\end{figure}
 
 	\paragraph{[UC.4] A user reserves a car.}
-	~\\
+		~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -885,13 +886,13 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\hline
 	\end{tabularx}
 
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_user_reserves_a_car..pdf_tex}
-		}
-	\end{figure}
+		\begin{figure}[H]
+			\centering
+			\makebox[\textwidth][c]{
+				\def\svgwidth{450pt}
+				\input{images/A_user_reserves_a_car..pdf_tex}
+			}
+		\end{figure}
 
 	\paragraph{[UC.5] A user cancels a reservation for a car.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -916,14 +917,14 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_user_cancels_a_reservation_for_a_car..pdf_tex}
-		}
-	\end{figure}
+	
+			\begin{figure}[H]
+				\centering
+				\makebox[\textwidth][c]{
+					\def\svgwidth{450pt}
+					\input{images/A_user_cancels_a_reservation_for_a_car..pdf_tex}
+				}
+			\end{figure}
 
 	\paragraph{[UC.6a] A user unlocks the car with the QR code printed on the car.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -949,14 +950,14 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_user_unlocks_the_car_with_the_QR_code_printed_on_the_car..pdf_tex}
-		}
-	\end{figure}
+	
+			\begin{figure}[H]
+				\centering
+				\makebox[\textwidth][c]{
+					\def\svgwidth{450pt}
+					\input{images/A_user_unlocks_the_car_with_the_QR_code_printed_on_the_car..pdf_tex}
+				}
+			\end{figure}
 
 	\paragraph{[UC.6b] A user unlocks the car using his position.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -982,14 +983,14 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
-
-	\begin{figure}[H]
-		\centering
-		\makebox[\textwidth][c]{
-			\def\svgwidth{450pt}
-			\input{images/A_user_unlocks_the_car_using_his_position..pdf_tex}
-		}
-	\end{figure}
+	
+			\begin{figure}[H]
+				\centering
+				\makebox[\textwidth][c]{
+					\def\svgwidth{450pt}
+					\input{images/A_user_unlocks_the_car_using_his_position..pdf_tex}
+				}
+			\end{figure}
 
 	\paragraph{[UC.7] A user ends a ride.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
@@ -1012,7 +1013,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\item{The user exits the car and closes the doors.}
 				\item{The system locks the car.}
 				\item{The system stops charging the user.}
-				\item{The system verifies if one or more discount can be applied and in that case applies them.}
+        \item{The system verifies if one or more discount can be applied and in that case applies them.}
 				\item{The system sets the car as available.}
 				\item{The system carries out the payment transaction.}
 			\end{enumerate}\\
@@ -1025,16 +1026,16 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\end{itemize}\\
 			\hline
 		\end{tabularx}
+		
+				\begin{figure}[H]
+					\centering
+					\makebox[\textwidth][c]{
+						\def\svgwidth{450pt}
+						\input{images/A_user_ends_the_ride..pdf_tex}
+					}
+				\end{figure}
 
-		\begin{figure}[H]
-			\centering
-			\makebox[\textwidth][c]{
-				\def\svgwidth{450pt}
-				\input{images/A_user_ends_the_ride..pdf_tex}
-			}
-		\end{figure}
-
-		\paragraph{[UC.8] A user parks the car without ending the ride.}	~\\
+\paragraph{[UC.8] A user parks the car without ending the ride.}	~\\
 		\begin{tabularx}{\textwidth}{  l  X  }
 			\hline
 			Actor & User\\
@@ -1063,50 +1064,49 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 					\item{The user drives away instead of exiting the car. In this case the stop is canceled.}
 				\end{itemize}\\
 				\hline
-			\end{tabularx}
+		\end{tabularx}
+		
+				\begin{figure}[H]
+					\centering
+					\makebox[\textwidth][c]{
+						\def\svgwidth{450pt}
+						\input{images/A_user_parks_the_car_without_ending_the_ride..pdf_tex}
+					}
+				\end{figure}
 
-			\begin{figure}[H]
-				\centering
-				\makebox[\textwidth][c]{
-					\def\svgwidth{450pt}
-					\input{images/A_user_parks_the_car_without_ending_the_ride..pdf_tex}
-				}
-			\end{figure}
+    \paragraph{[UC.9] A user ends a ride while the car is temporarily parked.}	~\\
+    		\begin{tabularx}{\textwidth}{  l  X  }
+    			\hline
+    			Actor & User\\
+    			\hline
+    			Goal & [G10], [G15], [G16], [G17]\\
+    			\hline
+    			Preconditions & The user is logged in, and the car is locked and temporarily parked.\\
+    			\hline
+    			Execution Flow & \begin{enumerate}
+    				\item{The user goes to the main page of the application.}
+    				\item{The user presses the "End ride" button.}
+            \item{The system stops charging the user.}
+            \item{The system verifies if one or more discount can be applied and in that case applies them.}
+    				\item{The system sets the car as available.}
+    				\item{The system carries out the payment transaction.}
+    				\end{enumerate}\\
+    				\hline
+    				Postconditions & The car is stopped in a safe area, ready to be used again.\\
+    				\hline
+    				Exceptions & -\\
+    				\hline
+    		\end{tabularx}
+    		
+    				\begin{figure}[H]
+    					\centering
+    					\makebox[\textwidth][c]{
+    						\def\svgwidth{450pt}
+    						\input{images/A_user_ends_a_ride_after_choose_to_park_the_car_temporally..pdf_tex}
+    					}
+    				\end{figure}
 
-			\paragraph{[UC.9] A user ends a ride while the car is temporarily parked.}	~\\
-			\begin{tabularx}{\textwidth}{  l  X  }
-				\hline
-				Actor & User\\
-				\hline
-				Goal & [G10], [G15], [G16], [G17]\\
-				\hline
-				Preconditions & The user is logged in, and the car is locked and temporarily parked.\\
-				\hline
-				Execution Flow & \begin{enumerate}
-					\item{The user goes to the main page of the application.}
-					\item{The user presses the "End ride" button.}
-					\item{The system stops charging the user.}
-					\item{The system verifies if one or more discount can be applied and in that case applies them.}
-					\item{The system sets the car as available.}
-					\item{The system carries out the payment transaction.}
-				\end{enumerate}\\
-				\hline
-				Postconditions & The car is stopped in a safe area, ready to be used again.\\
-				\hline
-				Exceptions & -\\
-				\hline
-			\end{tabularx}
-
-			\begin{figure}[H]
-				\centering
-				\makebox[\textwidth][c]{
-					\def\svgwidth{450pt}
-					\input{images/A_user_ends_a_ride_after_choose_to_park_the_car_temporally..pdf_tex}
-				}
-			\end{figure}
-	
-			\newpage
-			\paragraph{[UC.10] The system suggests to the user a PGS to park the car at and save money.}	~\\
+		\paragraph{[UC.10] The system suggests to the user a PGS to park the car at and save money.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, User\\
@@ -1139,14 +1139,14 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-
-			\begin{figure}[H]
-				\centering
-				\makebox[\textwidth][c]{
-					\def\svgwidth{450pt}
-					\input{images/The_system_suggests_to_the_user_a_PGS_to_park_the_car_and_save_money..pdf_tex}
-				}
-			\end{figure}
+			
+					\begin{figure}[H]
+						\centering
+						\makebox[\textwidth][c]{
+							\def\svgwidth{450pt}
+							\input{images/The_system_suggests_to_the_user_a_PGS_to_park_the_car_and_save_money..pdf_tex}
+						}
+					\end{figure}
 
 			\paragraph{[UC.11] Payment}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
@@ -1174,14 +1174,14 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
-
-			\begin{figure}[H]
-				\centering
-				\makebox[\textwidth][c]{
-					\def\svgwidth{450pt}
-					\input{images/Payment..pdf_tex}
-				}
-			\end{figure}
+			
+					\begin{figure}[H]
+						\centering
+						\makebox[\textwidth][c]{
+							\def\svgwidth{450pt}
+							\input{images/Payment..pdf_tex}
+						}
+					\end{figure}
 
 			\paragraph{[UC.12] A user pays a pending bill.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
@@ -1210,96 +1210,65 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
+			
+					\begin{figure}[H]
+						\centering
+						\makebox[\textwidth][c]{
+							\def\svgwidth{450pt}
+							\input{images/User_pays_a_pending_bill..pdf_tex}
+						}
+					\end{figure}
 
-			\begin{figure}[H]
-				\centering
-				\makebox[\textwidth][c]{
-					\def\svgwidth{450pt}
-					\input{images/User_pays_a_pending_bill..pdf_tex}
-				}
-			\end{figure}
+  \paragraph{[UC.13] A user reports a problem to the system.}	~\\
+  \begin{tabularx}{\textwidth}{  l  X  }
+  	\hline
+  	Actor & User, System\\
+  	\hline
+  	Goal & [G20]\\
+  	\hline
+  	Preconditions & The user is logged in and has reserved a car\\
+  	\hline
+  	Execution Flow & \begin{enumerate}
+  		\item{The user goes to the reporting page of the application.}
+  		\item{The user selects the type of problem the car has (dirty, damaged, ...).}
+  		\item{The user confirms and submits the data to the system.}
+  		\item{The system checks the data inserted by the user.}
+  		\item{The system sets the car as unavailable.}
+  		\item{The system ends the user's reservation and ride.}
+  	\end{enumerate}\\
+  	\hline
+  	Postconditions & The car is marked as unavailable and the user has no reservation.\\
+  	\hline
+  	Exceptions & \begin{enumerate}
+  		\item{The user inserts wrong data.}
+  	\end{enumerate}\\
+  	\hline
+  \end{tabularx}
+  
+  		\begin{figure}[H]
+  			\centering
+  			\makebox[\textwidth][c]{
+  				\def\svgwidth{450pt}
+  				\input{images/A_user_informs_the_system_of_a_problem..pdf_tex}
+  			}
+  		\end{figure}
 
-			\paragraph{[UC.13] A user reports a problem to the system.}	~\\
-			\begin{tabularx}{\textwidth}{  l  X  }
-				\hline
-				Actor & User, System\\
-				\hline
-				Goal & [G20]\\
-				\hline
-				Preconditions & The user is logged in and has reserved a car\\
-				\hline
-				Execution Flow & \begin{enumerate}
-					\item{The user goes to the reporting page of the application.}
-					\item{The user selects the type of problem the car has (dirty, damaged, ...).}
-					\item{The user confirms and submits the data to the system.}
-					\item{The system checks the data inserted by the user.}
-					\item{The system sets the car as unavailable.}
-					\item{The system ends the user's reservation and ride.}
-				\end{enumerate}\\
-				\hline
-				Postconditions & The car is marked as unavailable and the user has no reservation.\\
-				\hline
-				Exceptions & \begin{enumerate}
-					\item{The user inserts wrong data.}
-				\end{enumerate}\\
-				\hline
-			\end{tabularx}
-
-			\begin{figure}[H]
-				\centering
-				\makebox[\textwidth][c]{
-					\def\svgwidth{450pt}
-					\input{images/A_user_informs_the_system_of_a_problem..pdf_tex}
-				}
-			\end{figure}
 \newpage
 \subsection{Performance Requirements}
 
-\begin{itemize}
+\subsection{Design Constraints}
 
-  \item{\textit{Response Time}: we want that our software will satisfy the 100\% of requests in maximum 0.5 seconds.
-  For this reason, the software, in order to guarantee a good grade of usability, has to be very reactive
-  and we assume that the user's perception is bounded to his connection and his device.}
+\subsection{Software System Attributes}
 
-  \item{\textit{Workload}: we assume that the workload will be distributed following the profile shown in figure \ref{workload}.
-  	
-  	We assume that our software will be able to manage a large number of connection
-  	- we estimates the the peak load could be about 3000 connections - between users and the system.}
-\end{itemize}
+\subsubsection{Reliability}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=300pt]{workload_aggiornato.png}
-	\caption{Expected workload by time of day}\label{workload}
-\end{figure}
+\subsubsection{Availability}
 
-\newpage
-\subsubsection{Software System Attributes}
+\subsubsection{Security}
 
-\begin{itemize}
+\subsubsection{Maintainability}
 
-  \item{\textit{User Friendliness}:
-    The user interface has to be as simple and intuitive as possible because
-    the application could also be used by users that could feel uncomfortable with the technology.}
-
-  \item{\textit{Reliability}: we assume that our software will give the right result at the 99\% of the requests.}
-
-  \item{\textit{Availability}: we assume that our software will be available with a rate of 99\%.
-                               In order to ensure that rate, potential patches will deployed during the night.}
-
-  \item{\textit{Security}:
-    \begin{itemize}
-      \item{each message exchanged between the system and the user will be protected by using TLS protocol.}
-      \item{sensitive data like usernames, driving license IDs and so on will be saved encrypted on the database, and passwords will be hashed using the SHA-256 algorithm.}
-\end{itemize}}
-  \item{\textit{Maintainability}: our software will be followed by a complete documentation so other developers should easily correct or improve the code
-                                  or integrate new functions.}
-
-  \item{\textit{Portability}: in the matter of server-side, we will implement our software in order to be executed on the most commercial server;
-                              instead for the client-side the software will be compatible with iOS, Android and Windows Phone in regard of mobile application,
-                              while the web app will be compatible with the most used browser as Chrome, Firefox, Opera, Safari, etc\ldots}
-
-\end{itemize}
+\subsubsection{Portability}
 
 \newpage{}
 
@@ -1307,40 +1276,18 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 
 \subsection{Alloy Model}
 
-We developed an Alloy model following the requirements we specified to check if they were consistent. This section contains the entire source code of our model and a picture of the world it generated.
-The original file can be found in the same directory where this document was published, with the name \verb|'powerenjoy_alloy.als'|.
 
-\lstinputlisting{powerenjoy_alloy.als}
+\lstinputlisting{/home/peter/Downloads/powerenjoy_v4.als}
 
 
-\begin{figure}[H]
-	\vspace*{-3cm}
-	\centering
-	\includegraphics[height=180pt, angle=90, origin=c]{World.png}
-	\caption{The world we generated with Alloy}
-\end{figure}
 
 \subsection{Software and tools used}
-\begin{itemize}
-  \item{Balsamiq for mockups.}
-  \item{Astah professional for UML diagrams.}
-  \item{GitHub for version control.}
-  \item{\TeX Studio as a \LaTeX editor.}
-  \item{Google Docs for the draft.}
-\end{itemize}
 
 \subsection{Hours of work}
-\begin{itemize}
-  \item{Pietro Ferretti: 45 hours}
-  \item{Nicole Gervasoni: 45 hours}
-  \item{Danilo Labanca: 45 hours}
-\end{itemize}
+
 \newpage{}
 
 \section{Revisions}
 
 \subsection{Changelog}
-\begin{itemize}
-  \item{RASD v1, published on November 13, 2016}
-\end{itemize}
 \end{document}

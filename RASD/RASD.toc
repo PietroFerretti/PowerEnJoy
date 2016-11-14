@@ -1,81 +1,86 @@
 \select@language {english}
-\contentsline {section}{\numberline {1}Introduction}{4}{section.1}
-\contentsline {subsection}{\numberline {1.1}Purpose}{4}{subsection.1.1}
-\contentsline {paragraph}{}{4}{section*.2}
-\contentsline {paragraph}{}{4}{section*.3}
-\contentsline {subsection}{\numberline {1.2}Scope}{4}{subsection.1.2}
-\contentsline {paragraph}{}{4}{section*.4}
-\contentsline {paragraph}{}{4}{section*.5}
-\contentsline {paragraph}{}{4}{section*.6}
+\contentsline {section}{\numberline {1}Introduction}{3}{section.1}
+\contentsline {subsection}{\numberline {1.1}Purpose}{3}{subsection.1.1}
+\contentsline {paragraph}{}{3}{section*.2}
+\contentsline {paragraph}{}{3}{section*.3}
+\contentsline {subsection}{\numberline {1.2}Scope}{3}{subsection.1.2}
+\contentsline {paragraph}{}{3}{section*.4}
+\contentsline {paragraph}{}{3}{section*.5}
+\contentsline {paragraph}{}{3}{section*.6}
 \contentsline {subsection}{\numberline {1.3}Definitions, Acronyms, Abbreviations}{4}{subsection.1.3}
 \contentsline {subsubsection}{\numberline {1.3.1}Definitions}{4}{subsubsection.1.3.1}
-\contentsline {subsubsection}{\numberline {1.3.2}Acronyms}{6}{subsubsection.1.3.2}
-\contentsline {subsubsection}{\numberline {1.3.3}Abbreviations}{6}{subsubsection.1.3.3}
-\contentsline {subsection}{\numberline {1.4}Reference Documents}{6}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.3.2}Acronyms}{5}{subsubsection.1.3.2}
+\contentsline {subsubsection}{\numberline {1.3.3}Abbreviations}{5}{subsubsection.1.3.3}
+\contentsline {subsection}{\numberline {1.4}Reference Documents}{5}{subsection.1.4}
 \contentsline {subsection}{\numberline {1.5}Document Overview}{6}{subsection.1.5}
 \contentsline {section}{\numberline {2}Overall Description}{7}{section.2}
 \contentsline {subsection}{\numberline {2.1}Product Perspective}{7}{subsection.2.1}
 \contentsline {subsubsection}{\numberline {2.1.1}Integration with external systems}{7}{subsubsection.2.1.1}
 \contentsline {subsubsection}{\numberline {2.1.2}Domain model}{7}{subsubsection.2.1.2}
-\contentsline {subsection}{\numberline {2.2}Product Functions}{8}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Product Functions}{9}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3}User Characteristics}{10}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Constraints}{11}{subsection.2.4}
 \contentsline {subsubsection}{\numberline {2.4.1}Regulatory policies}{11}{subsubsection.2.4.1}
-\contentsline {paragraph}{}{11}{section*.8}
 \contentsline {paragraph}{}{11}{section*.9}
+\contentsline {paragraph}{}{11}{section*.10}
 \contentsline {subsubsection}{\numberline {2.4.2}Hardware limitations}{11}{subsubsection.2.4.2}
-\contentsline {subsubsection}{\numberline {2.4.3}Criticality of the application}{12}{subsubsection.2.4.3}
-\contentsline {subsubsection}{\numberline {2.4.4}Parallel operations}{12}{subsubsection.2.4.4}
-\contentsline {subsubsection}{\numberline {2.4.5}Safety and security considerations}{12}{subsubsection.2.4.5}
-\contentsline {paragraph}{}{12}{section*.10}
-\contentsline {paragraph}{}{12}{section*.11}
-\contentsline {subsection}{\numberline {2.5}Assumptions and Dependencies}{13}{subsection.2.5}
-\contentsline {paragraph}{Hardware dependencies}{13}{section*.12}
-\contentsline {paragraph}{Connection to the Internet}{13}{section*.13}
-\contentsline {paragraph}{Power grid stations}{13}{section*.14}
-\contentsline {paragraph}{Perfect signal}{13}{section*.15}
-\contentsline {paragraph}{Predefined data}{13}{section*.16}
-\contentsline {paragraph}{No idle users}{13}{section*.17}
-\contentsline {paragraph}{Users leave the car after parking}{14}{section*.18}
-\contentsline {paragraph}{No cheating on the weight sensors}{14}{section*.19}
-\contentsline {paragraph}{Cars are recharged}{14}{section*.20}
-\contentsline {paragraph}{Users report problems}{14}{section*.21}
-\contentsline {paragraph}{Problems are fixed}{14}{section*.22}
-\contentsline {paragraph}{Theft is handled independently}{14}{section*.23}
-\contentsline {paragraph}{Cars aren't abandoned in bad spots}{14}{section*.24}
-\contentsline {section}{\numberline {3}Specific Requirements}{15}{section.3}
-\contentsline {subsection}{\numberline {3.1}External Interface Requirements}{15}{subsection.3.1}
-\contentsline {subsubsection}{\numberline {3.1.1}User Interfaces}{15}{subsubsection.3.1.1}
-\contentsline {paragraph}{}{15}{section*.25}
-\contentsline {paragraph}{}{15}{section*.26}
-\contentsline {paragraph}{}{15}{section*.27}
+\contentsline {subsubsection}{\numberline {2.4.3}Criticality of the application}{11}{subsubsection.2.4.3}
+\contentsline {subsubsection}{\numberline {2.4.4}Parallel operations}{11}{subsubsection.2.4.4}
+\contentsline {subsubsection}{\numberline {2.4.5}Safety and security considerations}{11}{subsubsection.2.4.5}
+\contentsline {paragraph}{}{11}{section*.11}
+\contentsline {paragraph}{}{11}{section*.12}
+\contentsline {subsection}{\numberline {2.5}Assumptions and Dependencies}{12}{subsection.2.5}
+\contentsline {paragraph}{Car hardware dependencies}{12}{section*.13}
+\contentsline {paragraph}{Web application dependencies}{12}{section*.14}
+\contentsline {paragraph}{Mobile application dependencies}{12}{section*.15}
+\contentsline {paragraph}{Power grid stations}{12}{section*.16}
+\contentsline {paragraph}{Perfect signal}{12}{section*.17}
+\contentsline {paragraph}{Predefined data}{12}{section*.18}
+\contentsline {paragraph}{No idle users}{13}{section*.19}
+\contentsline {paragraph}{Users leave the car after parking}{13}{section*.20}
+\contentsline {paragraph}{No cheating on the weight sensors}{13}{section*.21}
+\contentsline {paragraph}{Cars are recharged}{13}{section*.22}
+\contentsline {paragraph}{Users report problems}{13}{section*.23}
+\contentsline {paragraph}{Problems are fixed}{13}{section*.24}
+\contentsline {paragraph}{Theft is handled independently}{13}{section*.25}
+\contentsline {paragraph}{Cars aren't abandoned in bad spots}{13}{section*.26}
+\contentsline {section}{\numberline {3}Specific Requirements}{14}{section.3}
+\contentsline {subsection}{\numberline {3.1}External Interface Requirements}{14}{subsection.3.1}
+\contentsline {subsubsection}{\numberline {3.1.1}User Interfaces}{14}{subsubsection.3.1.1}
+\contentsline {paragraph}{}{14}{section*.27}
+\contentsline {paragraph}{}{14}{section*.28}
+\contentsline {paragraph}{}{14}{section*.29}
+\contentsline {paragraph}{}{14}{section*.30}
+\contentsline {paragraph}{}{14}{section*.31}
 \contentsline {subsubsection}{\numberline {3.1.2}Hardware Interfaces}{18}{subsubsection.3.1.2}
-\contentsline {subsubsection}{\numberline {3.1.3}Software Interfaces (API)}{19}{subsubsection.3.1.3}
+\contentsline {paragraph}{}{18}{section*.38}
+\contentsline {subsubsection}{\numberline {3.1.3}Software Interfaces (API)}{18}{subsubsection.3.1.3}
+\contentsline {paragraph}{}{19}{section*.39}
 \contentsline {subsubsection}{\numberline {3.1.4}Communication Interfaces}{19}{subsubsection.3.1.4}
 \contentsline {subsection}{\numberline {3.2}Functional Requirements}{20}{subsection.3.2}
 \contentsline {subsubsection}{\numberline {3.2.1}Requirements}{20}{subsubsection.3.2.1}
 \contentsline {subsubsection}{\numberline {3.2.2}Use Cases}{26}{subsubsection.3.2.2}
-\contentsline {paragraph}{}{26}{section*.34}
-\contentsline {paragraph}{[UC.1] A guest registers to PowerEnJoy.}{28}{section*.36}
-\contentsline {paragraph}{[UC.2] A user logs in to the PowerEnJoy application.}{29}{section*.37}
-\contentsline {paragraph}{[UC.3a] A user searches for available cars near his position.}{30}{section*.38}
-\contentsline {paragraph}{[UC.3b] A user searches for available cars in a specific position.}{31}{section*.39}
-\contentsline {paragraph}{[UC.4] A user reserves a car.}{32}{section*.40}
-\contentsline {paragraph}{[UC.5] A user cancels a reservation for a car.}{33}{section*.41}
-\contentsline {paragraph}{[UC.6a] A user unlocks the car with the QR code printed on the car.}{33}{section*.42}
-\contentsline {paragraph}{[UC.6b] A user unlocks the car using his position.}{35}{section*.43}
-\contentsline {paragraph}{[UC.7] A user ends a ride.}{36}{section*.44}
-\contentsline {paragraph}{[UC.8] A user parks the car without ending the ride.}{37}{section*.45}
-\contentsline {paragraph}{[UC.9] A user ends a ride while the car is temporarily parked.}{38}{section*.46}
-\contentsline {paragraph}{[UC.10] The system suggests to the user a PGS to park the car at and save money.}{38}{section*.47}
-\contentsline {paragraph}{[UC.11] Payment}{40}{section*.48}
-\contentsline {paragraph}{[UC.12] A user pays a pending bill.}{41}{section*.49}
-\contentsline {paragraph}{[UC.13] A user reports a problem to the system.}{42}{section*.50}
-\contentsline {subsection}{\numberline {3.3}Performance Requirements}{43}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Software System Attributes}{43}{subsubsection.3.3.1}
-\contentsline {section}{\numberline {4}Appendix}{44}{section.4}
-\contentsline {subsection}{\numberline {4.1}Alloy Model}{44}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Software and tools used}{44}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Hours of work}{44}{subsection.4.3}
-\contentsline {section}{\numberline {5}Revisions}{45}{section.5}
-\contentsline {subsection}{\numberline {5.1}Changelog}{45}{subsection.5.1}
+\contentsline {paragraph}{}{26}{section*.40}
+\contentsline {paragraph}{[UC.1] A guest registers to PowerEnJoy.}{28}{section*.42}
+\contentsline {paragraph}{[UC.2] A user logs in to the PowerEnJoy application.}{31}{section*.44}
+\contentsline {paragraph}{[UC.3a] A user searches for available cars near his position.}{33}{section*.46}
+\contentsline {paragraph}{[UC.3b] A user searches for available cars in a specific position.}{35}{section*.48}
+\contentsline {paragraph}{[UC.4] A user reserves a car.}{37}{section*.50}
+\contentsline {paragraph}{[UC.5] A user cancels a reservation for a car.}{39}{section*.52}
+\contentsline {paragraph}{[UC.6a] A user unlocks the car with the QR code printed on the car.}{41}{section*.54}
+\contentsline {paragraph}{[UC.6b] A user unlocks the car using his position.}{43}{section*.56}
+\contentsline {paragraph}{[UC.7] A user ends a ride.}{45}{section*.58}
+\contentsline {paragraph}{[UC.8] A user parks the car without ending the ride.}{47}{section*.60}
+\contentsline {paragraph}{[UC.9] A user ends a ride while the car is temporarily parked.}{49}{section*.62}
+\contentsline {paragraph}{[UC.10] The system suggests to the user a PGS to park the car at and save money.}{51}{section*.64}
+\contentsline {paragraph}{[UC.11] Payment}{53}{section*.66}
+\contentsline {paragraph}{[UC.12] A user pays a pending bill.}{55}{section*.68}
+\contentsline {paragraph}{[UC.13] A user reports a problem to the system.}{57}{section*.70}
+\contentsline {subsection}{\numberline {3.3}Performance Requirements}{59}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Software System Attributes}{60}{subsubsection.3.3.1}
+\contentsline {section}{\numberline {4}Appendix}{61}{section.4}
+\contentsline {subsection}{\numberline {4.1}Alloy Model}{61}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Software and tools used}{72}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Hours of work}{72}{subsection.4.3}
+\contentsline {section}{\numberline {5}Revisions}{73}{section.5}
+\contentsline {subsection}{\numberline {5.1}Changelog}{73}{subsection.5.1}
