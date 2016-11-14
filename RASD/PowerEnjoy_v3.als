@@ -1,16 +1,3 @@
-/*TODO
-1. We assume there is at least one safe area. DA INSERIRE NEL RASD DA QUALCHE PARTE?
-2. CHECK ma la macchina posso lasciarla solo nelle safe areas?
-3. CHECK il numero di plugs deve essere almeno 1?
-4. chargingstation pluggedcars fact
-5. noInstance se metto some invece che set in company
-6. gestire sig Used, TemporaryBreak
-7. FACT EachReservationHasCorrespondingUser, mi serve?
-8. MSO implies reserved Plug
-9. quando parcheggio (sia l che da un'altra parte) tolgo il reserved + aggiungere facts
-10. controllare che chargeneeded non pu esssere prenotata
-*/
-
 open util/integer as integer
 
 //--------------------------------------------------------------- SIG --------------------------------------------------------
@@ -22,7 +9,7 @@ sig Position{
 }
 
 //Container of all positions recognized by our system
-one sig Map{
+sig Map{
 	area : some Position
 }
 
@@ -37,37 +24,43 @@ abstract sig SafeArea extends Map{}
 sig ParkingArea extends SafeArea{}
 
 abstract sig PlugStatus{}
-one sig P_Reserved, P_Available extends PlugStatus{} //reserved if user has a MSO enabled
+sig P_Reserved, P_Available, P_InUse extends PlugStatus{} //reserved if user has a MSO enabled
 
 sig Plug{
-	status : PlugStatus
-}{
-	status = P_Reserved implies one r : Ride | r.MSO != none and r.car.status = Reserved
+	status : one PlugStatus,
+	pluggedCar : lone Car
+} {
+	status = P_InUse implies pluggedCar != none
+	pluggedCar != none implies status = P_InUse
 }
 
-/*
-We assume a charging station is in our model (system?) if it has at least one working plug
-(either available or not). 
-*/
+// We assume that charging stations in our model all have at least one working plug
+
 sig ChargingStation extends SafeArea{
-	plugs : some Plug, 
-	pluggedCars: set Car
+	plugs : some Plug
 }{
-	//#plugs > 0 risolto con some invece di set
-	#(pluggedCars)<=#(plugs)
-	all c : Car | c in pluggedCars implies c.pos in area
-	//plugstatus??
+	#(area) = #(plugs)
+	all c : Car | c in plugs.pluggedCar implies c.pos in area
+}
+
+fact {
+	no disjoint c1, c2 : ChargingStation | some p : Plug | p in c1.plugs and p in c2.plugs
 }
 
 sig Plate{}
+
 sig Seat{}
+
 abstract sig CarStatus{}
 sig Available, Charging, Reserved extends CarStatus{}
-sig Used, TemporaryBreak extends Reserved{}//serve?
+sig Used, TemporaryBreak extends Reserved{}
+
 abstract sig BatteryLevel{}
-sig MoreThanHalf, ChargeNeeded,  /*<=20%*/ OtherBatteryLevel extends BatteryLevel{} //COME LE GESTIAMO??
+sig MoreThanHalf, ChargeNeeded /*<=20%*/ , OtherBatteryLevel extends BatteryLevel{} 
+
 abstract sig MotorStatus{}
 sig On, Off extends MotorStatus{}
+
 abstract sig CarDoors{}
 sig Locked, Unlocked extends CarDoors{}
 
@@ -79,19 +72,14 @@ sig Car{
 	pos : one Position,
 	motor: one MotorStatus,
 	seats : set Seat
-	//TODO
 }{
-	// anche no? SONO DIVENTATI SEATS #passengers <= 4 //We assume 5 seats in each car
 	#seats >= 2
-	(doors = Locked or status = Charging or status = TemporaryBreak /*anche il break??*/  ) implies motor = Off
+	(doors = Locked or status = Charging or status = TemporaryBreak  ) implies motor = Off
 	(status = Charging or status = Available) implies doors = Locked
 	status = Available implies pos in SafeArea.area
 	motor = On implies doors = Unlocked
 }
 
-/*
-set of all electric cars, areas, station
-*/
 one sig Company{
 	cars: set Car,
 	parkingAreas : set ParkingArea,
@@ -101,22 +89,20 @@ one sig Company{
 }{
 	costPerMinute > 0
 }
+
 sig ReservationCode{}
 
 sig Licence{}
-//TODO suspeded
-sig User{//estendo con registered user?
-	licenceNumber : one Licence, //mai usato per
-	curPos : one Position, //o lone
-	curRes : lone Reservation, //FACT no reservation se sta usando una macchina //CHECK forse basta il fatto che sia lone
+
+
+sig User{
+	licenceNumber : one Licence,
+	curRes : lone Reservation, 
 	ride : lone Ride,
 	bills : set Bill
-	//TO DO providing credentials and payment infos
 } {
-	curRes != none implies ride = none //?? ha senso?
-	ride != none implies curRes = none //non posso prenotare mentre sto gi usando una macchina
-//una carta per user? forse meglio di no 
-//They receive back a password that can be used to access the system PW  UNICA FACT(ma no, cazzata)
+	curRes != none implies ride = none 
+	ride != none implies curRes = none 
 }
 
 sig Minute{}
@@ -128,11 +114,9 @@ sig Reservation{
 	minutesLeft : set Minute
 }{
 	#minutesLeft < 60
-//forse superflue mettere in reserved?
 	car.battery != ChargeNeeded
 	car.doors = Locked
 	car.motor = Off
-	//contraint su user?
 }
 
 sig Passenger{}
@@ -147,7 +131,7 @@ sig Ride {
 	user : one User,
 	ridingMinutes: some Minute,
 	passengers: set Passenger,
-	MSO : lone ChargingStation //If MoneySavingOption is enabled it specified the chosen ChargingStation
+	MSO : lone ChargingStation   // If MoneySavingOption is enabled it specified the chosen ChargingStation
 }{
 	#passengers <= #(car.seats) - 1
 	MSO != none implies {
@@ -157,7 +141,7 @@ sig Ride {
 
 
 abstract sig BillStatus{}
-sig Oustanding, Paid, Rejected extends BillStatus{}
+sig Paid, Rejected extends BillStatus{}
 
 sig Bill{
 	ride : one Ride,
@@ -187,22 +171,14 @@ sig Bill{
 
 }
 
-
-
-
-fun Int.applyDiscount[discount : Int] : one Int{
-//	this-amount*discount	/100
-	div[sub[this, mul[this, discount]],100]
-}
-
 //--------------------------------------------------------------- FACT -------------------------------------------------------
 
 fact {
-	all CS : CarStatus | one c : Car | CS = c.status
+	all CS : CarStatus | CS in Car.status
 }
 
 fact {
-	all BL : BatteryLevel | one c : Car | BL = c.battery
+	all BL : BatteryLevel |BL in Car.battery
 }
 
 fact {
@@ -221,6 +197,18 @@ fact {
 	all p : PlugStatus | p in Plug.status
 }
 
+fact {
+	all ms : MotorStatus | ms in Car.motor
+}
+
+fact {
+	all cd : CarDoors | cd in Car.doors
+}
+
+fact {
+	all m : Minute | m in Ride.ridingMinutes or m in Reservation.minutesLeft
+}
+
 //--- USER ---
 
 fact licenceNumberIsUnique {
@@ -237,8 +225,8 @@ fact eachPlateIsUnique{
 	no disjoint c1, c2 : Car | c1.plate = c2.plate
 }
 
-fact noUnusedPlate{//serve??
-	all p : Plate | one c : Car | p = c.plate //Car.plate = Plate(OSIO)
+fact noUnusedPlate{
+	all p : Plate | one c : Car | p = c.plate 
 }
 
 //--- RESERVATION ---
@@ -247,24 +235,21 @@ fact reservationCodeIsUnique {
 	no disjoint a, b : Reservation |  a.code = b.code
 }
 
-//FACT no 2 user per car
 fact OneReservationPerUser{
 	no disjoint r1, r2 : Reservation | r1.user = r2.user
 }
 
-//FACT no 2 reservation per CAR
 fact OneCarPerReservation{
 	no disjoint r1, r2 : Reservation | r1.car = r2.car
 }
 
-//faccio prenotazione solo se sono un user
 fact OnlyUsersBookCars{
 	all r : Reservation | r.user in Company.users
 }
 
-fact /*?????*/ {
+fact {
 	all u : User | u.curRes != none implies u.curRes.user = u
-}//pure bill e ride
+}
 
 //--- RIDE ---
 
@@ -272,55 +257,64 @@ fact reservationCodeIsUnique2 {
 	no disjoint r1, r2 : Ride |  r1.code = r2.code
 }
 
-//FACT no 2 user per car
 fact OneRidePerUser{
 	no disjoint r1, r2 : Ride | r1.user = r2.user
 }
 
-//FACT no 2 ride per CAR
 fact OneCarPerRide{
-	no disjoint r1, r2 : Ride | r1.car = r2.car
+	no disjoint r1, r2 : Ride | r1.car = r2.car and r1.status = Riding and r2.status = Riding
 }
 
-//faccio prenotazione solo se sono un user
 fact OnlyUsersBookCars2{
 	all r : Ride | r.user in Company.users
 }
 
-
-fact /*?????*/ {
+fact {
 	all u : User | u.ride != none implies u.ride.user=u
 }
 
 //--- CHARGING STATION ---
-fact eachChargingCarBelongsToOneStation{
-	all c : Car | one cs :  ChargingStation  | c.status = Charging <=> c in cs.pluggedCars
+
+fact chargingCarsAreInAStation{
+	all c : Car |  c.status = Charging <=> c in ChargingStation.plugs.pluggedCar
 }
 
-fact onlyLockedCarCanBeRecharged {//superflua??
-	no c : Car,  cs :  ChargingStation | c.doors = Unlocked and c in cs.pluggedCars
+fact carsArePluggedInOnlyOneStation {
+	no cs1, cs2 : ChargingStation, c : Car | c=cs1.plugs.pluggedCar and c=cs2.plugs.pluggedCar
 }
 
-fact eachPlugBelongsToOneStation{
-	no cs1, cs2 : ChargingStation | cs1.plugs & cs2.plugs != none
+fact onlyLockedCarCanBeRecharged {
+	no c : Car,  cs :  ChargingStation | c.doors = Unlocked and c in cs.plugs.pluggedCar
+}
+
+fact{
+	all p : Plug | one cs : ChargingStation | p in cs.plugs
 }
 
 fact {
 	all p : Plug | p in ChargingStation.plugs
 }
 
+fact{
+	no p : Plug | p.status = P_InUse and p.pluggedCar= none
+}
+
+fact{
+	all c : Car| one cs : ChargingStation | c.status = Charging implies c.pos in cs.area
+}
+
 //--- CAR ---
+
 fact carAvailability{
 	all c : Car | c.status = Available implies (c.battery != ChargeNeeded and c.doors = Locked and c.motor = Off)
 }
 
-fact unlockedCarsHaveARideAssociated {//cambiare nome(OSIO)
+fact carsUnlockedOnlyForARide{
 	all c : Car| c.doors = Unlocked implies one r : Ride| r.car = c
 }
 
 //--- COMPANY ---
 
-//all cars have to belong to the company
 fact companyCars{
 	all c : Car | c in Company.cars
 }
@@ -355,21 +349,52 @@ fact reservationCodeIsUnique3 {
 	no disjoint b1, b2 : Bill |  b1.ride.code = b2.ride.code
 }
 
+//--- MISC
 
 fact{
 	all rs : RideStatus | rs in Ride.status
 }
+
 fact {
 	all b : Bill, u: User | b in u.bills implies b.ride.user=u
 }
+
 fact {
 	all r : Ride | one b : Bill | r. status = RideCompleted implies b.ride=r
 }
+
 fact {
 	no disjoint c1, c2 : Car | c1.seats & c2.seats != none
 }
+
+fact{
+	all c : Car | one p : Plug | ( c.status = Charging implies (p.pluggedCar = c and p.status= P_InUse))
+}
+
 fact {
 	all l : Licence | l in User.licenceNumber
+}
+
+fact {
+	all p : Plug | p.status = P_Reserved implies (one r : Ride | r.MSO != none and r.car.status = Reserved and r.status = Riding)
+} 
+
+//--------------------------------------------------------------- FUN ---------------------------------------------------------
+
+fun Int.applyDiscount[discount : Int] : one Int{
+	//	this-amount *discount	/100
+	div[sub[this, mul[this, discount]],100]
+}
+
+fun Position.squaredDistance[p : Position]: one Int {
+	mul[p.lat-this.lat, p.lat-this.lat]+mul[p.lon-this.lon,p.lon-this.lon]
+}
+
+// Returns the Position of the nearest Charging Station
+fun nearestCS[p : Position] : one Position {
+	{pCS : ChargingStation.area |
+		all p2 :  ChargingStation.area | pCS.squaredDistance[p] <= p2.squaredDistance[p]
+	}
 }
 
 //--------------------------------------------------------------- PRED -------------------------------------------------------
@@ -383,41 +408,30 @@ pred getTwentyPercentDiscount[r : Ride]{
 }
 
 pred getThirtyPercentDiscount[r : Ride]{
-	r.car.status = Charging //dovrebbe bastare essendoci un fact
+	r.car.status = Charging
 }
 
 pred getThirtyPercentMore[r : Ride]{
-//CHECK
 	r.car.battery = ChargeNeeded or  nearestCS[r.car.pos].squaredDistance[r.car.pos] > 9000000
 }
 
 pred getTwentyPercentDiscountMSO[r : Ride]{
-	r.MSO != none and r.car.pos in r.MSO.area and r.car in r.MSO.pluggedCars
+	r.MSO != none and r.car.pos in r.MSO.area and r.car in r.MSO.plugs.pluggedCar
 }
 
 
-//TODO problema tra parkingareas e car , parking areas e user, stations
 pred show(){
-	#(Company.cars) >1
+	/*#(Company.cars) >1
 	#(Company.users) >1
 	#(Riding) >1
+	#(Company.stations) > 1
+	#(Company.parkingAreas) > 1
+	//#(P_InUse) = 0
+	#(P_Available) > 0
+	#(P_Reserved) > 0*/
+	#(Plug.pluggedCar) > 1
+	
 
- //	#(Company.stations) > 1
-  #(Company.parkingAreas) > 0
-}
-
-//--------------------------------------------------------------- FUN ---------------------------------------------------------
-
-//--- POSITION ---
-fun Position.squaredDistance[p : Position]: one Int {
-	mul[p.lat-this.lat, p.lat-this.lat]+mul[p.lon-this.lon,p.lon-this.lon]
-}
-
-//It returns the Position of the nearest Charging Station
-fun nearestCS[p : Position] : one Position {
-	{pCS : ChargingStation.area |
-		all p2 :  ChargingStation.area | pCS.squaredDistance[p] <= p2.squaredDistance[p]
-	}
 }
 
 
