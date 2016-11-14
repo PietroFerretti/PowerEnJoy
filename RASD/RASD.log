@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.11.12)  13 NOV 2016 23:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.11.12)  14 NOV 2016 01:36
 entering extended mode
 **./RASD.tex
 (RASD.tex
@@ -643,458 +643,62 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks22
 \@floatcapt=\box27
 )
-(RASD.aux)
-\openout1 = `RASD.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-\AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 17.
-
-("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.s
-ty"
-Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
-
-("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\gettitl
-estring.sty"
-Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
-)
-\c@section@level=\count111
-)
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
- (RASD.out) (RASD.out)
-\@outlinefile=\write3
-\openout3 = `RASD.out'.
-
-
-("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
-ii"
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count112
-\scratchdimen=\dimen125
-\scratchbox=\box29
-\nofMPsegments=\count113
-\nofMParguments=\count114
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count115
-\MPscratchDim=\dimen126
-\MPnumerator=\count116
-\makeMPintoPDFobject=\count117
-\everyMPtoPDFconversion=\toks24
-)
-("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-
-base.sty"
-Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
-
-("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grfext.st
+("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titling\titling.st
 y"
-Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+Package: titling 2009/09/04 v2.1d maketitle typesetting
+\thanksmarkwidth=\skip53
+\thanksmargin=\skip54
+\droptitle=\skip55
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-38.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 456.
+("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+sty"
+\lst@mode=\count111
+\lst@gtempboxa=\box28
+\lst@token=\toks23
+\lst@length=\count112
+\lst@currlwidth=\dimen125
+\lst@column=\count113
+\lst@pos=\count114
+\lst@lostspace=\dimen126
+\lst@width=\dimen127
+\lst@newlines=\count115
+\lst@lineno=\count116
+\lst@maxwidth=\dimen128
+
+("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\lstmisc.s
+ty"
+File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
+\c@lstnumber=\count117
+\lst@skipnumbers=\count118
+\lst@framebox=\box29
 )
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
-Package caption Info: float package is loaded.
-Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 27.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 27.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 27.
- [1
-
-{C:/Users/nicol/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(RASD.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 3.
- [2])
-\tf@toc=\write4
-\openout4 = `RASD.toc'.
-
- [3]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
-
-("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
-
-[4] [5] [6]
-
-LaTeX Warning: Reference `apis' on page 7 undefined on input line 135.
-
-
-LaTeX Warning: File `statechart.png' not found on input line 167.
-
-
-! Package pdftex.def Error: File `statechart.png' not found.
-
-See the pdftex.def package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.167 	}
-        
-Using draft setting for this image.
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 167.
-
-("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-[7] [8] [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 216--219
-
- []
-
-[11] [12] [13] [14]
-
-LaTeX Warning: Reference `goals' on page 15 undefined on input line 341.
-
-<Mockups/web/Signup.png, id=367, 817.0525pt x 501.875pt>
-File: Mockups/web/Signup.png Graphic file (type png)
-
-<use Mockups/web/Signup.png>
-Package pdftex.def Info: Mockups/web/Signup.png used on input line 366.
-(pdftex.def)             Requested size: 345.0pt x 211.91943pt.
-
-<Mockups/web/Login.png, id=369, 817.0525pt x 501.875pt>
-File: Mockups/web/Login.png Graphic file (type png)
-
-<use Mockups/web/Login.png>
-Package pdftex.def Info: Mockups/web/Login.png used on input line 373.
-(pdftex.def)             Requested size: 345.0pt x 211.91943pt.
-
-<Mockups/web/HomepageLogged.png, id=370, 817.0525pt x 501.875pt>
-File: Mockups/web/HomepageLogged.png Graphic file (type png)
-
-<use Mockups/web/HomepageLogged.png>
-Package pdftex.def Info: Mockups/web/HomepageLogged.png used on input line 380.
-
-(pdftex.def)             Requested size: 345.0pt x 211.91943pt.
- [15 <./Mockups/web/Signup.png>] [16 <./Mockups/web/Login.png> <./Mockups/web/H
-omepageLogged.png>]
-<Mockups/mobile/localization.png, id=388, 283.0575pt x 575.14874pt>
-File: Mockups/mobile/localization.png Graphic file (type png)
-
-<use Mockups/mobile/localization.png>
-Package pdftex.def Info: Mockups/mobile/localization.png used on input line 393
-.
-(pdftex.def)             Requested size: 100.0pt x 203.19193pt.
-
-<Mockups/mobile/MenuSX.png, id=389, 283.0575pt x 575.14874pt>
-File: Mockups/mobile/MenuSX.png Graphic file (type png)
-
-<use Mockups/mobile/MenuSX.png>
-Package pdftex.def Info: Mockups/mobile/MenuSX.png used on input line 398.
-(pdftex.def)             Requested size: 100.0pt x 203.19193pt.
-
-Overfull \hbox (17.25105pt too wide) in paragraph at lines 391--401
- []$[]$$[]$ 
- []
-
-<Mockups/mobile/FreeReservation.png, id=390, 283.0575pt x 575.14874pt>
-File: Mockups/mobile/FreeReservation.png Graphic file (type png)
-
-<use Mockups/mobile/FreeReservation.png>
-Package pdftex.def Info: Mockups/mobile/FreeReservation.png used on input line 
-407.
-(pdftex.def)             Requested size: 100.0pt x 203.19193pt.
-
-<Mockups/mobile/Unlock.png, id=391, 283.0575pt x 575.14874pt>
-File: Mockups/mobile/Unlock.png Graphic file (type png)
-
-<use Mockups/mobile/Unlock.png>
-Package pdftex.def Info: Mockups/mobile/Unlock.png used on input line 412.
-(pdftex.def)             Requested size: 100.0pt x 203.19193pt.
-
-Overfull \hbox (17.25105pt too wide) in paragraph at lines 405--415
- []$[]$$[]$ 
- []
-
-[17 <./Mockups/mobile/localization.png> <./Mockups/mobile/MenuSX.png> <./Mockup
-s/mobile/FreeReservation.png> <./Mockups/mobile/Unlock.png>]
-<Mockups/car/car.png, id=402, 592.2125pt x 347.2975pt>
-File: Mockups/car/car.png Graphic file (type png)
-
-<use Mockups/car/car.png>
-Package pdftex.def Info: Mockups/car/car.png used on input line 438.
-(pdftex.def)             Requested size: 345.0pt x 202.32826pt.
- [18 <./Mockups/car/car.png>] [19] [20] [21]
-Overfull \hbox (1.93652pt too wide) in paragraph at lines 605--606
-[]\T1/cmr/m/n/10 The sys-tem must pro-vide a money sav-ing op-tion to the user,
- propos-
- []
-
-[22] [23] [24] [25]
-
-LaTeX Warning: Reference `use_case_diagram' on page 26 undefined on input line 
-699.
-
-(images/use_case_diag.pdf_tex
-<images/use_case_diag.pdf, id=439, page=1, 1262.31598pt x 1304.07195pt>
-File: images/use_case_diag.pdf Graphic file (type pdf)
-
-<use images/use_case_diag.pdf, page 1>
-Package pdftex.def Info: images/use_case_diag.pdf, page1 used on input line 52.
-
-(pdftex.def)             Requested size: 500.0pt x 516.52553pt.
-) [26] [27 <./images/use_case_diag.pdf>]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 714--754
-[]
- []
-
-
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 714--754
-[] 
- []
-
-[28]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 756--779
-[] 
- []
-
-
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 781--805
-[] 
- []
-
-[29]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 807--835
-[] 
- []
-
-[30]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 837--860
-[] 
- []
-
-[31]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 861--884
-[] 
- []
-
-[32]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 885--909
-[] 
- []
-
-[33]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 910--934
-[] 
- []
-
-[34]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 935--969
-[] 
- []
-
-[35]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 970--1000
-[] 
- []
-
-[36]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 1001--1024
-[] 
- []
-
-[37]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 1025--1058
-[]
- []
-
-
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 1025--1058
-[] 
- []
-
-[38]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 1059--1085
-[] 
- []
-
-[39]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 1086--1113
-[] 
- []
-
-[40]
-Overfull \hbox (25.00003pt too wide) in paragraph at lines 1114--1139
-[] 
- []
-
-[41] [42]
-Underfull \hbox (badness 10000) in paragraph at lines 1149--1150
-
- []
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1179 \end{itemize}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-! Missing } inserted.
-<inserted text> 
-                }
-l.1179 \end{itemize}
-                    
-I've inserted something that you may have forgotten.
-(See the <inserted text> above.)
-With luck, this will get me unwedged. But if you
-really didn't forget anything, try typing `2' now; then
-my insertion and my current dilemma will both disappear.
-
-[43] [44]
-
-! LaTeX Error: \begin{itemize} on input line 1143 ended by \end{document}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1196 \end{document}
-                     
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1196.
-[45]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1196.
- (RASD.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1196.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1196.
-
-
-
-Package rerunfilecheck Warning: File `RASD.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `RASD.out':
-(rerunfilecheck)             Before: 86F3C9A9BAB46BFA5B8ADB98614B8859;10923
-(rerunfilecheck)             After:  ECDE8CC2FFA8F9B33B15E815D899FC97;6079.
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1196.
- )
-(\end occurred inside a group at level 2)
-
-### semi simple group (level 2) entered at line 1143 (\begingroup)
-### semi simple group (level 1) entered at line 235 (\begingroup)
-### bottom level 
+("C:\Users\nicol\AppData\Local\Programs\MiKTeX 2.9\tex\latex\listings\listings.
+cfg"
+File: listings.cfg 2015/06/04 1.6 listings configuration
+))
+Package: listings 2015/06/04 1.6 (Carsten Heinz)
+
+
+! LaTeX Error: File `alloy.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.18 \usepackage
+                {color}
+*** (cannot \read from terminal in nonstop modes)
+
+ 
 Here is how much of TeX's memory you used:
- 11651 strings out of 493334
- 166644 string characters out of 3130221
- 250242 words of memory out of 3000000
- 14779 multiletter control sequences out of 15000+200000
- 13452 words of font info for 33 fonts, out of 3000000 for 9000
+ 11806 strings out of 493334
+ 169323 string characters out of 3130221
+ 254298 words of memory out of 3000000
+ 15269 multiletter control sequences out of 15000+200000
+ 4403 words of font info for 15 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 68i,10n,98p,569b,557s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{subsubsection.3.5.1} has been refer
-enced but does not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.3.5} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsection.3.4} has been referenced but does not ex
-ist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.15} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.14} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.13} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.12} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.11} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.10} has been referenced but does 
-not exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.9} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.8} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.7} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.6} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.5} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.4} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.3} has been referenced but does n
-ot exist, replaced by a fixed one
-
-pdfTeX warning (dest): name{subsubsection.3.3.2} has been referenced but does n
-ot exist, replaced by a fixed one
-
- <C:\Users\nicol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ec
-tt1000.pk> <C:\Users\nicol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec
-\dpi600\ecti1000.pk> <C:\Users\nicol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\j
-knappen\ec\dpi600\ecbx1200.pk> <C:\Users\nicol\AppData\Local\MiKTeX\2.9\fonts\p
-k\ljfour\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\nicol\AppData\Local\MiKTeX\2
-.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\nicol\AppData\Loca
-l\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\nicol\Ap
-pData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\User
-s\nicol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1728.pk
-> <C:\Users\nicol\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\e
-crm1728.pk><C:/Users/nicol/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmsy10.pfb>
-Output written on RASD.pdf (45 pages, 856789 bytes).
-PDF statistics:
- 1684 PDF objects out of 1728 (max. 8388607)
- 272 named destinations out of 1000 (max. 500000)
- 470 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 68i,0n,98p,268b,220s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!
