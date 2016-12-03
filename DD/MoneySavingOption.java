@@ -10,8 +10,8 @@ import java.util.Map.Entry;
 
 public class MoneySavingOption
 {
-	private final static int TIMEDISTANCE = 300;  		//300 seconds = 5 minutes
-	private final static int SPACEDISTANCE = 500;			//500 metres
+	private final static int TIMEDISTANCE = 300;  	//300 seconds = 5 minutes
+	private final static int SPACEDISTANCE = 500;	//500 metres
 	
 	private List<PowerGridStation> pgsList;
 	private List<Car> availableCar;

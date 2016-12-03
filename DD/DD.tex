@@ -13,6 +13,29 @@
 \usepackage{float}
 \usepackage{titling}
 \renewcommand{\arraystretch}{1.4}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{language=Java,
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{javapurple}\bfseries,
+	stringstyle=\color{javared},
+	commentstyle=\color{javagreen},
+	morecomment=[s][\color{javadocblue}]{/**}{*/},
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	stepnumber=1,
+	numbersep=10pt,
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false,
+	linewidth=17cm,
+	breaklines=true
+	}
 
 \pretitle{%
 	\begin{center}
@@ -255,6 +278,17 @@ the car is listening for commands
 \section{Algorithm Design}
 
 % "Java-like pseudo-code"
+	
+\makebox[14cm][c]{
+	\lstinputlisting{Discounts.java}
+}
+
+\newpage
+
+\makebox[14cm][c]{
+	\lstinputlisting{MoneySavingOption.java}
+}
+
 
 \newpage
 
