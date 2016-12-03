@@ -43,28 +43,34 @@ Software Engineering 2: “PowerEnJoy” \\
 \subsection{Purpose}
 
 \paragraph{}
-"The purpose of this document is to provide a complete and detailed description and specification of a digital management system for PowerEnJoy, an electric car sharing service. This document will
-illustrate functional and non-functional requirements of the software to-be, outlining costraints, showing potential user interfaces for the software, and explaining the domain assumptions made. Additionally, at the end of the document we will present an Alloy model to further specificate the world and environment our system will have to manage."
+The purpose of this document is to specify in a more technical way how our system is designed to be built and work. 
+This document is intended for developers, designers and all interested stakeholders as a guideline for the implementation of the system.
 
-% scrivere a cosa serve il DD
+\paragraph{}
+This document will first of all illustrate the system architecture, the components that make it up and how each of its components is designed to interact with each other.
 
-% "descriviamo l'architettura del futuro sistema"
-% "design del software"
+Furthermore this document will describe the behaviour of the system and the applications, from both the back-end and the front-end side.
+
+Finally this document will describe the patterns we used to design the system and how each of them comes into play.
+
+%% magari ridurre a due righe ^^^
 
 
 \subsection{Scope}
-
-% ricordiamo cos'è powerenjoy
-% le principali cose che gli utenti possono fare
+\paragraph{}
+The aim of this project is to specify in detail a new digital management software for PowerEnJoy, a car-sharing service that employs electric cars only.
 
 \paragraph{}
-text here
+PowerEnjoy will offer a very valuable service to its users, letting them borrow cars to drive around the city freely, as an alternative to their own vehicles and public transport.
+Among the advantages of using PowerEnJoy we can note being able to find available cars in any place that is served by our system and having dedicated spots to park in (namely, PowerEnJoy's power grid stations). 
+Furthermore, thanks to the fact that all the cars that we provide are electrically powered, PowerEnJoy is also very environmentally friendly.
 
 \paragraph{}
-more text here
+PowerEnJoy's users, after registering, will be able to reserve, unlock and drive the cars our system will provide. Users will be charged per minute until they park the car in a safe area and end the ride.
+Users will be able to park their car temporarily and use it again later, or end their ride remotely.
 
-\paragraph{}
-....
+Our system will incentivize virtuous behaviour by offering several discounts if certain conditions are met (like charging a car at a power grid station).
+
 
 \newpage
 \subsection{Definitions, Acronyms, Abbreviations}
@@ -209,6 +215,7 @@ client:
 - l'applicativo sulla macchina non è basato sul web e si collega direttamente all'application server per avere tutto
 - esiste un "resource management server" che raccoglie informazioni (gps, ecc.) dalle macchine e disponibilità posti dalle PGS
 - l'application server inoltre può inviare comandi alle macchine tramite il resource server
+the car is listening for commands
 - application server e resource server sono collegati al DBMS che contiene tutto in tempo reale
 % --> caching delle informazioni su server, poi una transazione ogni tanto?
 
