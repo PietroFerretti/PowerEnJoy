@@ -43,26 +43,40 @@ Software Engineering 2: “PowerEnJoy” \\
 \subsection{Purpose}
 
 \paragraph{}
-"The purpose of this document is to provide a complete and detailed description and specification of a digital management system for PowerEnJoy, an electric car sharing service. This document will
-illustrate functional and non-functional requirements of the software to-be, outlining costraints, showing potential user interfaces for the software, and explaining the domain assumptions made. Additionally, at the end of the document we will present an Alloy model to further specificate the world and environment our system will have to manage."
+The purpose of this document is to specify in a more technical way how our system is designed to be built and work. 
+This document is intended for developers, designers and all interested stakeholders as a guideline for the implementation of the system.
 
 \paragraph{}
-"This document is first and foremost a description of the project for all interested stakeholders and a reference for future development, but can also be used as a basis for legally binding agreements."
+This document will first of all illustrate the system architecture, the components that make it up and how each of its components is designed to interact with each other.
+
+Furthermore this document will describe the behaviour of the system and the applications, from both the back-end and the front-end side.
+
+Finally this document will describe the patterns we used to design the system and how each of them comes into play.
+
+%% magari ridurre a due righe ^^^
 
 
 \subsection{Scope}
+\paragraph{}
+The aim of this project is to specify in detail a new digital management software for PowerEnJoy, a car-sharing service that employs electric cars only.
 
 \paragraph{}
-text here
+PowerEnjoy will offer a very valuable service to its users, letting them borrow cars to drive around the city freely, as an alternative to their own vehicles and public transport.
+Among the advantages of using PowerEnJoy we can note being able to find available cars in any place that is served by our system and having dedicated spots to park in (namely, PowerEnJoy's power grid stations). 
+Furthermore, thanks to the fact that all the cars that we provide are electrically powered, PowerEnJoy is also very environmentally friendly.
 
 \paragraph{}
-more text here
+PowerEnJoy's users, after registering, will be able to reserve, unlock and drive the cars our system will provide. Users will be charged per minute until they park the car in a safe area and end the ride.
+Users will be able to park their car temporarily and use it again later, or end their ride remotely.
 
-\paragraph{}
-....
+Our system will incentivize virtuous behaviour by offering several discounts if certain conditions are met (like charging a car at a power grid station).
+
 
 \newpage
 \subsection{Definitions, Acronyms, Abbreviations}
+
+% vanno tolte le definizioni che non vengono usate in questo documento
+% e aggiunte quelle in più
 
 \subsubsection{Definitions}
 
@@ -91,6 +105,7 @@ more text here
 
 \subsubsection{Acronyms}
 \begin{itemize}
+\item{\textbf{DD}: Design Document}
 \item{\textbf{RASD}: Requirements Analysis and Specification Document}
 \item{\textbf{DB}: Database}
 \item{\textbf{CVV}: Card Verification Value}
@@ -110,20 +125,35 @@ more text here
 \subsection{Reference Documents}
 
 \begin{itemize}
-	\item{ISO/IEC/IEEE Std. 29148:2011, “Systems and software engineering -- Life cycle processes -- Requirements engineering”}
+	\item{IEEE Std. 1016-2009, “IEEE Standard for Information Technology -- Systems Design -- Software Design Descriptions”}
+	\item{ISO/IEC/IEEE Std. 42010:2011, “Systems and software engineering -- Architecture Description”}
 	\item{Specification document: “Assignments AA 2016-2017.pdf”}
 \end{itemize}
 
 \newpage{}
 
 \subsection{Document Structure}
+
+%% DA RILEGGERE
+
 This document is structured as follows:
 \begin{itemize}
-\item{\textbf{Section 1 -- Introduction:} "it is a presentation of the document and the product; it contains the information needed to understand the whole document."}
-\item{\textbf{Section 2 -- Architectural Design:} asdf}
-\item{\textbf{Section 3 -- Algorithm Design:} qewr}
-\item{\textbf{Section 4 -- User Interface Design:} }
-\item{\textbf{Section 5 -- Requirements Traceability:} }
+\item{\textbf{Section 1 -- Introduction:} this section introduces the design document. It contains
+	a justification of his utility and indications on which parts are covered in
+	this document that are not covered by the RASD.}
+\item{\textbf{Section 2 -- Architectural Design:} this section is divided into more parts:
+	\begin{itemize}
+		\item{\textbf{Overview:} this section shows a high-level view of our system's architecture.}
+		\item{\textbf{Component View:} this section gives a more detailed (in-depth) view of the components of the application and how they communicate.}
+		\item{\textbf{Deployment View:} this section shows the way the components will be deployed to run our application.}
+		\item{\textbf{Runtime View:} in this section we use sequence diagram to show the flow of the most important functionalities of the system.}
+		\item{\textbf{Component Interfaces:} the interfaces between the components are presented in this section.}
+		\item{\textbf{Selected Architectural Styles and Patterns:} this section explains the architectural choices taken during the creation of the application.}
+		\item{\textbf{Other Design Decisions}}
+	\end{itemize}}
+\item{\textbf{Section 3 -- Algorithm Design:} this section describes the most critical parts via some algorithms. Pseudo code is used in order to hide unnecessary implementation details in order to focus on the most important parts.}
+\item{\textbf{Section 4 -- User Interface Design:} this section presents mockups and user experience explained via UX and BCE diagrams.}
+\item{\textbf{Section 5 -- Requirements Traceability:} this section aims to explain how the requirements identified in the RASD are linked to design elements.}
 \item{\textbf{Effort Spent} }
 \item{\textbf{References} }
 \item{\textbf{Revisions} }
@@ -137,13 +167,77 @@ This document is structured as follows:
 
 \subsection{Component View}
 
+% inserire immagine component view
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=450pt]{comp_1.png}
+	}
+	\caption{Component Diagram 1}
+	\label{componentdiagram1}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=450pt]{comp_2.png}
+	}
+	\caption{Component Diagram 2}
+	\label{componentdiagram2}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=400pt]{comp_3.png}
+	}
+	\caption{Component Diagram 3}
+	\label{componentdiagram3}
+\end{figure}
+% spiegazione veloce immagine
+
+\newpage
 \subsection{Deployment View}
 
+% inserire immagine deployment view
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=450pt]{deployment_diagram.png}
+	}
+	\caption{Deployment Diagram}
+	\label{deploymentdiagram}
+\end{figure}
+
+% spiegazione veloce immagine
+tre tier: client, business logic, database
+
+client:
+- app e browser si collegano al web server per avere le pagine web, poi si collegano all'application server per raccogliere i dati
+- l'applicativo sulla macchina non è basato sul web e si collega direttamente all'application server per avere tutto
+- esiste un "resource management server" che raccoglie informazioni (gps, ecc.) dalle macchine e disponibilità posti dalle PGS
+- l'application server inoltre può inviare comandi alle macchine tramite il resource server
+the car is listening for commands
+- application server e resource server sono collegati al DBMS che contiene tutto in tempo reale
+% --> caching delle informazioni su server, poi una transazione ogni tanto?
+
 \subsection{Runtime View}
+
+% sequence diagrams
 
 \subsection{Component Interfaces}
 
 \subsection{Selected Architectural Styles and Patterns}
+
+% Architecture Overall?
+
+\subsubsection{Protocols}
+% rest?
+
+\subsubsection{Patterns}
+% mvc
+% facade
+% client-server
+% event-driven architecture
+% adapter?
 
 \subsection{Other Design Decisions}
 
@@ -151,9 +245,18 @@ This document is structured as follows:
 
 \section{Algorithm Design}
 
+% "Java-like pseudo-code"
+
 \newpage
 
 \section{User Interface Design}
+
+\subsection{Mockups}
+% rimandare al RASD
+
+\subsection{UX Diagrams}
+
+\subsection{BCE Diagrams}
 
 \newpage
 
