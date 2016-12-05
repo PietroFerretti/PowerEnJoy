@@ -52,7 +52,7 @@ Software Engineering 2: “PowerEnJoy” \\
 \emph{Design Document}}
 
 \author{Pietro Ferretti, Nicole Gervasoni, Danilo Labanca}
-%\date{December 11, 2016}
+\date{December 11, 2016}
 \maketitle
 
 \newpage
@@ -157,26 +157,21 @@ Our system will incentivize virtuous behaviour by offering several discounts if 
 
 \subsection{Document Structure}
 
-%% DA RILEGGERE
-
 This document is structured as follows:
 \begin{itemize}
-\item{\textbf{Section 1 -- Introduction:} this section introduces the design document. It contains
-	a justification of his utility and indications on which parts are covered in
-	this document that are not covered by the RASD.}
-\item{\textbf{Section 2 -- Architectural Design:} this section is divided into more parts:
+\item{\textbf{Section 1 -- Introduction} }
+\item{\textbf{Section 2 -- Architectural Design}
 	\begin{itemize}
 		\item{\textbf{Overview:} this section shows a high-level view of our system's architecture.}
-		\item{\textbf{Component View:} this section gives a more detailed (in-depth) view of the components of the application and how they communicate.}
-		\item{\textbf{Deployment View:} this section shows the way the components will be deployed to run our application.}
-		\item{\textbf{Runtime View:} in this section we use sequence diagram to show the flow of the most important functionalities of the system.}
-		\item{\textbf{Component Interfaces:} the interfaces between the components are presented in this section.}
-		\item{\textbf{Selected Architectural Styles and Patterns:} this section explains the architectural choices taken during the creation of the application.}
-		\item{\textbf{Other Design Decisions}}
+		\item{\textbf{Component View:} this section contains a more detailed and in-depth analysis of the components that comprise the architecture, and how they interact with each other.}
+		\item{\textbf{Deployment View:} this section shows how the architecture components will be deployed on physical machines.}
+		\item{\textbf{Runtime View:} in this section we use sequence diagrams to show the flow of events for the most significant functionalities of the application.}
+		\item{\textbf{Component Interfaces:} the interfaces between the various components are presented in this section.}
+		\item{\textbf{Selected Architectural Styles and Patterns:} this section explains the architectural choices taken and the patterns followed during the creation of the application.}
 	\end{itemize}}
-\item{\textbf{Section 3 -- Algorithm Design:} this section describes the most critical parts via some algorithms. Pseudo code is used in order to hide unnecessary implementation details in order to focus on the most important parts.}
-\item{\textbf{Section 4 -- User Interface Design:} this section presents mockups and user experience explained via UX and BCE diagrams.}
-\item{\textbf{Section 5 -- Requirements Traceability:} this section aims to explain how the requirements identified in the RASD are linked to design elements.}
+\item{\textbf{Section 3 -- Algorithm Design:} this section proposes algorithms to realize some of the most important functionalities. A quick complexity analysis is also included.}
+\item{\textbf{Section 4 -- User Interface Design:} this section formalizes with more details the user interfaces shown and described in the RASD, using UX and BCE diagrams.}
+\item{\textbf{Section 5 -- Requirements Traceability:} this section aims to explain how the goals identified in the RASD are linked to the design and architecture elements described in this document.}
 \item{\textbf{Effort Spent} }
 \item{\textbf{References} }
 \item{\textbf{Revisions} }
@@ -202,7 +197,7 @@ This document is structured as follows:
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
-		\includegraphics[width=450pt]{comp_2.png}
+		\includegraphics[width=450pt]{comp_2x.png}
 	}
 	\caption{Component Diagram for the Application Subsystem}
 	\label{componentdiagram2}
@@ -304,27 +299,25 @@ the car is listening for commands
 \newpage
 
 \section{Requirements Traceability}
-% i componenti dell'architettura che sono usati per realizzare ogni goal
+To make sure that every component of our architecture is actually needed, we now show which components are used to fulfill each goal that we identified in the Requirement Analysis and Specification Document.
 
-% dbms e MODEL?
-% se sì, replace dbms con model+dbms sulle parti con l'application subsystem
-
-Goals:
 \begin{description}
 	\item[{[G1]}]{Guests must be able to register as users by choosing a username and providing their personal data, driving license and payment information. They will receive a password at the email address they specified.}
 	\begin{itemize}
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{Registration Component}
-		\item{DBMS}
 		\item{Signup API}
 		\item{Driving Licence API}
+		\item{Model}
+		\item{DBMS}
 	\end{itemize}
 	\item[{[G2]}]{Users must be able to login with the username/email inserted and the password received on registration.}
 	\begin{itemize}
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{Login Component}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G3a]}]{Users must be able to find the location and battery charge of all the available cars within a certain distance from their current location.}
@@ -333,6 +326,7 @@ Goals:
 		\item{Request Dispatcher}
 		\item{Car Search Component}
 		\item{Maps API}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G3b]}]{Users must be able to find the location and battery charge of all available cars around a specified location.}
@@ -341,6 +335,7 @@ Goals:
 		\item{Request Dispatcher}
 		\item{Car Search Component}
 		\item{Maps API}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G4]}]{Users must be able to reserve a car for up to one hour before they pick it up. If they don't take the car before the time expires they are charged a fixed fee of 1 EUR.}
@@ -349,6 +344,7 @@ Goals:
 		\item{Request Dispatcher}
 		\item{Reservation Manager}
 		\item{Payment Component}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G5]}]{Users must be able to cancel a reservation if they decide to not actually use the car.}
@@ -356,6 +352,7 @@ Goals:
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{Reservation Manager}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G6]}]{A user that reaches a car reserved by them must have a way to tell the system they’re nearby, so that the system unlocks the car and the user may enter.}
@@ -367,6 +364,7 @@ Goals:
 		\item{Car Manager}
 		\item{Car Handler}
 		\item{Car Internal System}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G7]}]{The system must charge the user who reserved the car from the moment the engine is ignited after unlocking it. The user is charged for a given	amount of money per minute.}
@@ -382,6 +380,7 @@ Goals:
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{Ride Manager}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G9]}]{The system must stop charging the user as soon as the car is parked in a safe area and the user exits the car notifying the system that they ended their ride.}
@@ -394,6 +393,7 @@ Goals:
 		\item{Ride Manager}
 		\item{Payment}
 		\item{Payment API}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G10]}]{Users must be able to leave a car without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user. The user should be able to end the ride without coming back to the car if they so choose.}
@@ -401,6 +401,7 @@ Goals:
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{Parking Component}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G11]}]{The system must lock the car automatically after the user exits the car.}
@@ -420,13 +421,16 @@ Goals:
 		\item{PGS Internal System}
 		\item{PGS Manager}
 	\end{itemize}
-	\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.//
-		---}
+	\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.}
+	\begin{itemize}
+		\item{(None)}
+	\end{itemize}
 	\item[{[G14]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.}
 	\begin{itemize}
 		\item{Car Internal System}
 		\item{Resource Management Subsystem}
 		\item{Car Manager}
+		\item{Model}
 		\item{DBMS}
 		\item{Application Subsystem}
 		\item{Ride Manager}
@@ -440,6 +444,7 @@ Goals:
 		\item{Application Subsystem}
 		\item{Ride Manager}
 		\item{Payment Component}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.}
@@ -453,6 +458,7 @@ Goals:
 		\item{Payment Component}
 		\item{PGS Internal System}
 		\item{PGS Manager}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
@@ -465,6 +471,7 @@ Goals:
 		\item{Ride Manager}
 		\item{Payment Component}
 		\item{Maps API}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
@@ -472,6 +479,7 @@ Goals:
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{Reservation Manager}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G19]}]{Users with outstanding bills should have a way to pay them.}
@@ -479,14 +487,23 @@ Goals:
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{Payment}
+		\item{Model}
 		\item{DBMS}
 	\end{itemize}
 	\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery).}
-	
-	%%%%%%% REPORTING %%%%%%%%%%%%%%
+	\begin{itemize}
+		\item{Application Subsystem}
+		\item{Request Dispatcher}
+		\item{Report Manager}
+		\item{Resource Management Subsystem}
+		\item{Car Manager}
+		\item{Model}
+		\item{DBMS}
+	\end{itemize}
 	
 \end{description}
 
+Every component in our architecture appears in this list at least once.
 
 \newpage
 
