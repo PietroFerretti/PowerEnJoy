@@ -122,6 +122,7 @@ A central system will manage the cars and the reservations, and will communicate
 \item{\textbf{PGS}: Power Grid Station}
 \item{\textbf{GPS}: Global Positioning System}
 \item{\textbf{CAN bus}: Controller Area Network bus}
+\item{\textbf{MSO}: Money Saving Option}
 \end{itemize}
 
 \subsubsection{Abbreviations}
@@ -205,14 +206,15 @@ The PowerEnJoy application will offer many different functionalities; specifical
 	\item[{[G10]}]{Users must be able to leave a car without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user. The user should be able to end the ride without coming back to the car if they so choose.}
 	\item[{[G11]}]{The system must lock the car automatically after the user exits the car.}
 	\item[{[G12]}]{The system must provide a money saving option to the user, proposing a suitable power grid station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.}
-	\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.}
-	\item[{[G14]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.}
-	\item[{[G15]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.}
-	\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.}
-	\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
-	\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
-	\item[{[G19]}]{Users with outstanding bills should have a way to pay them.}
-	\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery).}
+  \item[{[G13]}]{Users must be able to search a PGS.}
+	\item[{[G14]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.}
+	\item[{[G15]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.}
+	\item[{[G16]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.}
+	\item[{[G17]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.}
+	\item[{[G18]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
+	\item[{[G19]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
+	\item[{[G20]}]{Users with outstanding bills should have a way to pay them.}
+	\item[{[G21]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery).}
 \end{description}
 
 \subsection{User Characteristics}
@@ -433,7 +435,7 @@ The application will have a responsive interface to ensure the optimal view for 
 	\item{\textbf{Car's display application UI}}
 \end{itemize}
 
-The car's application interface, while driving, will always show the map, the battery level, the current cost of the journey and the number of passengers detected by the car's sensors. 
+The car's application interface, while driving, will always show the map, the battery level, the current cost of the journey and the number of passengers detected by the car's sensors.
 
 \begin{figure}[H]
 	\centering
@@ -476,6 +478,11 @@ The system requires:
       		\item{\textit{Google API}:
       			\href{https://developers.google.com/identity/}{\underline{Google Identity Platform}}}
       	\end{itemize}
+      \item{\textit{Mapping/Routing API}:
+        \begin{itemize}
+          \item{\textit{GraphHopper API}:
+            \href{https://graphhopper.com}{\underline{GraphHopper}}}
+        \end{itemize}}
     }
 \end{itemize}
 
@@ -606,48 +613,53 @@ a username of their choice, their personal data (first name, last name, date of 
 \end{itemize}
 }
 
-\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
+\item[{[G13]}]{Users must be able to search a PGS.}
+\begin{itemize}
+\end{itemize}
+}
+
+\item[{[G14]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
 \begin{itemize}
 	\item{[RE.13.1] To choose a station in the process specified in RE.12.2, the system selects among all the stations with free spots within a certain distance of the user’s final destination (e.g. a 10-minutes walk) the one with the fewest available cars nearby.}
 \end{itemize}
 }
 
-\item[{[G14]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
+\item[{[G15]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.14.1] If the weight sensors in the car seats detect at least two passengers (excluding the driver) for at least half of the time the car has been driving, then the system must apply a discount of 10\% at the end of the reservation on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item[{[G15]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
+\item[{[G16]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.15.1] When the car has been parked in a safe area and the user has chosen to end the reservation, the system must apply a discount of 20\% on the amount the user has to pay if the car is left with more than 50\% remaining battery charge.}
 \end{itemize}
 }
 
-\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
+\item[{[G17]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.16.1] When the car has been parked in a power grid station, has been plugged in the power grid and the user has chosen to end the reservation, the system must apply a discount of 30\% on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
+\item[{[G18]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.17.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge and is not plugged in the power grid, the system must increase the amount the user has to pay by 30\%.}
 \end{itemize}
 }
 
-\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.
+\item[{[G19]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.
 \begin{itemize}
 	\item{[RE.18.1] If a transaction fails the user must be marked as suspended until the outstanding bill is paid.}
 	\item{[RE.18.2] Suspended users must not be allowed to reserve cars.}
 \end{itemize}
 }
 
-\item[{[G19]}]{Users with outstanding bills should have a way to pay them.
+\item[{[G20]}]{Users with outstanding bills should have a way to pay them.
 \begin{itemize}
 	\item{[RE.19.1] Users must have an option on the application to pay their outstanding bills.}
 	\item{[RE.19.2] When the user chooses to pay their outstanding bills, if the transaction succeeds they are no longer marked as suspended, otherwise the user is notified and they remain suspended.}
@@ -655,7 +667,7 @@ a username of their choice, their personal data (first name, last name, date of 
 \end{itemize}
 }
 
-\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)
+\item[{[G21]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)
 \begin{itemize}
 	\item{[RE.20.1] Users should have a way to report problems with a car they reserved (excessive dirtiness, damage, etc.) through the interface on the car's display.}
 	\item{[RE.20.2] If a user reports a car for dirtiness or damage, the system will mark it as unavailable, end the user's reservation and notify an employee to solve the problem.}
@@ -681,13 +693,14 @@ We identified the following use cases for our software:
 		\item{\textbf{[UC.5]} A user cancels a reservation for a car.}
 		\item{\textbf{[UC.6a]} A user unlocks the car with the QR code printed on the car.}
 		\item{\textbf{[UC.6b]} A user unlocks the car using his position.}
-		\item{\textbf{[UC.7]} A user ends a ride.}
-		\item{\textbf{[UC.8]} A user parks the car without ending the ride.}
-		\item{\textbf{[UC.9]} A user ends a ride while the car is temporarily parked.}
-		\item{\textbf{[UC.10]} The system suggests to the user a PGS to park the car at and save money.}
-		\item{\textbf{[UC.11]} Payment}
-		\item{\textbf{[UC.12]} A user pays a pending bill.}
-		\item{\textbf{[UC.13]} A user reports a problem to the system.}
+    \item{\textbf{[UC.7]} A user searches a PGS.}
+		\item{\textbf{[UC.8]} A user ends a ride.}
+		\item{\textbf{[UC.9]} A user parks the car without ending the ride.}
+		\item{\textbf{[UC.10]} A user ends a ride while the car is temporarily parked.}
+		\item{\textbf{[UC.11]} The system suggests to the user a PGS to park the car at and save money.}
+		\item{\textbf{[UC.12]} Payment}
+		\item{\textbf{[UC.13]} A user pays a pending bill.}
+		\item{\textbf{[UC.14]} A user reports a problem to the system.}
 	\end{itemize}
 
 \paragraph{}
@@ -991,12 +1004,45 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		}
 	\end{figure}
 
+  \paragraph{[UC.7] A user searches a PGS.}	~\\
+	\begin{tabularx}{\textwidth}{  l  X  }
+		\hline
+		Actor & User\\
+		\hline
+		Goal & [G13]\\
+		\hline
+		Preconditions & The user is driving and he didn't choose MSO.\\
+		\hline
+		Execution Flow & \begin{enumerate}
+			\item{The user presses on the "find charging station" button on the display of the car.}
+			\item{The user inserts the destination.}
+			\item{The system checks in the DB the PGS available.}
+			\item{The system shows to the user the list of PGS in order of closeness.}
+			\item{By pressing on a PGS shown by the display, the user can set the chosen PGS as destination.}
+		\end{enumerate}\\
+		\hline
+		Postconditions & The user knows the PGSs near his destination.\\
+		\hline
+		Exceptions & \begin{enumerate}
+			\item{There aren't any PGSs available
+		\end{enumerate}\\
+		\hline
+	\end{tabularx}
+
+	\begin{figure}[H]
+		\centering
+		\makebox[\textwidth][c]{
+			\def\svgwidth{450pt}
+			\input{images/..pdf_tex}
+		}
+	\end{figure}
+
 	\paragraph{[UC.7] A user ends a ride.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G9], [G15], [G16], [G17]\\
+		Goal & [G9], [G16], [G17], [G18]\\
 		\hline
 		Preconditions & The user is using the car.\\
 		\hline
@@ -1078,7 +1124,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & User\\
 				\hline
-				Goal & [G10], [G15], [G16], [G17]\\
+				Goal & [G10], [G16], [G17], [G18]\\
 				\hline
 				Preconditions & The user is logged in, and the car is locked and temporarily parked.\\
 				\hline
@@ -1104,7 +1150,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 					\input{images/A_user_ends_a_ride_after_choose_to_park_the_car_temporally..pdf_tex}
 				}
 			\end{figure}
-	
+
 			\newpage
 			\paragraph{[UC.10] The system suggests to the user a PGS to park the car at and save money.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
@@ -1153,7 +1199,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & System, Payment API\\
 				\hline
-				Goal & [G9], [G19]\\
+				Goal & [G9], [G20]\\
 				\hline
 				Preconditions & The user ended a ride and has a pending charge.\\
 				\hline
@@ -1188,7 +1234,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & User, System, Payment API\\
 				\hline
-				Goal & [G18]\\
+				Goal & [G19]\\
 				\hline
 				Preconditions & The user is logged in, has a pending bill and is suspended.\\
 				\hline
@@ -1224,7 +1270,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & User, System\\
 				\hline
-				Goal & [G20]\\
+				Goal & [G21]\\
 				\hline
 				Preconditions & The user is logged in and has reserved a car\\
 				\hline
@@ -1262,7 +1308,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
   and we assume that the user's perception is bounded to his connection and his device.}
 
   \item{\textit{Workload}: we assume that the workload will be distributed following the profile shown in figure \ref{workload}.
-  	
+
   	We assume that our software will be able to manage a large number of connection
   	- we estimates the the peak load could be about 3000 connections - between users and the system.}
 \end{itemize}
