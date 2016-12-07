@@ -211,65 +211,72 @@ This document is structured as follows:
 	\label{componentdiagram3}
 \end{figure}
 
+\newpage
 The system offers many different interfaces, each for a different role:
 \begin{itemize}
 	\item{an Application Interface for the mobile, web and the car applications to connect;}
-	\item{a Car Update Interface for every car internal system to connect and send updates about their sensors and misc. info;}
-	\item{a Maintenance Interface to let the people in charge of this mark a car as available when it is repaired or for similar reasons;}
+	\item{a Car Update Interface through which the cars can send updates about their state to the system;} 
+	\item{a Maintenance Interface to let the people in charge of this mark a car as available when it is repaired or recharged;}
 	\item{a PGS Update Interface for the power grid stations' systems to send updates about the state of the plugs.}
 \end{itemize}
 
 Furthermore, the car itself has an interface to receive commands from the main system (like unlocking the doors).
 
-dbms
+The main system can run queries on the DBMS through a dedicated interface.
 
-The external APIs are also depicted.
+The external APIs used by the system are also depicted.
 
-
+\paragraph{}
 The main system is divided into two macro-components: the Application Subsystem and the Resource Management Subsystem.
 The first handles all the operations related to the user applications and interfaces, while the second takes care of keeping track of all the automatic updates from the sensors in the cars and the charging stations.
 
-The separation lets us manage the two family of functionalities in a more flexible way by decoupling them. For example the Resource Subsystem could be considered as more critical for our system, and be run on servers that are more reliable and resistant to failure.
+The separation lets us manage the two families of functionalities in a more flexible way, by decoupling them. For example the Resource Subsystem could be considered as more critical for our system, and be run on servers that are more reliable and resistant to failure.
 
-The Application Subsystem in details
-On the Application Subsystem 
-il request dispatcher raccoglie tutti i tipi di richieste e li rimanda ai singoli componenti che sono incaricati di fare cose
-si può collegare al resource subs per ad esempio sbloccare le macchine
-il model è una rappresentazione più organica dei dati del dbms 
-ci permette di non dover fare query al db per ogni operazione
+\paragraph{}
+On the Application Subsystem the Request Dispatcher collects all types of requests (searches, reservations...) and redirects them to the specific components. 
+The Application Subsystem can send requests to the Resource Subsystem, for example to unlock a car.
+The Model is a representation of the data contained in the DBMS in a certain moment. It lets us cache information instead of having to query the database for every operation.
 
-sul resource subs il car manager si occupa di tutto ciò che concerne le macchine
-il pgs manager si occupa di raccogliere informazioni dai sensori delle pgs e aggiornare il db
+\paragraph{}
+On the Resource Management Subsystem the Car Manager is the main component, and is in charge of handling everything that involves cars. The Car Handler keeps a list of all available cars and acts as an interface when a command needs to be sent to a car.
+The PGS Manager's task is to collect updates from the power grid stations about the plugs' availability and update the database accordingly.
 
 \newpage
 \subsection{Deployment View}
 
-% inserire immagine deployment view
+\paragraph{}
+
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
-		\includegraphics[width=450pt]{deployment_diagram.png}
+		\includegraphics[width=460pt]{deployment_diagram.png}
 	}
 	\caption{Deployment Diagram}
 	\label{deploymentdiagram}
 \end{figure}
 
-% spiegazione veloce immagine
-tre tier: client, business logic, database
+\paragraph{}
+The system will be deployed on three tiers: Client, Business Logic and Data, identified by different colors. The green elements are user interfaces, the yellow ones are embedded systems.
 
-client:
-- app e browser si collegano al web server per avere le pagine web, poi si collegano all'application server per raccogliere i dati
-- l'applicativo sulla macchina non è basato sul web e si collega direttamente all'application server per avere tutto
-- esiste un "resource management server" che raccoglie informazioni (gps, ecc.) dalle macchine e disponibilità posti dalle PGS
-- l'application server inoltre può inviare comandi alle macchine tramite il resource server
-the car is listening for commands
-- application server e resource server sono collegati al DBMS che contiene tutto in tempo reale
-% --> caching delle informazioni su server, poi una transazione ogni tanto?
+\paragraph{}
+Web and mobile application will both connect initially to the web server to obtain the markup and scripts needed to display the requested pages, then the scripts will collect the actual data from the Application Server's API.
+(NB: web and mobile application are both based on web technologies and are designed to work in the same way, with a framework like PhoneGap)
 
+The car application is "thicker" and not web based. It doesn't need to request the web pages from the Web Server, but will just get data from the Application Server.
+
+\paragraph{}
+The Resource Management Server manages updates sent by cars (about their GPS position, engine status and everything else) and power grid stations (about plugs availability).
+Every car listens for incoming commands from the Resource Server; the Application Server has a a direct connection to the Resource Server to send commands directly to the cars.
+
+\paragraph{}
+The Application Server and the Resource Management Server are both connected to the DBMS to get data or update the database.
+
+\newpage
 \subsection{Runtime View}
 
 % sequence diagrams
 
+\newpage
 \subsection{Component Interfaces}
 
 This diagram shows how the interfaces of our system are connected, and which methods each of them must provide.
@@ -277,7 +284,7 @@ This diagram shows how the interfaces of our system are connected, and which met
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
-		\includegraphics[width=450pt]{comp_interfaces.png}
+		\includegraphics[width=430pt]{comp_interfaces.png}
 	}
 	\caption{Component Interfaces}
 	\label{compinterfaces}
