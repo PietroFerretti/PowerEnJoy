@@ -22,6 +22,7 @@
 
 \lstset{language=Java,
 	basicstyle=\ttfamily\small,
+	xleftmargin=-2cm,
 	keywordstyle=\color{javapurple}\bfseries,
 	stringstyle=\color{javared},
 	commentstyle=\color{javagreen},
@@ -33,7 +34,7 @@
 	tabsize=4,
 	showspaces=false,
 	showstringspaces=false,
-	linewidth=17cm,
+	linewidth=16cm,
 	breaklines=true
 	}
 
@@ -185,7 +186,6 @@ This document is structured as follows:
 
 \subsection{Component View}
 
-% inserire immagine component view
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
@@ -210,7 +210,36 @@ This document is structured as follows:
 	\caption{Component Diagram for the Resource Management Subsystem}
 	\label{componentdiagram3}
 \end{figure}
-% spiegazione veloce immagine
+
+The system offers many different interfaces, each for a different role:
+\begin{itemize}
+	\item{an Application Interface for the mobile, web and the car applications to connect;}
+	\item{a Car Update Interface for every car internal system to connect and send updates about their sensors and misc. info;}
+	\item{a Maintenance Interface to let the people in charge of this mark a car as available when it is repaired or for similar reasons;}
+	\item{a PGS Update Interface for the power grid stations' systems to send updates about the state of the plugs.}
+\end{itemize}
+
+Furthermore, the car itself has an interface to receive commands from the main system (like unlocking the doors).
+
+dbms
+
+The external APIs are also depicted.
+
+
+The main system is divided into two macro-components: the Application Subsystem and the Resource Management Subsystem.
+The first handles all the operations related to the user applications and interfaces, while the second takes care of keeping track of all the automatic updates from the sensors in the cars and the charging stations.
+
+The separation lets us manage the two family of functionalities in a more flexible way by decoupling them. For example the Resource Subsystem could be considered as more critical for our system, and be run on servers that are more reliable and resistant to failure.
+
+The Application Subsystem in details
+On the Application Subsystem 
+il request dispatcher raccoglie tutti i tipi di richieste e li rimanda ai singoli componenti che sono incaricati di fare cose
+si può collegare al resource subs per ad esempio sbloccare le macchine
+il model è una rappresentazione più organica dei dati del dbms 
+ci permette di non dover fare query al db per ogni operazione
+
+sul resource subs il car manager si occupa di tutto ciò che concerne le macchine
+il pgs manager si occupa di raccogliere informazioni dai sensori delle pgs e aggiornare il db
 
 \newpage
 \subsection{Deployment View}
@@ -243,6 +272,8 @@ the car is listening for commands
 
 \subsection{Component Interfaces}
 
+This diagram shows how the interfaces of our system are connected, and which methods each of them must provide.
+
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
@@ -272,18 +303,53 @@ the car is listening for commands
 
 \section{Algorithm Design}
 
-% "Java-like pseudo-code"
+\paragraph{}
+In this section we are going to present potential algorithms to use when implementing the application.
+
+We analyze two different functionalities that we want to implement:
+\begin{itemize}
+	\item{Calculating the discount to apply to a bill at the end of a ride;}
+	\item{Finding and choosing a charging station to propose to the user when the Money Saving Option is activated.}
+\end{itemize}
+
+\paragraph{}
+We decided to use Java-like pseudo-code as it is clear and easy to understand, and at the same time a language that we feel comfortable using.
 
 \subsection{Discount calculation}
-\makebox[14cm][c]{
-	\lstinputlisting{Discounts.java}
-}
+
+\lstinputlisting{Discounts.java}
+
+\paragraph{}
+We sum the individual discounts before applying them, to avoid one discount lessening the effects of others like it would happen if we applied them in sequence. This makes it so every discount is always worth the same and users aren't penalized for obtaining more than one discount at a time.
+
+\paragraph{}
+NB: the discount can vary from a maximum of 70\% to a minimum of -30\% (a 30\% overcharge).
+
+\paragraph{}
+The time complexity of this algorithm is $\theta(n)$, where $n$ is the number of power grid stations saved in the system, because we need to cycle through every station to find the distance from the car to the closest station.
+
+This is not necessarily the best solution. For example this could be improved by subdividing the stations in zones so that we can check only the ones in which the car is currently located.
+
 \newpage
 \subsection{Finding a station for the Money Saving Option}
 
 	\lstinputlisting{MoneySavingOption.java}
 
+\paragraph{}
+Because of our requirements this algorithm must take in account the distribution of cars and make it as uniform as possible.
 
+To realize this, our algorithm:
+\begin{itemize}
+	\item{takes the user's final destination as input;}
+	\item{looks for all the power grid stations reasonably close to the destination;}
+	\item{chooses among all the acceptable stations the one that would make distribution more balanced (the one with the least cars nearby).}
+\end{itemize}
+
+\paragraph{}
+The time complexity of this algorithm is $\theta(n) + \theta(m \cdot c) + \theta(m)$ or $\theta(n + m (1+c))$, where $n$ is the number of charging stations in the system, $m$ the number of acceptable stations, and $c$ the number of cars close to them.
+
+This can also be improved by subdividing the stations in zones.
+Another option could be saving the number of cars near every station in advance, and updating it every time a car is parked nearby or driven away, without having to recompute the value every time it is needed.
 
 \newpage
 
@@ -503,7 +569,7 @@ To make sure that every component of our architecture is actually needed, we now
 	
 \end{description}
 
-Every component in our architecture appears in this list at least once.
+Every component in our architecture is used by at least one goal.
 
 \newpage
 
