@@ -206,15 +206,15 @@ The PowerEnJoy application will offer many different functionalities; specifical
 	\item[{[G10]}]{Users must be able to leave a car without losing the reservation by informing the system that they’re only temporarily parking; in this case the system continues on charging the user. The user should be able to end the ride without coming back to the car if they so choose.}
 	\item[{[G11]}]{The system must lock the car automatically after the user exits the car.}
 	\item[{[G12]}]{The system must provide a money saving option to the user, proposing a suitable power grid station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.}
-  \item[{[G13]}]{Users must be able to search a PGS.}
-	\item[{[G14]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.}
-	\item[{[G15]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.}
-	\item[{[G16]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.}
-	\item[{[G17]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.}
-	\item[{[G18]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
-	\item[{[G19]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
-	\item[{[G20]}]{Users with outstanding bills should have a way to pay them.}
-	\item[{[G21]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery).}
+	\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.}
+	\item[{[G14]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.}
+	\item[{[G15]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.}
+	\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.}
+	\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.}
+	\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
+	\item[{[G19]}]{Users with outstanding bills should have a way to pay them.}
+	\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery).}
+  \item[{[G21]}]{Users must be able to search a PGS.}
 \end{description}
 
 \subsection{User Characteristics}
@@ -356,11 +356,6 @@ Every element's function must be clear, so that users can intuitively navigate t
 \paragraph{}
 To avoid clunkiness and make the application easy to use, every functionality must be reachable in a maximum of 3 clicks and/or taps from any page.
 
-
-
-%%%%%%%%%%%%%%%
-% Le immagini su latex tendono a disporsi dove c'è spazio, sistemeremo la posizione alla fine
-%%%%%%%%%%%%%%%
  \paragraph{}
 
 \begin{itemize}
@@ -1009,7 +1004,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G13]\\
+		Goal & [G21]\\
 		\hline
 		Preconditions & The user is driving and he didn't choose MSO.\\
 		\hline
@@ -1042,7 +1037,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\hline
 		Actor & User\\
 		\hline
-		Goal & [G9], [G16], [G17], [G18]\\
+		Goal & [G9], [G15], [G16], [G17]\\
 		\hline
 		Preconditions & The user is using the car.\\
 		\hline
@@ -1124,7 +1119,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & User\\
 				\hline
-				Goal & [G10], [G16], [G17], [G18]\\
+				Goal & [G10], [G15], [G16], [G17]\\
 				\hline
 				Preconditions & The user is logged in, and the car is locked and temporarily parked.\\
 				\hline
@@ -1199,7 +1194,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & System, Payment API\\
 				\hline
-				Goal & [G9], [G20]\\
+				Goal & [G9], [G19]\\
 				\hline
 				Preconditions & The user ended a ride and has a pending charge.\\
 				\hline
@@ -1234,7 +1229,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & User, System, Payment API\\
 				\hline
-				Goal & [G19]\\
+				Goal & [G18]\\
 				\hline
 				Preconditions & The user is logged in, has a pending bill and is suspended.\\
 				\hline
@@ -1270,7 +1265,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Actor & User, System\\
 				\hline
-				Goal & [G21]\\
+				Goal & [G20]\\
 				\hline
 				Preconditions & The user is logged in and has reserved a car\\
 				\hline
