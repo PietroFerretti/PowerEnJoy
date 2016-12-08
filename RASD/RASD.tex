@@ -94,7 +94,7 @@ A central system will manage the cars and the reservations, and will communicate
 \item{\textit{Guest}: a person that is not registered to the system.}
 \item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
 \item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas is predefined by the system.}
-\item{\textit{Power grid station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
+\item{\textit{Power grid station}: also called charging station. A place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
 \item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don’t have dead batteries.}
 \item{\textit{Reservation}:
 	\begin{itemize}
@@ -214,7 +214,7 @@ The PowerEnJoy application will offer many different functionalities; specifical
 	\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.}
 	\item[{[G19]}]{Users with outstanding bills should have a way to pay them.}
 	\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery).}
-  \item[{[G21]}]{Users must be able to search a PGS.}
+	\item[{[G21]}]{Users must be able to easily find power grid stations.}
 \end{description}
 
 \subsection{User Characteristics}
@@ -599,7 +599,7 @@ a username of their choice, their personal data (first name, last name, date of 
 \end{itemize}
 }
 
-\item[{[G12]}]{The system must provide a money saving option to the user, proposing a suitable power grid station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.
+\item[{[G12]}]{The system must provide a money saving option to the user, proposing a suitable  station near the user’s final destination. The user will get a discount if they park the car there and plug it in the power grid.
 \begin{itemize}
 	\item{[RE.12.1] The system must offer an interface where the user can select the money saving option and submit their final destination.}
 	\item{[RE.12.2] When the user submits their final destination for the money saving option, the system must find a suitable power grid station near the ones close to the destination that have at least one free spot.}
@@ -608,53 +608,48 @@ a username of their choice, their personal data (first name, last name, date of 
 \end{itemize}
 }
 
-\item[{[G13]}]{Users must be able to search a PGS.}
-\begin{itemize}
-\end{itemize}
-}
-
-\item[{[G14]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
+\item[{[G13]}]{The stations proposed by the system with the money saving option must be chosen in a way that ensures a uniform distribution of cars in the city.
 \begin{itemize}
 	\item{[RE.13.1] To choose a station in the process specified in RE.12.2, the system selects among all the stations with free spots within a certain distance of the user’s final destination (e.g. a 10-minutes walk) the one with the fewest available cars nearby.}
 \end{itemize}
 }
 
-\item[{[G15]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
+\item[{[G14]}]{The system must apply a discount of 10\% on the last ride if the user took at least two other passengers onto the car.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.14.1] If the weight sensors in the car seats detect at least two passengers (excluding the driver) for at least half of the time the car has been driving, then the system must apply a discount of 10\% at the end of the reservation on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item[{[G16]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
+\item[{[G15]}]{The system must apply a discount of 20\% on the last ride if the car is left with more than 50\% of remaining battery charge.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.15.1] When the car has been parked in a safe area and the user has chosen to end the reservation, the system must apply a discount of 20\% on the amount the user has to pay if the car is left with more than 50\% remaining battery charge.}
 \end{itemize}
 }
 
-\item[{[G17]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
+\item[{[G16]}]{The system must apply a discount of 30\% on the last ride if the car is left at special parking areas where they can be recharged, and the user takes care of plugging the car into the power grid.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.16.1] When the car has been parked in a power grid station, has been plugged in the power grid and the user has chosen to end the reservation, the system must apply a discount of 30\% on the amount the user has to pay.}
 \end{itemize}
 }
 
-\item[{[G18]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
+\item[{[G17]}]{The system must charge 30\% more if the car is left at more than 3 km from the nearest power grid station or with less than 20\% remaining battery charge.
 \begin{itemize}
 	\item{[RE.7.1] The system must keep track until the end of the reservation of the amount the user has to pay.}
 	\item{[RE.17.1] When the user has ended the reservation, if the car is parked more than 3 km from the nearest power grid station or has less than 20\% remaining battery charge and is not plugged in the power grid, the system must increase the amount the user has to pay by 30\%.}
 \end{itemize}
 }
 
-\item[{[G19]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.
+\item[{[G18]}]{Users with outstanding bills cannot have access to the cars and reservations until the bills are paid.
 \begin{itemize}
 	\item{[RE.18.1] If a transaction fails the user must be marked as suspended until the outstanding bill is paid.}
 	\item{[RE.18.2] Suspended users must not be allowed to reserve cars.}
 \end{itemize}
 }
 
-\item[{[G20]}]{Users with outstanding bills should have a way to pay them.
+\item[{[G19]}]{Users with outstanding bills should have a way to pay them.
 \begin{itemize}
 	\item{[RE.19.1] Users must have an option on the application to pay their outstanding bills.}
 	\item{[RE.19.2] When the user chooses to pay their outstanding bills, if the transaction succeeds they are no longer marked as suspended, otherwise the user is notified and they remain suspended.}
@@ -662,7 +657,7 @@ a username of their choice, their personal data (first name, last name, date of 
 \end{itemize}
 }
 
-\item[{[G21]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)
+\item[{[G20]}]{Available cars should actually be available to the user and in good conditions (i.e. not dirty, damaged, and/or with low battery)
 \begin{itemize}
 	\item{[RE.20.1] Users should have a way to report problems with a car they reserved (excessive dirtiness, damage, etc.) through the interface on the car's display.}
 	\item{[RE.20.2] If a user reports a car for dirtiness or damage, the system will mark it as unavailable, end the user's reservation and notify an employee to solve the problem.}
@@ -672,6 +667,11 @@ a username of their choice, their personal data (first name, last name, date of 
 	\item{[RE.20.6] If a car flagged as unavailable because of low battery reaches 50\% of battery charge while charging, the system will mark it as available again.}
 \end{itemize}
 }
+
+\item[{[G21]}]{Users must be able to easily find power grid stations
+	\begin{itemize}
+		\item{[RE.21.1] Users must have a way to search for power grid stations, for example with an option on the car navigator.}
+	\end{itemize}}
 
 \end{description}
 
@@ -688,13 +688,13 @@ We identified the following use cases for our software:
 		\item{\textbf{[UC.5]} A user cancels a reservation for a car.}
 		\item{\textbf{[UC.6a]} A user unlocks the car with the QR code printed on the car.}
 		\item{\textbf{[UC.6b]} A user unlocks the car using his position.}
-    \item{\textbf{[UC.7]} A user searches a PGS.}
+	    \item{\textbf{[UC.7]} A user searches for a PGS.}
 		\item{\textbf{[UC.8]} A user ends a ride.}
 		\item{\textbf{[UC.9]} A user parks the car without ending the ride.}
 		\item{\textbf{[UC.10]} A user ends a ride while the car is temporarily parked.}
 		\item{\textbf{[UC.11]} The system suggests to the user a PGS to park the car at and save money.}
 		\item{\textbf{[UC.12]} Payment}
-		\item{\textbf{[UC.13]} A user pays a pending bill.}
+		\item{\textbf{[UC.13]} A user pays an outstanding bill.}
 		\item{\textbf{[UC.14]} A user reports a problem to the system.}
 	\end{itemize}
 
@@ -704,9 +704,9 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 	\begin{figure}
 		\centering
 		\makebox[\textwidth][c]{
-			\def\svgwidth{500pt}
+			\def\svgwidth{450pt}
 
-			\input{images/use_case_diag.pdf_tex}
+			\input{images/use_case_diag2.pdf_tex}
 		}
 		\caption{Use Case Diagram}
 		\label{use_case_diagram}
@@ -888,7 +888,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\hline
 		Exceptions & \begin{enumerate}
 			\item{The car is reserved by an another user before the user confirms the reservation.}
-			\item{The user is suspended by the system. In this case, the application doesn't let them reserve the car and reminds them that they have to pay the pending bill(s).}
+			\item{The user is suspended by the system. In this case, the application doesn't let them reserve the car and reminds them that they have to pay the outstanding bill(s).}
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
@@ -999,27 +999,27 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		}
 	\end{figure}
 
-  \paragraph{[UC.7] A user searches a PGS.}	~\\
+  \paragraph{[UC.7] A user searches for a PGS.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
 		\hline
 		Goal & [G21]\\
 		\hline
-		Preconditions & The user is driving and he didn't choose MSO.\\
+		Preconditions & The user is inside a car and has access to the car screen.\\
 		\hline
 		Execution Flow & \begin{enumerate}
-			\item{The user presses on the "find charging station" button on the display of the car.}
+			\item{The user presses on the "find charging stations" button on the display of the car.}
 			\item{The user inserts the destination.}
-			\item{The system checks in the DB the PGS available.}
-			\item{The system shows to the user the list of PGS in order of closeness.}
-			\item{By pressing on a PGS shown by the display, the user can set the chosen PGS as destination.}
+			\item{The system looks in the DB for available PGSs.}
+			\item{The system shows to the user the list of PGS in order of distance.}
+			\item{By pressing on a PGS shown by the display, the user sets the chosen PGS as destination.}
 		\end{enumerate}\\
 		\hline
-		Postconditions & The user knows the PGSs near his destination.\\
+		Postconditions & The user knows the PGSs near his destination and has set one as destination.\\
 		\hline
 		Exceptions & \begin{enumerate}
-			\item{There aren't any PGSs available
+			\item{There aren't any available PGSs, the user can try again with a different destination}
 		\end{enumerate}\\
 		\hline
 	\end{tabularx}
@@ -1028,11 +1028,11 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 		\centering
 		\makebox[\textwidth][c]{
 			\def\svgwidth{450pt}
-			\input{images/..pdf_tex}
+			\input{images/search_pgs.pdf_tex}
 		}
 	\end{figure}
 
-	\paragraph{[UC.7] A user ends a ride.}	~\\
+	\paragraph{[UC.8] A user ends a ride.}	~\\
 	\begin{tabularx}{\textwidth}{  l  X  }
 		\hline
 		Actor & User\\
@@ -1075,7 +1075,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			}
 		\end{figure}
 
-		\paragraph{[UC.8] A user parks the car without ending the ride.}	~\\
+		\paragraph{[UC.9] A user parks the car without ending the ride.}	~\\
 		\begin{tabularx}{\textwidth}{  l  X  }
 			\hline
 			Actor & User\\
@@ -1114,7 +1114,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				}
 			\end{figure}
 
-			\paragraph{[UC.9] A user ends a ride while the car is temporarily parked.}	~\\
+			\paragraph{[UC.10] A user ends a ride while the car is temporarily parked.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & User\\
@@ -1147,7 +1147,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 			\end{figure}
 
 			\newpage
-			\paragraph{[UC.10] The system suggests to the user a PGS to park the car at and save money.}	~\\
+			\paragraph{[UC.11] The system suggests to the user a PGS to park the car at and save money.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, User\\
@@ -1189,7 +1189,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				}
 			\end{figure}
 
-			\paragraph{[UC.11] Payment}	~\\
+			\paragraph{[UC.12] Payment}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & System, Payment API\\
@@ -1211,7 +1211,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				\hline
 				Exceptions & \begin{enumerate}
 					\item{The Payment API is not available. In this case, the system marks the bill as "waiting" and retries later.}
-					\item{The transaction is rejected. In this case, the system suspends the user until he pays the pending bill.}
+					\item{The transaction is rejected. In this case, the system suspends the user until he pays the outstanding bill.}
 				\end{enumerate}\\
 				\hline
 			\end{tabularx}
@@ -1224,18 +1224,18 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				}
 			\end{figure}
 
-			\paragraph{[UC.12] A user pays a pending bill.}	~\\
+			\paragraph{[UC.13] A user pays an outstanding bill.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & User, System, Payment API\\
 				\hline
 				Goal & [G18]\\
 				\hline
-				Preconditions & The user is logged in, has a pending bill and is suspended.\\
+				Preconditions & The user is logged in, has a outstanding bill and is suspended.\\
 				\hline
 				Execution Flow & \begin{enumerate}
 					\item{The user goes to his profile page.}
-					\item{The user selects the pending bill.}
+					\item{The user selects the outstanding bill.}
 					\item{The user selects the payment method.}
 					\item{The user confirms the transaction.}
 					\item{The system carries out the payment as in the "Payment" use case.}
@@ -1260,7 +1260,7 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 				}
 			\end{figure}
 
-			\paragraph{[UC.13] A user reports a problem to the system.}	~\\
+			\paragraph{[UC.14] A user reports a problem to the system.}	~\\
 			\begin{tabularx}{\textwidth}{  l  X  }
 				\hline
 				Actor & User, System\\
@@ -1320,25 +1320,22 @@ Figure \ref{use_case_diagram} shows the relationships between use cases and invo
 \begin{itemize}
 
   \item{\textit{User Friendliness}:
-    The user interface has to be as simple and intuitive as possible because
-    the application could also be used by users that could feel uncomfortable with the technology.}
+    The user interface has to be as simple and intuitive as possible as the application will also be used by users that could feel uncomfortable with the technology.}
 
-  \item{\textit{Reliability}: we assume that our software will give the right result at the 99\% of the requests.}
+  \item{\textit{Reliability}: we assume that our software will give the right result for at least 99\% of the requests.}
 
   \item{\textit{Availability}: we assume that our software will be available with a rate of 99\%.
-                               In order to ensure that rate, potential patches will deployed during the night.}
+                               In order to ensure that rate, patches will deployed during the night and time of low traffic.}
 
   \item{\textit{Security}:
     \begin{itemize}
-      \item{each message exchanged between the system and the user will be protected by using TLS protocol.}
-      \item{sensitive data like usernames, driving license IDs and so on will be saved encrypted on the database, and passwords will be hashed using the SHA-256 algorithm.}
+      \item{every message exchanged between the system and the user will be protected by using the TLS protocol.}
+      \item{sensitive data like names, driving license IDs and so on will be encrypted on the database, and passwords will be hashed using the SHA-256 algorithm.}
 \end{itemize}}
-  \item{\textit{Maintainability}: our software will be followed by a complete documentation so other developers should easily correct or improve the code
-                                  or integrate new functions.}
+  \item{\textit{Maintainability}: the software must be accompanied by a complete documentation to let other developers correct, improve the code or integrate new functions more easily.}
 
-  \item{\textit{Portability}: in the matter of server-side, we will implement our software in order to be executed on the most commercial server;
-                              instead for the client-side the software will be compatible with iOS, Android and Windows Phone in regard of mobile application,
-                              while the web app will be compatible with the most used browser as Chrome, Firefox, Opera, Safari, etc\ldots}
+  \item{\textit{Portability}: server-side, the software must be developed so that it can be executed on most commercial servers;
+                              client-side the software must be compatible with iOS, Android and Windows Phone regarding the mobile application, while the web app must be compatible with at least the most used browser, i.e. Chrome, Firefox, Opera, Safari, Internet Explorer.}
 
 \end{itemize}
 
@@ -1382,6 +1379,14 @@ The original file can be found in the same directory where this document was pub
 
 \subsection{Changelog}
 \begin{itemize}
-  \item{RASD v1, published on November 13, 2016}
+  \item{RASD v1.0, published on November 13, 2016}
+  \item{RASD v1.1, published on December 11, 2016
+  	\begin{itemize}
+  		\item{Added goal G21}
+  		\item{Added use case UC.7}
+  		\item{Added GraphHopper API}
+  		\item{Improved english grammar}
+  		\item{}
+  	\end{itemize}}
 \end{itemize}
 \end{document}
