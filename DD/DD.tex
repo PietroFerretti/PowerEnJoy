@@ -67,7 +67,7 @@ Software Engineering 2: “PowerEnJoy” \\
 \subsection{Purpose}
 
 \paragraph{}
-The purpose of this document is to specify in a more technical way how our system is designed to be built and work. 
+The purpose of this document is to specify in a more technical way how our system is designed to be built and work.
 This document is intended for developers, designers and all interested stakeholders as a guideline for the implementation of the system.
 
 \paragraph{}
@@ -86,7 +86,7 @@ The aim of this project is to specify in detail a new digital management softwar
 %
 %\paragraph{}
 PowerEnjoy will offer a very valuable service to its users, letting them borrow cars to drive around the city freely, as an alternative to their own vehicles and public transport.
-%Among the advantages of using PowerEnJoy we can note being able to find available cars in any place that is served by our system and having dedicated spots to park in (namely, PowerEnJoy's power grid stations). 
+%Among the advantages of using PowerEnJoy we can note being able to find available cars in any place that is served by our system and having dedicated spots to park in (namely, PowerEnJoy's power grid stations).
 %Furthermore, thanks to the fact that all the cars that we provide are electrically powered, PowerEnJoy is also very environmentally friendly.
 
 \paragraph{}
@@ -215,7 +215,7 @@ This document is structured as follows:
 The system offers many different interfaces, each for a different role:
 \begin{itemize}
 	\item{an Application Interface for the mobile, web and the car applications to connect;}
-	\item{a Car Update Interface through which the cars can send updates about their state to the system;} 
+	\item{a Car Update Interface through which the cars can send updates about their state to the system;}
 	\item{a Maintenance Interface to let the people in charge of this mark a car as available when it is repaired or recharged;}
 	\item{a PGS Update Interface for the power grid stations' systems to send updates about the state of the plugs.}
 \end{itemize}
@@ -233,7 +233,7 @@ The first handles all the operations related to the user applications and interf
 The separation lets us manage the two families of functionalities in a more flexible way, by decoupling them. For example the Resource Subsystem could be considered as more critical for our system, and be run on servers that are more reliable and resistant to failure.
 
 \paragraph{}
-On the Application Subsystem the Request Dispatcher collects all types of requests (searches, reservations...) and redirects them to the specific components. 
+On the Application Subsystem the Request Dispatcher collects all types of requests (searches, reservations...) and redirects them to the specific components.
 The Application Subsystem can send requests to the Resource Subsystem, for example to unlock a car.
 The Model is a representation of the data contained in the DBMS in a certain moment. It lets us cache information instead of having to query the database for every operation.
 
@@ -346,18 +346,47 @@ This diagram shows how the interfaces of our system are connected, and which met
 
 \subsection{Selected Architectural Styles and Patterns}
 
-% Architecture Overall?
-diviso in tre tier?
+\subsubsection{Architectural Style}
 
+\begin{itemize}
+  \item{textit{Client-Server Architecture}: indicates a network architecture where a client uses a service provided by a server. The reasons that supports this choice are:
+    \begin{itemize}
+      \item{Upgradation and Scalability: changes can be made easily by just upgrading the server. Also new resources and systems can be added by making necessary changes in server}
+      \item{Accessibility: gli utenti possono usufruire dei servizi anche se non dotati di dispositivi avanzati (non so neanche come scriverlo in italiano)}
+      \item{Security: servers have better control access and resources to ensure that only authorized clients can access or manipulate data.}
+      \item{Maintenance: it’s easy to replace, repair, upgrade and relocate a server while clients remain unaffected.}
+    \end{itemize}
+  }
+  \item{textit{Service Oriented Architecure}: is a software architecture, developed for web services in order to allow interoperability between different system. The reasons that supports this choice are:
+    \begin{itemize}
+      \item{Flexibility and Scalability: ogni componente è sviluppato in modo tale da essere indipendente dagli altri, per questo motivo si può scegliere di sviluppare ciascuno nel modo più appropriato.
+                                          dato che ogni componente è indipendente lo si può sviluppare, testare e migliorare senza intaccare gli altri.}
+      \item{Reusability: essendo i componenti separati tra di loro è molto comodo riusarli nel corso dello sviluppo del sistema.}
+      \end{itemize}
+  }
+  \item{textit{Three Tier Architecture}: la struttura dell'architettura è suddivisa in tre livelli:
+                                        1. livello di presentazione in cui mostra le informazioni relative al servizio al client.
+                                          comunica con i livelli sottostanti attraverso i risultati di output al livello client (wikipedia)
+                                        2. livello applicativo/business logic: il livello in cui vengono eseguite le funzioni ed elaborati i dati
+                                        3. livello dati: rappresenta il livello più basso ed è costituito dal DB, qui tutte le informazioni vengono memorizzate e recuperate.
+                                        le ragioni dietro questa scelta sono: scalabilità perchè i ogni tier è indipendete quindi può essere stutturato e sviluppato in modo indipendente
+                                                                              performance: se il livello presentation può salvare in cache le richieste, il carico sulla rete e sui livelli sottostanti è ridotto.}
+\item{textit{Event Driven Architecture}: is a software architecture pattern promoting the production, detection, consumption of, and reaction to events}
+% perè forse è meglio observer-observable come pattern
 \subsubsection{Protocols}
 % rest?
 
-\subsubsection{Patterns}
-% mvc
-% facade
-% client-server
-% event-driven architecture
-% adapter?
+\subsubsection{Design Patterns}
+
+\paragraph{}
+In this section we present the design pattern for the implementation of the component of our architecture.
+
+\begin{itemize}
+  \item{\textbf{MVC}: represents the structure of the entire architecture. It separates the client interface from the data that are linked by a dispatcher (controller) so it allows develop autonomously each part.}
+  \item{\textbf{Presentation-Abstraction-Controller}: alternativa al MVC però forse andrebbe cambiato tutto il component, http://trese.cs.utwente.nl/Courses/university_courses/patterns/material/oldstuff/presentation_abstraction_control.pdf vedi se ti può aiutare}
+  \item{\textbf{Chain of responsability}: il dispatcher è strutturato secondo questo pattern. Abbiamo scelto questo pattern perchè ci permette di gestire le richieste senza sapere a priori quale sia la sua destinazione.}
+  \item{\textbf{Memento}: utlizzato per avere degli snapshot delle condizioni delle macchine o delle ride o delle bill }
+\end{itemize}
 
 \subsection{Other Design Decisions}
 
@@ -636,7 +665,7 @@ To make sure that every component of our architecture is actually needed, we now
 		\item{Model}
 		\item{DBMS}
 	\end{itemize}
-	
+
 \end{description}
 
 Every component in our architecture is used by at least one goal.
