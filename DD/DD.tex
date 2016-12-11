@@ -13,6 +13,7 @@
 \usepackage{float}
 \usepackage{titling}
 \renewcommand{\arraystretch}{1.4}
+\newcommand{\code}[1]{\texttt{#1}}
 \usepackage{listings}
 \usepackage{color}
 \definecolor{javared}{rgb}{0.6,0,0} % for strings
@@ -183,6 +184,30 @@ This document is structured as follows:
 \section{Architectural Design}
 
 \subsection{Overview}
+
+To satisfy our requirements we rely on a primarily client-server architecture. We identified three main types of clients: the mobile/web application, the vehicle application, and the embedded systems that keep track of the sensors in cars and power grid stations.
+
+\paragraph{}
+We decided to adopt a web-based framework (e.g. PhoneGap) to develop the mobile application, so that it would work very similarly to the web one, without needing to design a different interface.
+
+The mobile/web application will first request the necessary web pages and scripts from the dedicated Web Application Server, then the scripts will collect data from the central server via a REST API as needed.
+
+\paragraph{}
+The vehicle application is not web based and will contact only the central server to get data and send requests.
+
+\paragraph{}
+The vehicle and the power grid stations will periodically send updates to the central servers. Cars must also be  listening for commands from the servers.
+
+
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=350pt]{architecture_overview.png}
+	}
+	\caption{Architecture Overview}
+	\label{architectureoverview}
+\end{figure}
+
 
 \subsection{Component View}
 
@@ -374,7 +399,246 @@ This diagram shows how the interfaces of our system are connected, and which met
 \item{textit{Event Driven Architecture}: is a software architecture pattern promoting the production, detection, consumption of, and reaction to events}
 % perè forse è meglio observer-observable come pattern
 \subsubsection{Protocols}
-% rest?
+
+cos'è REST
+usiamo RESTful APIs (cioè stateless web interfaces)
+stateless tranne per gli authentication token (OAuth passed via Authentication header)
+quasi tutti necessitano di autenticazione (segnare quali con (*) tipo)
+
+endpoint diversi per diverse funzioni
+
+risposta con oggetti in notazione JSON
+
+risposta con stato HTTP:
+- 200 OK richiesta con successo
+- 400 Bad Request no successo, + campo error con descrizione errore
+- 401 Authorization Required se il token non è corretto
+- 500 Server Error per errori server side
+
+\paragraph{Application}
+no need to pass username and car id, this is inferred from the auth token
+
+
+\begin{itemize}
+	\item{Registration:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Sign up to PowerEnJoy with an email, a licence and personal data \\
+		\textit{Endpoint} & \code{/registration} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{email}, \code{licence\_id} or \code{licence\_photo}, \code{name}, \code{dob}, \code{address}, \code{payment\_method} \\
+		\textit{Response} & \code{200 OK} if successful.		
+	\end{tabular}
+	
+	\item{Login:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Login to the application \\
+		\textit{Endpoint} & \code{/login} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{username}, \code{password} \\
+		\textit{Response} & \code{auth\_token}
+	\end{tabular}
+	
+	\item{Get user Info:}\\
+		\begin{tabular}{ | l l }
+			\textit{Description} & Get information related to the current user\\
+			\textit{Endpoint} & \code{/userinfo} \\ 
+			\textit{Verb} & GET \\  
+			\textit{Parameters} & \code{auth\_token} \\
+			\textit{Response} & \code{username}, \code{email}, \code{licence\_id}, \code{date\_of\_birth},  \code{address}, \code{curr\_reservation}
+		\end{tabular}
+	
+	\item{Update the user's data:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Update the user's personal data to new ones\\
+		\textit{Endpoint} & \code{/userinfo} \\ 
+		\textit{Verb} & PATCH \\  
+		\textit{Parameters} & \code{auth\_token}, optional: \code{email}, \code{password}, \code{address}, \code{payment\_method}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+
+	\item{Find cars with position:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Lists available cars close to the specified position\\
+		\textit{Endpoint} & \code{/findcars/position/\{lat\}/\{long\}} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & None \\
+		\textit{Response} & Set of \code{(car\_id, lat, long, battery)}
+	\end{tabular}
+	
+	\item{Find cars with address:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Lists available cars close to the specified address\\
+		\textit{Endpoint} & \code{/findcars/address/\{address\}} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & None \\
+		\textit{Response} & Set of \code{(car\_id, lat, long, battery)}
+	\end{tabular}
+	
+	\item{Find safe areas with position:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Lists safe areas close to the specified position\\
+		\textit{Endpoint} & \code{/findsafeareas/position/\{lat\}/\{long\}} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & None \\
+		\textit{Response} & Set of \code{(lat, long)}
+	\end{tabular}
+
+	\item{Find safe areas with address:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Lists safe areas close to the specified address\\
+		\textit{Endpoint} & \code{/findsafeareas/address/\{address\}} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & None \\
+		\textit{Response} & Set of \code{(lat, long)}
+	\end{tabular}
+	
+	\item{Find power grid stations with position:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Lists power grid stations close to the specified position\\
+		\textit{Endpoint} & \code{/findstations/position/\{lat\}/\{long\}} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & None \\
+		\textit{Response} & Set of \code{(lat, long)}
+	\end{tabular}
+
+	\item{Find safe areas with address:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Lists safe areas close to the specified address\\
+		\textit{Endpoint} & \code{/findstations/address/\{address\}} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & None \\
+		\textit{Response} & Set of \code{(lat, long)}
+	\end{tabular}
+	
+	\item{Make a reservation:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Creates a new reservation for a car\\
+		\textit{Endpoint} & \code{/reservation} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{auth\_token}, \code{carId} \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+	
+	\item{Cancel a reservation:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Cancels the user's current reservation if there's one\\
+		\textit{Endpoint} & \code{/reservation} \\ 
+		\textit{Verb} & DELETE \\  
+		\textit{Parameters} & \code{auth\_token}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+	
+	\item{Unlock a car:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Unlocks the car that is currently reserved\\
+		\textit{Endpoint} & \code{/unlock} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{auth\_token}, \code{unlock\_id}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+	
+	\item{Temporary parking:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Puts the car in temporary parking\\
+		\textit{Endpoint} & \code{/parking} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{auth\_token}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+	
+	\item{End ride:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Concludes the current ride\\
+		\textit{Endpoint} & \code{/endride} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{auth\_token}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+	
+	\item{List bills:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Shows all the user's bills\\
+		\textit{Endpoint} & \code{/bills} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & \code{auth\_token}  \\
+		\textit{Response} & Set of \code{(bill\_id, date, amount, payment\_status)}
+	\end{tabular}
+	
+	\item{Pay bill:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Triggers a transaction to pay an outstanding bill if the user has one\\
+		\textit{Endpoint} & \code{/paybill} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{auth\_token}, \code{bill\_id}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+
+\end{itemize}
+
+
+\paragraph{Maintenance}
+
+\begin{itemize}
+	\item{Find cars needing maintenance:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Lists all the cars in the systems with problems to solve\\
+		\textit{Endpoint} & \code{/maintenancelist} \\ 
+		\textit{Verb} & GET \\  
+		\textit{Parameters} & \code{maintenance\_key}  \\
+		\textit{Response} & Set of \code{(car\_id, lat, long, description)}
+	\end{tabular}
+	
+	\item{Set car as available:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Sets a car as available\\
+		\textit{Endpoint} & \code{/setcar/\{car\_id\}} \\ 
+		\textit{Verb} & PUT \\  
+		\textit{Parameters} & \code{maintenance\_key}, \code{availability}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+	
+	\item{Set car as unavailable:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Sets a car as unavailable\\
+		\textit{Endpoint} & \code{/setcar/\{car\_id\}} \\ 
+		\textit{Verb} & PUT \\  
+		\textit{Parameters} & \code{maintenance\_key}, \code{availability}, \code{description}  \\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+\end{itemize}
+
+autenticazione con chiave di accesso
+basic http authentication
+
+\paragraph{Sensors}
+
+\begin{itemize}
+	\item{Update from car:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Submits updates about the car to the server\\
+		\textit{Endpoint} & \code{/updatecar} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{car\_key}, \code{lat}, \code{long}, \code{speed}, \code{direction}, \code{engine\_status}, \code{lock\_status}, \code{passengers}\\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+	
+	\item{Update from power grid station:}\\
+	\begin{tabular}{ | l l }
+		\textit{Description} & Submits updates about the plugs in the station to the server\\
+		\textit{Endpoint} & \code{/updateplug} \\ 
+		\textit{Verb} & POST \\  
+		\textit{Parameters} & \code{pgs\_key}, \code{plugs} (set of \code{(plug\_id, availability)})\\
+		\textit{Response} & \code{200 OK} if successful
+	\end{tabular}
+
+\end{itemize}
+
+a unique key for every car and station
+
+
+tutte le richieste sono protette da TLS. full stop.
+
+i comandi alle macchine vengono mandati aprendo un socket sul sistema della macchina e inviando comandi
 
 \subsubsection{Design Patterns}
 
