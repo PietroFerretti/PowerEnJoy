@@ -372,43 +372,49 @@ This diagram shows how the interfaces of our system are connected, and which met
 \subsubsection{Architectural Style}
 
 \begin{itemize}
-  \item{\textit{Client-Server Architecture}: indicates a network architecture where a client uses a service provided by a server. The reasons that supports this choice are:
+  \item{\textbf{Client-Server Architecture}: a network architecture where a client uses a service provided by a server. The advantages of using this type of architecture are:
     \begin{itemize}
-      \item{Upgradation <-- lol and Scalability: changes can be made easily by just upgrading the server. Also new resources and systems can be added by making necessary changes in server}
-      \item{Accessibility: gli utenti possono usufruire dei servizi anche se non dotati di dispositivi avanzati (non so neanche come scriverlo in italiano)}
-      \item{Security: servers have better control access and resources to ensure that only authorized clients can access or manipulate data.}
-      \item{Maintenance: it’s easy to replace, repair, upgrade and relocate a server while clients remain unaffected.}
+      \item{Scalability and Upgradeability: changes can be made easily by upgrading the server alone. Also resource-intensive tasks can be left to the server without forcing clients to carry the load.}
+      \item{Accessibility: users can use the services without a need for a specialized device or client.}
+      \item{Security: servers have better control access and resources to make so that only authorized clients can manipulate or access data.}
+      \item{Maintenance: it’s easy to repair, upgrade, replace or move a server without affecting clients.}
     \end{itemize}
   }
-  \item{\textit{Service Oriented Architecure}: is a software architecture, developed for web services in order to allow interoperability between different system. The reasons that supports this choice are:
+  \item{\textbf{Service Oriented Architecure}: SOA is a type of software architecture designed for web services in order to allow interoperability between different systems. The reasons for choosing this style are:
     \begin{itemize}
-      \item{Flexibility and Scalability: ogni componente è sviluppato in modo tale da essere indipendente dagli altri, per questo motivo si può scegliere di sviluppare ciascuno nel modo più appropriato.
-                                          dato che ogni componente è indipendente lo si può sviluppare, testare e migliorare senza intaccare gli altri.}
-      \item{Reusability: essendo i componenti separati tra di loro è molto comodo riusarli nel corso dello sviluppo del sistema.}
+      \item{Flexibility and Scalability: every component is designed so that each of them is independent from the others, leaving space to develop each of them in the most appropriate way.
+      Since every component is independent, it can be developed, tested and upgraded without affecting the others.}
+      \item{Reusability: since the components are decoupled from each other it's very easy to reuse them while developing the system.}
       \end{itemize}
   }
-  \item{\textit{Three Tier Architecture}: la struttura dell'architettura è suddivisa in tre livelli:
-                                        1. livello di presentazione in cui mostra le informazioni relative al servizio al client.
-                                          comunica con i livelli sottostanti attraverso i risultati di output al livello client (wikipedia)
-                                        2. livello applicativo/business logic: il livello in cui vengono eseguite le funzioni ed elaborati i dati
-                                        3. livello dati: rappresenta il livello più basso ed è costituito dal DB, qui tutte le informazioni vengono memorizzate e recuperate.
-                                        le ragioni dietro questa scelta sono: scalabilità perchè i ogni tier è indipendete quindi può essere stutturato e sviluppato in modo indipendente
-                                                                              performance: se il livello presentation può salvare in cache le richieste, il carico sulla rete e sui livelli sottostanti è ridotto.}
-\item{\textit{Event Driven Architecture}: is a software architecture pattern promoting the production, detection, consumption of, and reaction to events}
-% perè forse è meglio observer-observable come pattern
+  \item{\textbf{Three Tiered Architecture}: the architecture structure is divided in three layers:
+  	\begin{enumerate}
+  		\item{The \textit{presentation layer}, where data provided by the service is showed to the client. This layer communicates with the other layers to obtain the data.}
+  		\item{The \textit{application logic layer}, where the logic of the application is actually executed through scripts and functions that elaborate the data.}
+  		\item{The \textit{data layer}, the lowest layer of the architecture, the one that includes the database and where the data is stored and fetched.}
+  	\end{enumerate}
+  	The reasons behind this choice are:
+  	\begin{itemize}
+  		\item{Scalability: since each tier is independent from the others it can be upgraded and expanded separately.}
+  		\item{Performance: the presentation layer can for example cache the requests and results, reducing the load on lower layers.}
+  	\end{itemize}
+  }
+  
 \end{itemize}
 
 
 \subsubsection{Design Patterns}
 
 \paragraph{}
-In this section we present the design pattern for the implementation of the component of our architecture.
+In this section we present some of the design patterns we followed while designing the system and its architecture.
 
 \begin{itemize}
-	\item{\textbf{MVC}: represents the structure of the entire architecture. It separates the client interface from the data that are linked by a dispatcher (controller) so it allows develop autonomously each part.}
-	\item{\textbf{Presentation-Abstraction-Controller}: alternativa al MVC però forse andrebbe cambiato tutto il component, http://trese.cs.utwente.nl/Courses/university\_courses/patterns/material/oldstuff/presentation\_abstraction\_control.pdf vedi se ti può aiutare} <-- non cercare cose così complesse
-	\item{\textbf{Chain of responsability}: il dispatcher è strutturato secondo questo pattern. Abbiamo scelto questo pattern perchè ci permette di gestire le richieste senza sapere a priori quale sia la sua destinazione.} % non è una catena però :/
-	\item{\textbf{Memento}: utlizzato per avere degli snapshot delle condizioni delle macchine o delle ride o delle bill }
+	\item{\textbf{Model, View, Controller (MVC)}: 
+		the MVC pattern separates the application in three parts to decouple the system's representation of data from how it is presented to the user (i.e. on a graphical interface).
+		Our system has a Model that is updated to reflect the state of the system in any given moment. The Model is modified by the Dispatcher and the Application Subsystem components, that collectively work as a Controller to interact with and modify the Model. The clients (the web/mobile and the car applications) collect the data they need from the system and show it to the user  in different ways depending on the application.}
+
+	\item{\textbf{Facade}: following the Facade design pattern, our system provides a clear and simple interface to the external world, but each method is actually handled in a much more complex way inside the system. The interface hides the real complexity of the functions so that developers and users don't have to worry about it and can much more easily access and use them.}
+
 \end{itemize}
 
 \subsubsection{Protocols}
@@ -418,7 +424,7 @@ Clients will be able to send HTTP requests to the available endpoints, and will 
 
 Clients will be authenticated through session tokens (like for example OAuth), that will be sent along with the HTTP request in the Authentication header when needed.
 
-All of these requests must be protected with TLS.
+All the requests to the API must be protected with TLS.
 
 \paragraph{}
 The responses to requests will also be accompanied with a HTTP response status code, with the following meaning:
