@@ -374,7 +374,7 @@ This diagram shows how the interfaces of our system are connected, and which met
 \subsubsection{Architectural Style}
 
 \begin{itemize}
-  \item{textit{Client-Server Architecture}: indicates a network architecture where a client uses a service provided by a server. The reasons that supports this choice are:
+  \item{\textit{Client-Server Architecture}: indicates a network architecture where a client uses a service provided by a server. The reasons that supports this choice are:
     \begin{itemize}
       \item{Upgradation and Scalability: changes can be made easily by just upgrading the server. Also new resources and systems can be added by making necessary changes in server}
       \item{Accessibility: gli utenti possono usufruire dei servizi anche se non dotati di dispositivi avanzati (non so neanche come scriverlo in italiano)}
@@ -382,42 +382,62 @@ This diagram shows how the interfaces of our system are connected, and which met
       \item{Maintenance: it’s easy to replace, repair, upgrade and relocate a server while clients remain unaffected.}
     \end{itemize}
   }
-  \item{textit{Service Oriented Architecure}: is a software architecture, developed for web services in order to allow interoperability between different system. The reasons that supports this choice are:
+  \item{\textit{Service Oriented Architecure}: is a software architecture, developed for web services in order to allow interoperability between different system. The reasons that supports this choice are:
     \begin{itemize}
       \item{Flexibility and Scalability: ogni componente è sviluppato in modo tale da essere indipendente dagli altri, per questo motivo si può scegliere di sviluppare ciascuno nel modo più appropriato.
                                           dato che ogni componente è indipendente lo si può sviluppare, testare e migliorare senza intaccare gli altri.}
       \item{Reusability: essendo i componenti separati tra di loro è molto comodo riusarli nel corso dello sviluppo del sistema.}
       \end{itemize}
   }
-  \item{textit{Three Tier Architecture}: la struttura dell'architettura è suddivisa in tre livelli:
+  \item{\textit{Three Tier Architecture}: la struttura dell'architettura è suddivisa in tre livelli:
                                         1. livello di presentazione in cui mostra le informazioni relative al servizio al client.
                                           comunica con i livelli sottostanti attraverso i risultati di output al livello client (wikipedia)
                                         2. livello applicativo/business logic: il livello in cui vengono eseguite le funzioni ed elaborati i dati
                                         3. livello dati: rappresenta il livello più basso ed è costituito dal DB, qui tutte le informazioni vengono memorizzate e recuperate.
                                         le ragioni dietro questa scelta sono: scalabilità perchè i ogni tier è indipendete quindi può essere stutturato e sviluppato in modo indipendente
                                                                               performance: se il livello presentation può salvare in cache le richieste, il carico sulla rete e sui livelli sottostanti è ridotto.}
-\item{textit{Event Driven Architecture}: is a software architecture pattern promoting the production, detection, consumption of, and reaction to events}
+\item{\textit{Event Driven Architecture}: is a software architecture pattern promoting the production, detection, consumption of, and reaction to events}
 % perè forse è meglio observer-observable come pattern
+\end{itemize}
+
+
+\subsubsection{Design Patterns}
+
+\paragraph{}
+In this section we present the design pattern for the implementation of the component of our architecture.
+
+\begin{itemize}
+	\item{\textbf{MVC}: represents the structure of the entire architecture. It separates the client interface from the data that are linked by a dispatcher (controller) so it allows develop autonomously each part.}
+	\item{\textbf{Presentation-Abstraction-Controller}: alternativa al MVC però forse andrebbe cambiato tutto il component, http://trese.cs.utwente.nl/Courses/university\_courses/patterns/material/oldstuff/presentation\_abstraction\_control.pdf vedi se ti può aiutare}
+	\item{\textbf{Chain of responsability}: il dispatcher è strutturato secondo questo pattern. Abbiamo scelto questo pattern perchè ci permette di gestire le richieste senza sapere a priori quale sia la sua destinazione.}
+	\item{\textbf{Memento}: utlizzato per avere degli snapshot delle condizioni delle macchine o delle ride o delle bill }
+\end{itemize}
+
 \subsubsection{Protocols}
 
-cos'è REST
-usiamo RESTful APIs (cioè stateless web interfaces)
-stateless tranne per gli authentication token (OAuth passed via Authentication header)
-quasi tutti necessitano di autenticazione (segnare quali con (*) tipo)
+For the interfaces that the system must offer to external components we chose to follow the REST paradigm.
+Clients will be able to send HTTP requests to the available endpoints, and will receive JSON objects as responses.
 
-endpoint diversi per diverse funzioni
+Clients will be authenticated through session tokens (like for example OAuth), that will be sent along with the HTTP request in the Authentication header when needed.
 
-risposta con oggetti in notazione JSON
+All of these requests must be protected with TLS.
 
-risposta con stato HTTP:
-- 200 OK richiesta con successo
-- 400 Bad Request no successo, + campo error con descrizione errore
-- 401 Authorization Required se il token non è corretto
-- 500 Server Error per errori server side
+\paragraph{}
+The responses to requests will also be accompanied with a HTTP response status code, with the following meaning:
+\begin{itemize}
+	\item{\code{200 OK} -- the request was successful.}
+	\item{\code{400 Bad Request} -- the request was not successful, or badly formed.}
+	\item{\code{401 Authorization Required} -- the authentication token is missing or not correct.}
+	\item{\code{500 Internal Server Error} -- there was a problem on the server, retrying later could be useful.}
+\end{itemize}
+
+In case of error the response will provide a JSON object with an \code{error} field containing a description of the problem.
+
+\paragraph{}
+Each function that our system offers will have a dedicated endpoint, all of which are described in the following sections.
 
 \paragraph{Application}
-no need to pass username and car id, this is inferred from the auth token
-
+For some of these requests there is no need to pass the username or car id, as the server can infer these pieces of information from the authentication token.
 
 \begin{itemize}
 	\item{Registration:}\\
@@ -577,6 +597,7 @@ no need to pass username and car id, this is inferred from the auth token
 
 
 \paragraph{Maintenance}
+The maintenance API uses Basic HTTP Authentication to provide access. Those in charge of maintenance will be have a set of keys to use the API functionalities.
 
 \begin{itemize}
 	\item{Find cars needing maintenance:}\\
@@ -607,10 +628,9 @@ no need to pass username and car id, this is inferred from the auth token
 	\end{tabular}
 \end{itemize}
 
-autenticazione con chiave di accesso
-basic http authentication
-
 \paragraph{Sensors}
+Sensors too use Basic HTTP Authentication. Each vehicle and power grid station will have a unique key to use the API and at the same time be identified.
+The TLS protocol will prevent malicious actors from sniffing the keys from the network.
 
 \begin{itemize}
 	\item{Update from car:}\\
@@ -633,26 +653,9 @@ basic http authentication
 
 \end{itemize}
 
-a unique key for every car and station
-
-
-tutte le richieste sono protette da TLS. full stop.
-
-i comandi alle macchine vengono mandati aprendo un socket sul sistema della macchina e inviando comandi
-
-\subsubsection{Design Patterns}
-
-\paragraph{}
-In this section we present the design pattern for the implementation of the component of our architecture.
-
-\begin{itemize}
-  \item{\textbf{MVC}: represents the structure of the entire architecture. It separates the client interface from the data that are linked by a dispatcher (controller) so it allows develop autonomously each part.}
-  \item{\textbf{Presentation-Abstraction-Controller}: alternativa al MVC però forse andrebbe cambiato tutto il component, http://trese.cs.utwente.nl/Courses/university_courses/patterns/material/oldstuff/presentation_abstraction_control.pdf vedi se ti può aiutare}
-  \item{\textbf{Chain of responsability}: il dispatcher è strutturato secondo questo pattern. Abbiamo scelto questo pattern perchè ci permette di gestire le richieste senza sapere a priori quale sia la sua destinazione.}
-  \item{\textbf{Memento}: utlizzato per avere degli snapshot delle condizioni delle macchine o delle ride o delle bill }
-\end{itemize}
-
-\subsection{Other Design Decisions}
+\paragraph{Car Internal Systems}
+Cars must receive commands from the system, from example to unlock or lock the doors. 
+The cars' embedded system won't offer a RESTful API, but must always have an open port listening for incoming commands from the central servers. Incoming connections will be authenticated using public/private key pairs.
 
 \newpage
 
