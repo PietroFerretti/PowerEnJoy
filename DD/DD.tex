@@ -374,7 +374,7 @@ This diagram shows how the interfaces of our system are connected, and which met
 \begin{itemize}
   \item{\textit{Client-Server Architecture}: indicates a network architecture where a client uses a service provided by a server. The reasons that supports this choice are:
     \begin{itemize}
-      \item{"Upgradation" <-- lol :P and Scalability: changes can be made easily by just upgrading the server. Also new resources and systems can be added by making necessary changes in server}
+      \item{Upgradation <-- lol and Scalability: changes can be made easily by just upgrading the server. Also new resources and systems can be added by making necessary changes in server}
       \item{Accessibility: gli utenti possono usufruire dei servizi anche se non dotati di dispositivi avanzati (non so neanche come scriverlo in italiano)}
       \item{Security: servers have better control access and resources to ensure that only authorized clients can access or manipulate data.}
       \item{Maintenance: it’s easy to replace, repair, upgrade and relocate a server while clients remain unaffected.}
@@ -406,8 +406,8 @@ In this section we present the design pattern for the implementation of the comp
 
 \begin{itemize}
 	\item{\textbf{MVC}: represents the structure of the entire architecture. It separates the client interface from the data that are linked by a dispatcher (controller) so it allows develop autonomously each part.}
-	\item{\textbf{Presentation-Abstraction-Controller}: alternativa al MVC però forse andrebbe cambiato tutto il component, http://trese.cs.utwente.nl/Courses/university\_courses/patterns/material/oldstuff/presentation\_abstraction\_control.pdf vedi se ti può aiutare}
-	\item{\textbf{Chain of responsability}: il dispatcher è strutturato secondo questo pattern. Abbiamo scelto questo pattern perchè ci permette di gestire le richieste senza sapere a priori quale sia la sua destinazione.}
+	\item{\textbf{Presentation-Abstraction-Controller}: alternativa al MVC però forse andrebbe cambiato tutto il component, http://trese.cs.utwente.nl/Courses/university\_courses/patterns/material/oldstuff/presentation\_abstraction\_control.pdf vedi se ti può aiutare} <-- non cercare cose così complesse
+	\item{\textbf{Chain of responsability}: il dispatcher è strutturato secondo questo pattern. Abbiamo scelto questo pattern perchè ci permette di gestire le richieste senza sapere a priori quale sia la sua destinazione.} % non è una catena però :/
 	\item{\textbf{Memento}: utlizzato per avere degli snapshot delle condizioni delle macchine o delle ride o delle bill }
 \end{itemize}
 
@@ -689,7 +689,7 @@ This is not necessarily the best solution. For example this could be improved by
 \newpage
 \subsection{Finding a station for the Money Saving Option}
 
-	\lstinputlisting{MoneySavingOption.java}
+\lstinputlisting{MoneySavingOption.java}
 
 \paragraph{}
 Because of our requirements this algorithm must take in account the distribution of cars and make it as uniform as possible.
@@ -712,11 +712,36 @@ Another option could be saving the number of cars near every station in advance,
 \section{User Interface Design}
 
 \subsection{Mockups}
-% rimandare al RASD
+
+Mockups for the user interfaces can be found on the \href{https://github.com/PietroFerretti/PowerEnJoy/blob/master/releases/RASD.pdf}{RASD} at section 3.1.1.
 
 \subsection{UX Diagrams}
 
+%\begin{figure}[H]
+%	\centering
+%	\makebox[\textwidth][c]{
+%		\includegraphics[width=450pt]{filename_qui.png}
+%	}
+%	%\caption{UX Diagram for ?}
+%\end{figure}
+
+%\begin{figure}[H]
+%	\centering
+%	\makebox[\textwidth][c]{
+%		\includegraphics[width=450pt]{filename_qui.png}
+%	}
+%	%\caption{UX Diagram for ?}
+%\end{figure}
+
 \subsection{BCE Diagrams}
+
+%\begin{figure}[H]
+%	\centering
+%	\makebox[\textwidth][c]{
+%		\includegraphics[width=450pt]{filename_qui.png}
+%	}
+%	%\caption{BCE Diagram for ?}
+%\end{figure}
 
 \newpage
 
@@ -927,6 +952,7 @@ To make sure that every component of our architecture is actually needed, we now
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
 		\item{PGS Search Component}
+		\item{Safe Areas Search Component}
 		\item{Model}
 		\item{DBMS}
 	\end{itemize}
