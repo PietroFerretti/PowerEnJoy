@@ -185,21 +185,28 @@ This document is structured as follows:
 
 \subsection{Overview}
 
+To satisfy our requirements we rely on a primarily client-server architecture. We identified three main types of clients: the mobile/web application, the vehicle application, and the embedded systems that keep track of the sensors in cars and power grid stations.
+
+\paragraph{}
+We decided to adopt a web-based framework (e.g. PhoneGap) to develop the mobile application, so that it would work very similarly to the web one, without needing to design a different interface.
+
+The mobile/web application will first request the necessary web pages and scripts from the dedicated Web Application Server, then the scripts will collect data from the central server via a REST API as needed.
+
+\paragraph{}
+The vehicle application is not web based and will contact only the central server to get data and send requests.
+
+\paragraph{}
+The vehicle and the power grid stations will periodically send updates to the central servers. Cars must also be  listening for commands from the servers.
+
+
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
-		\includegraphics[width=400pt]{architecture_overview.png}
+		\includegraphics[width=350pt]{architecture_overview.png}
 	}
 	\caption{Architecture Overview}
 	\label{architectureoverview}
 \end{figure}
-
-descrizione?
-
-3 tier,
-1 client -> mobile/browser, car app, embedded systems
-2 business logic -> central server. web server only for web app
-3 database
 
 
 \subsection{Component View}
