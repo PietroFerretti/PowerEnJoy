@@ -14,30 +14,7 @@
 \usepackage{titling}
 \renewcommand{\arraystretch}{1.4}
 \newcommand{\code}[1]{\texttt{#1}}
-\usepackage{listings}
-\usepackage{color}
-\definecolor{javared}{rgb}{0.6,0,0} % for strings
-\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
-\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
-\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
-
-\lstset{language=Java,
-	basicstyle=\ttfamily\small,
-	xleftmargin=-2cm,
-	keywordstyle=\color{javapurple}\bfseries,
-	stringstyle=\color{javared},
-	commentstyle=\color{javagreen},
-	morecomment=[s][\color{javadocblue}]{/**}{*/},
-	numbers=left,
-	numberstyle=\tiny\color{black},
-	stepnumber=1,
-	numbersep=10pt,
-	tabsize=4,
-	showspaces=false,
-	showstringspaces=false,
-	linewidth=16cm,
-	breaklines=true
-	}
+\usepackage{array}
 
 \pretitle{%
 	\begin{center}
@@ -141,6 +118,7 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 	\item{Requirements analysis and specification document: “RASD.pdf”}
 	\item{Design document: “DD.pdf”}
 	\item{Project description document: “Assignments AA 2016-2017.pdf”}
+	%% io aggiungerei il documento di esempio
 \end{itemize}
 
 \section{Integration Strategy}
@@ -155,6 +133,29 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 %TODO choose just one title based on previous point
 
 \section{Individual Steps and Test Description}
+
+\subsection{Resource Management Subsystem}
+
+\subsubsection{Component 1 - Component 2}
+
+%% se necessario possiamo usare longtable
+\begin{center}
+	\begin{tabular}{ | m{7cm} | m{7cm} | }
+		\hline 
+		\multicolumn{2}{|c|}{\textbf{method(arg1, arg2)}} \\
+		\hline
+		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{|c|}{\textit{Result}} \\
+		\hline
+		input1 & result1 \\
+		\hline
+		input2 & result2 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\subsection{Application Subsystem}
+
+\subsection{Integration between subsystems}
 
 \section{Tools and Test Equipment Required}
 
