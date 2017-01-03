@@ -1,0 +1,91 @@
+\documentclass[english]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=false,bookmarksopen=false,
+ breaklinks=true,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\usepackage{tabularx}
+\usepackage{graphicx}
+\graphicspath{{images/}}
+\usepackage{svg}
+\usepackage{float}
+\usepackage{titling}
+\renewcommand{\arraystretch}{1.4}
+\newcommand{\code}[1]{\texttt{#1}}
+\usepackage{listings}
+\usepackage{color}
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+
+\lstset{language=Java,
+	basicstyle=\ttfamily\small,
+	xleftmargin=-2cm,
+	keywordstyle=\color{javapurple}\bfseries,
+	stringstyle=\color{javared},
+	commentstyle=\color{javagreen},
+	morecomment=[s][\color{javadocblue}]{/**}{*/},
+	numbers=left,
+	numberstyle=\tiny\color{black},
+	stepnumber=1,
+	numbersep=10pt,
+	tabsize=4,
+	showspaces=false,
+	showstringspaces=false,
+	linewidth=16cm,
+	breaklines=true
+	}
+
+\pretitle{%
+	\begin{center}
+		\LARGE
+		\includegraphics[width=250pt]{../other/Logo_blu.png}\\[\bigskipamount]~\\[\bigskipamount]
+	}
+\posttitle{\end{center}}
+
+\begin{document}
+
+\title{Politecnico di Milano\\
+ A.A. 2016–2017 \\
+Software Engineering 2: “PowerEnJoy” \\
+\emph{Code Inspection Document}}
+
+\author{Pietro Ferretti, Nicole Gervasoni, Danilo Labanca}
+\date{February 5, 2017}
+\maketitle
+
+\newpage
+
+\tableofcontents{}
+
+\newpage
+
+\section{Assigned Class}
+% <state the namespace pattern and name of the classes that were assigned to you.>
+\paragraph{}
+apache-ofbiz-16.11.01/framework/service/src/main/java/org/apache/ofbiz/service/job/JobManager.java
+
+\section{Functional Role}% of assigned set of classes: <elaborate on the functional role you have identified for the class cluster that was assigned to you, also, elaborate on how you managed to understand this role and provide the necessary evidence, e.g., javadoc, diagrams, etc.>
+\section{List of Issues} % found by applying the checklist: <report the classes/code fragments that do not fulfill some points in the check list. Explain which point is not fulfilled and why.>
+\section{Other Problems} % you have highlighted: <list here all the parts
+%of code that you think create or may create a bug and explain why.>
+
+
+\section{Effort Spent}
+\begin{itemize}
+	\item{Pietro Ferretti:  hours of work}
+	\item{Nicole Gervasoni:  hours of work}
+	\item{Danilo Labanca:  hours of work}
+\end{itemize}
+
+
+\section{Revisions}
+
+\subsection{Changelog}
+\begin{itemize}
+	\item{CID v1.0, published on February 5, 2017}
+\end{itemize}
+\end{document}
