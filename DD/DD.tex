@@ -219,7 +219,7 @@ The vehicle and the power grid stations will periodically send updates to the ce
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
-		\includegraphics[width=450pt]{comp_2.png}
+		\includegraphics[width=450pt]{comp_2model.png}
 	}
 	\caption{Component Diagram for the Application Subsystem}
 	\label{componentdiagram2}
@@ -674,6 +674,7 @@ We analyze two different functionalities that we want to implement:
 \paragraph{}
 We decided to use Java-like pseudo-code as it is clear and easy to understand, and at the same time a language that we feel comfortable using.
 
+\newpage
 \subsection{Discount calculation}
 
 \lstinputlisting{Discounts.java}
@@ -766,7 +767,7 @@ To make sure that every component of our architecture is actually needed, we now
 	\begin{itemize}
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
-		\item{Login Component}
+		\item{Account Manager}
 		\item{Model}
 		\item{DBMS}
 	\end{itemize}
@@ -936,6 +937,7 @@ To make sure that every component of our architecture is actually needed, we now
 	\begin{itemize}
 		\item{Application Subsystem}
 		\item{Request Dispatcher}
+		\item{Account Manager}
 		\item{Payment}
 		\item{Model}
 		\item{DBMS}
@@ -988,5 +990,10 @@ Every component in our architecture is used by at least one goal.
 \subsection{Changelog}
 \begin{itemize}
 	\item{DD v1.0, published on December 11, 2016}
+	\item{DD v1.1, published on January 15, 2016
+		\begin{itemize}
+			\item{Added details about the Model in the Component View.}
+			\item{Changed the Login Component name to Account Manager to better describe its role in the system.}
+		\end{itemize} }
 \end{itemize}
 \end{document}
