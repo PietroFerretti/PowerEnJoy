@@ -182,25 +182,23 @@ It will be tested the cooperation between the Car Manager and the Car Handler co
 
 \subsection{Sequence of Component / Function Integration}
 
-in this section we will describe in which order the system components will be integrated and tested
-diagrams will show the sequence more clearly
-graphs
-arrow = this component is a dependency of this other one
-this component is necessary for the other one to work
+In this section we will describe in which order the components of our system will be coupled together to be tested and integrated.
+First we will integrate the components in each subsystem separately, then the two subsystems (the Application Subsystem and the Resource Management Subsystem) will be combined together.
+
+We will use diagrams to make the dependencies between components clearer. Arrows from a component to another imply that the first component is necessary for the second one to work correctly.
 
 
 \subsubsection{Software Integration Sequence}
 
-to start with the in
+Following our choice of using a bottom-up approach, integration testing will start from two base components: the DBMS and the Car Internal System.
+The DBMS is free from dependencies and can be easily used as a starting point.
+The Car Internal System on the other hand, even if it is a prerequisite for many of the system's functions to work, requires an interface to the Resource Management Subsystem that we haven't integration tested yet. Fortunately the interface is used only for sending updates about its status, so the interface functions can be easily replaced by an appropriate stub.
 
 
 \paragraph{Model}
-\paragraph{}
-%the first two elements to be integrated are the Model and the DBMS
-why?
-because the model is an integral part of the application subsystem
-because we can’t start integration testing any application subsystem component until the model is done
-immagine model-DBMS
+The first two elements to be integrated will be the Model and the DBMS.
+The Model is the foundation of the Application Subsystem and integrating it will let us test all the other components in the subsystem.
+
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
@@ -209,9 +207,8 @@ immagine model-DBMS
 \end{figure}
 
 \textbf{Power Grid Stations Manager}
-%at the same time we can integrate the pgs manager component with the dbms
-why,  a function that is already complete: updating the plugs’ status
-immagine pgs manager-DBMS
+On the Resource Management Subsystem we can start from integrating the Power Grid Stations Manager with the DBMS. 
+The PGS Manager is almost fully independent from the other components and can be tested easily.
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
@@ -219,17 +216,10 @@ immagine pgs manager-DBMS
 	}
 \end{figure}
 
-\textbf{Car Handler}
-the car handler keeps track of the cars in the system
-the car handler issues commands to the cars
-needs the cars
-car internal system tested and ready
-integrate the car handler with the car internal system
-bottom-up approach
-we need the car handler for the car manager, that is the foundation of many other functions
-we will use a stub to simulate the car manager interface in case it is needed
+\paragraph{Car Handler}
 
-immagine car handler-Car Internal System
+The Car Handler is the component that is in charge of issuing commands to the car. We can start testing its behavior as soon as the Car Internal System is fully unit tested. We will make use of a stub to simulate the Resource Subsystem Interface.
+
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
@@ -237,10 +227,8 @@ immagine car handler-Car Internal System
 	}
 \end{figure}
 
-\textbf{Car Manager}
-we have the car handler, we have the dbms
-we can integrate the car manager, bulk of the resource management subsystem
-immagine car manager-car handler-dbms
+\paragraph{Car Manager}
+After the Car Handler is integrated we can finally incorporate the Car Manager, the component doing the heavy lifting in the Resource Management Subsystem.
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
@@ -248,105 +236,75 @@ immagine car manager-car handler-dbms
 	}
 \end{figure}
 
-[poi car internal system-car manager]
-after the car manager has been integration tested, we can test the interaction between the car internal system and the car manager interface, this time for real
-immagine car-handler-car internal system -car manager
+Once the Car Manager has been integration tested, we can actually test the interaction between the Car Internal System and the Resource Subsystem Interface.
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-internal-manager.png}
+		\includegraphics[scale=0.25]{seq-ciclo-a.png}
 	}
 \end{figure}
 
-\textbf{Application Subsystem Components}
-with resource subsystem stub
-on the other side, done with the model, we can integrate all the single components of the application subsystem
-can be done concurrently, they are independent from each other
-some of them require interfacing to the resource subsystem, we will use a stub so these tests can be done at the same time as the ones in the resource subsystem
-immagine componenti-model(-resource stub)
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.25]{seq-application-1.png}
-\end{figure}
+At this point the Resource Management Subsystem is fully integrated.
 \begin{figure}[H]
 	\centering
 	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-application-2.png}
+		\includegraphics[scale=0.25]{seq-resource-subs.png}
 	}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-application-3.png}
-	}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-application-4.png}
-	}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-application-5.png}
-	}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-application-6.png}
-	}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-application-7.png}
-	}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[scale=0.25]{seq-application-8.png}
-	}
-\end{figure}\begin{figure}[H]
-\centering
-\makebox[\textwidth][c]{
-	\includegraphics[scale=0.25]{seq-application-9.png}
-}
-\end{figure}\begin{figure}[H]
-\centering
-\makebox[\textwidth][c]{
-	\includegraphics[scale=0.25]{seq-application-10.png}
-}
-\end{figure}\begin{figure}[H]
-\centering
-\makebox[\textwidth][c]{
-	\includegraphics[scale=0.25]{seq-application-11.png}
-}
 \end{figure}
 
-\textbf{Request Dispatcher}
-“thread testing”, “function something”?
-when testing for one of the intermediate components has been done, we can test the corresponding application functionality integrating the request dispatcher
-the request dispatcher is integrated with all the other components
-immagine request dispatcher-componenti
+\paragraph{Application and Resource Subsystems Integration}
+We can now proceed to integrating the Application Subsystem and the Resource Subsystem, again following the bottom-up approach.
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-subsystemv1.png}
+	}
+\end{figure}
 
-\subsubsection{Subsystem Integration Sequence}
-done with the previous integrations, we can integrate the application subsystem and the resource subsystem
+\paragraph{Application Subsystem Components}
+Most of the components in the Application Subsystem are independent from each other, therefore they can be freely tested in parallel.
 
-\textbf{Application and Resource Subsystems Integration}
-we put them together
-immagine application-resource-dbms (interfaces)
+The Registration Component, the Account Manager, the Car Search Component, the PGS Search Component, the Safe Areas Search Component and the Payment Component only need the Model, while the Reservation Manager, the Unlocking Component, the Parking Component, the Ride Manager and the Report Manager also need to interface with the Resource Subsystem. 
+
+
+
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-model1.png}
+	}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-model2b.png}
+	}
+\end{figure}
+
+
+\paragraph{Request Dispatcher}
+The Request Dispatcher acts as a wrapper for all of the requests to the application API, processing and distributing them to the corresponding components. 
+
+This allows us to integrate it with thread based testing: when testing for one of the intermediate components has been finished, we can test the corresponding functionality on the Request Dispatcher, that will interact with the specific component.
+The request dispatcher will be integrated one by one with all the other components, until the Application Subsystem is complete.
+
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-dispatcher.png}
+	}
+\end{figure}
+
 
 \subsubsection{Client Applications Integration Sequence}
-after we’re done with the central system, we can test if the clients work with it
-immagine clients-application-resource-dbms (car internal system?)
-oppure
-immagine clients-application
-immagine completa
+Finally, after the whole central system is tested and has been successfully integrated, we will test the interaction between the client applications and the system.
+
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-clients.png}
+	}
+\end{figure}
 
 
 
