@@ -179,6 +179,10 @@ It will be tested the cooperation between the Car Manager and the Car Handler co
 
 
 \subsection{Integration Testing Strategy}
+We believe that the most efficient way to test the integration between PowerEnjoy's software components is the \emph{bottom up approach}. Using this strategy, we will be able to test the cooperation between different units as soon as they are fully developed without waiting for the whole subsystem to be ready. This method will also highlight all the possible integration issues while the software is still under development, allowing quicker smaller fixes.
+We will start the process from independent components which don't have any dependencies and we will built further integration test on the already  tested software.
+As specified in the Design Document, several components of the Application Subsystem depend on the Resource Management Subsystem thus the testing phase will start in this subsystem.
+
 
 \subsection{Sequence of Component / Function Integration}
 
