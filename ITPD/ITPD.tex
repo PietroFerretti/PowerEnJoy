@@ -316,6 +316,106 @@ Finally, after the whole central system is tested and has been successfully inte
 
 \section{Individual Steps and Test Description}
 
+% Non serve scrivere metodi, basta dire cose come "Qui passiamo nomi utente e dati della patente, successo, poi passiamo nomi utente già esistenti, ci aspettiamo errore, poi patente errata, errore,..."
+
+%TODO aggiungere tipi di input per ogni azione
+%TODO aggiungere casi di input errati per ogni azione
+%TODO aggiungere risultati per ognuno degli input
+%TODO riscrivere tutto bene
+
+Model - DBMS
+azioni da componenti sul model
+es?
+- insert utenti
+- update utenti
+- insert bill
+- lista bill
+- lista cars
+- lista safe areas
+- update ride
+- update reservation
+
+
+
+PGS Manager - DBMS
+azioni da interfaccia esterna
+- update plugs 
+	-> disponibile 
+	-> non disponibile
+in teoria non dovrebbero esserci richieste errate perché sono solo messaggi delle stazioni, ma mettiamo casi di errore
+
+Car Handler - Car Internal System
+azioni da car manager a car handler
+- richiesta di informazioni
+- lock
+- unlock
+
+Car Manager - Car Handler - DBMS
+richieste da: maintenance, application subsystem, macchine
+maintenance
+- lista macchine
+- set macchina available
+- set macchina unavailable
+application:
+- lock 
+- unlock
+macchina:
+- aggiornamento informazioni (solite posizione, batteria ecc.)
+
+Application components:
+azioni da request dispatcher
+
+Registration Component - Model
+- registrazione utente
+
+Account Manager - Model
+- login
+- getinfo utente
+- update info utente
+- list bills
+
+Car Search Component- Model
+- find cars with position
+- find cars with address
+
+PGS Search Component- Model
+- find stations with position
+- find stations with address
+
+Safe Areas Search Component - Model
+- find safe areas with position 
+- find safe areas with address
+
+Payment Component- Model
+- pay a bill 
+
+Reservation Manager - Model - Resource Subsystem
+- crea reservation
+- annulla reservation
+
+Unlocking Component - Model - Resource Subsystem
+- sblocca macchina (-> nb fa partire il conto del tempo)
+
+Parking Component - Model - Resource Subsystem
+- metti la macchina in sosta
+
+Ride Manager - Model - Resource Subsystem
+- fine ride
+
+Report Manager - Model - Resource Subsystem
+- aggiungi report
+
+request dispatcher:
+Request Dispatcher - Application components
+- questa è l'api descritta nel DD, diciamo soltanto che deve comportarsi nel modo che abbiamo già detto nei dettagli
+
+client applications:
+Mobile/Web Application - Application Subsystem
+- qui diciamo che proviamo l'applicazione in tutte le sue funzionalità e devono funzionare tutte
+
+Car Application - Application Subsystem
+- stessa cosa qui
+
 \subsection{Resource Management Subsystem}
 
 \subsubsection{Component 1 - Component 2}
@@ -334,6 +434,7 @@ Finally, after the whole central system is tested and has been successfully inte
 		\hline
 	\end{tabular}
 \end{center}
+
 
 \subsection{Application Subsystem}
 
