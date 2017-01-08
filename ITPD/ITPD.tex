@@ -135,11 +135,16 @@ Regarding the code development it is only needed that the \textbf{INSERIRE PERCE
 
 
 \subsection{Elements to be Integrated}
-%TODO parlare delle client application
-%TODO parlare dei componenti esterni se serve (le API) che non vanno testati
 
 As stated in the Design Document (paragraph 2.2), the system is based on the cooperation of two parts, the \emph{Application Subsystem}  and the \emph{Resource Management Subsystem}. The first handles all the operations related to the user applications and interfaces, while the second takes care of keeping track of all the automatic updates from the sensors in the cars and the charging stations.
 The testing process will verify the correctness of the integration between these macro-components after checking the proper cooperation of smaller components inside each subsystem.
+Furthermore, it will be tested the higher integration, client/server level, between
+\begin{itemize}
+\item the Web Application and the Application Subsystem
+\item the Car Application and the Application Subsystem
+\end{itemize}
+Concerning the external APIs, we expect them to work properly so we will only check, by unit testing, that the components execute correctly the API call.
+
 
 \paragraph{Application Subsystem}
 Components to be tested:
@@ -170,6 +175,7 @@ Components to be tested:
 \end{enumerate}
 
 It will be tested the cooperation between the Car Manager and the Car Handler components and between the PGS Manager and the DBMS.
+
 
 
 \subsection{Integration Testing Strategy}
