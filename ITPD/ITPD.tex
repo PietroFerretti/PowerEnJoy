@@ -139,7 +139,174 @@ Regarding the code development it is only needed that the \textbf{INSERIRE PERCE
 \subsection{Integration Testing Strategy}
 
 \subsection{Sequence of Component / Function Integration}
-%TODO choose just one title based on previous point
+
+in this section we will describe in which order the system components will be integrated and tested
+diagrams will show the sequence more clearly
+graphs
+arrow = this component is a dependency of this other one
+this component is necessary for the other one to work
+
+
+\subsubsection{Software Integration Sequence}
+
+to start with the in
+
+
+\paragraph{Model}
+\paragraph{}
+%the first two elements to be integrated are the Model and the DBMS
+why?
+because the model is an integral part of the application subsystem
+because we can’t start integration testing any application subsystem component until the model is done
+immagine model-DBMS
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq1.png}
+	}
+\end{figure}
+
+\textbf{Power Grid Stations Manager}
+%at the same time we can integrate the pgs manager component with the dbms
+why,  a function that is already complete: updating the plugs’ status
+immagine pgs manager-DBMS
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq2.png}
+	}
+\end{figure}
+
+\textbf{Car Handler}
+the car handler keeps track of the cars in the system
+the car handler issues commands to the cars
+needs the cars
+car internal system tested and ready
+integrate the car handler with the car internal system
+bottom-up approach
+we need the car handler for the car manager, that is the foundation of many other functions
+we will use a stub to simulate the car manager interface in case it is needed
+
+immagine car handler-Car Internal System
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq3b.png}
+	}
+\end{figure}
+
+\textbf{Car Manager}
+we have the car handler, we have the dbms
+we can integrate the car manager, bulk of the resource management subsystem
+immagine car manager-car handler-dbms
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq4.png}
+	}
+\end{figure}
+
+[poi car internal system-car manager]
+after the car manager has been integration tested, we can test the interaction between the car internal system and the car manager interface, this time for real
+immagine car-handler-car internal system -car manager
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-internal-manager.png}
+	}
+\end{figure}
+
+\textbf{Application Subsystem Components}
+with resource subsystem stub
+on the other side, done with the model, we can integrate all the single components of the application subsystem
+can be done concurrently, they are independent from each other
+some of them require interfacing to the resource subsystem, we will use a stub so these tests can be done at the same time as the ones in the resource subsystem
+immagine componenti-model(-resource stub)
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.25]{seq-application-1.png}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-application-2.png}
+	}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-application-3.png}
+	}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-application-4.png}
+	}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-application-5.png}
+	}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-application-6.png}
+	}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-application-7.png}
+	}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[scale=0.25]{seq-application-8.png}
+	}
+\end{figure}\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{
+	\includegraphics[scale=0.25]{seq-application-9.png}
+}
+\end{figure}\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{
+	\includegraphics[scale=0.25]{seq-application-10.png}
+}
+\end{figure}\begin{figure}[H]
+\centering
+\makebox[\textwidth][c]{
+	\includegraphics[scale=0.25]{seq-application-11.png}
+}
+\end{figure}
+
+\textbf{Request Dispatcher}
+“thread testing”, “function something”?
+when testing for one of the intermediate components has been done, we can test the corresponding application functionality integrating the request dispatcher
+the request dispatcher is integrated with all the other components
+immagine request dispatcher-componenti
+
+\subsubsection{Subsystem Integration Sequence}
+done with the previous integrations, we can integrate the application subsystem and the resource subsystem
+
+\textbf{Application and Resource Subsystems Integration}
+we put them together
+immagine application-resource-dbms (interfaces)
+
+\subsubsection{Client Applications Integration Sequence}
+after we’re done with the central system, we can test if the clients work with it
+immagine clients-application-resource-dbms (car internal system?)
+oppure
+immagine clients-application
+immagine completa
+
+
 
 \section{Individual Steps and Test Description}
 
@@ -149,11 +316,11 @@ Regarding the code development it is only needed that the \textbf{INSERIRE PERCE
 
 %% se necessario possiamo usare longtable
 \begin{center}
-	\begin{tabular}{ | m{7cm} | m{7cm} | }
+	\begin{tabular}{ | m{6cm} | m{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{method(arg1, arg2)}} \\
 		\hline
-		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{|c|}{\textit{Result}} \\
+		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
 		input1 & result1 \\
 		\hline
