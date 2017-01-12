@@ -328,22 +328,27 @@ Finally, after the whole central system is tested and has been successfully inte
 azioni da componenti sul model
 - le azioni di delete
 - richieste di tutte le reservation/ride esistenti (serve?)
+- select su tutti gli oggetti
+
+% btw il model non fa check sulle cose inserite, tutti i controlli vengono effettuati a monte sui componenti dell'applicazione 
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Insert User}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		User Data & a new user is inserted in the database \\
+		A username, the user's personal data, an email and a payment method (e.g. a valid credit card number). & A new user is inserted in the database. \\
 		\hline
-		something that is not acceptable & fails \\
+		Some of the parameters are missing. & The insertion fails. \\
+		\hline
+		& \\
 		\hline
 	\end{tabular}
 \end{center}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Update User}} \\
 		\hline
@@ -359,7 +364,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Insert Bill}} \\
 		\hline
@@ -375,7 +380,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{List Bills}} \\
 		\hline
@@ -391,7 +396,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{List Cars}} \\
 		\hline
@@ -403,7 +408,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{List Power Grid Stations}} \\
 		\hline
@@ -415,7 +420,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{List Safe Areas}} \\
 		\hline
@@ -429,7 +434,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Insert Reservation}} \\
 		\hline
@@ -443,7 +448,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Update Reservation}} \\
 		\hline
@@ -457,7 +462,7 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Insert Ride}} \\
 		\hline
@@ -472,7 +477,7 @@ azioni da componenti sul model
 
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Update Ride}} \\
 		\hline
@@ -493,7 +498,7 @@ azioni da interfaccia esterna
 in teoria non dovrebbero esserci richieste errate perché sono solo messaggi delle stazioni, ma mettiamo casi di errore
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Update Plug Availability}} \\
 		\hline
@@ -513,7 +518,7 @@ azioni da car manager a car handler
 - unlock
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Request Update from Car}} \\
 		\hline
@@ -527,7 +532,7 @@ azioni da car manager a car handler
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Lock Car}} \\
 		\hline
@@ -541,7 +546,7 @@ azioni da car manager a car handler
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Unlock Car}} \\
 		\hline
@@ -568,7 +573,7 @@ macchina:
 
 \subsubsection{Maintenance}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{List Cars in Need of Maintenance}} \\
 		\hline
@@ -582,7 +587,7 @@ macchina:
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Set Car as Available}} \\
 		\hline
@@ -596,7 +601,7 @@ macchina:
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Set Car as Unavailable}} \\
 		\hline
@@ -611,7 +616,7 @@ macchina:
 
 \subsubsection{Interface to the Application Subsystem}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Request to Lock Car}} \\
 		\hline
@@ -625,7 +630,7 @@ macchina:
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Request to Unlock Car}} \\
 		\hline
@@ -640,7 +645,7 @@ macchina:
 
 \subsubsection{Car Interface}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Car Status Update}} \\
 		\hline
@@ -660,7 +665,7 @@ azioni da request dispatcher
 \subsubsection{Registration Component - Model}
 - registrazione utente
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Register User}} \\
 		\hline
@@ -679,7 +684,7 @@ azioni da request dispatcher
 - update info utente
 - list bills
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Login}} \\
 		\hline
@@ -693,7 +698,7 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Get User Info}} \\
 		\hline
@@ -707,7 +712,7 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Update User Info}} \\
 		\hline
@@ -721,7 +726,7 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{List User Bills}} \\
 		\hline
@@ -739,7 +744,7 @@ azioni da request dispatcher
 - find cars with address
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Find Cars with Position}} \\
 		\hline
@@ -753,7 +758,7 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Find Cars with Address}} \\
 		\hline
@@ -771,7 +776,7 @@ azioni da request dispatcher
 - find stations with address
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Find Stations with Address}} \\
 		\hline
@@ -785,7 +790,7 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Find Stations with Position}} \\
 		\hline
@@ -803,7 +808,7 @@ azioni da request dispatcher
 - find safe areas with address
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Find Safe Areas with Position}} \\
 		\hline
@@ -817,7 +822,7 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Find Safe Areas with Address}} \\
 		\hline
@@ -834,7 +839,7 @@ azioni da request dispatcher
 - pay a bill 
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Pay a Bill}} \\
 		\hline
@@ -852,7 +857,7 @@ azioni da request dispatcher
 - annulla reservation
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Create Reservation}} \\
 		\hline
@@ -866,7 +871,7 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Cancel Reservation}} \\
 		\hline
@@ -882,8 +887,10 @@ azioni da request dispatcher
 \subsubsection{Unlocking Component - Model - Resource Subsystem}
 - sblocca macchina (-> nb fa partire il conto del tempo)
 
+ricordarsi che serve la posizione dell'utente vicina alla macchina!
+
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Unlock Car from Application}} \\
 		\hline
@@ -900,7 +907,7 @@ azioni da request dispatcher
 - metti la macchina in sosta
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Park Car}} \\
 		\hline
@@ -917,7 +924,7 @@ azioni da request dispatcher
 - fine ride
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{End Ride}} \\
 		\hline
@@ -934,7 +941,7 @@ azioni da request dispatcher
 - aggiungi report
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{Report Issue}} \\
 		\hline
@@ -960,7 +967,7 @@ client applications:
 
 %% se necessario possiamo usare longtable
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
 		\multicolumn{2}{|c|}{\textbf{method(arg1, arg2)}} \\
 		\hline
@@ -972,8 +979,6 @@ client applications:
 		\hline
 	\end{tabular}
 \end{center}
-
-\subsection{Integration between subsystems}
 
 \section{Tools and Test Equipment Required}
 
