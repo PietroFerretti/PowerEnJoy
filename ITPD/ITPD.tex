@@ -337,10 +337,6 @@ azioni da componenti sul model
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Insert User}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -357,19 +353,17 @@ azioni da componenti sul model
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Update User}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		correct request & user data updated \\
+		An existent user and valid new data to update. &  The user's data is updated in the database. \\
 		\hline
-		updating with unacceptable data & fail \\
+		A non-existent user and new data. & An error is *raised*. \\
 		\hline
-		trying to update a nonexistent user & fail \\
+		An existent user and invalid new data. & An error is *raised*. \\
+		\hline
+		An existent user and no new data & The *action* succeeds but nothing is updated? \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -377,16 +371,12 @@ azioni da componenti sul model
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
 		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Insert Bill}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		un utente valido e una bill ben formata & aggiunge la bill all'utente \\
+		A valid user and a well-formed bill. & Adds the bill to the user's bills in the database. \\
 		\hline
 		un utente valido e una bill non ben formata & errore \\
 		\hline
