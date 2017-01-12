@@ -130,7 +130,6 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 
 Before starting the integration testing phase specific conditions concerning the whole project development must be met.
 
-<<<<<<< HEAD
 It is fundamental that the Requirements Analysis and Specification Document and the Design Document have been properly written and completed.
 
 Regarding the code development, it is necessary to fully complete 
@@ -140,10 +139,6 @@ Regarding the code development, it is necessary to fully complete
 \end{itemize}
 All the other components will be tested, as soon as they are concluded, following the sequence stated in \autoref{subsec:sequence}.
 Furthermore, each component has to be successfully unit tested before being involved in the integration testing.
-=======
-%TODO aggiungere percentuali completamento?
-Regarding the code development it is only needed that the \textbf{INSERIRE PERCENTUALI} has been written. Furthermore, each component has to be successfully unit tested before begin involved in the integration testing.
->>>>>>> e9a75978a6adebda9ebff8a9fda42bff9ac293d2
 
 %  ---ESEMPIO--- This is a required step in order to have a complete picture of the interactions between the diﬀerent components of the system and of the functionalities they oﬀer. Secondly, the integration process should start only when the estimated percentage of completion of every component with respect to its functionalities is: • 100% for the Data Access Utilities component • At least 90% for the Taxi Management System subsystem • At least 70% for the System Administration and Account Management subsystems • At least 50% for the client applications It should be noted that these percentages refer to the status of the project at the beginning of the integration testing phase and they do not represent the minimum completion percentage necessary to consider a component for integration, which must be at least 90%. The choice of having diﬀerent completion percentages for the diﬀerent components has been made to reﬂect their order of integration and to take into account the required time to fully perform integration testing.
 
@@ -313,7 +308,7 @@ The request dispatcher will be integrated one by one with all the other componen
 \end{figure}
 
 
-\subsubsection{Client Applications Integration Sequence}
+\paragraph{Client Applications Integration}
 Finally, after the whole central system is tested and has been successfully integrated, we will test the interaction between the client applications and the system.
 
 \begin{figure}[H]
@@ -336,6 +331,15 @@ Finally, after the whole central system is tested and has been successfully inte
 %TODO aggiungere risultati per ognuno degli input
 %TODO riscrivere tutto bene
 
+Also, try all combinations of null values.
+Also, try passing parameters of the wrong type.
+
+AUTHENTICATION!
+- maintenance
+- pgs
+- car update
+- application components?
+
 \subsection{Model - DBMS}
 azioni da componenti sul model
 - le azioni di delete
@@ -352,11 +356,11 @@ azioni da componenti sul model
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		A username, the user's personal data, an email and a payment method (e.g. a valid credit card number). & A new user is inserted in the database. \\
+		A username, an email, the user's personal data, a license id number and a payment method (e.g. a valid credit card number). & A new user is inserted in the database. \\
 		\hline
 		Some of the parameters are missing. & The insertion fails. \\
 		\hline
-		& \\
+		Invalid parameters? & error\\
 		\hline
 	\end{tabular}
 \end{center}
@@ -387,11 +391,11 @@ azioni da componenti sul model
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		A valid user and a well-formed bill. & Adds the bill to the user's bills in the database. \\
+		A valid user and a well-formed bill. & The bill is added to the user's bills in the database. \\
 		\hline
-		un utente valido e una bill non ben formata & errore \\
+		A valid user and an ill-formed bill & *An error is raised.* \\
 		\hline
-		un utente inesistente e una bill qualsiasi & errore \\
+		A non-existent user and a bill & *An error is raised* \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -399,20 +403,16 @@ azioni da componenti sul model
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
 		\hline
-
 		\multicolumn{2}{|c|}{\textbf{List Bills}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		un utente con bills & ritorna una lista di bills \\
+		A valid user & Returns the user's bills \\
 		\hline
-		un utente senza bills & ritorna una lista vuota \\
+		A valid user with no bills & Returns an empty set \\
 		\hline
-		un utente inesistente & errore \\
+		A non-existent user & *An error is raised* \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -420,16 +420,12 @@ azioni da componenti sul model
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
 		\hline
-
 		\multicolumn{2}{|c|}{\textbf{List Cars}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		niente & lista di tutte le macchine e informazioni allegate \\
+		Nothing & Returns a set of all cars and *information about them, position, battery ecc.* \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -438,15 +434,11 @@ azioni da componenti sul model
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{List Power Grid Stations}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		niente &  \\
+		Nothing & Returns a set of all power grid stations and *their position, their availability* \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -455,17 +447,11 @@ azioni da componenti sul model
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{List Safe Areas}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
-		\hline
-		input2 & result2 \\
+		Nothing & Returns a set of all safe areas and *their position* \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -474,17 +460,17 @@ azioni da componenti sul model
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Insert Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid user, an available car & A new reservation is created in the database. \\
 		\hline
-		input2 & result2 \\
+		A valid user, a car that is not available & *An error is raised* \\
+		\hline
+		A non-existent user, a car & *An error is raised* \\
+		\hline
+		A suspended user, a car & *An error is raised* \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -492,18 +478,20 @@ azioni da componenti sul model
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
 		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Update Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		An existent ongoing reservation, valid data to update & The reservation is updated with the new data. \\
 		\hline
-		input2 & result2 \\
+		An existent ongoing reservation, invalid data to update & error \\
+		\hline
+		A canceled reservation, data to update & error \\
+		\hline
+		An ended reservation, data to update & error \\
+		\hline
+		A non-existest reservation, data to update & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -512,17 +500,19 @@ azioni da componenti sul model
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Insert Ride}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid user, a car currently reserved by the user & A new ride is created in the database. \\
 		\hline
-		input2 & result2 \\
+		A valid user, a car not currently reserved by the user & error \\
+		\hline
+		A valid user, a non-existent car & error \\
+		\hline
+		A non-existent user, a car & error \\
+		\hline
+		A suspended user, a car & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -532,18 +522,17 @@ azioni da componenti sul model
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Update Ride}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid ride and valid data to update  & The ride is updated with the new data. \\
 		\hline
-		input2 & result2 \\
+		A valid ride, invalid data to update & error \\
 		\hline
+		A non-existent ride, data to update & error \\
+		\hline
+		% casi in cui la ride è già terminata? si può ancora modificare?
 	\end{tabular}
 \end{center}
 
@@ -558,17 +547,15 @@ in teoria non dovrebbero esserci richieste errate perché sono solo messaggi del
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Update Plug Availability}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid plug id and its availability (different from the current one) & The plug's availability is updated in the database. \\
 		\hline
-		input2 & result2 \\
+		A valid plug id and its availability (the same as the current one) & Nothing changes, returns a "Not Modified"? \\
+		\hline
+		An invalid plug id and an availability & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -582,18 +569,16 @@ azioni da car manager a car handler
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
 		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Request Update from Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid car id and a valid *request type* & The request is sent to the car and the car sends an update to the Car Manager. \\
 		\hline
-		input2 & result2 \\
+		A valid car id and an invalid *request type* & error \\
+		\hline
+		A non-existent car id and a request type & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -602,18 +587,15 @@ azioni da car manager a car handler
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Lock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid car id & The car is locked. \\
 		\hline
-		input2 & result2 \\
+		A non-existent car id  & error \\
 		\hline
+		% caso a parte se la macchina è già chiusa?
 	\end{tabular}
 \end{center}
 
@@ -621,49 +603,33 @@ azioni da car manager a car handler
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Unlock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid car id & The car is unlocked. \\
 		\hline
-		input2 & result2 \\
+		A non-existent car id & error \\
 		\hline
+		% caso a parte se la macchina è già sbloccata?
 	\end{tabular}
 \end{center}
 
 \subsection{Car Manager - Car Handler - DBMS}
-richieste da: maintenance, application subsystem, macchine
-maintenance
-- lista macchine
-- set macchina available
-- set macchina unavailable
-application:
-- lock
-- unlock
-macchina:
-- aggiornamento informazioni (solite posizione, batteria ecc.)
+
 
 \subsubsection{Maintenance}
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{List Cars in Need of Maintenance}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		Valid authentication credentials & Returns a set with all cars in need of maintenance, along with *information about the issues and their position* \\
 		\hline
-		input2 & result2 \\
+		Invalid authentication credentials & error (access forbidden) \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -671,19 +637,18 @@ macchina:
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
 		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Set Car as Available}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		Valid authentication credentials, a valid car id & The car is set as available. \\
 		\hline
-		input2 & result2 \\
+		Valid authentication credentials, a non-existent car id & error \\
 		\hline
+		Invalid authentication credentials, a car id & error \\
+		\hline
+		% what if the car is already available
 	\end{tabular}
 \end{center}
 
@@ -691,17 +656,17 @@ macchina:
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Set Car as Unavailable}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		Valid authentication credentials, a valid car id and a reason for making it unavailable & The car is set as unavailable and the reason is saved on the database. \\
 		\hline
-		input2 & result2 \\
+		Valid authentication credentials, a valid car id and no reason to for making it unavailable & error? \\ % forziamo a dare una spiegazione?
+		\hline
+		Valid authentication credentials, a non-existent car id & error \\
+		\hline
+		Invalid authentication credentials, a car id  & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -710,19 +675,16 @@ macchina:
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
 		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Request to Lock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid car id & The car is locked. \\
 		\hline
-		input2 & result2 \\
+		A non-existent car id  & error \\
 		\hline
+		% caso a parte se la macchina è già chiusa?
 	\end{tabular}
 \end{center}
 
@@ -730,18 +692,15 @@ macchina:
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Request to Unlock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid car id & The car is unlocked. \\
 		\hline
-		input2 & result2 \\
+		A non-existent car id & error \\
 		\hline
+		% caso a parte se la macchina è già sbloccata?
 	\end{tabular}
 \end{center}
 
@@ -750,17 +709,15 @@ macchina:
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Car Status Update}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A car's valid authentication credentials, well-formed info about the car's status & The car's status is updated in the database. \\
 		\hline
-		input2 & result2 \\
+		A car's valid authentication credentials, ill-formed info about the car's status & error \\
+		\hline
+		Invalid car authentication credentials and info about a car's status  & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -775,17 +732,23 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Register User}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A not-yet-taken username, an email, valid personal data, a valid payment method and a valid driving license id number & A new user is created in the database and an email containing the user's password is sent to the email address provided. \\
 		\hline
-		input2 & result2 \\
+		A not-yet-taken username, an email, valid personal data, a valid payment method and a picture of a valid driving license & A new user is created in the database and an email containing the user's password is sent to the email address provided. \\
+		\hline
+		A not-yet-taken username, an email, valid personal data, a valid payment method and an invalid driving license & error \\
+		\hline
+		A not-yet-taken username, an email, valid personal data, an invalid payment method and a driving license & error \\
+		\hline
+		A not-yet-taken username, an email, invalid personal data, a payment method and a driving license & error \\
+		\hline
+		An already taken username, an email, personal data, a payment method and a driving license & error \\
+		\hline
+		An ill-formed username, an email, personal data, a payment method and a driving license & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -799,17 +762,15 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Login}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid username and the correct corresponding password  & Creates a session for the user and returns a session token. \\
 		\hline
-		input2 & result2 \\
+		A valid username and a wrong password & error \\
+		\hline
+		A non-existent username and a password & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -818,17 +779,13 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Get User Info}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token & Returns all the session user's info \\
 		\hline
-		input2 & result2 \\
+		An invalid session token & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -837,17 +794,15 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Update User Info}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token and valid new data to update & The user info is updated with new data on the database. \\
 		\hline
-		input2 & result2 \\
+		A valid session token and invalid new data & error \\
+		\hline
+		An invalid session token and new data & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -856,17 +811,13 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{List User Bills}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token & Returns a set with all the user's bills \\
 		\hline
-		input2 & result2 \\
+		An invalid session token & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -878,18 +829,13 @@ azioni da request dispatcher
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Find Cars with Position}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid geographic position & Returns a list of all the cars close to that position, along with *their info*. \\
 		\hline
-		input2 & result2 \\
+		An invalid geographic position & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -898,17 +844,13 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Find Cars with Address}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid well-formed address & Returns a list of all the cars close to that address, along with *their info*. \\
 		\hline
-		input2 & result2 \\
+		An invalid address & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -917,40 +859,33 @@ azioni da request dispatcher
 - find stations with position
 - find stations with address
 
+
 \begin{center}
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
-		\multicolumn{2}{|c|}{\textbf{Find Stations with Address}} \\
+		\multicolumn{2}{|c|}{\textbf{Find Stations with Position}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid geographic position & Returns a list of all the charging stations close to that position, along with *their info*. \\
 		\hline
-		input2 & result2 \\
+		An invalid geographic position & error \\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{center}
-
+	
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
-		\multicolumn{2}{|c|}{\textbf{Find Stations with Position}} \\
+		\multicolumn{2}{|c|}{\textbf{Find Stations with Address}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid well-formed address & Returns a list of all the charging stations close to that address, along with *their info*. \\
 		\hline
-		input2 & result2 \\
+		An invalid address & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -963,17 +898,13 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Find Safe Areas with Position}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid geographic position & Returns a list of all the safe areas close to that position. \\
 		\hline
-		input2 & result2 \\
+		An invalid geographic position & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -982,17 +913,13 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Find Safe Areas with Address}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid well-formed address & Returns a list of all the safe areas close to that address. \\
 		\hline
-		input2 & result2 \\
+		An invalid address & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1004,17 +931,20 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Pay a Bill}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token, a bill that needs to be paid and a valid payment method &  The transaction is carried out and the bill is marked as paid. \\
 		\hline
-		input2 & result2 \\
+		A valid session token, a bill that needs to be paid and an invalid payment method & error \\ % distinguere tra not well-formed payment method e errore durante la transazione?
+		A valid session token and a bill that needs to be paid & The system uses the payment method saved for the user to carry out the transaction; if it succeeds the bill is marked as paid, otherwise *error* \\
+		\hline
+		A valid session token and a bill that has already been paid & error \\
+		\hline
+		A valid session token and a non-existent bill & error \\
+		\hline
+		An invalid session token and a bill & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1027,17 +957,19 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Create Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token for a user that has no current reservation, an available car & A new reservation is created. \\
 		\hline
-		input2 & result2 \\
+		A valid session token for a user that has no current reservation, a car that is not available & error \\
+		\hline
+		A valid session token for a user that has no current reservation, a non-existent car & error \\
+		\hline
+		A valid session token for a user with an ongoing reservation, a car & error \\
+		\hline
+		An invalid session token and a car & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1046,17 +978,17 @@ azioni da request dispatcher
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Cancel Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token and an ongoing reservation made by the user & The reservation is canceled. \\
 		\hline
-		input2 & result2 \\
+		A valid session token and an ongoing reservation made by another user & error \\
+		\hline
+		A valid session token and a reservation that has already ended & error \\
+		\hline
+		An invalid session token and a reservation & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1070,17 +1002,36 @@ ricordarsi che serve la posizione dell'utente vicina alla macchina!
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
-		\multicolumn{2}{|c|}{\textbf{Unlock Car from Application}} \\
+		\multicolumn{2}{|c|}{\textbf{Unlock Car with Code}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token, the code of the car that is currently being reserved by the user & The car is unlocked. \\
 		\hline
-		input2 & result2 \\
+		A valid session token, the code of a car that is not currently being reserved by the user & error \\
+		\hline
+		A valid session token, an invalid car code & error \\
+		\hline
+		An invalid session token & error \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
+		\hline 
+		\multicolumn{2}{|c|}{\textbf{Unlock Car with Position}} \\
+		\hline
+		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
+		\hline
+		A valid session token for a user that has an ongoing reservation, a geographic position close to the car that the user has reserved  & The car is unlocked. \\
+		\hline
+		A valid session token for a user that has an ongoing reservation, a geographic position far from the car that the user has reserved & error \\
+		\hline
+		A valid session token for a user that has no ongoing reservation, a geographic position & error \\
+		\hline
+		An invalid session token & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1092,17 +1043,15 @@ ricordarsi che serve la posizione dell'utente vicina alla macchina!
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Park Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token for a user that has an ongoing ride  & If the car has been stopped and the car's position is in a safe area, then the car is locked, otherwise *error* \\
 		\hline
-		input2 & result2 \\
+		A valid session token for a user that has no ongoing ride &  error \\
+		\hline
+		An invalid session token & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1114,17 +1063,15 @@ ricordarsi che serve la posizione dell'utente vicina alla macchina!
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{End Ride}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token for a user that has an ongoing ride  & If the car has been stopped and the car's position is in a safe area, then the car is locked and the ride is marked as ended, otherwise *error* \\
 		\hline
-		input2 & result2 \\
+		A valid session token for a user that has no ongoing ride &  error \\
+		\hline
+		An invalid session token & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1136,17 +1083,15 @@ ricordarsi che serve la posizione dell'utente vicina alla macchina!
 
 	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
-
-
-		\hline
-
 		\multicolumn{2}{|c|}{\textbf{Report Issue}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		input1 & result1 \\
+		A valid session token for a user with an ongoing reservation or ride, an explanation of the issue & The issue is recorded and the car is set as unavailable as soon as possible \\
 		\hline
-		input2 & result2 \\
+		A valid session token for a user with no ongoing reservation or ride & error \\
+		\hline
+		An invalid session token & error \\
 		\hline
 	\end{tabular}
 \end{center}
@@ -1163,24 +1108,6 @@ client applications:
 - stessa cosa qui
 
 %% se necessario possiamo usare longtable
-\begin{center}
-
-	\begin{tabular}{ | p{6cm} | p{6cm} | }
-		\hline 
-
-
-		\hline
-
-		\multicolumn{2}{|c|}{\textbf{method(arg1, arg2)}} \\
-		\hline
-		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
-		\hline
-		input1 & result1 \\
-		\hline
-		input2 & result2 \\
-		\hline
-	\end{tabular}
-\end{center}
 
 \section{Tools and Test Equipment Required}
 
