@@ -49,7 +49,7 @@ Software Engineering 2: “PowerEnJoy” \\
 \subsection{Purpose and Scope}
 
 \paragraph{}
-The purpose of this document is to provide a complete description of the integration testing plans for PowerEnjoy. It will focus on testing the proper behavior of the software by checking the 
+The purpose of this document is to provide a complete description of the integration testing plans for PowerEnjoy. It will focus on testing the proper behavior of the software by checking the
 interoperability between its components.
 It is intended for developers and for any team member involved in the testing process.
 %TODO inserire outline dei contenuti?
@@ -59,7 +59,7 @@ The aim of this project is to specify in detail a new digital management softwar
 
 \paragraph{}
 PowerEnjoy will offer a very valuable service to its users, letting them borrow cars to drive around the city freely, as an alternative to their own vehicles and public transport.
-Among the advantages of using PowerEnJoy we can note being able to find available cars in any place that is served by our system and having dedicated spots to park in (namely, PowerEnJoy's power grid stations).
+Among the advantages of using PowerEnJoy we can note begin able to find available cars in any place that is served by our system and having dedicated spots to park in (namely, PowerEnJoy's power grid stations).
 Furthermore, thanks to the fact that all the cars that we provide are electrically powered, PowerEnJoy is also very environmentally friendly.
 
 %\paragraph{}
@@ -77,7 +77,7 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 \item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
 \item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas is predefined by the system.}
 \item{\textit{Power grid station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
-\item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don’t have dead batteries.}
+\item{\textit{Available car}: a car that is currently not begin used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don’t have dead batteries.}
 \item{\textit{Reservation}:
 	\begin{itemize}
 		\item{the operation of making a car reserved for a user, i.e. giving permission to unlock and use the car only for that user, forbidding reservations by other users.}
@@ -105,6 +105,7 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 \item{\textbf{PGS}: Power Grid Station}
 \item{\textbf{GPS}: Global Positioning System}
 %\item{\textbf{CAN bus}: Controller Area Network bus}
+\item{\textbf{ISDTN}: International Standard Date and Time Notation}
 \end{itemize}
 
 \subsubsection{Abbreviations}
@@ -129,6 +130,7 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 
 Before starting the integration testing phase specific conditions concerning the whole project development must be met.
 
+<<<<<<< HEAD
 It is fundamental that the Requirements Analysis and Specification Document and the Design Document have been properly written and completed.
 
 Regarding the code development, it is necessary to fully complete 
@@ -138,6 +140,10 @@ Regarding the code development, it is necessary to fully complete
 \end{itemize}
 All the other components will be tested, as soon as they are concluded, following the sequence stated in \autoref{subsec:sequence}.
 Furthermore, each component has to be successfully unit tested before being involved in the integration testing.
+=======
+%TODO aggiungere percentuali completamento?
+Regarding the code development it is only needed that the \textbf{INSERIRE PERCENTUALI} has been written. Furthermore, each component has to be successfully unit tested before begin involved in the integration testing.
+>>>>>>> e9a75978a6adebda9ebff8a9fda42bff9ac293d2
 
 %  ---ESEMPIO--- This is a required step in order to have a complete picture of the interactions between the diﬀerent components of the system and of the functionalities they oﬀer. Secondly, the integration process should start only when the estimated percentage of completion of every component with respect to its functionalities is: • 100% for the Data Access Utilities component • At least 90% for the Taxi Management System subsystem • At least 70% for the System Administration and Account Management subsystems • At least 50% for the client applications It should be noted that these percentages refer to the status of the project at the beginning of the integration testing phase and they do not represent the minimum completion percentage necessary to consider a component for integration, which must be at least 90%. The choice of having diﬀerent completion percentages for the diﬀerent components has been made to reﬂect their order of integration and to take into account the required time to fully perform integration testing.
 
@@ -219,7 +225,7 @@ The Model is the foundation of the Application Subsystem and integrating it will
 \end{figure}
 
 \textbf{Power Grid Stations Manager}
-On the Resource Management Subsystem we can start from integrating the Power Grid Stations Manager with the DBMS. 
+On the Resource Management Subsystem we can start from integrating the Power Grid Stations Manager with the DBMS.
 The PGS Manager is almost fully independent from the other components and can be tested easily.
 \begin{figure}[H]
 	\centering
@@ -275,7 +281,7 @@ We can now proceed to integrating the Application Subsystem and the Resource Sub
 \paragraph{Application Subsystem Components}
 Most of the components in the Application Subsystem are independent from each other, therefore they can be freely tested in parallel.
 
-The Registration Component, the Account Manager, the Car Search Component, the PGS Search Component, the Safe Areas Search Component and the Payment Component only need the Model, while the Reservation Manager, the Unlocking Component, the Parking Component, the Ride Manager and the Report Manager also need to interface with the Resource Subsystem. 
+The Registration Component, the Account Manager, the Car Search Component, the PGS Search Component, the Safe Areas Search Component and the Payment Component only need the Model, while the Reservation Manager, the Unlocking Component, the Parking Component, the Ride Manager and the Report Manager also need to interface with the Resource Subsystem.
 
 
 
@@ -294,7 +300,7 @@ The Registration Component, the Account Manager, the Car Search Component, the P
 
 
 \paragraph{Request Dispatcher}
-The Request Dispatcher acts as a wrapper for all of the requests to the application API, processing and distributing them to the corresponding components. 
+The Request Dispatcher acts as a wrapper for all of the requests to the application API, processing and distributing them to the corresponding components.
 
 This allows us to integrate it with thread based testing: when testing for one of the intermediate components has been finished, we can test the corresponding functionality on the Request Dispatcher, that will interact with the specific component.
 The request dispatcher will be integrated one by one with all the other components, until the Application Subsystem is complete.
@@ -334,23 +340,38 @@ Finally, after the whole central system is tested and has been successfully inte
 azioni da componenti sul model
 - le azioni di delete
 - richieste di tutte le reservation/ride esistenti (serve?)
+- select su tutti gli oggetti
+
+% btw il model non fa check sulle cose inserite, tutti i controlli vengono effettuati a monte sui componenti dell'applicazione 
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Insert User}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
 		\hline
-		User Data & a new user is inserted in the database \\
+		A username, the user's personal data, an email and a payment method (e.g. a valid credit card number). & A new user is inserted in the database. \\
 		\hline
-		something that is not acceptable & fails \\
+		Some of the parameters are missing. & The insertion fails. \\
+		\hline
+		& \\
 		\hline
 	\end{tabular}
 \end{center}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Update User}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -365,8 +386,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Insert Bill}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -381,8 +407,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{List Bills}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -397,8 +428,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{List Cars}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -409,8 +445,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{List Power Grid Stations}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -421,8 +462,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{List Safe Areas}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -435,8 +481,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Insert Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -449,8 +500,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Update Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -463,8 +519,13 @@ azioni da componenti sul model
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Insert Ride}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -478,8 +539,13 @@ azioni da componenti sul model
 
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Update Ride}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -493,14 +559,19 @@ azioni da componenti sul model
 
 \subsection{PGS Manager - DBMS}
 azioni da interfaccia esterna
-- update plugs 
-	-> disponibile 
+- update plugs
+	-> disponibile
 	-> non disponibile
 in teoria non dovrebbero esserci richieste errate perché sono solo messaggi delle stazioni, ma mettiamo casi di errore
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Update Plug Availability}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -519,8 +590,13 @@ azioni da car manager a car handler
 - unlock
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Request Update from Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -533,8 +609,13 @@ azioni da car manager a car handler
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Lock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -547,8 +628,13 @@ azioni da car manager a car handler
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Unlock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -567,15 +653,20 @@ maintenance
 - set macchina available
 - set macchina unavailable
 application:
-- lock 
+- lock
 - unlock
 macchina:
 - aggiornamento informazioni (solite posizione, batteria ecc.)
 
 \subsubsection{Maintenance}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{List Cars in Need of Maintenance}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -588,8 +679,13 @@ macchina:
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Set Car as Available}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -602,8 +698,13 @@ macchina:
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Set Car as Unavailable}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -617,8 +718,13 @@ macchina:
 
 \subsubsection{Interface to the Application Subsystem}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Request to Lock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -631,8 +737,13 @@ macchina:
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Request to Unlock Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -646,8 +757,13 @@ macchina:
 
 \subsubsection{Car Interface}
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Car Status Update}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -666,8 +782,13 @@ azioni da request dispatcher
 \subsubsection{Registration Component - Model}
 - registrazione utente
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Register User}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -685,8 +806,13 @@ azioni da request dispatcher
 - update info utente
 - list bills
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Login}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -699,8 +825,13 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Get User Info}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -713,8 +844,13 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Update User Info}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -727,8 +863,13 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{List User Bills}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -745,8 +886,13 @@ azioni da request dispatcher
 - find cars with address
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Find Cars with Position}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -759,8 +905,13 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Find Cars with Address}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -777,8 +928,13 @@ azioni da request dispatcher
 - find stations with address
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Find Stations with Address}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -791,8 +947,13 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Find Stations with Position}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -805,12 +966,17 @@ azioni da request dispatcher
 \end{center}
 
 \subsubsection{Safe Areas Search Component - Model}
-- find safe areas with position 
+- find safe areas with position
 - find safe areas with address
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Find Safe Areas with Position}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -823,8 +989,13 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Find Safe Areas with Address}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -840,8 +1011,13 @@ azioni da request dispatcher
 - pay a bill 
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Pay a Bill}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -858,8 +1034,13 @@ azioni da request dispatcher
 - annulla reservation
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Create Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -872,8 +1053,13 @@ azioni da request dispatcher
 \end{center}
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Cancel Reservation}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -888,9 +1074,16 @@ azioni da request dispatcher
 \subsubsection{Unlocking Component - Model - Resource Subsystem}
 - sblocca macchina (-> nb fa partire il conto del tempo)
 
+ricordarsi che serve la posizione dell'utente vicina alla macchina!
+
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Unlock Car from Application}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -906,8 +1099,13 @@ azioni da request dispatcher
 - metti la macchina in sosta
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Park Car}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -923,8 +1121,13 @@ azioni da request dispatcher
 - fine ride
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{End Ride}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -940,8 +1143,13 @@ azioni da request dispatcher
 - aggiungi report
 
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{Report Issue}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -966,8 +1174,13 @@ client applications:
 
 %% se necessario possiamo usare longtable
 \begin{center}
-	\begin{tabular}{ | m{6cm} | m{6cm} | }
+
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
 		\hline 
+
+
+		\hline
+
 		\multicolumn{2}{|c|}{\textbf{method(arg1, arg2)}} \\
 		\hline
 		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
@@ -979,12 +1192,141 @@ client applications:
 	\end{tabular}
 \end{center}
 
-\subsection{Integration between subsystems}
-
 \section{Tools and Test Equipment Required}
 
 \section{Program Stubs and Test Data Required}
 
+\subsection{Program Stubs and Drivers}
+
+\subsection{Test Data}
+
+For the sake of completeness, the data used in the tests allow us to verify the proper behavior and the reaction to any kind of incorrect practice. Moreover the DB will be populated with appropriate data to perform the tests.
+In furtherance of accomplish the necessary tests, we are going to need:
+
+\begin{itemize}
+  \item{A list of both valid and invalid sign up data to test the \textbf{Registration} component.
+  The collection of data should contain instances exhibiting the following problems: (copiata)
+    \begin{itemize}
+      \item{Correct biographical data}
+      \item{Biographical data with numeric characters and notation}
+      \item{DOB compliant with the ISDTN UNI EN 28601} (meticolosità a non finire)
+      \item{DOB \underline{not} compliant with the ISDTN UNI EN 28601}
+      \item{Not existent email address}
+      \item{Valid email address}
+      \item{Valid driving license}
+      \item{Suspended driving license}
+      \item{Not existing driving license}
+      \item{Driving license \underline{not} compliant with legal format}
+      \item{Valid credit card number}
+      \item{Credit card number \underline{not} compliant with legal format}
+      \item{Valid credit card CVV}
+      \item{\underline{Not} valid credit card CVV}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid \textbf{non ho idea di cosa mettere} to test the \textbf{Account Manager} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid username}
+      \item{Not existing username}
+      \item{Valid password}
+      \item{\underline{Not} valid password}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid tracing data to test the \textbf{Car Search} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid position}
+      \item{\underline{Not} existing position}
+      \item{Position outside safe areas}
+      \item{Valid address}
+      \item{\underline{Not} valid address}
+      \item{\underline{Not} existing address}
+      \item{Address outside safe areas}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid tracing data to test the \textbf{PGS Search} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid position}
+      \item{\underline{Not} existing position}
+      \item{Position outside safe areas}
+      \item{Valid address}
+      \item{\underline{Not} valid address}
+      \item{\underline{Not} existing address}
+      \item{Address outside safe areas}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid tracing data to test the \textbf{Safe Areas Search} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid position}
+      \item{\underline{Not} existing position}
+      \item{Position outside safe areas}
+      \item{Valid address}
+      \item{\underline{Not} valid address}
+      \item{\underline{Not} existing address}
+      \item{Address outside safe areas}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid banking data to test the \textbf{Payment} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid credit card number}
+      \item{Credit card number \underline{not} compliant with legal format}
+      \item{Valid credit card CVV}
+      \item{\underline{Not} valid credit card CVV}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid user data to test the \textbf{Reservation Management} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid username}
+      \item{Not existing username}
+      \item{Valid password}
+      \item{\underline{Not} valid password}
+      \item{List of cars on DB}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid user and tracing data to test the \textbf{Unlock} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid username}
+      \item{Not existing username}
+      \item{Valid password}
+      \item{\underline{Not} valid password}
+      \item{Valid position}
+      \item{\underline{Not} existing position}
+      \item{Position outside safe areas}
+      \item{Valid QR Code}
+      \item{\underline{Not} valid QR Code}
+      \item{List of cars on DB}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid user and tracing data to test the \textbf{Ride} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid username}
+      \item{Not existing username}
+      \item{Valid password}
+      \item{\underline{Not} valid password}
+      \item{Valid position}
+      \item{\underline{Not} existing position}
+      \item{Position outside safe areas}
+    \end{itemize}}
+
+    \item{A list of both valid and invalid user data to test the \textbf{Report Manager} component.
+    The collection of data should contain instances exhibiting the following problems:
+    \begin{itemize}
+      \item{Valid username}
+      \item{Not existing username}
+      \item{Valid password}
+      \item{\underline{Not} valid password}
+      \item{Valid input field for the form}
+      \item{Null input field for the form}
+      \item{List of cars on DB}
+    \end{itemize}}
+
+\end{itemize}
 
 \section{Effort Spent}
 \begin{itemize}
