@@ -134,6 +134,7 @@ Our system will incentivize virtuous behaviour by offering several discounts if 
 \item{\textbf{DOB}: Date of birth}
 \item{\textbf{PGS}: Power Grid Station}
 \item{\textbf{GPS}: Global Positioning System}
+\item{\textbf{API}: Application Programming Interface}
 %\item{\textbf{CAN bus}: Controller Area Network bus}
 \end{itemize}
 
@@ -688,7 +689,7 @@ NB: the discount can vary from a maximum of 70\% to a minimum of -30\% (a 30\% o
 \paragraph{}
 The time complexity of this algorithm is $\theta(n)$, where $n$ is the number of power grid stations saved in the system, because we need to cycle through every station to find the distance from the car to the closest station.
 
-This is not necessarily the best solution. For example this could be improved by subdividing the stations in zones so that we can check only the ones in which the car is currently located.
+If necessary this solution can be marginally improved, for example by subdividing the stations in zones so that we can check only the ones in which the car is currently located.
 
 \newpage
 \subsection{Finding a station for the Money Saving Option}
@@ -708,7 +709,7 @@ To realize this, our algorithm:
 \paragraph{}
 The time complexity of this algorithm is $\theta(n) + \theta(m \cdot c) + \theta(m)$ or $\theta(n + m (1+c))$, where $n$ is the number of charging stations in the system, $m$ the number of acceptable stations, and $c$ the number of cars close to them.
 
-This can also be improved by subdividing the stations in zones.
+This can also if needed be improved by subdividing the stations in zones.
 Another option could be saving the number of cars near every station in advance, and updating it every time a car is parked nearby or driven away, without having to recompute the value every time it is needed.
 
 \newpage
