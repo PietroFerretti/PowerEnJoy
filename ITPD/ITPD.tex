@@ -1072,13 +1072,13 @@ Additionally we will test our car application on each model of car owned by the 
 \newpage
 \section{Program Stubs and Test Data Required}
 
-\subesction{Program Stubs and Drivers}
+\subsection{Program Stubs and Drivers}
 
 Due to our choice to follow the bottom-up approach for the testing and the integration, we are going to make use mostly of drivers, save for one stub that will replace the car.\\
 These are the artifacts that we will be developed, ordered according the software integration sequence:
 
 \begin{itemize}
-	\item{\texbf{Model Driver}: this driver replaces the \textbf{Model} component and tests the access to the \textbf{DBMS}.}
+	\item{\textbf{Model Driver}: this driver replaces the \textbf{Model} component and tests the access to the \textbf{DBMS}.}
 	
 	\item{\textbf{PGS Manager Driver}: this driver replaces the \textbf{PGS Manager} component and tests the access to the \textbf{DBMS}.}
 	
@@ -1086,9 +1086,9 @@ These are the artifacts that we will be developed, ordered according the softwar
 	
 	\item{\textbf{Car Manager Driver}: this driver replaces the \textbf{Car Manager} component and tests the interaction with the \textbf{DBMS}, the \textbf{Car Handler} component, \textbf{Car Internal System} component and with the \textbf{PGS Manager} component, for completeness reasons.}
 
-	\item{\textbf{Registration Driver}, \textbf{Account Manager Driver}, \textbf{Car Search Driver}, \textbf{PGS Search Driver}, \textbf{Safe Areas Search Driver}, \textbf{Payment Driver}: these drivers replace a subpart of the \textbf{Application Subsystem}. They are indepent from each other, so we can test simultaneously their interaction with the \textbf{Model}.}
+	\item{\textbf{Registration Driver}, \textbf{Account Manager Driver}, \textbf{Car Search Driver}, \textbf{PGS Search Driver}, \textbf{Safe Areas Search Driver}, \textbf{Payment Driver}: these drivers replace a subpart of the \textbf{Application Subsystem}. They are independent from each other, so we can simultaneously test their interaction with the \textbf{Model}.}
 
-	\item{\textbf{Report Manager Driver}, \textbf{Reservation Manager Driver}, \textbf{Unlocking Driver}, \textbf{Parking Driver}, \textbf{Ride Manager Driver}: these drivers replace a subpart of the \textbf{Application Subsystem}. They are indepent from each other, so we can test simultaneously their interaction with the \textbf{Model} and with the \textbf{Resource Subsystem}.}
+	\item{\textbf{Report Manager Driver}, \textbf{Reservation Manager Driver}, \textbf{Unlocking Driver}, \textbf{Parking Driver}, \textbf{Ride Manager Driver}: these drivers replace a subpart of the \textbf{Application Subsystem}. They are independent from each other, so we can simultaneously test their interaction with the \textbf{Model} and with the \textbf{Resource Subsystem}.}
 
 	\item{\textbf{Request Dispatcher Driver}: this driver replaces the \textbf{Request Dispatcher} component and tests the interaction with the \textbf{Application Subsystem} components.}
 
@@ -1165,7 +1165,7 @@ These are the artifacts that we will be developed, ordered according the softwar
        \item{\underline{Not}-existent usernames}
        \item{Valid passwords}
        \item{\underline{Not} valid passwords}
-       \item{\item{Valid positions}
+       \item{Valid positions}
        \item{\underline{Not} existent positions}
        \item{Positions outside safe areas}
        \item{Valid QR Codes}
@@ -1180,7 +1180,7 @@ These are the artifacts that we will be developed, ordered according the softwar
        \item{\underline{Non}-existent username}
        \item{Valid password}
        \item{\underline{Not} valid password}
-       \item{\item{Valid position}
+       \item{Valid position}
        \item{\underline{Non}-existent position}
        \item{Position outside safe areas}
      \end{itemize}}
@@ -1189,7 +1189,7 @@ These are the artifacts that we will be developed, ordered according the softwar
      The collection of data should contain instances exhibiting the following problems:
      \begin{itemize}
        \item{Valid usernames}
-       \item{\undelrine{Non}-existing usernames}
+       \item{\underline{Non}-existing usernames}
        \item{Valid passwords}
        \item{\underline{Not} valid passwords}
        \item{Valid input field for the form}
