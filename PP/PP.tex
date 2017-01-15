@@ -133,20 +133,124 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 
 \section{Project size, cost and effort estimation}
 
+% descrizione sezione
+
 \subsection{Size estimation: function points}
 
+% cosa sono i function points
+% tabelline complessità
 
 \subsubsection{Internal Logic Files (ILFs)}
 
+quali internal logic files abbiamo?
+quali entità di dati abbiamo?
+
+- users
+nome, cognome, username, password, dob, email, patente, carta di credito, cvv, stato (sospeso, non sospeso)
+- bills
+username, importo, data, id ride, car, stato (pagata/non pagata)
+- cars
+modello, targa, id, available, issues
+- reports
+id macchina, descrizione, utente, data
+- safe areas
+latitudine, longitudine, id
+- power grid stations
+latitudine, longitudine, id
+- plugs
+id plug, availability
+- reservations
+user, macchina, data, stato (attiva, annullata, completata)
+- rides
+user, macchina, data, durata, stato, bill
+
+- mappe per navigatore in locale
+in modo complicato
+(average)
+
+(- autenticazione
+id cosa, credenziali es. chiavi private)
+
+users -> Low
+tutti low
+7x9+10=73 FPs per ILF
+
 \subsubsection{External Logic Files (ELFs)}
+
+- mappe
+trovare posizione da indirizzo <- Low
+trovare distanza in minuti tra due punti (isocrone) <- low
+trovare strade?
+- patenti (richieste api)
+chiedere se patente è valida <- meno che low
+
+3x5 = 15 Fps frame per second per santa claus ELF Executable linkable format
 
 \subsubsection{External Inputs (EIs)}
 
+lista di funzionalità con input utente
+
+- login -> low
+- update user (tutti i tipi) -> medium
+- pay bill -> high
+- create reservation -> medium
+- cancel reservation -> low
+- start ride -> low
+- end ride? -> high
+- park -> medium 
+- unlock -> medium
+- update macchina -> low
+- update plugs -> low
+- set car unavailable -> low
+- set car available -> low
+- report issue -> medium
+
+low x 7 = 3x7 = 21
+medium x 4 = 4x4 = 16
+high x 2 = 6x2 = 12
+
+tot 49 FPs per EI ti va una schweppes solo io e te?
+
+
 \subsubsection{External Inquiries (EQs)}
+
+- get info utente -> low
+- get bills -> low
+- car search con position -> medium
+- car search con address -> medium
+- pgs search con position -> medium
+- pgs search con address -> medium
+- money saving option -> high
+- safe area search pos -> medium
+- '' add -> medium
+- cars in need of maintenance -> low
+
+lowx3 = 3x3 = 9
+medium x6 = 4x6 = 24
+high x1 = 6x1 = 6
+
+39 per EQs for house music
 
 \subsubsection{External Outputs (EOs)}
 
+- lock car -> low
+- unlock car -> low
+- richiedi update dalla macchina -> medium
+
+4x2+5x1=13 FPs per EOOOOOOOOO
+
 \subsubsection{Overall estimation}
+
+ILF 73
+ELF 15
+EI 49
+EQ 39
+EO 13
+
+Total 189
+
+con AVC 46 per Java EE
+SLOC = 189 * 46 = 8694
 
 
 \subsection{Cost and effort estimation: COCOMO II}
