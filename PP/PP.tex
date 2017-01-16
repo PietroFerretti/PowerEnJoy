@@ -15,6 +15,7 @@
 \renewcommand{\arraystretch}{1.4}
 \newcommand{\code}[1]{\texttt{#1}}
 \usepackage{array}
+\usepackage{caption}
 
 \pretitle{%
 	\begin{center}
@@ -105,6 +106,8 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 \item{\textbf{GPS}: Global Positioning System}
 \item{\textbf{API}: Application Programming Interface}
 \item{\textbf{ISDTN}: International Standard Date and Time Notation}
+\item \textbf{EM}: Effort Multiplier
+% anche tutti i cost driver, ecc.?
 %\item{\textbf{CAN bus}: Controller Area Network bus}
 \item {\textbf{FP}: Function Points}
 \item \textbf{ILF}: Internal Logic File
@@ -132,12 +135,90 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 	\item{Integration testing document: “ITPD.pdf”}
 	\item{Project description document: “Assignments AA 2016-2017.pdf”}
 	\item{Example document: “Project planning example document.pdf”}
-	\item{COCOMO II Model Definition Manual v. 2.1}
+	\item{“COCOMO II -- Model Definition Manual”, version 2.1, 1995-2000, Center for Software Engineering, USC}
 \end{itemize}
 
 \section{Project size, cost and effort estimation}
 
 % descrizione sezione
+
+
+%% TABELLA
+\begin{center}
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
+		\hline 
+		\multicolumn{2}{|c|}{\textbf{Pay a Bill}} \\
+		\hline
+		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
+		\hline
+		A valid session token, a bill that needs to be paid and a valid payment method &  The transaction is carried out; if it succeeds the bill is marked as paid, otherwise returns failure. \\
+		\hline
+		A valid session token, a bill that needs to be paid and an ill-formed payment method & An exception is raised. \\
+		\hline
+		A valid session token and a bill that needs to be paid & The system uses the payment method saved for the user to carry out the transaction; if it succeeds the bill is marked as paid, otherwise returns failure. \\
+		\hline
+		A valid session token and a bill that has already been paid & An exception is raised. \\
+		\hline
+		A valid session token and a non-existent bill & An exception is raised. \\
+		\hline
+		An invalid session token and a bill & An exception is raised (bad authentication). \\
+		\hline
+	\end{tabular}
+\end{center}
+
+% tabella somma FP
+\begin{table}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\begin{tabular}{ |p{8cm}|m{2cm}|p{1cm}| }
+			\hline
+			\textbf{ELF} & \textbf{Complexity} & \textbf{FPs} \\
+			\hline
+			elf n1 & Low & 5 \\
+			elf n2 & High & 10 \\
+			elf n3 & medium & 7 \\
+			\hline
+			\multicolumn{2}{|l|}{Total} & \textbf{22} \\
+			\hline
+		\end{tabular}
+	}
+	\caption{asdfasdf}
+\end{table}
+
+% oppure
+\begin{table}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\begin{tabular}{ |p{8cm}|m{2cm}|p{1cm}| }
+			\hline
+			\textbf{ELF} & \textbf{Complexity} & \textbf{FPs} \\
+			\hline
+			elf n1 & Low & 5 \\
+			elf n2 & High & 10 \\
+			elf n3 & medium & 7 \\
+			\hline
+			\multicolumn{2}{r}{\textit{total}} & \multicolumn{1}{l}{\textbf{22}} \\
+		\end{tabular}
+	}
+	\caption{ewerewr}
+\end{table}
+
+% tabella lista cost driver
+\begin{table}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\begin{tabular}{ |p{8cm}|m{3cm}|p{1cm}| }
+			\hline
+			\textbf{Cost Driver} & \textbf{Rating Level} & \textbf{EM} \\
+			\hline
+			Documentation match to life-cycle needs (DOCU) & Nominal & 1.00 \\
+			\hline
+			\multicolumn{2}{|l|}{Total} & \textbf{1.00} \\
+			\hline
+		\end{tabular}
+	}
+	\caption{I'm a table.}
+\end{table}
 
 \subsection{Size estimation: function points}
 Function points are useful in expressing the amount of business functionality our software has to provide to a user and are used to compute an estimation of its size.
