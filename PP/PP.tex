@@ -270,22 +270,65 @@ tutti low
 
 \subsubsection{External Logic Files (ELFs)}
 
-- mappe
-trovare posizione da indirizzo <- Low
-trovare distanza in minuti tra due punti (isocrone) <- low
-trovare strade?
-- patenti (richieste api)
-chiedere se patente è valida <- meno che low
+The situations in which our system demands external data is when it needs informations regarding geolocation or when it must guarantee the legal soundness of the Driving License.\\
+In particularly:
 
-3x5 = 15 Fps frame per second per santa claus ELF Executable linkable format
+\begin{itemize}
+	\item \textbf{GraphHopper API}:
+		\begin{itemize}
+			\item{Given the string containing the address, the API returns a pair of float representing the coordinates of that location.}
+			\item{Given two pair of coordinates, the API return a float representing the time within two position.}
+		\end{itemize}
+	\item \textbf{Eucaris API}:
+		\begin{itemize}
+			\item{Given name, surname, driving license ID and expiration date as string, the API returns a boolean value representing the correspondence with an existing driving license in Eucaris DB.}
+		\end{itemize}
+\end{itemize}
+
+In the final analysis, as the involved data are string and number with restrained size, we can assess this logic files as low complexity.\\
+
+\begin{center}
+	\begin{tabular}{ | p{6cm} | p{6cm} | p{6cm} }
+		\hline
+		\multicolumn{1}{|c|}{\textit{ELF}} & \multicolumn{1}{c|}{\textit{Complexity}} & \multicolumn{1}{c|}{\textit{FPs}} \\
+		\hline
+		Reverse geocoding & Low & 5 \\
+		\hline
+		Isochrone distance & Low & 5\\
+		\hline
+		Driving Licenes legal soudness & Low & 5\\
+		\hline
+		\multicolumn{1}{|c|}{\textit{Total} & \multicolumn{1}{c|}{15}
+	\end{tabular}
+\end{center}
 
 \subsubsection{External Inputs (EIs)}
 
-lista di funzionalità con input utente
+PowerEnjoy offers a remarkable series of functionalities that required user's input.\\
+In particularly:
 
-- login -> low
-- update user (tutti i tipi) -> medium
-- pay bill -> high
+\begin{itemize}
+	\itemize{\textbf{Login}: this functionality demands only two strings as parameters, the username and the password, that will be compared with the ones stored in the DB. We can consider as a low complexity operation.}
+	
+	\itemize{\textbf{User update}: this functionality includes a collection of operations that allow to modify each aspect of user's profile. The input data are simple strings. Since the possibility are conspicuous and the different elaborations aren't basic and futhermore they interest several components, we can regard this functionality as an avarage complexity operation.}
+	
+	\itemize{\textbf{Pay bill} (automatically/manually): this is one of the most complex operations. It involves internal components and external APIs and it demands two numbers as input. Given the relevance of the operation and the parts interested, we can consider this as hig complexity operation.}
+
+	\begin{center}
+	\begin{tabular}{ | p{6cm} | p{6cm} | p{6cm} }
+		\hline
+		\multicolumn{1}{|c|}{\textit{EI}} & \multicolumn{1}{c|}{\textit{Complexity}} & \multicolumn{1}{c|}{\textit{FPs}} \\
+		\hline
+		Login & Low & 2 \\
+		\hline
+		User update & Avarage & 4\\
+		\hline
+		Pay bill & High & 6\\
+		\hline
+		\multicolumn{1}{|c|}{\textit{Total} & \multicolumn{1}{c|}{49}
+	\end{tabular}
+\end{center}
+
 - create reservation -> medium
 - cancel reservation -> low
 - start ride -> low
