@@ -70,42 +70,51 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 
 \subsubsection{Definitions}
 
-\begin{itemize}
-%\item{\textit{Guest}: a person that is not registered to the system.}
-\item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
-\item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas is predefined by the system.}
-\item{\textit{Power grid station} or \textit{Charging station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
-\item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don't have dead batteries.}
-\item{\textit{Reservation}:
-	\begin{itemize}
-		\item{the operation of making a car reserved for a user, i.e. giving permission to unlock and use the car only for that user, forbidding reservations by other users.}
-		\item{the time period between the moment a reservation is requested and the moment the user unlocks the car, or the reservation is canceled.}
-	\end{itemize}
-}
-\item{\textit{Ride}: the time period from the moment a reserved car is unlocked to the moment the user notifies that he wants to stop using the car and closes all the doors. A ride doesn't stop when a car is temporarily parked, but continues until the user chooses to leave the car definitely.}
-%\item{\textit{Possession}: users that have reserved and unlocked a car are said to have possession of the car. While a user has possession of a car they are the only person that can drive it, lock or unlock it, and no other person can take possession of it until the user frees it. Users lose possession of a car when their ride ends.}
-\item{\textit{Temporary parking}: the act of parking a car in a safe area and, after notifying the system, locking it and leaving it for a finite amount of time. The user that does this retains the right to use the car and can unlock it later to use it again.}
-\item{\textit{Bill}: a record of the money owed by the user at the end of a ride.}
-%\item{\textit{Outstanding bill}: a bill that hasn't been paid yet. }
-\item{\textit{Suspended user}: a user that cannot reserve or use cars. Usually users are suspended because they have outstanding bills that have not been paid.}
-\item{\textit{Payment method}: a way to transfer money from the user to the system. Our system will only accept credit cards and online accounts like Paypal.}
+%\begin{itemize}
+%%\item{\textit{Guest}: a person that is not registered to the system.}
+%\item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
+%\item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas is predefined by the system.}
+%\item{\textit{Power grid station} or \textit{Charging station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
+%\item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don't have dead batteries.}
+%\item{\textit{Reservation}:
+%	\begin{itemize}
+%		\item{the operation of making a car reserved for a user, i.e. giving permission to unlock and use the car only for that user, forbidding reservations by other users.}
+%		\item{the time period between the moment a reservation is requested and the moment the user unlocks the car, or the reservation is canceled.}
+%	\end{itemize}
+%}
+%\item{\textit{Ride}: the time period from the moment a reserved car is unlocked to the moment the user notifies that he wants to stop using the car and closes all the doors. A ride doesn't stop when a car is temporarily parked, but continues until the user chooses to leave the car definitely.}
+%%\item{\textit{Possession}: users that have reserved and unlocked a car are said to have possession of the car. While a user has possession of a car they are the only person that can drive it, lock or unlock it, and no other person can take possession of it until the user frees it. Users lose possession of a car when their ride ends.}
+%\item{\textit{Temporary parking}: the act of parking a car in a safe area and, after notifying the system, locking it and leaving it for a finite amount of time. The user that does this retains the right to use the car and can unlock it later to use it again.}
+%\item{\textit{Bill}: a record of the money owed by the user at the end of a ride.}
+%%\item{\textit{Outstanding bill}: a bill that hasn't been paid yet. }
+%\item{\textit{Suspended user}: a user that cannot reserve or use cars. Usually users are suspended because they have outstanding bills that have not been paid.}
+%\item{\textit{Payment method}: a way to transfer money from the user to the system. Our system will only accept credit cards and online accounts like Paypal.}
 %\item{\textit{Payment API}: an interface to carry out money transactions, offered by the external provider associated to the payment method used (e.g. a bank).}
 %\item{\textit{CAN bus}: a vehicle bus standard designed to allow micro controllers and devices to communicate with each other.}
-\end{itemize}
+%\end{itemize}
 
 \subsubsection{Acronyms}
 \begin{itemize}
-\item{\textbf{ITPD}: Integration Test Plan Document}
+\item \textbf{ITPD}: Integration Test Plan Document
 \item{\textbf{DD}: Design Document}
 \item{\textbf{RASD}: Requirements Analysis and Specification Document}
 \item{\textbf{DB}: Database}
-\item{\textbf{CVV}: Card Verification Value}
-\item{\textbf{DOB}: Date of birth}
+%\item{\textbf{CVV}: Card Verification Value}
+%\item{\textbf{DOB}: Date of birth}
 \item{\textbf{PGS}: Power Grid Station}
 \item{\textbf{GPS}: Global Positioning System}
 \item{\textbf{API}: Application Programming Interface}
 \item{\textbf{ISDTN}: International Standard Date and Time Notation}
 %\item{\textbf{CAN bus}: Controller Area Network bus}
+\item {\textbf{FP}: Function Points}
+\item \textbf{ILF}: Internal Logic File
+\item \textbf{ELF}: External Logic File
+\item \textbf{EI}: External Input
+\item \textbf{EO}: External Output
+\item \textbf{EQ}: External Inquiries
+%\item \textit{DBMS}: Database Management System
+%\item \textbf{ETA}: Estimated Time of Arrival
+\item \textbf{UI}: User Interface
 \end{itemize}
 
 %\subsubsection{Abbreviations}
