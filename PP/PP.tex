@@ -147,42 +147,38 @@ We based our computation on tables and values in \emph{COCOMO II Model Definitio
 % tabelline complessità
 
 \subsubsection{Internal Logic Files (ILFs)}
-Internal Logical Files homogeneous set of data used and managed by the application 
+%quali internal logic files abbiamo?
+%quali entità di dati abbiamo?
+
+They are all kinds of data used and managed by the application in  order to offer the expected functions.\\
+Data will be organize in the following tables in the DB:
+\begin{itemize}
+\item \textbf{user} : name, surname, username, password, dob, email, licenseID, cvv, cardNumber, accountStatus
+
+\item \textbf{bill} : associatedLicense, total, date, rideID, carID, paymentStatus
+
+\item \textbf{car} : model, plate, ID, available, issues
+
+\item \textbf{report} :carID, description, associatedLicense, date
+
+\item \textbf{safeArea} : latitude, longitude, ID
 
 
+\item \textbf{PGS} : latitude, longitude, ID
 
-quali internal logic files abbiamo?
-quali entità di dati abbiamo?
+\item \textbf{plug} : available, ID
 
-- users
-nome, cognome, username, password, dob, email, patente, carta di credito, cvv, stato (sospeso, non sospeso)
-- bills
-username, importo, data, id ride, car, stato (pagata/non pagata)
-- cars
-modello, targa, id, available, issues
-- reports
-id macchina, descrizione, utente, data
-- safe areas
-latitudine, longitudine, id
-- power grid stations
-latitudine, longitudine, id
-- plugs
-id plug, availability
-- reservations
-user, macchina, data, stato (attiva, annullata, completata)
-- rides
-user, macchina, data, durata, stato, bill
+\item \textbf{reservation} : ID, associatedLicense, carID, date, status
 
-- mappe per navigatore in locale
-in modo complicato
-(average)
+\item \textbf{ride} : ID, associatedLicense, associatedBill, date, status, ridingTime, carID
 
-(- autenticazione
-id cosa, credenziali es. chiavi private)
+\end{itemize}
+The software will operate directly on the previously listed data and with the tables generated from their relations between each other.\\
+All this data are modeled in simple structures so they're complexity can be considered low (referring to tables).
 
-users -> Low
-tutti low
-7x9+10=73 FPs per ILF
+\begin{center}
+$ FPs (ILF) = 7*9+10= 73 $
+\end{center}
 
 \subsubsection{External Logic Files (ELFs)}
 
