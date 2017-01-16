@@ -135,6 +135,30 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 
 % descrizione sezione
 
+%% TABELLA
+\begin{center}
+	\begin{tabular}{ | p{6cm} | p{6cm} | }
+		\hline 
+		\multicolumn{2}{|c|}{\textbf{Pay a Bill}} \\
+		\hline
+		\multicolumn{1}{|c|}{\textit{Input}} & \multicolumn{1}{c|}{\textit{Result}} \\
+		\hline
+		A valid session token, a bill that needs to be paid and a valid payment method &  The transaction is carried out; if it succeeds the bill is marked as paid, otherwise returns failure. \\
+		\hline
+		A valid session token, a bill that needs to be paid and an ill-formed payment method & An exception is raised. \\
+		\hline
+		A valid session token and a bill that needs to be paid & The system uses the payment method saved for the user to carry out the transaction; if it succeeds the bill is marked as paid, otherwise returns failure. \\
+		\hline
+		A valid session token and a bill that has already been paid & An exception is raised. \\
+		\hline
+		A valid session token and a non-existent bill & An exception is raised. \\
+		\hline
+		An invalid session token and a bill & An exception is raised (bad authentication). \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
 \subsection{Size estimation: function points}
 
 % cosa sono i function points
@@ -252,6 +276,8 @@ Total 189
 con AVC 46 per Java EE
 SLOC = 189 * 46 = 8694
 
+Forse è più corretto 53? vedi COCOMO II 2000
+
 
 \subsection{Cost and effort estimation: COCOMO II}
 
@@ -261,25 +287,105 @@ SLOC = 189 * 46 = 8694
 qua ci vuole la tabella dove ci sono tutti i valori
 
 Precedentedness -> very low 6,20
-flexibility -> high 2.03 o very high 1.01
+flexibility -> nominal 3,04
 risk -> very high 1,41
 team -> very high 1,10
 maturity -> level 3 3.12 (non so perchè)
 
-E=B+0.01x∑ SF,whereB=0.91
+%E=B+0.01x∑ SF,whereB=0.91
 
-E = 0.91+0.01x(6.20+1.01+1.41+1.1+3.12)-> 12,84 = 1,0384 
+%E = 0.91+0.01x(6.20+1.01+1.41+1.1+3.12)-> 12,84 = 1,0384 
+rifare il conto, e metterlo sotto effort equation
 
 \subsubsection{Cost Drivers}
 
-RELY -> nominal 1.0 (se l'applicazione non funziona perdiamo soldi e magari qualcuno ci fa causa, ma non succede il fini mondo)
-DATA -> high 1.14(come l'esempio, non saprei dare altre motivazioni)
+RELY -> nominal 1.0 (se l'applicazione non funziona perdiamo soldi e magari qualcuno ci fa causa, ma non succede il fini mondo) al massimo moderate, easily recoverable losses
 
+DATA ->  
+dimensioni database: ordine di grandezza database di test 1GB % (meno?)
+linee di codice: ~9000
+D/P = ~10\^9/10\^4 = 1*10\^5 = 100'000
+Very High -> 1.28
+
+CPLEX ->
+- control operations:
+"Reentrant and recursive coding. Fixed-priority interrupt
+handling. Task
+synchronization,
+complex
+callbacks,
+heterogeneous
+distributed
+processing.
+Single-
+processor hard
+real-time control."
+Very High
+
+- computational operations
+Nominal
+
+- device-dependent operations
+Low
+
+- data management operations
+High
+
+- User Interface management operations
+nominal
+
+(5+3+2+4+3)/5=3.qualcosa
+
+totale Nominal 1.00
+
+RUSE -> none, Low 0.95
+
+DOCU -> right-sized to life cycle needs, Nominal 1.00
+
+TIME -> un numero a caso High 1.11
+
+STOR -> abbiamo un sacco di spazio, Nominal 1.00
+
+PVOL -> major update 2 mesi, High 1.15
+
+ACAP -> Nominal 1.00
+
+PCAP -> capacissimi con java e che talento Very High 0.76
+
+PCON -> no turnover, Very High 0.81
+
+APEX -> poca esperienza, Low 1.10
+
+PLEX -> veeery low, Very Low 1.19
+
+LTEX -> Nominal, 1.00
+
+TOOL -> abbiamo eclipse, Very High 0.78
+
+SITE -> same city or metro area, High 0.93
+
+SCED -> boh, teniamo una schedule non accelerata, Nominal 1.00
 
 \subsubsection{Effort equation}
 
+%E=B+0.01x∑ SF,whereB=0.91
+
+PM = A*(SLOC)\^E * produttoria(cost drivers)
+A = 2.94
+
+
+
 \subsubsection{Schedule estimation}
 
+TDEV time to develop (in mesi)
+TDEV = C * PM\^F
+F = (D + 0.2*(E-B))
+B = 0.91
+C = 3.67
+D = 0.28
+E = quello della effort equation
+
+% nb no schedule compression
 
 \section{Schedule}
 
