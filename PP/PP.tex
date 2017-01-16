@@ -44,19 +44,13 @@ Software Engineering 2: “PowerEnJoy” \\
 \section{Introduction}
 
 \subsection{Purpose}
-%The purpose of this document is to provide a complete description of the integration testing plans for PowerEnJoy. It will focus on testing the proper behavior of the software by checking the 
-%interoperability between its components.
-%It is intended for developers and for any team member involved in the testing process.
-%
-%\paragraph{}
-%In this document we will illustrate:
-%\begin{itemize}
-%	\item	the initial conditions needed to start integration testing
-%	\item	which components will be integrated
-%	\item	the order that the tests will follow
-%	\item	a detailed description of the tests
-%	\item	the equipment and data required for integration testing
-%\end{itemize}
+The purpose of this document is to provide a detailed analysis of the PowerEnjoy software development project in terms of required cost and time. It highlights the estimation of 
+\begin{itemize}
+\item project size, calculated using the \emph{Function Points approach} by IBM;
+\item project cost and effort, calculated using the \emph{COCOMO II} by Boehm.
+\end{itemize}
+Given the previous information we elaborate a feasible schedule considering all the necessary activities in detail, thus the best resources' allocation on each one. The last section of the document focuses on handling all the possible risks that could be met during the whole process, from the requirements analysis to the final testing and deployment.
+
 
 \subsection{Scope}
 The aim of this project is to specify and design a new digital management software for PowerEnJoy, a car-sharing service that employs electric cars only.
@@ -77,43 +71,56 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 
 \subsubsection{Definitions}
 
-\begin{itemize}
-%\item{\textit{Guest}: a person that is not registered to the system.}
-\item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
-\item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas is predefined by the system.}
-\item{\textit{Power grid station} or \textit{Charging station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
-\item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don't have dead batteries.}
-\item{\textit{Reservation}:
-	\begin{itemize}
-		\item{the operation of making a car reserved for a user, i.e. giving permission to unlock and use the car only for that user, forbidding reservations by other users.}
-		\item{the time period between the moment a reservation is requested and the moment the user unlocks the car, or the reservation is canceled.}
-	\end{itemize}
-}
-\item{\textit{Ride}: the time period from the moment a reserved car is unlocked to the moment the user notifies that he wants to stop using the car and closes all the doors. A ride doesn't stop when a car is temporarily parked, but continues until the user chooses to leave the car definitely.}
-%\item{\textit{Possession}: users that have reserved and unlocked a car are said to have possession of the car. While a user has possession of a car they are the only person that can drive it, lock or unlock it, and no other person can take possession of it until the user frees it. Users lose possession of a car when their ride ends.}
-\item{\textit{Temporary parking}: the act of parking a car in a safe area and, after notifying the system, locking it and leaving it for a finite amount of time. The user that does this retains the right to use the car and can unlock it later to use it again.}
-\item{\textit{Bill}: a record of the money owed by the user at the end of a ride.}
-%\item{\textit{Outstanding bill}: a bill that hasn't been paid yet. }
-\item{\textit{Suspended user}: a user that cannot reserve or use cars. Usually users are suspended because they have outstanding bills that have not been paid.}
-\item{\textit{Payment method}: a way to transfer money from the user to the system. Our system will only accept credit cards and online accounts like Paypal.}
+%\begin{itemize}
+%%\item{\textit{Guest}: a person that is not registered to the system.}
+%\item{\textit{User}: a person that is registered to the system. Users can log in to the system with their email or username and their password. Their first name, last name, date of birth, driving license ID are stored in the database.}
+%\item{\textit{Safe area}: a location where the user can park and leave the car. Users can end their ride and park temporarily only in these locations. The set of safe areas is predefined by the system.}
+%\item{\textit{Power grid station} or \textit{Charging station}: a place where cars can be parked and plugged in. While a car is plugged in a power grid station its battery will be recharged. Power grid stations are by definition safe areas.}
+%\item{\textit{Available car}: a car that is currently not being used by any user, and has not been reserved either. Available cars are in good conditions (not dirty nor damaged) and don't have dead batteries.}
+%\item{\textit{Reservation}:
+%	\begin{itemize}
+%		\item{the operation of making a car reserved for a user, i.e. giving permission to unlock and use the car only for that user, forbidding reservations by other users.}
+%		\item{the time period between the moment a reservation is requested and the moment the user unlocks the car, or the reservation is canceled.}
+%	\end{itemize}
+%}
+%\item{\textit{Ride}: the time period from the moment a reserved car is unlocked to the moment the user notifies that he wants to stop using the car and closes all the doors. A ride doesn't stop when a car is temporarily parked, but continues until the user chooses to leave the car definitely.}
+%%\item{\textit{Possession}: users that have reserved and unlocked a car are said to have possession of the car. While a user has possession of a car they are the only person that can drive it, lock or unlock it, and no other person can take possession of it until the user frees it. Users lose possession of a car when their ride ends.}
+%\item{\textit{Temporary parking}: the act of parking a car in a safe area and, after notifying the system, locking it and leaving it for a finite amount of time. The user that does this retains the right to use the car and can unlock it later to use it again.}
+%\item{\textit{Bill}: a record of the money owed by the user at the end of a ride.}
+%%\item{\textit{Outstanding bill}: a bill that hasn't been paid yet. }
+%\item{\textit{Suspended user}: a user that cannot reserve or use cars. Usually users are suspended because they have outstanding bills that have not been paid.}
+%\item{\textit{Payment method}: a way to transfer money from the user to the system. Our system will only accept credit cards and online accounts like Paypal.}
 %\item{\textit{Payment API}: an interface to carry out money transactions, offered by the external provider associated to the payment method used (e.g. a bank).}
 %\item{\textit{CAN bus}: a vehicle bus standard designed to allow micro controllers and devices to communicate with each other.}
-\end{itemize}
+%\end{itemize}
 
 \subsubsection{Acronyms}
 \begin{itemize}
-\item{\textbf{ITPD}: Integration Test Plan Document}
+\item \textbf{ITPD}: Integration Test Plan Document
 \item{\textbf{DD}: Design Document}
 \item{\textbf{RASD}: Requirements Analysis and Specification Document}
 \item{\textbf{DB}: Database}
-\item{\textbf{CVV}: Card Verification Value}
-\item{\textbf{DOB}: Date of birth}
+%\item{\textbf{CVV}: Card Verification Value}
+%\item{\textbf{DOB}: Date of birth}
 \item{\textbf{PGS}: Power Grid Station}
 \item{\textbf{GPS}: Global Positioning System}
 \item{\textbf{API}: Application Programming Interface}
 \item{\textbf{ISDTN}: International Standard Date and Time Notation}
+<<<<<<< HEAD
 \item \textbf{EM}: Effort Multiplier
 % anche tutti i cost driver, ecc.?
+=======
+%\item{\textbf{CAN bus}: Controller Area Network bus}
+\item {\textbf{FP}: Function Points}
+\item \textbf{ILF}: Internal Logic File
+\item \textbf{ELF}: External Logic File
+\item \textbf{EI}: External Input
+\item \textbf{EO}: External Output
+\item \textbf{EQ}: External Inquiries
+%\item \textit{DBMS}: Database Management System
+%\item \textbf{ETA}: Estimated Time of Arrival
+\item \textbf{UI}: User Interface
+>>>>>>> e4b104264441ee82c91b64635b630ebeea4864a8
 \end{itemize}
 
 %\subsubsection{Abbreviations}
@@ -137,6 +144,7 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 \section{Project size, cost and effort estimation}
 
 % descrizione sezione
+
 
 %% TABELLA
 \begin{center}
@@ -215,13 +223,17 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 	\caption{I'm a table.}
 \end{table}
 
-
 \subsection{Size estimation: function points}
+Function points are useful in expressing the amount of business functionality our software has to provide to a user and are used to compute an estimation of its size.
+After been identified and categorized into one of five types: outputs, inquiries, inputs, internal files, and external interfaces, each functional requirement is then assessed for complexity and assigned a number of function points.\\
+We based our computation on tables and values in \emph{COCOMO II Model Definition Manual v. 2.1}.
 
-% cosa sono i function points
 % tabelline complessità
 
 \subsubsection{Internal Logic Files (ILFs)}
+Internal Logical Files homogeneous set of data used and managed by the application 
+
+
 
 quali internal logic files abbiamo?
 quali entità di dati abbiamo?
@@ -333,8 +345,6 @@ Total 189
 con AVC 46 per Java EE
 SLOC = 189 * 46 = 8694
 
-Forse è più corretto 53? vedi COCOMO II 2000
-
 
 \subsection{Cost and effort estimation: COCOMO II}
 
@@ -344,105 +354,26 @@ Forse è più corretto 53? vedi COCOMO II 2000
 qua ci vuole la tabella dove ci sono tutti i valori
 
 Precedentedness -> very low 6,20
-flexibility -> nominal 3,04
+flexibility -> high 2.03 o very high 1.01
 risk -> very high 1,41
 team -> very high 1,10
 maturity -> level 3 3.12 (non so perchè)
 
-%E=B+0.01x∑ SF,whereB=0.91
 
-%E = 0.91+0.01x(6.20+1.01+1.41+1.1+3.12)-> 12,84 = 1,0384 
-rifare il conto, e metterlo sotto effort equation
+E=B+0.01xSUM SF,whereB=0.91
+
+E = 0.91+0.01x(6.20+1.01+1.41+1.1+3.12)-> 12,84 = 1,0384 
 
 \subsubsection{Cost Drivers}
 
-RELY -> nominal 1.0 (se l'applicazione non funziona perdiamo soldi e magari qualcuno ci fa causa, ma non succede il fini mondo) al massimo moderate, easily recoverable losses
+RELY -> nominal 1.0 (se l'applicazione non funziona perdiamo soldi e magari qualcuno ci fa causa, ma non succede il fini mondo)
+DATA -> high 1.14(come l'esempio, non saprei dare altre motivazioni)
 
-DATA ->  
-dimensioni database: ordine di grandezza database di test 1GB % (meno?)
-linee di codice: ~9000
-D/P = ~10\^9/10\^4 = 1*10\^5 = 100'000
-Very High -> 1.28
-
-CPLEX ->
-- control operations:
-"Reentrant and recursive coding. Fixed-priority interrupt
-handling. Task
-synchronization,
-complex
-callbacks,
-heterogeneous
-distributed
-processing.
-Single-
-processor hard
-real-time control."
-Very High
-
-- computational operations
-Nominal
-
-- device-dependent operations
-Low
-
-- data management operations
-High
-
-- User Interface management operations
-nominal
-
-(5+3+2+4+3)/5=3.qualcosa
-
-totale Nominal 1.00
-
-RUSE -> none, Low 0.95
-
-DOCU -> right-sized to life cycle needs, Nominal 1.00
-
-TIME -> un numero a caso High 1.11
-
-STOR -> abbiamo un sacco di spazio, Nominal 1.00
-
-PVOL -> major update 2 mesi, High 1.15
-
-ACAP -> Nominal 1.00
-
-PCAP -> capacissimi con java e che talento Very High 0.76
-
-PCON -> no turnover, Very High 0.81
-
-APEX -> poca esperienza, Low 1.10
-
-PLEX -> veeery low, Very Low 1.19
-
-LTEX -> Nominal, 1.00
-
-TOOL -> abbiamo eclipse, Very High 0.78
-
-SITE -> same city or metro area, High 0.93
-
-SCED -> boh, teniamo una schedule non accelerata, Nominal 1.00
 
 \subsubsection{Effort equation}
 
-%E=B+0.01x∑ SF,whereB=0.91
-
-PM = A*(SLOC)\^E * produttoria(cost drivers)
-A = 2.94
-
-
-
 \subsubsection{Schedule estimation}
 
-TDEV time to develop (in mesi)
-TDEV = C * PM\^F
-F = (D + 0.2*(E-B))
-B = 0.91
-C = 3.67
-D = 0.28
-E = quello della effort equation
-
-% nb no schedule compression
 
 \section{Schedule}
 
