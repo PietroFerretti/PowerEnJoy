@@ -406,21 +406,69 @@ this table\footnote{\href{http://www.qsm.com/resources/function-point-languages-
 
 \subsection{Cost and effort estimation: COCOMO II}
 
+We use the COCOMO II Model for cost and effort estimation.
+*cos'è il COCOMO II?*
 
-\subsubsection{Scale Drivers}
+We use the Post-Architecture Model, because the architecture and everything has already been described in depth.
+
+*qualche dettaglio*
+
+\subsubsection{Scale Factors}
+
+*what are scale factors*
 
 qua ci vuole la tabella dove ci sono tutti i valori
 
 Precedentedness -> very low 6,20
 flexibility -> nominal 3,04
-risk -> very high 1,41
+risk -> high 2,83
 team -> very high 1,10
-maturity -> level 3 3.12 (non so perchè)
+maturity -> level 3 3.12 
+= 16.29
 
-%E=B+0.01x∑ SF,whereB=0.91
+% rate, judge, classify, assess, consider
 
-%E = 0.91+0.01x(6.20+1.01+1.41+1.1+3.12)-> 12,84 = 1,0384 
-rifare il conto, e metterlo sotto effort equation
+Scale factors:
+\begin{itemize}
+	\item Precedentedness: it's *what is precedentedness*. *our level*, *why we chose it*
+	\item \textbf{Precedentedness (PRED):} "If a product is similar to several previously developed projects, then the precedentedness is high."
+	how similar is this product to previously developed one
+	how many similar product have we developed already
+	We never developed anything similar [and on this scale], except for the client-server architecture. We rate this factor as Very Low.
+	\item \textbf{Development Flexibility (FLEX):} "Need for software conformance with pre-established requirements \& external interface specifications, + premium on early completion"
+	We have to 'considerably' follow the requirements we specified to reach the customer's goals. We rate this as Nominal.
+	\item \textbf{Architecture / Risk Resolution (RESL):} High if everything is well planned, the risks have all been identified and accounted for, the architecture has been carefully designed, low uncertainty and low risk in general.
+	our architecture is good
+	our risk management plan is (we consider it) thorough
+	We rate this as High.
+	\item \textbf{Team Cohesion (TEAM):} experience as a team, willingness to work together, shared vision and commitments.
+	We are great at this, we rate this as Very High.
+	\item \textbf{Process Maturity (PMAT):} follows the Capability Maturity Model (CMM).
+	nb:
+	level 1 -> inital, uncontrolled
+	level 2 -> managed
+	level 3 -> defined
+	level 4 -> quantitatively managed
+	level 5 -> optimized
+	we are not at a level where everything is accounted for, but we do follow a clear process
+	Around level 3, equivalent to a High.
+\end{itemize}
+
+\begin{center}
+	\begin{tabular}{|p{6cm}|p{2cm}|p{1cm}|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Scale Factor}} & \multicolumn{1}{c}{\textbf{Level}} & \multicolumn{1}{|c|}{\textbf{Value}} \\
+		\hline
+		Precedentedness (PREC) & Very Low & 6.20 \\
+		Development Flexibility (FLEX) & Nominal & 3.04 \\
+		Architecture / Risk Resolution (RESL) & High & 2.83 \\
+		Team Cohesion (TEAM) & Very High & 1.10 \\
+		Process Maturity (PMAT) & High & 3.12 \\
+		\hline
+		\multicolumn{2}{|l|}{\textit{Total}} & 16.29 \\
+		\hline
+	\end{tabular}
+\end{center}
 
 \subsubsection{Cost Drivers}
 
@@ -513,9 +561,9 @@ cost drivers (effort multipliers) = 1.0*1.28*1.00*0.95*1.00*1.11*1.00*1.15*1.00*
 
 then
 
-$E = 0.91 + 0.01 \times 14.87 = 1.06$
+$E = 0.91 + 0.01 \times 16.29 = 1.07$
 
-$PM = 2.94 \times 8.694^{1.06} \times 0.907 = 26.32$ person-months
+$PM = 2.94 \times 8.694^{1.06} \times 0.907 = 26.97$ person-months
 
 \subsubsection{Schedule estimation}
 
@@ -545,9 +593,9 @@ $PM$ person-months obtained in the effort estimation
 
 
 then
-$F = 0.28 + 0.2 \times (1.06 - 0.91) = 0.31$
+$F = 0.28 + 0.2 \times (1.07 - 0.91) = 0.31$
 
-$TDEV = 3.67 \times 26.32^{0.31} = 10.11$ months
+$TDEV = 3.67 \times 26.97^{0.31} = 10.19$ months
 
 \section{Schedule}
 
