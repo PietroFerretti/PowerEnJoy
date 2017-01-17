@@ -372,19 +372,36 @@ high x1 = 6x1 = 6
 
 \subsubsection{Overall estimation}
 
-ILF 73
-ELF 15
-EI 49
-EQ 39
-EO 13
 
-Total 189
+\begin{center}
+	\begin{tabular}{|p{5cm}|p{1cm}|}
+		\hline
+		\textbf{Function Type} & \textbf{FPs} \\
+		\hline
+		Internal Logic Files & 73 \\
+		External Logic Files & 15 \\
+		External Inputs & 49 \\
+		External Inquiries & 39 \\
+		External Outputs & 13 \\
+		\hline
+		\textit{Total} & 189 \\
+		\hline
+	\end{tabular}
+\end{center}
+
+We use Java Enterprise Edition
 
 con AVC 46 per Java EE
-SLOC = 189 * 46 = 8694
 
+\begin{center}
+$SLOC = 189 \times 46 = 8694$
+\end{center}
 
-Forse è più corretto 53? vedi COCOMO II 2000
+this table\footnote{\href{http://www.qsm.com/resources/function-point-languages-table}{http://www.qsm.com/resources/function-point-languages-table}}
+
+% median 49 -> 9261
+% low 15 -> 2835
+% high 67 -> 12663
 
 
 \subsection{Cost and effort estimation: COCOMO II}
@@ -417,17 +434,6 @@ Very High -> 1.28
 
 CPLEX ->
 - control operations:
-"Reentrant and recursive coding. Fixed-priority interrupt
-handling. Task
-synchronization,
-complex
-callbacks,
-heterogeneous
-distributed
-processing.
-Single-
-processor hard
-real-time control."
 Very High
 
 - computational operations
@@ -476,24 +482,73 @@ SCED -> boh, teniamo una schedule non accelerata, Nominal 1.00
 
 \subsubsection{Effort equation}
 
-%E=B+0.01x∑ SF,whereB=0.91
+We use the formula for the Post-Architecture Model
 
-PM = A*(SLOC)\^E * produttoria(cost drivers)
-A = 2.94
+$PM$ is the estimated Person-Month effort needed to develop the code.
 
 
+\begin{center}
+$ PM = A \times Size^E \times \prod_{i=1}^{17} EM_i $
+\end{center}
+
+\begin{center}
+$ E = B + 0.01 \times \sum_{j=1}^{5} SF_j $
+\end{center}
+
+where
+
+$ A = 2.94 $ is a calibrated constant 
+
+$ B = 0.91 $ is a calibrated constant
+
+$EM_i$ are the effort multipliers (cost drivers)
+
+$SF_j$ are the scale factors
+
+$Size$ is the estimated thousands of lines of source code (KSLOC)
+
+
+scale drivers = 6.20 + 3.04 + 1.41 + 1.10 + 3.12 = 14.87
+cost drivers (effort multipliers) = 1.0*1.28*1.00*0.95*1.00*1.11*1.00*1.15*1.00*0.76*0.81*1.10*1.19*1.00*0.78*0.93*1.00 = 0.907
+
+then
+
+$E = 0.91 + 0.01 \times 14.87 = 1.06$
+
+$PM = 2.94 \times 8.694^{1.06} \times 0.907 = 26.32$ person-months
 
 \subsubsection{Schedule estimation}
 
-TDEV time to develop (in mesi)
-TDEV = C * PM\^F
-F = (D + 0.2*(E-B))
-B = 0.91
-C = 3.67
-D = 0.28
-E = quello della effort equation
+$TDEV$ is the time necessary to develop the code, in calendar months
 
-% nb no schedule compression
+assuming no schedule compression, no stretching-out
+
+\begin{center}
+	$TDEV = C \times PM^F$
+\end{center}
+
+\begin{center}
+	$F = D + 0.2 \times (E-B)$
+\end{center}
+
+where
+
+$B = 0.91$ is a calibrated constant
+
+$C = 3.67$ is a calibrated constant
+
+$D = 0.28$ is a calibrated constant
+
+$E$ is the scaling exponent for the effort equation
+
+$PM$ person-months obtained in the effort estimation
+
+
+then
+$F = 0.28 + 0.2 \times (1.06 - 0.91) = 0.31$
+
+$TDEV = 3.67 \times 26.32^{0.31} = 10.11$ months
+
 \section{Schedule}
 
 
