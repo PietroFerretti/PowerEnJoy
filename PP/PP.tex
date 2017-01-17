@@ -255,10 +255,10 @@ Data will be organize in the following tables in the DB:
 
 \end{itemize}
 The software will operate directly on the previously listed data and with the tables generated from their relations between each other.\\
-All this data are modeled in simple structures so they're complexity can be considered low (referring to tables).
+All this data are modeled in simple structures so their complexity can be considered low (referring to tables).
 
 \begin{center}
-$ FPs (ILF) = 7*9+10= 73 $
+$ FPs (ILF) = 7 \times 9 + 10= 73 $
 \end{center}
 
 \subsubsection{External Logic Files (ELFs)}
@@ -291,7 +291,8 @@ In the final analysis, as the involved data are string and number with restraine
 		\hline
 		Driving Licenes legal soudness & Low & 5\\
 		\hline
-		\multicolumn{1}{|c|}{\textit{Total} & \multicolumn{1}{c|}{15}
+		\multicolumn{2}{|c|}{\textit{Total}} & \multicolumn{1}{c|}{15} \\
+		\hline
 	\end{tabular}
 \end{center}
 
@@ -301,11 +302,12 @@ PowerEnjoy offers a remarkable series of functionalities that required user's in
 In particularly:
 
 \begin{itemize}
-	\itemize{\textbf{Login}: this functionality demands only two strings as parameters, the username and the password, that will be compared with the ones stored in the DB. We can consider as a low complexity operation.}
+	\item{\textbf{Login}: this functionality demands only two strings as parameters, the username and the password, that will be compared with the ones stored in the DB. We can consider as a low complexity operation.}
 	
-	\itemize{\textbf{User update}: this functionality includes a collection of operations that allow to modify each aspect of user's profile. The input data are simple strings. Since the possibility are conspicuous and the different elaborations aren't basic and futhermore they interest several components, we can regard this functionality as an avarage complexity operation.}
+	\item{\textbf{User update}: this functionality includes a collection of operations that allow to modify each aspect of user's profile. The input data are simple strings. Since the possibility are conspicuous and the different elaborations aren't basic and futhermore they interest several components, we can regard this functionality as an avarage complexity operation.}
 	
-	\itemize{\textbf{Pay bill} (automatically/manually): this is one of the most complex operations. It involves internal components and external APIs and it demands two numbers as input. Given the relevance of the operation and the parts interested, we can consider this as hig complexity operation.}
+	\item{\textbf{Pay bill} (automatically/manually): this is one of the most complex operations. It involves internal components and external APIs and it demands two numbers as input. Given the relevance of the operation and the parts interested, we can consider this as hig complexity operation.}
+\end{itemize}
 
 	\begin{center}
 	\begin{tabular}{ | p{6cm} | p{6cm} | p{6cm} }
@@ -318,7 +320,7 @@ In particularly:
 		\hline
 		Pay bill & High & 6\\
 		\hline
-		\multicolumn{1}{|c|}{\textit{Total} & \multicolumn{1}{c|}{49}
+		\multicolumn{2}{|c|}{\textit{Total}} & \multicolumn{1}{c|}{49}\\
 	\end{tabular}
 \end{center}
 
