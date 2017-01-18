@@ -302,11 +302,34 @@ PowerEnjoy offers a remarkable series of functionalities that required user's in
 In particularly:
 
 \begin{itemize}
+
 	\item{\textbf{Login}: this functionality demands only two strings as parameters, the username and the password, that will be compared with the ones stored in the DB. We can consider as a low complexity operation.}
 	
-	\item{\textbf{User update}: this functionality includes a collection of operations that allow to modify each aspect of user's profile. The input data are simple strings. Since the possibility are conspicuous and the different elaborations aren't basic and futhermore they interest several components, we can regard this functionality as an avarage complexity operation.}
+	\item{\textbf{User update}: this functionality includes a collection of operations that allow to modify each aspect of user's profile. The input data are simple strings. Since the possibility are conspicuous and the different elaborations aren't basic and futhermore they interest several components, we can regard this functionality as an average complexity operation.}
 	
-	\item{\textbf{Pay bill} (automatically/manually): this is one of the most complex operations. It involves internal components and external APIs and it demands two numbers as input. Given the relevance of the operation and the parts interested, we can consider this as hig complexity operation.}
+	\item{\textbf{Pay bill} (automatically/manually): this is one of the most complex operations. It involves internal components and external APIs and it demands two numbers as input. Given the relevance of the operation and the parts interested, we can consider this as high complexity operation.}
+
+	\item{\textbf{Create reservation}: this functionality requires as input the user ID and car ID, that we can consider simple inputs, while his complexity is due to the components involved. In fact at the initial moment of the creation, the application verifies if the user is suspended and after that is modified the availabilty field of the tuple representing the car and the car itself is put in order to be unlocked. Moreover it's inserted in the list of reservation made by the user this new one. Given that we classify the operation as having average complexity.}
+
+	\item{\textbf{Cancel reservation}: the analysis made for the previous functionality is valid also for this one. The operations are comparable as elaboration and thanks to this the complexity of this functionality is average.}
+
+	\item{\textbf{Start ride}: this action is very simple as it's demands only the user ID and the car ID and it tallies the duration of the ride. Made this consideration we assues that this functionality as low complexity.}
+
+	\item{\textbf{End ride}: this functionality is the most complex one because involves various components and includes the payment functionality that has high complexity. When a ride ends the car is set as available in the DB, it creates a bill for the user and initiates the payment. As usual the inputs are simple strings.}
+
+	\item{\textbf{Park}: this functionality expects as inputs the position of the car that are a pair of numbers, the user ID and the car ID. In the elaboration of this data the components interested are the internal car system and the DB to verify if the position belongs to a safe area. Due to the urgency of the action this functionality has an average complexity.}
+
+	\item{\textbf{Unlock car}: this functionality receives the position of the user and his ID and the car ID. After that the system proceeds to notify the car to open the doors and calls the \textit{start ride} function. Since it comprises another functionality and communicates with the car we classify this functionality with average complexity.}
+
+	\item{\textbf{Update car}: this functionality requires only two parametres: the car ID and the status to be update. The component involved is the DB. For these reasons this functionality has low complexity.}
+
+	\item{\textbf{Update plug}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+
+	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+
+	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+
+	\item{\textbf{Report issue}: this functionality receives a form as input, so a set of strings, and modifies the status of the car in the DB and car itself. So we can consider this functionality as average complexity operation.}
 \end{itemize}
 
 	\begin{center}
@@ -316,32 +339,35 @@ In particularly:
 		\hline
 		Login & Low & 2 \\
 		\hline
-		User update & Avarage & 4\\
+		User update & Average & 4\\
 		\hline
-		Pay bill & High & 6\\
+		Pay bill & High & 6x2\\
 		\hline
-		\multicolumn{2}{|c|}{\textit{Total}} & \multicolumn{1}{c|}{49}\\
+		Create reservation & Average & 4\\
+		\hline
+		Cancel reservation & Average & 4\\
+		\hline
+		Start ride & Low & 2\\
+		\hline
+		End ride & High & 6\\
+		\hline
+		Park & Average & 4\\
+		\hline
+		Unlock car & Average & 4\\
+		\hline
+		Update car & Low & 2\\
+		\hline
+		Update plugs & Low & 2\\
+		\hline
+		Set car unavailable & Low & 2\\
+		\hline
+		Set car available & Low & 2\\
+		\hline
+		Report issue & Average & 4\\
+		\multicolumn{2}{|c|}{\textit{Total}} & \multicolumn{1}{c|}{54}\\
+		\hline
 	\end{tabular}
 \end{center}
-
-- create reservation -> medium
-- cancel reservation -> low
-- start ride -> low
-- end ride? -> high
-- park -> medium 
-- unlock -> medium
-- update macchina -> low
-- update plugs -> low
-- set car unavailable -> low
-- set car available -> low
-- report issue -> medium
-
-low x 7 = 3x7 = 21
-medium x 4 = 4x4 = 16
-high x 2 = 6x2 = 12
-
-tot 49 FPs per EI ti va una schweppes solo io e te?
-
 
 \subsubsection{External Inquiries (EQs)}
 
