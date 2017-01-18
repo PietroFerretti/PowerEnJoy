@@ -233,29 +233,61 @@ We based our computation on tables and values in \emph{COCOMO II Model Definitio
 
 They are all kinds of data used and managed by the application in  order to offer the expected functions.\\
 Data will be organize in the following tables in the DB:
+
 \begin{itemize}
-\item \textbf{user} : name, surname, username, password, dob, email, licenseID, cvv, cardNumber, accountStatus
 
-\item \textbf{bill} : associatedLicense, total, date, rideID, carID, paymentStatus
+	\item \textbf{User} : name, surname, username, password, dob, email, licenseID, cvv, cardNumber, accountStatus
 
-\item \textbf{car} : model, plate, ID, available, issues
+	\item \textbf{Bill} : associatedLicense, total, date, rideID, carID, paymentStatus
 
-\item \textbf{report} :carID, description, associatedLicense, date
+	\item \textbf{Car} : model, plate, ID, available, issues
 
-\item \textbf{safeArea} : latitude, longitude, ID
+	\item \textbf{Report} :carID, description, associatedLicense, date
 
+	\item \textbf{Safe area} : latitude, longitude, ID
 
-\item \textbf{PGS} : latitude, longitude, ID
+	\item \textbf{PGS} : latitude, longitude, ID
 
-\item \textbf{plug} : available, ID
+	\item \textbf{Plug} : available, ID
 
-\item \textbf{reservation} : ID, associatedLicense, carID, date, status
+	\item \textbf{Reservation} : ID, associatedLicense, carID, date, status
 
-\item \textbf{ride} : ID, associatedLicense, associatedBill, date, status, ridingTime, carID
+	\item \textbf{Ride} : ID, associatedLicense, associatedBill, date, status, ridingTime, carID
 
 \end{itemize}
+
 The software will operate directly on the previously listed data and with the tables generated from their relations between each other.\\
 All this data are modeled in simple structures so their complexity can be considered low (referring to tables).
+
+\begin{center}
+	\begin{tabular}{ |p{8cm}|m{2cm}|p{1cm}| }
+		\hline
+		\multicolumn{1}{|c|}{\textbf{ILF}} & \multicolumn{1}{c|}{\textbf{Complexity}} & \multicolumn{1}{c|}{\textbf{FPs}} \\
+		\hline
+		User & Low & 7 \\
+		\hline
+		Bill & Low & 7\\
+		\hline
+		Car & Low & 7\\
+		\hline
+		Report & Low & 7\\
+		\hline
+		Safe area & Low & 7\\
+		\hline
+		PGS & Low & 7\\
+		\hline
+		Plug & Low & 7\\
+		\hline
+		Reservation & Low & 7\\
+		\hline
+		Ride & Low & 7\\
+		\hline
+		\multicolumn{2}{|l|}{\textit{Total}} & \multicolumn{1}{l|}{73} \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\textbf{quel +10 cos'è?}
 
 \begin{center}
 $ FPs (ILF) = 7 \times 9 + 10= 73 $
@@ -440,7 +472,7 @@ The first case has a low complexity while the second is a little bit more comple
 
 \subsubsection{Overall estimation}
 
-
+\\
 \begin{center}
 	\begin{tabular}{|p{5cm}|p{1cm}|}
 		\hline
@@ -457,20 +489,23 @@ The first case has a low complexity while the second is a little bit more comple
 	\end{tabular}
 \end{center}
 
-We use Java Enterprise Edition
-
-con AVC 46 per Java EE
+This table contains a recap of the evaluations of each type of function point.\\
+Thanks to estimation of the function points we can appraisal the approximately number of lines of code: since that our system is developed using Java EE, we can extrapolate the AVC factor from this table\footnote{\href{http://www.qsm.com/resources/function-point-languages-table}{http://www.qsm.com/resources/function-point-languages-table}}. 
 
 \begin{center}
-$SLOC = 200 \times 46 = 9200$
+$SLOC = AVC \times number of function points$
 \end{center}
 
-this table\footnote{\href{http://www.qsm.com/resources/function-point-languages-table}{http://www.qsm.com/resources/function-point-languages-table}}
+where
 
-% median 49 -> 9261
-% low 15 -> 2835
-% high 67 -> 12663
+$ AVC $ is equale to $46$
+$ number of function points$ is equal to $200$
 
+So at the end, we have:
+
+\begin{center}
+$SLOC = 9200$
+\end{center}
 
 \subsection{Cost and effort estimation: COCOMO II}
 
