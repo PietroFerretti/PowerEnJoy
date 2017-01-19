@@ -472,7 +472,7 @@ The first case has a low complexity while the second is a little bit more comple
 
 \subsubsection{Overall estimation}
 
-\\
+\paragraph{}
 \begin{center}
 	\begin{tabular}{|p{5cm}|p{1cm}|}
 		\hline
@@ -493,7 +493,7 @@ This table contains a recap of the evaluations of each type of function point.\\
 Thanks to estimation of the function points we can appraisal the approximately number of lines of code: since that our system is developed using Java EE, we can extrapolate the AVC factor from this table\footnote{\href{http://www.qsm.com/resources/function-point-languages-table}{http://www.qsm.com/resources/function-point-languages-table}}. 
 
 \begin{center}
-$SLOC = AVC \times number of function points$
+$SLOC = AVC \times$ $number$ $of$ $function$ $points$
 \end{center}
 
 where
@@ -507,46 +507,52 @@ So at the end, we have:
 $SLOC = 9200$
 \end{center}
 
+
+\newpage
 \subsection{Cost and effort estimation: COCOMO II}
 
-We use the COCOMO II Model for cost and effort estimation.
-*cos'è il COCOMO II?*
+To estimate the cost and effort required to develop the software we use the COCOMO II model\footnote{\href{http://csse.usc.edu/csse/research/COCOMOII/cocomo2000.0/CII\_modelman2000.0.pdf}{http://csse.usc.edu/csse/research/COCOMOII/cocomo2000.0/CII\_modelman2000.0.pdf}}.
 
-We use the Post-Architecture Model, because the architecture and everything has already been described in depth.
+Since the architecture and structure of our software has been already designed and thought out in details in the Design Document, we will use the COCOMO II Post-Architecture Model.
 
-*qualche dettaglio*
 
 \subsubsection{Scale Factors}
 
-*what are scale factors*
+Five scale factors are used to compute the scale exponent $E$, that accounts for the economies or diseconomies of scale that characterize our project.
 
-qua ci vuole la tabella dove ci sono tutti i valori
+If $E$ < 1.0, the project exhibits economies of scale, otherwise diseconomies of scale are present (usually because of communications overhead or large-system integration overheads).
+
+\paragraph{}
+There are five scale factors: \textit{Precedentedness}, \textit{Development Flexibility}, \textit{Architecture/Risk Resolution}, \textit{Team Cohesion}, \textit{Process Maturity}. Each of them can be classified on a scale from "Very Low" to "Very High".
+
+%TODO tabella dove ci sono tutti i valori?
 
 % rate, judge, classify, assess, consider
 
-Scale factors:
+\paragraph{Scale factors:}
 \begin{itemize}
-	\item \textbf{Precedentedness (PRED):} "If a product is similar to several previously developed projects, then the precedentedness is high."
-	how similar is this product to previously developed one
-	how many similar product have we developed already
-	We never developed anything similar [and on this scale], except for the client-server architecture. We rate this factor as Very Low.
-	\item \textbf{Development Flexibility (FLEX):} "Need for software conformance with pre-established requirements \& external interface specifications, + premium on early completion"
-	We have to 'considerably' follow the requirements we specified to reach the customer's goals. We rate this as Nominal.
-	\item \textbf{Architecture / Risk Resolution (RESL):} High if everything is well planned, the risks have all been identified and accounted for, the architecture has been carefully designed, low uncertainty and low risk in general.
-	our architecture is good
-	our risk management plan is (we consider it) thorough
-	We rate this as High.
-	\item \textbf{Team Cohesion (TEAM):} experience as a team, willingness to work together, shared vision and commitments.
-	We are great at this, we rate this as Very High.
-	\item \textbf{Process Maturity (PMAT):} follows the Capability Maturity Model (CMM).
-	nb:
-	level 1 -> inital, uncontrolled
-	level 2 -> managed
-	level 3 -> defined
-	level 4 -> quantitatively managed
-	level 5 -> optimized
-	we are not at a level where everything is accounted for, but we do follow a clear process
-	Around level 3, equivalent to a High.
+	\item \textbf{Precedentedness (PRED):} 
+	Precedentedness is high if the product is similar to previously developed projects.
+	
+	We never developed anything similar and on the same scale, so we rate this factor as \textit{Very Low}.
+	
+	\item \textbf{Development Flexibility (FLEX):} 	
+	This factor measures how rigidly must the software conform with the requirements and the interface specifications.
+	
+	We do follow the requirements to reach all of the customer's goals, but this is not a project were extreme rigorousness is necessary due to hardware constraints or danger to things or people. We rate this as \textit{Nominal}.
+	
+	\item \textbf{Architecture / Risk Resolution (RESL):} High if the architecture has been carefully designed, the risks have all been identified and accounted for, and there is low uncertainty and risk in general.
+	
+	We consider the architecture we developed as robust and detailed, and the risk management plan covers most of the problem we could encounter during the development, with detailed strategies for all relevant risks. We rate this factor as \textit{High}.
+	
+	\item \textbf{Team Cohesion (TEAM):} 
+	This factor quantifies the personnel's experience as a team, willingness to work together and the presence of a shared vision and commitment to the project.
+	
+	We, as the developers for this project, have already worked together multiple times and have a lot of experience working as a team; we therefore rate this factor as \textit{Very High}.
+	
+	\item \textbf{Process Maturity (PMAT):} this factor follows the Capability Maturity Model (CMM), associating a rating to each CMM level. 
+	
+	We are not at a process level where everything is quantified and optimized yet, but we do follow clear, defined methods. It is reasonable to judge it as a level 3 in the CMM ("defined"), equivalent to a \textit{High} rating.
 \end{itemize}
 
 \begin{center}
@@ -563,18 +569,21 @@ Scale factors:
 		\multicolumn{2}{|l|}{\textit{Total}} & 16.29 \\
 		\hline
 	\end{tabular}
+	\captionof{table}{COCOMO II values for the scale factors.}
 \end{center}
+
 
 \subsubsection{Cost Drivers}
 
-*what are cost drivers*
-each of these factors can increase or decrease the amount of effort needed to develop the software
+To accurately determine the amount of effort the development will require, the nominal, baseline effort is adjusted with several Effort Multipliers. In the Post-Architecture Model these are also known as \textit{cost drivers}. 
 
-We follow the tables in the COCOMO II document.
+\paragraph{}
+There are 17 different cost drivers, and each one can have a rating ranging from "Very Low" to "Very High". The ratings map directly to a multiplicative factor, that can increase or decrease the estimated amount of effort needed to develop the software.
 
-% dividere i cost drivers per categorie di fattori?
+%TODO dividere i cost drivers per categorie di fattori?
 
-Cost Drivers:
+\paragraph{Cost Drivers:}
+
 \begin{itemize}
 
 \item \textbf{Required Software Reliability (RELY):} This is the measure of the extent to which the software must perform its intended function over a period of time. If the effect of a software failure is only slight inconvenience then RELY is very low. If a failure would risk human life then RELY is very high.
@@ -763,6 +772,7 @@ We have no constraint on time or schedules. We can just keep the spontaneous tim
 		\multicolumn{2}{|l|}{\textit{Total}} & 0.907 \\
 		\hline
 	\end{tabular}
+	\captionof{table}{COCOMO II values for the cost drivers.}
 \end{center}
 
 
@@ -798,6 +808,7 @@ cost drivers (effort multipliers) = 1.0*1.28*1.00*0.95*1.00*1.11*1.00*1.15*1.00*
 then
 
 $E = 0.91 + 0.01 \times 16.29 = 1.07$
+% E>1 --> diseconomy of scale, troppo overhead di comunicazione ecc.
 
 $PM = 2.94 \times 8.694^{1.06} \times 0.907 = 26.97$ person-months
 
