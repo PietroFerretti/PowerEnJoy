@@ -120,12 +120,10 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 \item \textbf{UI}: User Interface
 \end{itemize}
 
-%\subsubsection{Abbreviations}
-%\begin{itemize}
-%\item{\textbf{[Gx]}: Goal}
-%\item{\textbf{[RE.x]}: Functional Requirement}
-%\item{\textbf{[UC.x]}: Use Case}
-%\end{itemize}
+\subsubsection{Abbreviations}
+\begin{itemize}
+	\item{\textbf{Tx}: Task}
+\end{itemize}
 
 \subsection{List of Reference Documents}
 
@@ -353,13 +351,13 @@ In particularly:
 
 	\item{\textbf{Unlock car}: this functionality receives the position of the user and his ID and the car ID. After that the system proceeds to notify the car to open the doors and calls the \textit{start ride} function. Since it comprises another functionality and communicates with the car we classify this functionality with average complexity.}
 
-	\item{\textbf{Update car}: this functionality requires only two parametres: the car ID and the status to be update. The component involved is the DB. For these reasons this functionality has low complexity.}
+	\item{\textbf{Update car}: this functionality requires only two parameters: the car ID and the status to be update. The component involved is the DB. For these reasons this functionality has low complexity.}
 
-	\item{\textbf{Update plug}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Update plug}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
 
-	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
 
-	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
 
 	\item{\textbf{Report issue}: this functionality receives a form as input, so a set of strings, and modifies the status of the car in the DB and car itself. So we can consider this functionality as average complexity operation.}
 \end{itemize}
@@ -416,7 +414,7 @@ In our case we have:
 
 	\item{\textbf{Car/PGS/Safe area search with address}: as for the previous cases, also these functionalities have an average complexity even though there is an interaction with the \textit{GraphHopper API} in order to convert the address in coordinates.}
 
-	\item{\textbf{Money Saving Option}: this is the most complex operation because it should extract informations from the DB and elaborate them to find the best solution.}
+	\item{\textbf{Money Saving Option}: this is the most complex operation because it should extract information from the DB and elaborate them to find the best solution.}
 
 	\item{\textbf{Cars in need of maintenance}: this is a simple functionality that is employed by maintenance operators and returns a list of cars that are unavailable.}
 \end{itemize}
@@ -810,7 +808,7 @@ then
 $E = 0.91 + 0.01 \times 16.29 = 1.07$
 % E>1 --> diseconomy of scale, troppo overhead di comunicazione ecc.
 
-$PM = 2.94 \times 8.694^{1.06} \times 0.907 = 26.97$ person-months
+$PM = 2.94 \times 9.2^{1.06} \times 0.907 = 29.97$ person-months
 
 \subsubsection{Schedule estimation}
 
@@ -840,16 +838,120 @@ then
 
 $F = 0.28 + 0.2 \times (1.07 - 0.91) = 0.31$
 
-$TDEV = 3.67 \times 26.97^{0.31} = 10.19$ months
+$TDEV = 3.67 \times 29.97^{0.31} = 10.53$ months
 
 \section{Schedule}
 
+In this section we're going to present an undetailed and high-level schedule of the project. Since this agenda is drawn up in the early days of the software development, we could need to reschedule some activity later.\\
+These are the main tasks and a simple description of each of them:
+
+\begin{itemize}
+	\item{\textbf{RASD writing}: we analyse the requirements submitted by the customers and draft the document that contains the most important features of the project and it's indispensable for the completation of the other documents.}
+	
+	\item{\textbf{DD writing}: we make decision about architectural design and composition of the components of PowerEnjoy system, then we go on with the draft of the document. It's really important to terminate it before starting to code.}
+
+	\item{\textbf{ITPD writing}: we make a detailed analisys of the components and then write the document that describes the strategy we are going to use for unit testing, integration testing and system testing.}
+
+	\item{\textbf{PP writing}: we define planning assumptions and decisions, the risks that we could incur during the development and how we could tackle them.}
+
+	\item{\textbf{Development}: we proceed implementing the real software.}
+
+	\item{\textbf{Code inspection}: before we move forward with the testing, we check if the code if bug free and prove to enhance the quality of the code.}
+
+	\item{\textbf{Testing}: during and after the implementation of the software we perform the testing of the code and the system.}
+
+	\item{\textbf{Deployment}: }
+
+	\item{\textbf{Start up}: }
+\end{itemize}
+
+Since we choose to follow bottom-up approach for testing, the latter, development and code inspection could be performed almost simultaneously.
+
+\subsection{T1 - RASD writing}
+
+%mettere gantt RASD
+
+\subsection{T2 - DD writing}
+
+%mettere gantt DD
+
+\subsection{T3 - ITPD writing}
+
+%mettere gantt ITPD
+
+\subsection{T4 - PP writing}
+
+%mettere gantt PP
+
+\subsection{T5 - Development - Code Inspection -  Testing}
+
+%mettere gantt DCIT
+
+\subsection{T6 - Deployment - Start Up}
+
+%mettere gantt DSU
+
 
 \section{Resource allocation}
+\\
 
+\begin{center}
+	\begin{tabular}{|p{5cm}|p{5cm}|p{5cm}|p{5cm}|}
+		\hline
+		\multicolumn{1}{|c|}{\textbf{Step}} & \multicolumn{1}{c|}{\textbf{Pietro Ferretti}} & \multicolumn{1}{c|}{\textbf{Nicole Gervasoni} & \multicolumn{1}{c|}{\textbf{Danilo Labanca}} \\
+		\hline
+		1 & T1 & T1 & T1\\
+		\hline
+		2 & T2 & T2 & T2\\
+		\hline
+		3 & T3 & T3 & T3\\
+		\hline
+		4 & T4 & T4 & T4\\
+		\hline
+		5 & T5.1 & T5.1 & T5.1\\
+		\hline
+		6 & T5.2  & T5.2 & T5.2\\
+		\hline
+		7 & T5.4 & T5.4 & T5.3\\
+		\hline
+		8 & T5.5 & / & T5.5\\
+		\hline
+		9 & / & T5.6 & T5.6\\
+		\hline
+		10 & T5.7 & T5.7 & /\\
+		\hline
+		11 & T5.8 & T5.8 & T5.8\\
+		\hline
+		12 & T5.9 & T5.9 & T5.9\\
+		\hline
+		13 & T5.10 & / & T5.10\\
+		\hline
+		14 & T5.11 & T5.11 & /\\
+		\hline
+		15 & / & T5.12 & T5.12\\
+		\hline
+		16 & / & T5.13 & /\\
+		\hline
+		17 & T5.14 & / & T5.14\\
+		\hline
+		18 & / & T5.15 & T5.15\\
+		\hline
+		19 & T5.16 & T5.16 & T5.16\\
+		\hline
+		20 & T5.17 & T5.17 & T5.17\\
+		\hline
+		21 & T6 & T6 & T6\\
+		\hline
+	\end{tabular}
+\end{center}
+
+Since we lack of experiences, we believe that analise the project and write together the relative documents should be the best thing to do in order to share our knowledge and improve the documentation.
 
 \section{Risk Management}
-Project managers assess and monitor risks that may affect a project, taking action if needed.   
+Risk management is the identification, assessment, and prioritization of risks followed by coordinated and economical application of resources to minimize, monitor, and control the probability and/or impact of unfortunate events.\\
+In this section we list PowerEnjoy project's main risks and outline possible strategies to handle the most critical ones.
+
+
 \begin{center}
 	\begin{tabular}{|c|c|c|}
 		\hline
@@ -880,6 +982,23 @@ Project managers assess and monitor risks that may affect a project, taking acti
 		\hline
 	\end{tabular}
 \end{center}
+
+
+\paragraph{Possible Solutions}
+\begin{itemize}
+
+\item \textit{Personnel shortfall:} reorganize team so that there is more overlap of work and no single person is fundamental to the project; in case of issues in finding high qualified worker consider buying already developed products and simply adapting them.
+
+\item \textit{Issue with hardware supplies:} use and test hardware components as soon as they are available; replace potentially defective components with bought-in components of known reliability.
+
+\item \textit{Inaccurate requirements:} derive traceability information to assess requirements change impact; divide software functions in several different module so that modify a requirements will not have effect on all the produced code. 
+
+\item \textit{Stakeholder commitment loss:} prepare a briefing document showing how the project is making a very important contribution to the goals of the business.
+
+\item \textit{Unrealistic budget:} have it reconsidered by showing the stakeholder how the project is making a very important contribution to the goals of the business; buy already developed products and assembly them. 
+
+\item \textit{Unrealistic schedule:} early in the development, divide bigger activities in smaller ones and hired new people to work on few specific functions then combine them when ready, while later consider buying already developed products and adapting them.
+\end{itemize}
 
 
 \appendix
