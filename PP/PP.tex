@@ -141,18 +141,14 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 %TODO descrizione sezione
 
 \subsection{Size estimation: function points}
-Function points are useful in expressing the amount of business functionality our software has to provide to a user and are used to compute an estimation of its size.
-After been identified and categorized into one of five types: outputs, inquiries, inputs, internal files, and external interfaces, each functional requirement is then assessed for complexity and assigned a number of function points.\\
-We based our computation on tables and values in \emph{COCOMO II Model Definition Manual v. 2.1}.
-
-% tabelline complessità
+Function points are useful in expressing the number of business functionalities our software has to provide to a user, and are used to compute an estimation of its size.
+They can be identified and categorized into one of five types: outputs, inquiries, inputs, internal files, and external interfaces. Each functional requirement is then assessed for complexity and assigned a number of function points.\\
+We based our computation on tables and values in the \emph{COCOMO II Model Definition Manual v. 2.1}.
 
 \subsubsection{Internal Logic Files (ILFs)}
-%quali internal logic files abbiamo?
-%quali entità di dati abbiamo?
 
-They are all kinds of data used and managed by the application in  order to offer the expected functions.\\
-Data will be organize in the following tables in the DB:
+Internal Logic Files are all the kinds of data used and managed by the application in  order to offer the expected functions.\\
+Data will be organized in the following tables in the DB:
 
 \begin{itemize}
 
@@ -168,7 +164,7 @@ Data will be organize in the following tables in the DB:
 
 	\item \textbf{PGS} : latitude, longitude, ID
 
-	\item \textbf{Plug} : available, ID
+	\item \textbf{Plug} : availability, ID
 
 	\item \textbf{Reservation} : ID, associatedLicense, carID, date, status
 
@@ -176,8 +172,8 @@ Data will be organize in the following tables in the DB:
 
 \end{itemize}
 
-The software will operate directly on the previously listed data and with the tables generated from their relations between each other.\\
-All this data are modeled in simple structures so their complexity can be considered low (referring to tables).
+The software will operate directly on the single rows and tables, joining them appropriately if needed.\\
+All this data is modeled in simple structures so its complexity can be considered low (referring to tables).
 
 \begin{center}
 	\begin{tabular}{ |p{8cm}|m{2cm}|p{1cm}| }
@@ -202,35 +198,31 @@ All this data are modeled in simple structures so their complexity can be consid
 		\hline
 		Ride & Low & 7\\
 		\hline
-		\multicolumn{2}{|l|}{\textit{Total}} & \multicolumn{1}{l|}{73} \\
+		\multicolumn{2}{|l|}{\textit{Total}} & \multicolumn{1}{l|}{63} \\
 		\hline
 	\end{tabular}
 \end{center}
 
-\textbf{quel +10 cos'è?}
-
-\begin{center}
-$ FPs (ILF) = 7 \times 9 + 10= 73 $
-\end{center}
+\paragraph{}
 
 \subsubsection{External Logic Files (ELFs)}
 
-The situations in which our system demands external data is when it needs informations regarding geolocation or when it must guarantee the legal soundness of the Driving License.\\
-In particularly:
+The situations where our system demands external data are when it needs information regarding geolocation, or when it must guarantee the legal validity of driving licenses.\\
+In particular:
 
 \begin{itemize}
 	\item \textbf{GraphHopper API}:
 		\begin{itemize}
-			\item{Given the string containing the address, the API returns a pair of float representing the coordinates of that location.}
-			\item{Given two pair of coordinates, the API return a float representing the time within two position.}
+			\item{Given the string containing the address, the API returns a pair of float numbers representing the coordinates of that location.}
+			\item{Given two pair of coordinates, the API return a float representing the time necessary to travel between two positions.}
 		\end{itemize}
 	\item \textbf{Eucaris API}:
 		\begin{itemize}
-			\item{Given name, surname, driving license ID and expiration date as string, the API returns a boolean value representing the correspondence with an existing driving license in Eucaris DB.}
+			\item{Given name, surname, driving license ID and expiration date as string,s the API returns a boolean value representing the correspondence with an existing driving license in Eucaris DB.}
 		\end{itemize}
 \end{itemize}
 
-In the final analysis, as the involved data are string and number with restrained size, we can assess this logic files as low complexity.\\
+In the final analysis, as the data involved are only strings and numbers of small size, we can assess these logic files as low complexity.\\
 
 \begin{center}
 	\begin{tabular}{ |p{8cm}|m{2cm}|p{1cm}| }
@@ -241,47 +233,48 @@ In the final analysis, as the involved data are string and number with restraine
 		\hline
 		Isochrone distance & Low & 5\\
 		\hline
-		Driving Licenes legal soudness & Low & 5\\
+		Driving Licenes legal validity & Low & 5\\
 		\hline
 		\multicolumn{2}{|l|}{\textit{Total}} & \multicolumn{1}{l|}{15} \\
 		\hline
 	\end{tabular}
 \end{center}
 
+\paragraph{}
 \subsubsection{External Inputs (EIs)}
 
-PowerEnjoy offers a remarkable series of functionalities that required user's input.\\
-In particularly:
+PowerEnjoy offers a diverse set of functionalities that requires the user's input.\\
+In particular:
 
 \begin{itemize}
 
-	\item{\textbf{Login}: this functionality demands only two strings as parameters, the username and the password, that will be compared with the ones stored in the DB. We can consider as a low complexity operation.}
+	\item{\textbf{Login}: this functionality demands only two strings as parameters, the username and the password, that will be compared with the ones stored in the DB. We can consider this a low complexity operation.}
 	
-	\item{\textbf{User update}: this functionality includes a collection of operations that allow to modify each aspect of user's profile. The input data are simple strings. Since the possibility are conspicuous and the different elaborations aren't basic and futhermore they interest several components, we can regard this functionality as an average complexity operation.}
+	\item{\textbf{User update}: this functionality includes a collection of operations that allow to modify each aspect of the user's profile. The input data are simple strings. Since the possibilities are conspicuous and the different elaborations aren't basic, and futhermore they interest several components, we can regard this functionality as an average complexity operation.}
 	
-	\item{\textbf{Pay bill} (automatically/manually): this is one of the most complex operations. It involves internal components and external APIs and it demands two numbers as input. Given the relevance of the operation and the parts interested, we can consider this as high complexity operation.}
+	\item{\textbf{Pay bill} (automatically/manually): this is one of the most complex operations. It involves internal components and external APIs and it demands two numbers as input. Given the relevance of the operation and the parts interested, we can consider this as a high complexity operation.}
 
-	\item{\textbf{Create reservation}: this functionality requires as input the user ID and car ID, that we can consider simple inputs, while his complexity is due to the components involved. In fact at the initial moment of the creation, the application verifies if the user is suspended and after that is modified the availabilty field of the tuple representing the car and the car itself is put in order to be unlocked. Moreover it's inserted in the list of reservation made by the user this new one. Given that we classify the operation as having average complexity.}
+	\item{\textbf{Create reservation}: this functionality requires as input the user ID and car ID that we can consider simple, but its complexity is due to the components involved. At the moment of the creation, the application verifies if the user is suspended, and after that the availability field of the tuple representing the car is modified and the car itself is put in order to be unlocked. Moreover the reservation made by the user is inserted in the list of reservations. We classify the operation as having average complexity.}
 
-	\item{\textbf{Cancel reservation}: the analysis made for the previous functionality is valid also for this one. The operations are comparable as elaboration and thanks to this the complexity of this functionality is average.}
+	\item{\textbf{Cancel reservation}: the analysis made for the previous functionality is also valid for this one. The operations are comparable as elaboration, and thanks to this the complexity of this functionality is average.}
 
-	\item{\textbf{Start ride}: this action is very simple as it's demands only the user ID and the car ID and it tallies the duration of the ride. Made this consideration we assues that this functionality as low complexity.}
+	\item{\textbf{Start ride}: this action is very simple as it needs only the user ID and the car ID and starts the tally for the duration of the ride. Made this consideration we can see this functionality as low complexity.}
 
-	\item{\textbf{End ride}: this functionality is the most complex one because involves various components and includes the payment functionality that has high complexity. When a ride ends the car is set as available in the DB, it creates a bill for the user and initiates the payment. As usual the inputs are simple strings.}
+	\item{\textbf{End ride}: this functionality is one of the most complex ones because it involves many different components, and starts the payment process (that has high complexity on its own). When a ride ends the car is set as available in the DB, it creates a bill for the user and initiates the payment. As usual the inputs are simple strings.}
 
-	\item{\textbf{Park}: this functionality expects as inputs the position of the car that are a pair of numbers, the user ID and the car ID. In the elaboration of this data the components interested are the internal car system and the DB to verify if the position belongs to a safe area. Due to the urgency of the action this functionality has an average complexity.}
+	\item{\textbf{Park}: this functionality expects as inputs the position of the car that are a pair of numbers, the user ID and the car ID. In the elaboration of this data the components interested are the internal car system and the DB to verify if the position belongs to a safe area. Due to the urgency of the action this functionality can be classified as average complexity.}
 
-	\item{\textbf{Unlock car}: this functionality receives the position of the user and his ID and the car ID. After that the system proceeds to notify the car to open the doors and calls the \textit{start ride} function. Since it comprises another functionality and communicates with the car we classify this functionality with average complexity.}
+	\item{\textbf{Unlock car}: this functionality receives the position of the user and his ID, and the car ID. After that the system proceeds to notify the car to open the doors and calls the \textit{start ride} function. Since it includes another functionality and communicates with the car we classify this functionality as average complexity.}
 
-	\item{\textbf{Update car}: this functionality requires only two parameters: the car ID and the status to be update. The component involved is the DB. For these reasons this functionality has low complexity.}
+	\item{\textbf{Update car}: this functionality requires only two parameters: the car ID and the status to be updated. This operation mainly involves the DB. For these reasons this functionality has low complexity.}
 
-	\item{\textbf{Update plug}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Update plug}: as the previous functionality, this one too only requires two parameters and affects the DB. So it's a low complexity functionality.}
 
-	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Set car available}: as the previous functionality, this one too only requires two parameters and affects the DB. So it's a low complexity functionality.}
 
-	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Set car available}: as the previous functionality, this one too only requires two parameters and affects the DB. So it's a low complexity functionality.}
 
-	\item{\textbf{Report issue}: this functionality receives a form as input, so a set of strings, and modifies the status of the car in the DB and car itself. So we can consider this functionality as average complexity operation.}
+	\item{\textbf{Report issue}: this functionality receives the parameters of a form as input, so a set of strings, and modifies the status of the car in the DB and the car record itself. We can consider this functionality as an operation with average complexity.}
 \end{itemize}
 
 	\begin{center}
@@ -324,19 +317,19 @@ In particularly:
 
 \subsubsection{External Inquiries (EQs)}
 
-In this section we will discuss about External Inquiries that could be defined as elementary processes that send data or control information outside the application boundary.; the primary intent of an external inquiry is to present information to a user through the retrieval of data or control information from an ILF of EIF. (copiata)\\
+In this section we will discuss about External Inquiries that could be defined as elementary processes that send data or control information outside the application boundary. An external inquiry is a functionality that provides information to a user after a query or a request, by retrieving data from an ILF or ELF. \\
 In our case we have: 
 
 \begin{itemize}
-	\item{\textbf{Get user info}: it's returned a set of strings representing the user's info, from the DB.}
+	\item{\textbf{Get user info}: it returns a set of strings representing the user's info, from the DB.}
 
-	\item{\textbf{Get bills}: it's returned a list of bills, made by strings, of the user, from the DB.}
+	\item{\textbf{Get bills}: it returns a list of bills (mainly strings) owned by the user, retrieved from the DB.}
 
-	\item{\textbf{Car/PGS/Safe area search with position}: in this case the function needs a parameter that is a pair of number and returns a list extracted from the DB. For these operations there are some elaborations to do and because of that we classify these actions having average complexity.}
+	\item{\textbf{Car/PGS/Safe area search with position}: in this case the function needs a parameter that is a pair of numbers and returns a list extracted from the DB. For these operations there are some computations to do. Because of that we classify these actions having average complexity.}
 
-	\item{\textbf{Car/PGS/Safe area search with address}: as for the previous cases, also these functionalities have an average complexity even though there is an interaction with the \textit{GraphHopper API} in order to convert the address in coordinates.}
+	\item{\textbf{Car/PGS/Safe area search with address}: as for the previous cases, these functionalities also have an average complexity, also considering that there are interactions with the \textit{GraphHopper API} in order to convert the address in coordinates.}
 
-	\item{\textbf{Money Saving Option}: this is the most complex operation because it should extract information from the DB and elaborate them to find the best solution.}
+	\item{\textbf{Money Saving Option}: this is one of the most complex operations, because it has extract information from the DB and do complex elaborations to find the best solution.}
 
 	\item{\textbf{Cars in need of maintenance}: this is a simple functionality that is employed by maintenance operators and returns a list of cars that are unavailable.}
 \end{itemize}
@@ -364,6 +357,8 @@ In our case we have:
 	\end{tabular}
 \end{center}
 
+\paragraph{}
+
 \subsubsection{External Outputs (EOs)}
 
 The situation our system needs to notify external agents are the following:
@@ -374,7 +369,7 @@ The situation our system needs to notify external agents are the following:
 	\item{\textbf{Car update}}
 \end{itemize}
 
-The first case has a low complexity while the second is a little bit more complex because it needs to extract the information from the car.
+The first case has a low complexity, while the second is a little bit more complex because it needs to extract the information from the car.
 
 \begin{center}
 	\begin{tabular}{ |p{8cm}|m{2cm}|p{1cm}| }
@@ -390,6 +385,7 @@ The first case has a low complexity while the second is a little bit more comple
 	\end{tabular}
 \end{center}
 
+\newpage
 \subsubsection{Overall estimation}
 
 \paragraph{}
@@ -398,33 +394,38 @@ The first case has a low complexity while the second is a little bit more comple
 		\hline
 		\textbf{Function Type} & \textbf{FPs} \\
 		\hline
-		Internal Logic Files & 73 \\
+		Internal Logic Files & 63 \\
 		External Logic Files & 15 \\
 		External Inputs & 60 \\
 		External Inquiries & 39 \\
 		External Outputs & 13 \\
 		\hline
-		\textit{Total} & 200 \\
+		\textit{Total} & 190 \\
 		\hline
 	\end{tabular}
 \end{center}
 
 This table contains a recap of the evaluations of each type of function point.\\
-Thanks to estimation of the function points we can appraisal the approximately number of lines of code: since that our system is developed using Java EE, we can extrapolate the AVC factor from this table\footnote{\href{http://www.qsm.com/resources/function-point-languages-table}{http://www.qsm.com/resources/function-point-languages-table}}. 
+By enumerating the function points we can find an estimation for the number of lines of code the software will have.
+The formula we are going to use is:
+
 
 \begin{center}
-$SLOC = AVC \times$ $number$ $of$ $function$ $points$
+$SLOC = AVC \times FPs$
 \end{center}
-
 where
 
-$ AVC $ is equale to $46$
-$ number of function points$ is equal to $200$
+$ AVC $ is a language dependent factor
 
-So at the end, we have:
+$ FPs$ is equal to the number of function points ($190$ in our case)
+
+\paragraph{}
+Since our system will be developed using the Java Enterprise Edition stack, we will take 46 as the AVC factor (following standard empirical measurements\footnote{\href{http://www.qsm.com/resources/function-point-languages-table}{http://www.qsm.com/resources/function-point-languages-table}} for an average project). 
+
+In the end, we have:
 
 \begin{center}
-$SLOC = 9200$
+$SLOC = 8740$ lines of code
 \end{center}
 
 
