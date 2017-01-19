@@ -353,13 +353,13 @@ In particularly:
 
 	\item{\textbf{Unlock car}: this functionality receives the position of the user and his ID and the car ID. After that the system proceeds to notify the car to open the doors and calls the \textit{start ride} function. Since it comprises another functionality and communicates with the car we classify this functionality with average complexity.}
 
-	\item{\textbf{Update car}: this functionality requires only two parametres: the car ID and the status to be update. The component involved is the DB. For these reasons this functionality has low complexity.}
+	\item{\textbf{Update car}: this functionality requires only two parameters: the car ID and the status to be update. The component involved is the DB. For these reasons this functionality has low complexity.}
 
-	\item{\textbf{Update plug}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Update plug}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
 
-	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
 
-	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parametres and affects the DB. So it's a low complexity functionality.}
+	\item{\textbf{Set car available}: as the previous functionality, also this one requires two parameters and affects the DB. So it's a low complexity functionality.}
 
 	\item{\textbf{Report issue}: this functionality receives a form as input, so a set of strings, and modifies the status of the car in the DB and car itself. So we can consider this functionality as average complexity operation.}
 \end{itemize}
@@ -416,7 +416,7 @@ In our case we have:
 
 	\item{\textbf{Car/PGS/Safe area search with address}: as for the previous cases, also these functionalities have an average complexity even though there is an interaction with the \textit{GraphHopper API} in order to convert the address in coordinates.}
 
-	\item{\textbf{Money Saving Option}: this is the most complex operation because it should extract informations from the DB and elaborate them to find the best solution.}
+	\item{\textbf{Money Saving Option}: this is the most complex operation because it should extract information from the DB and elaborate them to find the best solution.}
 
 	\item{\textbf{Cars in need of maintenance}: this is a simple functionality that is employed by maintenance operators and returns a list of cars that are unavailable.}
 \end{itemize}
@@ -472,7 +472,6 @@ The first case has a low complexity while the second is a little bit more comple
 
 \subsubsection{Overall estimation}
 
-\\
 \begin{center}
 	\begin{tabular}{|p{5cm}|p{1cm}|}
 		\hline
@@ -838,7 +837,10 @@ $TDEV = 3.67 \times 26.97^{0.31} = 10.19$ months
 
 
 \section{Risk Management}
-Project managers assess and monitor risks that may affect a project, taking action if needed.   
+Risk management is the identification, assessment, and prioritization of risks followed by coordinated and economical application of resources to minimize, monitor, and control the probability and/or impact of unfortunate events.\\
+In this section we list PowerEnjoy project's main risks and outline possible strategies to handle the most critical ones.
+
+
 \begin{center}
 	\begin{tabular}{|c|c|c|}
 		\hline
@@ -869,6 +871,23 @@ Project managers assess and monitor risks that may affect a project, taking acti
 		\hline
 	\end{tabular}
 \end{center}
+
+
+\paragraph{Possible Solutions}
+\begin{itemize}
+
+\item \textit{Personnel shortfall:} reorganize team so that there is more overlap of work and no single person is fundamental to the project; in case of issues in finding high qualified worker consider buying already developed products and simply adapting them.
+
+\item \textit{Issue with hardware supplies:} use and test hardware components as soon as they are available; replace potentially defective components with bought-in components of known reliability.
+
+\item \textit{Inaccurate requirements:} derive traceability information to assess requirements change impact; divide software functions in several different module so that modify a requirements will not have effect on all the produced code. 
+
+\item \textit{Stakeholder commitment loss:} prepare a briefing document showing how the project is making a very important contribution to the goals of the business.
+
+\item \textit{Unrealistic budget:} have it reconsidered by showing the stakeholder how the project is making a very important contribution to the goals of the business; buy already developed products and assembly them. 
+
+\item \textit{Unrealistic schedule:} early in the development, divide bigger activities in smaller ones and hired new people to work on few specific functions then combine them when ready, while later consider buying already developed products and adapting them.
+\end{itemize}
 
 
 \appendix
