@@ -351,6 +351,9 @@ The PGS Manager's task is to collect updates from the power grid stations about 
 	\label{seq_carunavailable}
 \end{figure}
 
+
+
+
 \newpage
 \subsection{Component Interfaces}
 
@@ -363,6 +366,17 @@ This diagram shows how the interfaces of our system are connected, and which met
 	}
 	\caption{Component Interfaces}
 	\label{compinterfaces}
+\end{figure}
+
+\newpage
+\subsection{BCE Diagram}
+
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=300pt]{BCE.png}
+	}
+	\caption{BCE Diagram corresponding to the UX defined in section \ref{sec:userinterface}}
 \end{figure}
 
 \subsection{Selected Architectural Styles and Patterns}
@@ -659,6 +673,25 @@ The TLS protocol will prevent malicious actors from sniffing the keys from the n
 Cars must receive commands from the system, from example to unlock or lock the doors. 
 The cars' embedded system won't offer a RESTful API, but must always have an open port listening for incoming commands from the central servers. Incoming connections will be authenticated using public/private key pairs.
 
+
+\newpage
+\section{Other Design Decisions}
+
+\paragraph{}
+For the development of the software for this project we have chosen to use the \textbf{Java Enterprise Edition} stack.
+
+\paragraph{}
+We have many different reasons for this choice:
+\begin{itemize}
+	\item JEE is known, stable and well-established. We would have no problem finding support if needed, and we would be sure that there won't be major, code-breaking changes in the specification of the language that would require a lot of effort to fix.
+	\item it includes several execution environments, like Glassfish and Tomcat, that will make deployment much easier and streamlined;
+	\item it's portable: as long as the operating system supports the Java Virtual Machine our application will be able to run. The JVM is available on the great majority of modern OSs, like Windows or the most common Linux distros;
+	\item it supports various testing frameworks, like JUnit and Arquillian;
+	\item finally, it provides specific API and functions for concurreny and for executing large-scale, multi-tiered, scalable network applications.
+\end{itemize}
+
+
+
 \newpage
 
 \section{Algorithm Design}
@@ -715,12 +748,14 @@ Another option could be saving the number of cars near every station in advance,
 \newpage
 
 \section{User Interface Design}
+\label{sec:userinterface}
 
 \subsection{Mockups}
 
 Mockups for the user interfaces can be found on the \href{https://github.com/PietroFerretti/PowerEnJoy/blob/master/releases/RASD.pdf}{RASD} at section 3.1.1.
 
 \subsection{UX Diagrams}
+\label{subsec:uxdiagram}
 
 \begin{figure}[H]
 	\centering
@@ -736,16 +771,6 @@ Mockups for the user interfaces can be found on the \href{https://github.com/Pie
 		\includegraphics[width=450pt]{UX_car.png}
 	}
 	\caption{UX Diagram for the car application}
-\end{figure}
-
-\subsection{BCE Diagram}
-
-\begin{figure}[H]
-	\centering
-	\makebox[\textwidth][c]{
-		\includegraphics[width=300pt]{BCE.png}
-	}
-	\caption{BCE Diagram for the applications}
 \end{figure}
 
 \newpage
@@ -996,5 +1021,10 @@ Every component in our architecture is used by at least one goal.
 			\item{Added details about the Model in the Component View.}
 			\item{Changed the Login Component name to Account Manager to better describe its role in the system.}
 		\end{itemize} }
+	\item{DD v1.2, published on January 22, 2016
+		\begin{itemize}
+			\item{Moved BCE to the Architectural Design section}
+			\item{Added the section \textit{Other Design Decisions}}
+		\end{itemize}}
 \end{itemize}
 \end{document}
