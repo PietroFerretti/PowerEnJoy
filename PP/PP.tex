@@ -141,13 +141,13 @@ Furthermore, thanks to the fact that all the cars that we provide are electrical
 %TODO descrizione sezione
 
 \subsection{Size estimation: function points}
-Function points are useful in expressing the number of business functionalities our software has to provide to a user, and are used to compute an estimation of its size.
+Function points are useful for expressing the number of business functionalities the software has to provide to a user and are used to compute an estimation of its size.
 They can be identified and categorized into one of five types: outputs, inquiries, inputs, internal files, and external interfaces. Each functional requirement is then assessed for complexity and assigned a number of function points.\\
 We based our computation on tables and values in the \emph{COCOMO II Model Definition Manual v. 2.1}.
 
 \subsubsection{Internal Logic Files (ILFs)}
 
-Internal Logic Files are all the kinds of data used and managed by the application in  order to offer the expected functions.\\
+Internal Logic Files are all kinds of data used and managed by the application in  order to offer the expected functions.\\
 Data will be organized in the following tables in the DB:
 
 \begin{itemize}
@@ -170,9 +170,7 @@ Data will be organized in the following tables in the DB:
 
 	\item \textbf{Ride} : ID, associatedLicense, associatedBill, date, status, ridingTime, carID
 
-\end{itemize}
-
-The software will operate directly on the single rows and tables, joining them appropriately if needed.\\
+\end{itemize} The software will operate directly on the single rows and tables, joining them appropriately if needed.\\
 All this data is modeled in simple structures so its complexity can be considered low (referring to tables).
 
 \begin{center}
@@ -220,9 +218,7 @@ In particular:
 		\begin{itemize}
 			\item{Given name, surname, driving license ID and expiration date as string,s the API returns a boolean value representing the correspondence with an existing driving license in Eucaris DB.}
 		\end{itemize}
-\end{itemize}
-
-In the final analysis, as the data involved are only strings and numbers of small size, we can assess these logic files as low complexity.\\
+\end{itemize} In the final analysis, as the data involved are only strings and numbers of small size, we can assess these logic files as low complexity.\\
 
 \begin{center}
 	\begin{tabular}{ |p{8cm}|m{2cm}|p{1cm}| }
@@ -403,9 +399,7 @@ The first case has a low complexity, while the second is a little bit more compl
 		\textit{Total} & 190 \\
 		\hline
 	\end{tabular}
-\end{center}
-
-This table contains a recap of the evaluations of each type of function point.\\
+\end{center} This table contains a recap of the evaluations of each type of function point.\\
 By enumerating the function points we can find an estimation for the number of lines of code the software will have.
 The formula we are going to use is:
 
@@ -433,14 +427,12 @@ $SLOC = 8740$ lines of code
 \subsection{Cost and effort estimation: COCOMO II}
 
 To estimate the cost and effort required to develop the software we use the COCOMO II model\footnote{\href{http://csse.usc.edu/csse/research/COCOMOII/cocomo2000.0/CII\_modelman2000.0.pdf}{http://csse.usc.edu/csse/research/COCOMOII/cocomo2000.0/CII\_modelman2000.0.pdf}}.
-
-Since the architecture and structure of our software has been already designed and thought out in details in the Design Document, we will use the COCOMO II Post-Architecture Model.
+\\Since the architecture and structure of our software has been already designed and thought out in details in the Design Document, we will use the COCOMO II Post-Architecture Model.
 
 
 \subsubsection{Scale Factors}
 
-Five scale factors are used to compute the scale exponent $E$, that accounts for the economies or diseconomies of scale that characterize our project.
-
+Five scale factors are used to compute the scale exponent $E$, that accounts for the economies or diseconomies of scale that characterize our project.\\
 If $E$ < 1.0, the project exhibits economies of scale, otherwise diseconomies of scale are present (usually because of communications overhead or large-system integration overheads).
 
 \paragraph{}
