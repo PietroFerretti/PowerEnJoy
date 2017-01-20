@@ -756,30 +756,28 @@ $TDEV = 3.67 \times 26.41^{0.31} = 10.13$ months
 \newpage
 \section{Schedule}
 
-In this section we're going to present a high-level schedule of the project. Since this agenda is drawn up in the early days of the software development, we could need to reschedule some activity later.\\
-These are the main tasks and a simple description of each of them:
+In this section we're going to present a high-level schedule for the project. Since this agenda has been drawn up at the very beginning the actual software development, we reserve the possibility of rescheduling some activities at a later moment.\\
+These are the main tasks that have to be completed, with a simple description for each of them:
 
 \begin{itemize}
-	\item{\textbf{RASD writing}: we analyse the requirements submitted by the customers and draft the document that contains the most important features of the project and it's indispensable for the completation of the other documents.}
+	\item{\textbf{RASD writing}: we analyse the requirements submitted by the customers and draft the document that contains the most important features of the project. This document is fundamental for writing the other documents.}
 	
-	\item{\textbf{DD writing}: we make decision about architectural design and composition of the components of PowerEnjoy system, then we go on with the draft of the document. It's really important to terminate it before starting to code.}
+	\item{\textbf{DD writing}: we make decisions about the architectural design and composition of the components of the PowerEnJoy system, and include them in the document. It's really important to complete it before starting developing code.}
 
-	\item{\textbf{ITPD writing}: we make a detailed analisys of the components and then write the document that describes the strategy we are going to use for unit testing, integration testing and system testing.}
+	\item{\textbf{ITPD writing}: we make a detailed analysis of the components and then write the document that describes the strategy we are going to use for unit testing, integration testing and system testing.}
+	
+	\item{\textbf{Development}: we proceed to implementing the actual software.}
 
-	\item{\textbf{PP writing}: we define planning assumptions and decisions, the risks that we could incur during the development and how we could tackle them.}
-
-	\item{\textbf{Development}: we proceed implementing the real software.}
-
-	\item{\textbf{Code inspection}: before we move forward with the testing, we check if the code if bug free and prove to enhance the quality of the code.}
+	\item{\textbf{Code inspection}: before we move forward with the testing, we check if the code is bug free and try to improve the quality of the code.}
 
 	\item{\textbf{Testing}: during and after the implementation of the software we perform the testing of the code and the system.}
 
-	\item{\textbf{Deployment}: }
+	\item{\textbf{Deployment}: after developing and testing, the software will be deployed on physical servers and cars and made ready for public use.}
 \end{itemize}
 
-Since we choose to follow bottom-up approach for testing, the latter, development and code inspection could be performed almost simultaneously.
+Code inspection and testing will be performed as the code is being developed, to find bugs and errors as soon as possible instead of discovering them just before deployment, when the cost of restructuring would be much higher and possibly catastrophic.
 
-\subsection{T1 - RASD writing}
+\subsection{RASD writing}
 
 \begin{figure}[H]
 	\centering
@@ -789,7 +787,7 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 	\caption{Gantt chart for the RASD writing schedule}
 \end{figure}
 
-\subsection{T2 - DD writing}
+\subsection{DD writing}
 
 \begin{figure}[H]
 	\centering
@@ -799,7 +797,7 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 	\caption{Gantt chart for the DD writing schedule}
 \end{figure}
 
-\subsection{T3 - ITPD writing}
+\subsection{ITPD writing}
 
 \begin{figure}[H]
 	\centering
@@ -809,11 +807,7 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 	\caption{Gantt chart for the ITPD writing schedule}
 \end{figure}
 
-\subsection{T4 - PP writing}
-
-%mettere gantt PP
-
-\subsection{T5 - Development - Code Inspection -  Testing}
+\subsection{Development -- Code Inspection --  Testing}
 
 \begin{figure}[H]
 	\centering
@@ -823,7 +817,7 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 	\caption{Gantt chart for the development, code inspection and testing schedule}
 \end{figure}
 
-\subsection{T6 - Deployment}
+\subsection{Deployment}
 
 \begin{figure}[H]
 	\centering
@@ -847,8 +841,6 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 		DD Writing & All\\
 		\hline
 		ITPD Writing & All\\
-		\hline
-		PP Writing & All\\
 		\hline
 		Development & External APIs analysis\\
 		Code Inspection & DBMS preparation\\
@@ -875,8 +867,6 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 		\hline
 		ITPD Writing & All\\
 		\hline
-		PP Writing & All\\
-		\hline
 		Development & External APIs analysis\\
 		Code Inspection & DBMS preparation\\
 		Testing & System development\\
@@ -901,8 +891,6 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 		DD Writing & All \\ 
 		\hline
 		ITPD Writing & All \\ 
-		\hline
-		PP Writing & All \\ 
 		\hline
 		Development & External APIs analysis\\ 
 		Code Inspection & DBMS preparation\\ 
@@ -959,7 +947,7 @@ In this section we list PowerEnjoy project's main risks and outline possible str
 \paragraph{Strategies:}
 \begin{itemize}
 
-\item \textit{Personnel shortfall:} reorganize team so that there is more overlap of work and no single person is fundamental to the project; in case of issues in finding high qualified worker consider buying already developed products and simply adapting them.
+\item \textit{Personnel shortfall:} reorganize the team so that there is more overlap of work and no single person is fundamental to the project; in case of issues in finding high qualified workers consider buying already developed products and simply adapting them.
 
 \item \textit{Issue with hardware supplies:} use and test hardware components as soon as they are available; replace potentially defective components with bought-in components of known reliability.
 
@@ -967,7 +955,7 @@ In this section we list PowerEnjoy project's main risks and outline possible str
 
 \item \textit{Stakeholder commitment loss:} prepare a briefing document showing how the project is making a very important contribution to the goals of the business.
 
-\item \textit{Unrealistic budget:} have it reconsidered by showing the stakeholder how the project is making a very important contribution to the goals of the business; buy already developed products and assembly them. 
+\item \textit{Unrealistic budget:} have it reconsidered by showing to the stakeholder how the project is making a very important contribution to the goals of the business; buy already developed products and assembly them. 
 
 \item \textit{Unrealistic schedule:} early in the development, divide bigger activities in smaller ones and hired new people to work on few specific functions then combine them when ready, while later consider buying already developed products and adapting them.
 \end{itemize}
@@ -979,9 +967,9 @@ In this section we list PowerEnjoy project's main risks and outline possible str
 \section{Hours of work}
 
 \begin{itemize}
-	\item{Pietro Ferretti: hours of work}
-	\item{Nicole Gervasoni: hours of work}
-	\item{Danilo Labanca: hours of work}
+	\item{Pietro Ferretti: 15 hours of work}
+	\item{Nicole Gervasoni: 10 hours of work}
+	\item{Danilo Labanca: 20 hours of work}
 \end{itemize}
 
 \section{Changelog}
