@@ -756,7 +756,7 @@ $TDEV = 3.67 \times 26.41^{0.31} = 10.13$ months
 \newpage
 \section{Schedule}
 
-In this section we're going to present an undetailed and high-level schedule of the project. Since this agenda is drawn up in the early days of the software development, we could need to reschedule some activity later.\\
+In this section we're going to present a high-level schedule of the project. Since this agenda is drawn up in the early days of the software development, we could need to reschedule some activity later.\\
 These are the main tasks and a simple description of each of them:
 
 \begin{itemize}
@@ -775,23 +775,39 @@ These are the main tasks and a simple description of each of them:
 	\item{\textbf{Testing}: during and after the implementation of the software we perform the testing of the code and the system.}
 
 	\item{\textbf{Deployment}: }
-
-	\item{\textbf{Start up}: }
 \end{itemize}
 
 Since we choose to follow bottom-up approach for testing, the latter, development and code inspection could be performed almost simultaneously.
 
 \subsection{T1 - RASD writing}
 
-%mettere gantt RASD
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=460pt]{RASD-gantt.png}
+	}
+	\caption{Gantt chart for the RASD writing schedule}
+\end{figure}
 
 \subsection{T2 - DD writing}
 
-%mettere gantt DD
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=460pt]{DD-gantt.png}
+	}
+	\caption{Gantt chart for the DD writing schedule}
+\end{figure}
 
 \subsection{T3 - ITPD writing}
 
-%mettere gantt ITPD
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=460pt]{ITPD-gantt.png}
+	}
+	\caption{Gantt chart for the ITPD writing schedule}
+\end{figure}
 
 \subsection{T4 - PP writing}
 
@@ -799,44 +815,52 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 
 \subsection{T5 - Development - Code Inspection -  Testing}
 
-%mettere gantt DCIT
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=460pt]{development-gantt.png}
+	}
+	\caption{Gantt chart for the development, code inspection and testing schedule}
+\end{figure}
 
 \subsection{T6 - Deployment}
 
-%mettere gantt DSU
-
+\begin{figure}[H]
+	\centering
+	\makebox[\textwidth][c]{
+		\includegraphics[width=460pt]{deployment-gantt.png}
+	}
+	\caption{Gantt chart for the deployment schedule}
+\end{figure}
 
 \section{Resource allocation}
 
 \paragraph{}
 
 \begin{center}
-	\begin{tabular}{|p{2cm}|p{4cm}|}
+	\begin{tabular}{|p{3cm}|p{4cm}|}
 		\hline
-		\multicolumn{1}{|c|}{\textbf{Task}} & \multicolumn{1}{c|}{\textbf{Pietro Ferretti}}\\
+		\multicolumn{2}{|c|}{\textbf{Pietro Ferretti}}\\
 		\hline
-		T1 & All\\
+		RASD Writing & All\\
 		\hline
-		T2 & All\\
+		DD Writing & All\\
 		\hline
-		T3 & All\\
+		ITPD Writing & All\\
 		\hline
-		T4 & All\\
+		PP Writing & All\\
 		\hline
-		T5 & External APIs analysis\\
+		Development & ???\\
+		Code Inspection & \\
+		Testing & \\
 		\hline
+		Deployment & External APIs analysis\\
 		& DBMS preparation\\
-		\hline
 		& System development\\
-		\hline
 		& Unit test\\
-		\hline
 		& Bug fixing\\
-		\hline
 		& Client-side development\\
-		\hline
 		& Meeting with customers\\
-		\hline
 		& Final revision\\
 		\hline
 		
@@ -844,65 +868,59 @@ Since we choose to follow bottom-up approach for testing, the latter, developmen
 \end{center}
 
 \begin{center}
-	\begin{tabular}{|p{2cm}|p{4cm}|}
+	\begin{tabular}{|p{3cm}|p{4cm}|}
 		\hline
-		\multicolumn{1}{|c|}{\textbf{Task}} & \multicolumn{1}{c|}{\textbf{Nicole Gervasoni}}\\
+		\multicolumn{2}{|c|}{\textbf{Nicole Gervasoni}}\\
 		\hline
-		T1 & All\\
+		RASD Writing & All\\
 		\hline
-		T2 & All\\
+		DD Writing & All\\
 		\hline
-		T3 & All\\
+		ITPD Writing & All\\
 		\hline
-		T4 & All\\
+		PP Writing & All\\
 		\hline
-		T5 & External APIs analysis\\
+		Development & ???\\
+		Code Inspection & \\
+		Testing & \\
 		\hline
+		Deployment & External APIs analysis\\
 		& DBMS preparation\\
-		\hline
 		& System development\\
-		\hline
 		& Integration testing\\
-		\hline
 		& Bug fixing\\
-		\hline
 		& UI development\\
-		\hline
 		& Meeting with customers\\
-		\hline
 		& Final revision\\
 		\hline
 	\end{tabular}
 \end{center}
 
 \begin{center}
-	\begin{tabular}{|p{2cm}|p{4cm}|}
+	\begin{tabular}{|p{3cm}|p{4cm}|}
 		\hline
-		\multicolumn{1}{|c|}{\textbf{Task}} & \multicolumn{1}{c|}{\textbf{Danilo Labanca}}\\
+		\multicolumn{2}{|c|}{\textbf{Danilo Labanca}}\\
 		\hline
-		T1 & All\\
+		RASD Writing & All \\ 
 		\hline
-		T2 & All\\
+		DD Writing & All \\ 
 		\hline
-		T3 & All\\
+		ITPD Writing & All \\ 
 		\hline
-		T4 & All\\
+		PP Writing & All \\ 
 		\hline
-		T5 & External APIs analysis\\
+		Development & ???\\ 
+		Code Inspection & \\ 
+		Testing & \\ 
 		\hline
+		Deployment & External APIs analysis\\
 		& DBMS preparation\\
-		\hline
-		& System development\\
-		\hline
+		& System development\\ 
 		& System testing\\
-		\hline
-		& Bug fixing\\
-		\hline
-		& Client-side development\\
-		\hline
-		& Meeting with customers\\
-		\hline
-		& Final revision\\
+		& Bug fixing\\ 
+		& Client-side development\\ 
+		& Meeting with customers\\ 
+		& Final revision\\ 
 		\hline
 	\end{tabular}
 \end{center}
