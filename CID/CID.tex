@@ -119,9 +119,10 @@ Ok.
 Every class variable is in mixed case and properly capitalized.
 
 \paragraph{7. Constants}
-Ok.
-There are no constants.
-Ma alcuni potrebbero dire di no, ci sono delle variabili static final all'inizio.
+NO.
+%https://stackoverflow.com/a/30789385
+module and istanceId are immutable, so they can be considered constant. They should be capitalized.
+registeredManagers is fine because it's mutable
 
 \subsection{Indentation}
 \paragraph{8. Number of spaces}
@@ -149,21 +150,110 @@ Most of the methods also begin with a Javadoc.
 
 \paragraph{13. Where practical, line length under 80 characters}
 NOPE
-%TODO
-righe 73, 74, 89, 126, 147, 
+righe 73, 74, 89, 126, 147, 150, 154, 156, 161, 182, 186-190, 195, 198, 201, 
+A great number of lines exceed 80 characters
 
 \paragraph{14. Line length always under 120 characters}
 NEPPURE
-%TODO
+righe 74, 186, 198, 217, 221, 222, 261-264, 273, 311, 315, 317, 387, 409, 429, 453, 498, 543, 560, 561
+le dichiarazioni dei metodi sono lunghissime e wrappate poco
 
 \subsection{Wrapping Lines}
 \paragraph{15. Line breaks after commas and operators}
-
+NO
+riga 152, la virgola dovrebbe stare sopra % e chissenefrega
 
 \paragraph{16. Higher-level breaks are used}
-ma quando?
+Ok.
+Non ci sono line break con operatori
 
 \paragraph{17. Statements are aligned to previous ones}
+Ok.
+Sì, per tutti
+
+\subsection{Comments}
+
+\subsection{Java Source Files}
+\paragraph{20. Single public class or interface}
+Ok.
+Job manager is the only public class declared in the file.
+There are no other classes.
+
+\paragraph{21. The public class is the first class in the file}
+Ok.
+Job manager is the only public class declared in the file.
+There are no other classes.
+
+\paragraph{22. External program interfaces are consistent with the Javadoc}
+%TODO
+
+
+\paragraph{23. The Javadoc is complete}
+NO.
+\begin{itemize}
+	\item No javadoc for 'module'! line 71
+	\item No javadoc for 'instanceId'! line 71
+	\item No javadoc for reloadCrashedJob!! line 304
+	\item Missing @return tag on getInstance, line 88
+	\item Missing @return tag on getDelegator, line 119
+	\item Missing @return tag on getDispatcher, line 124
+	\item Missing @param tag for 'limit' on poll, line 174
+	\item Missing @return tag on poll, line 174
+	\item Missing @param tag for 'job' on runJob, line 363
+	\item Missing @throws tag for 'JobManagerException' on runJob, line 363
+	\item Missing @throws tag for 'JobManagerException' on schedule, line 386, 408, 428, 453, 469, 498, 543
+\end{itemize}
+
+assertIsRunning, getRunPools sono private quindi non hanno necessariamente bisogno di javadoc
+
+\subsection{Package and Import Statements}
+\paragraph{24. Package statements are first, import statements second}
+Ok.
+One package statements.
+All import statements immediately follow.
+
+\subsection{Class and Interface Declarations}
+\paragraph{25. The class declarations should follow a specific order}
+- javadoc ok
+- class declaration ok
+- altri commenti -
+- static variables 
+- normal variables
+- constructors
+- methods
+
+no, abbiamo variabili statiche, poi un po' di metodi statici, poi variabili normali, poi costruttori, setter e getter poi un metodo statico (ma private!!)
+%TODO
+credo che ci siano altri metodi prima del costruttore
+also getInstance() è praticamente un costruttore, incapsula tutto
+
+\paragraph{26. Methods are grouped by functionality}
+%TODO
+yes?
+
+assertIsRunning
+getInstance
+shutDown
+
+getDelegator
+getDispatcher
+getPoolState
+
+isAvailable
+getRunPools
+pool
+reloadCrashedJobs
+runJob
+schedule
+
+\paragraph{27. The code is free of duplicates, long methods, big classes, breaking encapsulation, and coupling and cohesion are adequate}
+small class
+duplicates? no
+short methods
+no breaking encapsulation
+
+%TODO coupling, cohesion????
+
 
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
