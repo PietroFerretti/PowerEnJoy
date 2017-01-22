@@ -65,8 +65,9 @@ Software Engineering 2: “PowerEnJoy” \\
 
 \section{Assigned Class}
 % <state the namespace pattern and name of the classes that were assigned to you.>
-\paragraph{}
-apache-ofbiz-16.11.01/framework/service/src/main/java/org/apache/ofbiz/service/job/JobManager.java
+
+\texttt{apache-ofbiz-16.11.01/framework/service/\\
+\hspace*{1cm}src/main/java/org/apache/ofbiz/service/job/JobManager.java}
 
 \section{Functional Role}% of assigned set of classes: <elaborate on the functional role you have identified for the class cluster that was assigned to you, also, elaborate on how you managed to understand this role and provide the necessary evidence, e.g., javadoc, diagrams, etc.>
 
@@ -92,8 +93,7 @@ apache-ofbiz-16.11.01/framework/service/src/main/java/org/apache/ofbiz/service/j
 
 \paragraph{1. Meaningful Names}
 \paragraph{}
-mi sembra che siano tutti buoni
-% TODO guardare nome per nome e aggiungere quelli con nomi ingannevoli
+sono tutti buoni
 
 \paragraph{2. One-character variables}
 
@@ -185,8 +185,20 @@ Job manager is the only public class declared in the file.
 There are no other classes.
 
 \paragraph{22. External program interfaces are consistent with the Javadoc}
-%TODO
+Ok
+abbiamo vari metodi pubblici:
+getter:
+- getDelegator
+- getDispatcher
+- getInstance
+- getPoolState
+poi altre robe
+- isAvailable
+- reloadCrashedJobs
+- runJob
+- schedule di tutti i tipi
 
+la Javadoc parla di runJob e schedule
 
 \paragraph{23. The Javadoc is complete}
 NO.
@@ -216,20 +228,19 @@ All import statements immediately follow.
 \paragraph{25. The class declarations should follow a specific order}
 - javadoc ok
 - class declaration ok
-- altri commenti -
-- static variables 
-- normal variables
+- altri commenti /
+- static variables ok
+ - public ok
+ - private ok
+- normal variables 
 - constructors
 - methods
 
-no, abbiamo variabili statiche, poi un po' di metodi statici, poi variabili normali, poi costruttori, setter e getter poi un metodo statico (ma private!!)
-%TODO
-credo che ci siano altri metodi prima del costruttore
-also getInstance() è praticamente un costruttore, incapsula tutto
+no, abbiamo variabili statiche, poi un po' di metodi statici, poi variabili normali, poi costruttori (getInstance è un costruttore), setter e getter poi un metodo statico (ma private!!)
+
 
 \paragraph{26. Methods are grouped by functionality}
-%TODO
-yes?
+Ok
 
 assertIsRunning
 getInstance
@@ -252,12 +263,79 @@ duplicates? no
 short methods
 no breaking encapsulation
 
-%TODO coupling, cohesion????
+low/loose coupling -> ci sono un sacco di delegator e dispatcher
+high cohesion -> tutti i metodi servono a runnare/queuare jobs
 
+\subsection{Initialization and Declarations}
+
+
+\subsection{Method Calls}
+
+
+\subsection{Arrays}
+\paragraph{No off-by-one errors in array indexing}
+Ok.
+The only indexing is with foreach, no off-by-one errors.
+
+\paragraph{No out-of-bounds indexes}
+Ok.
+No number indexing.
+
+\paragraph{Constructors are called when a new array item is desired}
+Ok.
+quali nuovi array? non ce ne sono
+
+\subsection{Object Comparison}
+\paragraph{Objects are compared with equals}
+Ok.
+There are no object comparisons.
+
+\subsection{Output Format}
+\paragraph{Displayed output is free of spelling and grammatical errors}
+riga 156:
+Debug.logWarning(e, "Exception thrown while check lock on JobManager : " + instanceId, module);
+dovrebbe essere "while checking"
+
+riga 182:
+Debug.logWarning("Unable to locate DispatchContext object; not running job!", module);
+dovrebbe essere "job:", come negli altri log di debug
+
+\paragraph{Error messages are comprehensive and useful}
+Sì
+
+\paragraph{Output is formatted correctly in terms of line breaks and spacing}
+No line breaks in outputs
+Some debug outputs don't have a trailing space ~
+
+\subsection{Computation, Comparisons and Assignments}
+
+\subsection{Exceptions}
+% catch(Throwable t) è giustificato perché non vogliamo che il processo si interrompa
+
+
+\subsection{Flow of Control}
+\paragraph{All switch cases are addressed with a break}
+Ok, no switch statements.
+
+\paragraph{All switch statements have a default branch}
+Ok, no switch statements.
+
+\paragraph{All loops are correctly formed, with appropriate initialization, increments and termination expressions}
+Ok.
+All for loops are foreach, everything is fine.
+The while loop at line 219:
+GenericValue jobValue = jobsIterator.next();
+while (jobValue != null) \{
+jobValue = jobsIterator.next();
+tutto ok, l'iteratore va avanti finché non finiscono i valori, poi esce dal while
+
+while a riga 275 uguale
+
+a posto
 
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
-
+nah
 
 \section{Effort Spent}
 \begin{itemize}
