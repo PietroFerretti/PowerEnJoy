@@ -23,7 +23,7 @@
 
 \lstset{language=Java,
 	basicstyle=\ttfamily\small,
-	xleftmargin=-2cm,
+	xleftmargin=0cm,
 	keywordstyle=\color{javapurple}\bfseries,
 	stringstyle=\color{javared},
 	commentstyle=\color{javagreen},
@@ -35,7 +35,7 @@
 	tabsize=4,
 	showspaces=false,
 	showstringspaces=false,
-	linewidth=16cm,
+	linewidth=13cm,
 	breaklines=true
 	}
 
@@ -69,7 +69,102 @@ Software Engineering 2: “PowerEnJoy” \\
 apache-ofbiz-16.11.01/framework/service/src/main/java/org/apache/ofbiz/service/job/JobManager.java
 
 \section{Functional Role}% of assigned set of classes: <elaborate on the functional role you have identified for the class cluster that was assigned to you, also, elaborate on how you managed to understand this role and provide the necessary evidence, e.g., javadoc, diagrams, etc.>
+
+\paragraph{Javadoc}
+
+\begin{lstlisting}
+
+/**
+* Job manager. The job manager queues and manages jobs. Client code can queue a job to be run immediately
+* by calling the runJob({@link #runJob(Job)}) method, or schedule a job to be run later by calling the
+* {@link #schedule(String, String, String, Map, long, int, int, int, long, int)} method.
+* Scheduled jobs are persisted in the JobSandbox entity.
+* <p>A scheduled job's start time is an approximation - the actual start time will depend
+* on the job manager/job poller configuration (poll interval) and the load on the server.
+* Scheduled jobs might be rescheduled if the server is busy. Therefore, applications
+* requiring a precise job start time should use a different mechanism to schedule the job.</p>
+*/
+\end{lstlisting}
+
 \section{List of Issues} % found by applying the checklist: <report the classes/code fragments that do not fulfill some points in the check list. Explain which point is not fulfilled and why.>
+
+\subsection{Naming Conventions}
+
+\paragraph{1. Meaningful Names}
+\paragraph{}
+mi sembra che siano tutti buoni
+% TODO guardare nome per nome e aggiungere quelli con nomi ingannevoli
+
+\paragraph{2. One-character variables}
+
+Ok.
+There are no one-character variables.
+
+\paragraph{3. Class names}
+Ok.
+Every class name is in mixed case and properly capitalized.
+
+\paragraph{4. Interface names}
+Ok.
+No interfaces are declared.
+(se ce ne sono) every interface used by the code is in mixed case and properly capitalized.
+
+\paragraph{5. Method names}
+Ok.
+Every method name is a verb.
+Every method name is camelCase and properly capitalized.
+
+\paragraph{6. Class variables}
+Ok.
+Every class variable is in mixed case and properly capitalized.
+
+\paragraph{7. Constants}
+Ok.
+There are no constants.
+Ma alcuni potrebbero dire di no, ci sono delle variabili static final all'inizio.
+
+\subsection{Indentation}
+\paragraph{8. Number of spaces}
+Ok.
+The code is consistently indented with 4 spaces.
+
+\paragraph{9. No tabs for indentation}
+Ok.
+No tabs are used to indent the code.
+
+\subsection{Braces}
+\paragraph{10. Consistent bracing style}
+Ok.
+The code is consistently braced following the \textit{"Kernighan and Ritchie"} style.
+
+\paragraph{11. One-line statements bracing}
+NO
+"if" riga 326, 351, 354
+
+\subsection{File Organization}
+\paragraph{12. Blank lines as separation}
+Ok.
+Blank lines are present between each method, around imports and variable declarations.
+Most of the methods also begin with a Javadoc.
+
+\paragraph{13. Where practical, line length under 80 characters}
+NOPE
+%TODO
+righe 73, 74, 89, 126, 147, 
+
+\paragraph{14. Line length always under 120 characters}
+NEPPURE
+%TODO
+
+\subsection{Wrapping Lines}
+\paragraph{15. Line breaks after commas and operators}
+
+
+\paragraph{16. Higher-level breaks are used}
+ma quando?
+
+\paragraph{17. Statements are aligned to previous ones}
+
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
 
