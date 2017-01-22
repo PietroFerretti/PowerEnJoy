@@ -51,7 +51,7 @@
 \title{Politecnico di Milano\\
  A.A. 2016–2017 \\
 Software Engineering 2: “PowerEnJoy” \\
-\emph{Code Inspection Document}}
+\emph{\textbf{Code Inspection Document}}}
 
 \author{Pietro Ferretti, Nicole Gervasoni, Danilo Labanca}
 \date{February 5, 2017}
@@ -71,6 +71,35 @@ Software Engineering 2: “PowerEnJoy” \\
 
 \section{Functional Role}% of assigned set of classes: <elaborate on the functional role you have identified for the class cluster that was assigned to you, also, elaborate on how you managed to understand this role and provide the necessary evidence, e.g., javadoc, diagrams, etc.>
 
+\subsection{Service Engine}
+Introduction
+
+Services are independent pieces of logic which when placed together process many different types of business requirements. Services can be of many different types: Workflow, Rules, Java, SOAP, BeanShell, etc. A service with the type Java is much like an event where it is a static method, however with the Services Framework we do not limit to web based applications. Services require input parameters to be in a Map and the results are returned in a Map as well. This is nice since a Map can be serialized and stored or passed via HTTP (SOAP).
+
+Services are defined through the Service Definition and are assigned to a specific Service Engine. Each Service Engine is responsible for invoking the defined service in an appropriate way. Since services are not tied to web based applications this allows services to run when there is no response object available. This allows services to be scheduled to run at specific times to run in the background via the Job Scheduler.
+
+Services have the ability to call other services. So, chaining small services together to accomplish a larger task makes reusing existing services much easier.
+
+Services which are declared in a component (service-resource in ofbiz-component.xml file) are reachable from anywhere in OFBiz, and even outside using the export feature. Though this possibility is not commonly used (no examples OOTB), it's also possible to create services which are specific to an application: restricted to be available only in that application. For that, you put the service definition and implementation files under the WEB-INF directory. You can also override a service by using the same name down in the deployment context (which is first framework, then themes, then applications, then specialpurpose, then hot-deploy). This is handy, but beware if not wanted...
+
+When used in a web application services are available to web events, which allow events to stay small and reuse existing logic in the Services Framework. Also, services can be defined as 'exportable' which means they are allowed to be accessed by outside parties. Currently there is a SOAP EventHandler which allows services to be made available via SOAP. Other forms of remote invocation may be added to the framework in the future.
+
+\subsection{Package: Job etc.}
+Job Scheduler
+
+The overhauled job scheduler is now integrated with the services framework. This is the most appropriate place for a scheduler. Since it cannot be guarantee that an HttpServletRequest and HttpServletResponse object will be available when a job is ready to run, it does not make sense to integrate with the web controller. Plus, this feature is most useful when not limited to web environments.
+
+The scheduler is a multi-threaded component with a single thread used for job managing/scheduling and separate threads used for invocation of each service. When a job is scheduled to run, the scheduler will call the service dispatcher associated with the job to invoke the service in its own thread. This will prevent long or time consuming jobs from slowing down other jobs in the queue.
+
+The scheduler now supports the iCalendar rule structure for recurrence. The jobs are no longer stored in an XML file and each is part of a ServiceDispatcher. There is one Job Scheduler for each ServiceDispatcher (which means there is only one per GenericDelegator as well).
+
+How it works:
+
+The best usage example of the scheduler is an asynchronous service call. When an asynchronous service is invoked, it is passed to the Job Scheduler to be queued to run. A recurrence entry is created (RecurrenceInfo and RecurrenceRule entities are created), the job is stored, (JobSandbox entity is created) and the context (Map) is serialized and stored (RuntimeData entity is created). The scheduler then adds the job to the top of the list of scheduled jobs (asynchronous services do not have any delay time) and invoked.
+
+Jobs are no longer defined in an XML file. This has been moved to the JobSandbox entity. There is a web based client in planning for adding predefined jobs to the queue, but currently the entities will have to be created by hand.
+
+\subsection{Class: Job Manager}
 \paragraph{Javadoc}
 
 \begin{lstlisting}
@@ -85,14 +114,21 @@ Software Engineering 2: “PowerEnJoy” \\
 * Scheduled jobs might be rescheduled if the server is busy. Therefore, applications
 * requiring a precise job start time should use a different mechanism to schedule the job.</p>
 */
+
 \end{lstlisting}
+
+The job manager queues and manages jobs. 
+
+Client code can queue a job to be run immediately by calling the runJob method, or schedule a job to be run later by calling the schedule method. 
+
+Scheduled jobs are persisted in the JobSandbox entity. A scheduled job's start time is an approximation - the actual start time will depend on the job manager/job poller configuration (poll interval) and the load on the server.
+Scheduled jobs might be rescheduled if the server is busy. Therefore, applications requiring a precise job start time should use a different mechanism to schedule the job.
 
 \section{List of Issues} % found by applying the checklist: <report the classes/code fragments that do not fulfill some points in the check list. Explain which point is not fulfilled and why.>
 
 \subsection{Naming Conventions}
 
 \paragraph{1. Meaningful Names}
-\paragraph{}
 sono tutti buoni
 
 \paragraph{2. One-character variables}
@@ -335,7 +371,13 @@ a posto
 
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
-nah
+alla riga 576:
+viene chiamato new Long(0), che è meno efficiente di valueOf(0)
+Using new Integer(int) is guaranteed to always result in a new object whereas Integer.valueOf(int) allows caching of values to be done by the compiler, class library, or JVM. Using of cached values avoids object allocation and the code will be faster.
+Values between -128 and 127 are guaranteed to have corresponding cached instances and using valueOf is approximately 3.5 times faster than using constructor. For values outside the constant range the performance of both styles is the same
+
+se ci sono tante richieste sostituirlo migliorerebbe le prestazioni
+ma comunque problema minore, basso impatto
 
 \section{Effort Spent}
 \begin{itemize}
