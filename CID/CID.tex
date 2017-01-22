@@ -187,7 +187,7 @@ Per il resto tutto appoito
 
 \paragraph{19. Commented out code}
 
-There aren't lines of code commented in the source code.\subsection{Comments}
+There aren't lines of code commented in the source code.
 
 \subsection{Java Source Files}
 \paragraph{20. Single public class or interface}
@@ -284,6 +284,21 @@ high cohesion -> tutti i metodi servono a runnare/queuare jobs
 
 \subsection{Initialization and Declarations}
 
+\paragraph{28. Visibility}
+All variables and class members are of the correct type and have the proper visibility.
+In line 305 the method \begin{lstlisting} 
+public synchronized void reloadCrashedJobs()
+\end{lstlisting} could be stated as protected.
+
+\paragraph{29. Proper scope.} OK. All variables are declared in the proper scope
+
+\paragraph{30. New objects.} OK. Each time a new object is desired the proper constructor is called
+
+\paragraph{31. All object references are initialized before use.} OK
+
+\paragraph{32. Variables initialization.} OK. All variables are initialized where they are declared, unless dependent upon a computation.
+
+\paragraph{33. Declarations.} OK. Each declaration appear at the beginning of blocks.
 
 \subsection{Method Calls}
 
@@ -329,17 +344,45 @@ Debug.logWarning("Unable to locate DispatchContext object; not running job!", mo
 dovrebbe essere "job:", come negli altri log di debug
 
 \paragraph{Error messages are comprehensive and useful}
-Sì
+si
 
 \paragraph{Output is formatted correctly in terms of line breaks and spacing}
 No line breaks in outputs
 Some debug outputs don't have a trailing space ~
 
 \subsection{Computation, Comparisons and Assignments}
+\paragraph{44."Brutish programming".}the  avoids
+OK. The implementation avoids brute force solutions; the code is simple and concise.
 
+\paragraph{45. Operator precedence and parenthesizing.}
+OK. Computation/evaluation of operator precedence and parentheses is in the proper order.
+ 
+\paragraph{46. The liberal use of parenthesis is used to avoid operator precedence problems.}
+OK.
+
+\paragraph{47. All denominators of a division are prevented from being zero.}
+OK. There are no division.
+
+\paragraph{48. Integer arithmetic, especially division, are used appropriately to avoid causing unexpected truncation/rounding.}
+OK. Integer arithmetic is used only to increment variable.
+
+\paragraph{49. Comparison and Boolean operators are correct.}
+OK.
+
+\paragraph{50. Throw-catch expressions.}
+OK. The error condition is always legitimate
+
+\paragraph{51. The code is free of any implicit type conversions.}
+OK.
 \subsection{Exceptions}
-% catch(Throwable t) è giustificato perché non vogliamo che il processo si interrompa
 
+\paragraph{52. Relevant exceptions are caught.}
+OK.
+\paragraph{53. The appropriate action is taken for each catch block.}
+OK. There are two general
+\begin{lstlisting}
+catch (Throwable t)
+\end{lstlisting} in order to guarantee a working jobPoller even when a database connection is not available.
 
 \subsection{Flow of Control}
 \paragraph{All switch cases are addressed with a break}
@@ -353,13 +396,16 @@ Ok.
 All for loops are foreach, everything is fine.
 The while loop at line 219:
 GenericValue jobValue = jobsIterator.next();
-while (jobValue != null) \{
-jobValue = jobsIterator.next();
-tutto ok, l'iteratore va avanti finché non finiscono i valori, poi esce dal while
-
+while (jobValue != null) {
+jobValue = jobIterator.next();
+tutto ok, l'iteratore va avanti finch non finiscono i valori, poi esce dal while
 while a riga 275 uguale
 
 a posto
+
+\subsection{Files}
+\paragraph{}
+The JobManager class does not have to handle file.
 
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
