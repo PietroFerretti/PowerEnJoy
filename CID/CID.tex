@@ -125,11 +125,15 @@ Scheduled jobs are persisted in the JobSandbox entity. A scheduled job's start t
 Scheduled jobs might be rescheduled if the server is busy. Therefore, applications requiring a precise job start time should use a different mechanism to schedule the job.
 
 \section{List of Issues} % found by applying the checklist: <report the classes/code fragments that do not fulfill some points in the check list. Explain which point is not fulfilled and why.>
+% what are we gonna do
+We list here all the issues we have found in the code
+all the issues corresponding to each point in the checklist
+
 
 \subsection{Naming Conventions}
 
 \paragraph{1. Meaningful Names}
-sono tutti buoni
+T
 
 \paragraph{2. One-character variables}
 
@@ -219,7 +223,7 @@ The method
  
  on line 305 is not commented and so it isn't easy to understand.
 
-Per il resto tutto appoito
+Per il resto tutto apposto
 
 \paragraph{19. Commented out code}
 
@@ -337,25 +341,25 @@ Me pare de si
 
 
 \subsection{Arrays}
-\paragraph{No off-by-one errors in array indexing}
+\paragraph{37. No off-by-one errors in array indexing}
 Ok.
 The only indexing is with foreach, no off-by-one errors.
 
-\paragraph{No out-of-bounds indexes}
+\paragraph{38. No out-of-bounds indexes}
 Ok.
 No number indexing.
 
-\paragraph{Constructors are called when a new array item is desired}
+\paragraph{39. Constructors are called when a new array item is desired}
 Ok.
 quali nuovi array? non ce ne sono
 
 \subsection{Object Comparison}
-\paragraph{Objects are compared with equals}
+\paragraph{40. Objects are compared with equals}
 Ok.
 There are no object comparisons.
 
 \subsection{Output Format}
-\paragraph{Displayed output is free of spelling and grammatical errors}
+\paragraph{41. Displayed output is free of spelling and grammatical errors}
 riga 156:
 Debug.logWarning(e, "Exception thrown while check lock on JobManager : " + instanceId, module);
 dovrebbe essere "while checking"
@@ -364,10 +368,10 @@ riga 182:
 Debug.logWarning("Unable to locate DispatchContext object; not running job!", module);
 dovrebbe essere "job:", come negli altri log di debug
 
-\paragraph{Error messages are comprehensive and useful}
+\paragraph{42. Error messages are comprehensive and useful}
 Sì
 
-\paragraph{Output is formatted correctly in terms of line breaks and spacing}
+\paragraph{43. Output is formatted correctly in terms of line breaks and spacing}
 No line breaks in outputs
 Some debug outputs don't have a trailing space ~
 
@@ -378,13 +382,13 @@ Some debug outputs don't have a trailing space ~
 
 
 \subsection{Flow of Control}
-\paragraph{All switch cases are addressed with a break}
+\paragraph{54. All switch cases are addressed with a break}
 Ok, no switch statements.
 
-\paragraph{All switch statements have a default branch}
+\paragraph{55. All switch statements have a default branch}
 Ok, no switch statements.
 
-\paragraph{All loops are correctly formed, with appropriate initialization, increments and termination expressions}
+\paragraph{56. All loops are correctly formed, with appropriate initialization, increments and termination expressions}
 Ok.
 All for loops are foreach, everything is fine.
 The while loop at line 219:
@@ -397,6 +401,8 @@ while a riga 275 uguale
 
 a posto
 
+\subsection{Files}
+
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
 alla riga 576:
@@ -406,6 +412,9 @@ Values between -128 and 127 are guaranteed to have corresponding cached instance
 
 se ci sono tante richieste sostituirlo migliorerebbe le prestazioni
 ma comunque problema minore, basso impatto
+
+
+No other problems
 
 \section{Effort Spent}
 \begin{itemize}
