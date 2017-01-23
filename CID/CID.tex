@@ -65,13 +65,14 @@ Software Engineering 2: “PowerEnJoy” \\
 
 \section{Assigned Class}
 % <state the namespace pattern and name of the classes that were assigned to you.>
+We were assigned one class to analyze, located in:\\
 
 \texttt{apache-ofbiz-16.11.01/framework/service/\\
 \hspace*{1cm}src/main/java/org/apache/ofbiz/service/job/JobManager.java}
 
 \section{Functional Role}% of assigned set of classes: <elaborate on the functional role you have identified for the class cluster that was assigned to you, also, elaborate on how you managed to understand this role and provide the necessary evidence, e.g., javadoc, diagrams, etc.>
 
-\subsection{Service Engine}
+\subsection{Service Engine Framework}
 Introduction
 
 Services are independent pieces of logic which when placed together process many different types of business requirements. Services can be of many different types: Workflow, Rules, Java, SOAP, BeanShell, etc. A service with the type Java is much like an event where it is a static method, however with the Services Framework we do not limit to web based applications. Services require input parameters to be in a Map and the results are returned in a Map as well. This is nice since a Map can be serialized and stored or passed via HTTP (SOAP).
@@ -132,32 +133,44 @@ all the issues corresponding to each point in the checklist
 
 \subsection{Naming Conventions}
 
-\paragraph{1. Meaningful Names}\\
+\paragraph{1. Meaningful Names}
 Ok. All names are meaningful.
 
-\paragraph{2. One-character variables}\\
+\paragraph{2. One-character variables}
 Ok, there are no one-character variables.
 
-\paragraph{3. Class names}\\
+\paragraph{3. Class names}
 Ok, every class name is in mixed case and properly capitalized.
 
-\paragraph{4. Interface names}\\
+\paragraph{4. Interface names}
 OK. No interfaces are declared.
 (se ce ne sono) every interface used by the code is in mixed case and properly capitalized.
 
-\paragraph{5. Method names}\\
+\paragraph{5. Method names}
 Ok. Every method name is a verb and every method name is camelCase and properly capitalized.
 
-\paragraph{6. Class variables}\\
+\paragraph{6. Class variables}
 Ok. Every class variable is in mixed case and properly capitalized.
 
-\paragraph{7. Constants}\\
-The field \begin{lstlisting} private static final module \end{lstlisting} and \begin{lstlisting} private static final instanceId \end{lstlisting} are immutable, 
-so they can be considered as constant; they should be capitalized. Instead \begin{lstlisting} private static final registeredManagers \end{lstlisting} is fine because it's mutable
+\paragraph{7. Constants}
+The field 
+\begin{lstlisting} 
+private static final module 
+\end{lstlisting} 
+and 
+\begin{lstlisting} 
+private static final instanceId 
+\end{lstlisting} 
+are immutable, so they can be considered as constant; they should be capitalized. \\
+Instead 
+\begin{lstlisting} 
+private static final registeredManagers 
+\end{lstlisting}
+ is fine because it's mutable
 
 %https://stackoverflow.com/a/30789385
 
-\subsection{Indentation}\\
+\subsection{Indentation}
 
 \paragraph{8. Number of spaces}
 Ok, the code is consistently indented with 4 spaces.
@@ -172,13 +185,23 @@ Ok.
 The code is consistently braced following the \textit{"Kernighan and Ritchie"} style.
 
 \paragraph{11. One-line statements bracing}
-No there are:
+No.
+In the code we can find the following statements:
 \begin{itemize}
-	\item \begin{lstlisting} if (Debug.infoOn()) Debug.logInfo("Scheduling Job : " + job, module); \end{lstlisting} on line 326;
-	\item \begin{lstlisting} if (Debug.infoOn())
-                Debug.logInfo("-- " + rescheduled + " jobs re-scheduled", module); \end{lstlisting} on line 351-352;
-    \item \begin{lstlisting} if (Debug.infoOn())
-                Debug.logInfo("No crashed jobs to re-schedule", module); \end{lstlisting} on line 354-355;
+	\item 
+	\begin{lstlisting} 
+	if (Debug.infoOn()) Debug.logInfo("Scheduling Job : " + job, module); \end{lstlisting}
+	 on line 326;
+	\item 
+	\begin{lstlisting} 
+	if (Debug.infoOn())
+    Debug.logInfo("-- " + rescheduled + " jobs re-scheduled", module); \end{lstlisting} 
+    on line 351-352;
+    \item 
+    \begin{lstlisting} 
+    if (Debug.infoOn())
+    Debug.logInfo("No crashed jobs to re-schedule", module); \end{lstlisting}
+     on line 354-355;
 \end{itemize}
 
 \subsection{File Organization}
@@ -199,11 +222,11 @@ le dichiarazioni dei metodi sono lunghissime e wrappate poco
 
 \subsection{Wrapping Lines}
 \paragraph{15. Line breaks after commas and operators}
-NO
+No.
 riga 152, la virgola dovrebbe stare sopra % e chissenefrega
 
 \paragraph{16. Higher-level breaks are used}
- Ok. There aren't any lyne break with operators
+ Ok. There aren't any line break with operators
 
 \paragraph{17. Statements are aligned to previous ones}
 Ok. All statements are aligned to previous ones.
@@ -285,20 +308,26 @@ All import statements immediately follow.
 - constructors
 - methods
 
-no, abbiamo variabili statiche, poi un po' di metodi statici, poi variabili normali, poi costruttori (getInstance è un costruttore), setter e getter poi un metodo statico (ma private!!)
+No, abbiamo variabili statiche, poi un po' di metodi statici, poi variabili normali, poi costruttori (getInstance è un costruttore), setter e getter poi un metodo statico
+
+-> i metodi statici iniziali andrebbero spostati dopo i costruttori
 
 
 \paragraph{26. Methods are grouped by functionality}
-Ok
+Ok.
+i gruppi di funzionalita' sono:
 
+check status e costruttori:
 assertIsRunning
 getInstance
 shutDown
 
+getter vari:
 getDelegator
 getDispatcher
 getPoolState
 
+funzionamento dei jobs:
 isAvailable
 getRunPools
 pool
@@ -319,9 +348,11 @@ high cohesion -> tutti i metodi servono a runnare/queuare jobs
 
 \paragraph{28. Visibility}
 All variables and class members are of the correct type and have the proper visibility.
-In line 305 the method \begin{lstlisting} 
+In line 305 the method 
+\begin{lstlisting} 
 public synchronized void reloadCrashedJobs()
-\end{lstlisting} could be stated as protected.
+\end{lstlisting} 
+could be stated as protected.
 
 \paragraph{29. Proper scope.} 
 OK. All variables are declared in the proper scope
@@ -355,15 +386,15 @@ Me pare de si
 \subsection{Arrays}
 \paragraph{37. No off-by-one errors in array indexing}
 Ok.
-The only indexing is with foreach, no off-by-one errors.
+The only indexing is with foreach, so there can't be off-by-one errors.
 
 \paragraph{38. No out-of-bounds indexes}
 Ok.
-No number indexing.
+There is no number indexing.
 
 \paragraph{39. Constructors are called when a new array item is desired}
 Ok.
-quali nuovi array? non ce ne sono
+There are no arrays, only collections. Every collection is created with the appropriate constructor.
 
 \subsection{Object Comparison}
 \paragraph{40. Objects are compared with equals}
@@ -372,6 +403,8 @@ There are no object comparisons.
 
 \subsection{Output Format}
 \paragraph{41. Displayed output is free of spelling and grammatical errors}
+2 minor mistakes:
+
 riga 156:
 Debug.logWarning(e, "Exception thrown while check lock on JobManager : " + instanceId, module);
 dovrebbe essere "while checking"
@@ -382,11 +415,11 @@ dovrebbe essere "job:", come negli altri log di debug
 
 
 \paragraph{42. Error messages are comprehensive and useful}
-si
+ok, all error messages clearly explain what type of problem has occurred
 
 \paragraph{43. Output is formatted correctly in terms of line breaks and spacing}
-No line breaks in outputs
-Some debug outputs don't have a trailing space ~
+Quasi ok, there are no outputs that need line breaks
+BUT Some debug outputs don't have a trailing space (spazio alla fine)
 
 \subsection{Computation, Comparisons and Assignments}
 \paragraph{44."Brutish programming".}the  avoids
@@ -431,19 +464,22 @@ Ok, no switch statements.
 
 \paragraph{56. All loops are correctly formed, with appropriate initialization, increments and termination expressions}
 Ok.
-All for loops are foreach, everything is fine.
-The while loop at line 219:
+All for loops are foreach, so no checks on bounds are needed
+
+Ok anche per il while loop at line 219:
 GenericValue jobValue = jobsIterator.next();
 while (jobValue != null) {
 jobValue = jobIterator.next();
-tutto ok, l'iteratore va avanti finch non finiscono i valori, poi esce dal while
-while a riga 275 uguale
+tutto ok, l'iteratore va avanti finche' non finiscono i valori, poi esce dal while
 
-a posto
+while a riga 275 the same
+
+
 
 \subsection{Files}
 \paragraph{}
-The JobManager class does not have to handle file.
+The JobManager class does not have to handle files.
+% TODO mettiamo anche qua i paragrafi con i numeri?
 
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
@@ -456,7 +492,7 @@ se ci sono tante richieste sostituirlo migliorerebbe le prestazioni
 ma comunque problema minore, basso impatto
 
 
-No other problems
+No other problems.
 
 \section{Effort Spent}
 \begin{itemize}
