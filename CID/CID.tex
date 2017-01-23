@@ -65,65 +65,73 @@ Software Engineering 2: “PowerEnJoy” \\
 
 \section{Assigned Class}
 % <state the namespace pattern and name of the classes that were assigned to you.>
-We were assigned one class to analyze, located in:\\
+We were assigned one class to analyse, located in:\\
 
 \texttt{apache-ofbiz-16.11.01/framework/service/\\
 \hspace*{1cm}src/main/java/org/apache/ofbiz/service/job/JobManager.java}
 
 \section{Functional Role}% of assigned set of classes: <elaborate on the functional role you have identified for the class cluster that was assigned to you, also, elaborate on how you managed to understand this role and provide the necessary evidence, e.g., javadoc, diagrams, etc.>
 
+We found some information about the class we've been assigned and the environment it belongs to on Apache OFBiz's website\footnote{\href{https://ofbiz.apache.org/}{https://ofbiz.apache.org/}}
+and its wiki\footnote{\href{https://cwiki.apache.org/confluence/display/OFBIZ/Home}{https://cwiki.apache.org/confluence/display/OFBIZ/Home}}.
+
+\subsection{Apache OFBiz}
+\paragraph{}
+Apache OfBiz is an open source ERP system for the automation of enterprise processes. It offers many different applications and components to integrate and manage business processes like resource management, activities planning and customer relationship management.
+
+
 \subsection{Service Engine Framework}
-Introduction
+\paragraph{}
+The Service Engine is one of the components of Apache OFBiz.
 
-Services are independent pieces of logic which when placed together process many different types of business requirements. Services can be of many different types: Workflow, Rules, Java, SOAP, BeanShell, etc. A service with the type Java is much like an event where it is a static method, however with the Services Framework we do not limit to web based applications. Services require input parameters to be in a Map and the results are returned in a Map as well. This is nice since a Map can be serialized and stored or passed via HTTP (SOAP).
+\paragraph{}
+Services are independent pieces of logic which when placed together process many different types of business requirements. Services can be of many different types: Workflow, Rules, Java, SOAP, BeanShell, etc.
 
-Services are defined through the Service Definition and are assigned to a specific Service Engine. Each Service Engine is responsible for invoking the defined service in an appropriate way. Since services are not tied to web based applications this allows services to run when there is no response object available. This allows services to be scheduled to run at specific times to run in the background via the Job Scheduler.
+\paragraph{}
+Services are defined through the Service Definition and are assigned to a specific Service Engine. Each Service Engine is responsible for invoking the defined service in an appropriate way. Services can be scheduled to run at specific times to run in the background via the Job Scheduler.
 
-Services have the ability to call other services. So, chaining small services together to accomplish a larger task makes reusing existing services much easier.
+\subsection{Job Scheduler}
 
-Services which are declared in a component (service-resource in ofbiz-component.xml file) are reachable from anywhere in OFBiz, and even outside using the export feature. Though this possibility is not commonly used (no examples OOTB), it's also possible to create services which are specific to an application: restricted to be available only in that application. For that, you put the service definition and implementation files under the WEB-INF directory. You can also override a service by using the same name down in the deployment context (which is first framework, then themes, then applications, then specialpurpose, then hot-deploy). This is handy, but beware if not wanted...
+\paragraph{}
+The Job Scheduler (also called Job Manager) is integrated with the services framework, and is tasked with accepting new jobs to schedule and running them at the correct time.
 
-When used in a web application services are available to web events, which allow events to stay small and reuse existing logic in the Services Framework. Also, services can be defined as 'exportable' which means they are allowed to be accessed by outside parties. Currently there is a SOAP EventHandler which allows services to be made available via SOAP. Other forms of remote invocation may be added to the framework in the future.
-
-\subsection{Package: Job etc.}
-Job Scheduler
-
-The overhauled job scheduler is now integrated with the services framework. This is the most appropriate place for a scheduler. Since it cannot be guarantee that an HttpServletRequest and HttpServletResponse object will be available when a job is ready to run, it does not make sense to integrate with the web controller. Plus, this feature is most useful when not limited to web environments.
-
+\paragraph{}
 The scheduler is a multi-threaded component with a single thread used for job managing/scheduling and separate threads used for invocation of each service. When a job is scheduled to run, the scheduler will call the service dispatcher associated with the job to invoke the service in its own thread. This will prevent long or time consuming jobs from slowing down other jobs in the queue.
 
-The scheduler now supports the iCalendar rule structure for recurrence. The jobs are no longer stored in an XML file and each is part of a ServiceDispatcher. There is one Job Scheduler for each ServiceDispatcher (which means there is only one per GenericDelegator as well).
 
-How it works:
+\subsection{Assigned Class: Job Manager}
 
-The best usage example of the scheduler is an asynchronous service call. When an asynchronous service is invoked, it is passed to the Job Scheduler to be queued to run. A recurrence entry is created (RecurrenceInfo and RecurrenceRule entities are created), the job is stored, (JobSandbox entity is created) and the context (Map) is serialized and stored (RuntimeData entity is created). The scheduler then adds the job to the top of the list of scheduled jobs (asynchronous services do not have any delay time) and invoked.
-
-Jobs are no longer defined in an XML file. This has been moved to the JobSandbox entity. There is a web based client in planning for adding predefined jobs to the queue, but currently the entities will have to be created by hand.
-
-\subsection{Class: Job Manager}
-\paragraph{Javadoc}
+\paragraph{}
+We can find more specific details about the class in the class Javadoc:
 
 \begin{lstlisting}
 
 /**
-* Job manager. The job manager queues and manages jobs. Client code can queue a job to be run immediately
-* by calling the runJob({@link #runJob(Job)}) method, or schedule a job to be run later by calling the
-* {@link #schedule(String, String, String, Map, long, int, int, int, long, int)} method.
+* Job manager. The job manager queues and manages jobs. Client
+* code can queue a job to be run immediately by calling the 
+* runJob({@link #runJob(Job)}) method, or schedule a job to be 
+* run later by calling the {@link #schedule(String, String,
+* String, Map, long, int, int, int, long, int)} method.
 * Scheduled jobs are persisted in the JobSandbox entity.
-* <p>A scheduled job's start time is an approximation - the actual start time will depend
-* on the job manager/job poller configuration (poll interval) and the load on the server.
-* Scheduled jobs might be rescheduled if the server is busy. Therefore, applications
-* requiring a precise job start time should use a different mechanism to schedule the job.</p>
+* 
+* <p>A scheduled job's start time is an approximation - the
+* actual start time will depend on the job manager/job poller
+* configuration (poll interval) and the load on the server.
+* Scheduled jobs might be rescheduled if the server is busy.
+* Therefore, applications requiring a precise job start time 
+* should use a different mechanism to schedule the job.</p>
 */
-
 \end{lstlisting}
 
-The job manager queues and manages jobs. 
+\paragraph{}
+The Javadoc describes two public methods: \texttt{runJob} and \texttt{schedule}, respectively used to execute a job immediately (or at least as soon as the resources are available), and to schedule a job to be run at a later time. 
 
-Client code can queue a job to be run immediately by calling the runJob method, or schedule a job to be run later by calling the schedule method. 
-
-Scheduled jobs are persisted in the JobSandbox entity. A scheduled job's start time is an approximation - the actual start time will depend on the job manager/job poller configuration (poll interval) and the load on the server.
-Scheduled jobs might be rescheduled if the server is busy. Therefore, applications requiring a precise job start time should use a different mechanism to schedule the job.
+\paragraph{}
+There are two relevant methods in the class that are not mentioned in the main Javadoc:
+\begin{itemize}
+	\item \texttt{reloadCrashedJobs} is a public method that checks the status of all scheduled jobs in the queue, and reschedules every job that has crashed, if there are any;
+	\item \texttt{poll} is a protected method that checks the job queue and returns a list of all the jobs that are scheduled to run.
+\end{itemize}
 
 \section{List of Issues} % found by applying the checklist: <report the classes/code fragments that do not fulfill some points in the check list. Explain which point is not fulfilled and why.>
 % what are we gonna do
@@ -258,7 +266,10 @@ There are no other classes.
 
 \paragraph{22. External program interfaces are consistent with the Javadoc}
 Ok
-abbiamo vari metodi pubblici:
+Quello che c'è scritto nella prima javadoc viene rispettato.
+la Javadoc parla di runJob e schedule
+
+abbiamo anche altri metodi pubblici:
 getter:
 - getDelegator
 - getDispatcher
@@ -267,10 +278,9 @@ getter:
 poi altre robe
 - isAvailable
 - reloadCrashedJobs
-- runJob
-- schedule di tutti i tipi
+- poll
 
-la Javadoc parla di runJob e schedule
+forse sarebbe una buona idea aggiungere anche reloadCrashedJobs e poll alla javadoc
 
 \paragraph{23. The Javadoc is complete}
 NO.
