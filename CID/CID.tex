@@ -85,62 +85,61 @@ Software Engineering 2: “PowerEnJoy” \\
 * Scheduled jobs might be rescheduled if the server is busy. Therefore, applications
 * requiring a precise job start time should use a different mechanism to schedule the job.</p>
 */
+
 \end{lstlisting}
 
 \section{List of Issues} % found by applying the checklist: <report the classes/code fragments that do not fulfill some points in the check list. Explain which point is not fulfilled and why.>
 
 \subsection{Naming Conventions}
 
-\paragraph{1. Meaningful Names}
-\paragraph{}
-sono tutti buoni
+\paragraph{1. Meaningful Names}\\
+OK. There aren't any meaningful names.
 
-\paragraph{2. One-character variables}
+\paragraph{2. One-character variables}\\
+Ok, there are no one-character variables.
 
-Ok.
-There are no one-character variables.
+\paragraph{3. Class names}\\
+Ok, every class name is in mixed case and properly capitalized.
 
-\paragraph{3. Class names}
-Ok.
-Every class name is in mixed case and properly capitalized.
-
-\paragraph{4. Interface names}
-Ok.
-No interfaces are declared.
+\paragraph{4. Interface names}\\
+OK. No interfaces are declared.
 (se ce ne sono) every interface used by the code is in mixed case and properly capitalized.
 
-\paragraph{5. Method names}
-Ok.
-Every method name is a verb.
-Every method name is camelCase and properly capitalized.
+\paragraph{5. Method names}\\
+Ok. Every method name is a verb and every method name is camelCase and properly capitalized.
 
-\paragraph{6. Class variables}
-Ok.
-Every class variable is in mixed case and properly capitalized.
+\paragraph{6. Class variables}\\
+Ok. Every class variable is in mixed case and properly capitalized.
 
-\paragraph{7. Constants}
-NO.
+\paragraph{7. Constants}\\
+The field \begin{lstlisting} private static final module \end{lstlisting} and \begin{lstlisting} private static final instanceId \end{lstlisting} are immutable, 
+so they can be considered as constant; they should be capitalized. Instead \begin{lstlisting} private static final registeredManagers \end{lstlisting} is fine because it's mutable
+
 %https://stackoverflow.com/a/30789385
-module and istanceId are immutable, so they can be considered constant. They should be capitalized.
-registeredManagers is fine because it's mutable
 
-\subsection{Indentation}
+\subsection{Indentation}\\
+
 \paragraph{8. Number of spaces}
-Ok.
-The code is consistently indented with 4 spaces.
+Ok, the code is consistently indented with 4 spaces.
 
 \paragraph{9. No tabs for indentation}
-Ok.
-No tabs are used to indent the code.
+Ok. No tabs are used to indent the code.
 
 \subsection{Braces}
+
 \paragraph{10. Consistent bracing style}
 Ok.
 The code is consistently braced following the \textit{"Kernighan and Ritchie"} style.
 
 \paragraph{11. One-line statements bracing}
-NO
-"if" riga 326, 351, 354
+No there are:
+\begin{itemize}
+	\begin{lstlisting} if (Debug.infoOn()) Debug.logInfo("Scheduling Job : " + job, module); \end{lstlisting} on line 326;
+	\begin{lstlisting} if (Debug.infoOn())
+                Debug.logInfo("-- " + rescheduled + " jobs re-scheduled", module); \end{lstlisting} on line 351-352;
+    \begin{lstlisting} if (Debug.infoOn())
+                Debug.logInfo("No crashed jobs to re-schedule", module); \end{lstlisting} on line 354-355;
+\end{itemize}
 
 \subsection{File Organization}
 \paragraph{12. Blank lines as separation}
@@ -164,30 +163,23 @@ NO
 riga 152, la virgola dovrebbe stare sopra % e chissenefrega
 
 \paragraph{16. Higher-level breaks are used}
-Ok.
-Non ci sono line break con operatori
+ Ok. There aren't any lyne break with operators
 
 \paragraph{17. Statements are aligned to previous ones}
-Ok.
-Sì, per tutti
+Ok. All statements are aligned to previous ones.
 
 \subsection{Comments}
 
 \paragraph{18. Comments use}
-
 The method 
-
 \begin{lstlisting} 
 	public synchronized void reloadCrashedJobs() 
 \end{lstlisting}
- 
- on line 305 is not commented and so it isn't easy to understand.
-
-Per il resto tutto appoito
+ on line 305 is not commented and so it isn't easy to understand. \\
+The rest of the code is well commented.
 
 \paragraph{19. Commented out code}
-
-There aren't lines of code commented in the source code.
+There aren't lines of code hidden in block of comments in the source code.
 
 \subsection{Java Source Files}
 \paragraph{20. Single public class or interface}
@@ -290,13 +282,17 @@ In line 305 the method \begin{lstlisting}
 public synchronized void reloadCrashedJobs()
 \end{lstlisting} could be stated as protected.
 
-\paragraph{29. Proper scope.} OK. All variables are declared in the proper scope
+\paragraph{29. Proper scope.} 
+OK. All variables are declared in the proper scope
 
-\paragraph{30. New objects.} OK. Each time a new object is desired the proper constructor is called
+\paragraph{30. New objects.} 
+OK. Each time a new object is desired the proper constructor is called
 
-\paragraph{31. All object references are initialized before use.} OK
+\paragraph{31. All object references are initialized before use.} 
+OK. All reference are initialized before any object uses it. 
 
-\paragraph{32. Variables initialization.} OK. All variables are initialized where they are declared, unless dependent upon a computation.
+\paragraph{32. Variables initialization.} 
+OK. All variables are initialized where they are declared, unless dependent upon a computation.
 
 \paragraph{33. Declarations.} OK. Each declaration appear at the beginning of blocks.
 
@@ -358,7 +354,7 @@ OK. The implementation avoids brute force solutions; the code is simple and conc
 OK. Computation/evaluation of operator precedence and parentheses is in the proper order.
  
 \paragraph{46. The liberal use of parenthesis is used to avoid operator precedence problems.}
-OK.
+OK. There aren't any parenthesis used in an appropriate way.
 
 \paragraph{47. All denominators of a division are prevented from being zero.}
 OK. There are no division.
@@ -373,7 +369,7 @@ OK.
 OK. The error condition is always legitimate
 
 \paragraph{51. The code is free of any implicit type conversions.}
-OK.
+OK. The code is free 
 \subsection{Exceptions}
 
 \paragraph{52. Relevant exceptions are caught.}
