@@ -493,16 +493,16 @@ The JobManager class does not have to handle files.
 
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
-alla riga 576:
-viene chiamato new Long(0), che è meno efficiente di valueOf(0)
-Using new Integer(int) is guaranteed to always result in a new object whereas Integer.valueOf(int) allows caching of values to be done by the compiler, class library, or JVM. Using of cached values avoids object allocation and the code will be faster.
-Values between -128 and 127 are guaranteed to have corresponding cached instances and using valueOf is approximately 3.5 times faster than using constructor. For values outside the constant range the performance of both styles is the same
-
-se ci sono tante richieste sostituirlo migliorerebbe le prestazioni
-ma comunque problema minore, basso impatto
-
-
-No other problems.
+The assigned class does not contain any other relevant problem.\\
+For the sake of accuracy, we suggest to substitute in line 576
+\begin{lstlisting}
+jFields.put("currentRetryCount", new Long(0));\end{lstlisting}
+with the more efficient
+\begin{lstlisting}
+ jFields.put("currentRetryCount", valueOf(0));
+\end{lstlisting}
+Using new Long() is guaranteed to always result in a new object whereas Integer.valueOf() allows caching of values to be done by the compiler, class library, or JVM. Using of cached values avoids object allocation and the code will be faster.\\
+This might have to be considered in case of multiple new Long() calls.
 
 \section{Effort Spent}
 \begin{itemize}
