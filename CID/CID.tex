@@ -151,8 +151,7 @@ Ok, there are no one-character variables.
 Ok, every class name is in mixed case and properly capitalized.
 
 \paragraph{4. Interface names}
-OK. No interfaces are declared.
-(se ce ne sono) every interface used by the code is in mixed case and properly capitalized.
+Ok. No interfaces are declared in this file.
 
 \paragraph{5. Method names}
 Ok. Every method name is a verb and every method name is camelCase and properly capitalized.
@@ -193,8 +192,7 @@ Ok.
 The code is consistently braced following the \textit{"Kernighan and Ritchie"} style.
 
 \paragraph{11. One-line statements bracing}
-No.
-In the code we can find the following statements:
+In the code we can find the following statements that don't follow this rule:
 \begin{itemize}
 	\item 
 	\begin{lstlisting} 
@@ -219,19 +217,18 @@ Blank lines are present between each method, around imports and variable declara
 Most of the methods also begin with a Javadoc.
 
 \paragraph{13. Where practical, line length under 80 characters}
-NOPE
-righe 73, 74, 89, 126, 147, 150, 154, 156, 161, 182, 186-190, 195, 198, 201, 
-A great number of lines exceed 80 characters
+There are a huge number of lines that exceed 80 characters.
 
 \paragraph{14. Line length always under 120 characters}
-NEPPURE
-righe 74, 186, 198, 217, 221, 222, 261-264, 273, 311, 315, 317, 387, 409, 429, 453, 498, 543, 560, 561
-le dichiarazioni dei metodi sono lunghissime e wrappate poco
+The lines \textit{74}, \textit{186], \textit{198], \textit{217}, \textit{221}, \textit{222}, \textit{261-264}, \textit{273}, \textit{311}, \textit{315}, \textit{317}, \textit{387}, \textit{409}, \textit{429}, \textit{453}, \textit{498}, \textit{543}, \textit{560}, \textit{561} don't follow this rule. The most long line is the number 221 with 234 characters:
+
+\begin{lstlisting}
+List<EntityExpr> updateExpression = UtilMisc.toList(EntityCondition.makeCondition("jobId", EntityOperator.EQUALS, jobValue.get("jobId")), EntityCondition.makeCondition("runByInstanceId", EntityOperator.EQUALS, null));
+\end{lstlisting}
 
 \subsection{Wrapping Lines}
 \paragraph{15. Line breaks after commas and operators}
-No.
-riga 152, la virgola dovrebbe stare sopra % e chissenefrega
+The line \textit{152} doesn't follow this rule, the comma should be in the upper line.
 
 \paragraph{16. Higher-level breaks are used}
  Ok. There aren't any line break with operators
@@ -247,7 +244,7 @@ The method
 	public synchronized void reloadCrashedJobs() 
 \end{lstlisting}
 
- on line 305 is not commented and so it isn't easy to understand. \\
+ on line \textit{305} is not commented and so it isn't easy to understand. \\
 The rest of the code is well commented.
 
 \paragraph{19. Commented out code}
@@ -265,29 +262,16 @@ Job manager is the only public class declared in the file.
 There are no other classes.
 
 \paragraph{22. External program interfaces are consistent with the Javadoc}
-Ok
-Quello che c'è scritto nella prima javadoc viene rispettato.
-la Javadoc parla di runJob e schedule
-
-abbiamo anche altri metodi pubblici:
-getter:
-- getDelegator
-- getDispatcher
-- getInstance
-- getPoolState
-poi altre robe
-- isAvailable
-- reloadCrashedJobs
-- poll
-
-forse sarebbe una buona idea aggiungere anche reloadCrashedJobs e poll alla javadoc
+Ok.
+The description in the first Javadoc is suitable and consistent with runJob and schedule interfaces.\\
+It should be a good idea to add also reloadCrashedJobs and poll to the Javadoc.
 
 \paragraph{23. The Javadoc is complete}
-NO.
+These are the issues we found about this rule:
 \begin{itemize}
-	\item No javadoc for 'module'! line 71
-	\item No javadoc for 'instanceId'! line 71
-	\item No javadoc for reloadCrashedJob!! line 304
+	\item There are no javadoc for 'module' line 71
+	\item There are no javadoc for 'instanceId' line 71
+	\item There are no javadoc for reloadCrashedJob line 304
 	\item Missing @return tag on getInstance, line 88
 	\item Missing @return tag on getDelegator, line 119
 	\item Missing @return tag on getDispatcher, line 124
@@ -298,8 +282,6 @@ NO.
 	\item Missing @throws tag for 'JobManagerException' on schedule, line 386, 408, 428, 453, 469, 498, 543
 \end{itemize}
 
-assertIsRunning, getRunPools sono private quindi non hanno necessariamente bisogno di javadoc
-
 \subsection{Package and Import Statements}
 \paragraph{24. Package statements are first, import statements second}
 Ok.
@@ -308,51 +290,55 @@ All import statements immediately follow.
 
 \subsection{Class and Interface Declarations}
 \paragraph{25. The class declarations should follow a specific order}
-- javadoc ok
-- class declaration ok
-- altri commenti /
-- static variables ok
- - public ok
- - private ok
-- normal variables 
-- constructors
-- methods
 
-No, abbiamo variabili statiche, poi un po' di metodi statici, poi variabili normali, poi costruttori (getInstance è un costruttore), setter e getter poi un metodo statico
+The method 
+\begin{lstlisting}
+	private static void assertIsRunning() {
+	        if (isShutDown) {
+	            throw new IllegalStateException("OFBiz shutting down");
+	        }
+	    }
+\end{lstlisting}
+should be moved under the method 
 
--> i metodi statici iniziali andrebbero spostati dopo i costruttori
-
+\begin{lstlisting}
+	public static JobManager getInstance(Delegator delegator, boolean enablePoller)
+\end{lstlisting}
 
 \paragraph{26. Methods are grouped by functionality}
 Ok.
-i gruppi di funzionalita' sono:
+We found the following group:
+\begin{itemize}
+	\item Check status and constructors:
+	\begin{itemize}
+		\item{assertIsRunning}
+		\item{getInstance}
+		\item{shutDown}
+	\end{itemize}
 
-check status e costruttori:
-assertIsRunning
-getInstance
-shutDown
+	\item Getters:
+	\begin{itemize}
+		\item{getDelegator}
+		\item{getDispatcher}
+		\item{getPoolState}
+	\end{itemize}
 
-getter vari:
-getDelegator
-getDispatcher
-getPoolState
-
-funzionamento dei jobs:
-isAvailable
-getRunPools
-pool
-reloadCrashedJobs
-runJob
-schedule
+	\item Jobs operations
+	\begin{itemize}
+		\item{isAvailable}
+		\item{getRunPools}
+		\item{pool}
+		\item{reloadCrashedJobs}
+		\item{runJob}
+		\item{schedule}
+	\end{itemize}
+\end{itemize}
 
 \paragraph{27. The code is free of duplicates, long methods, big classes, breaking encapsulation, and coupling and cohesion are adequate}
-small class
-duplicates? no
-short methods
-no breaking encapsulation
-
-low/loose coupling -> ci sono un sacco di delegator e dispatcher
-high cohesion -> tutti i metodi servono a runnare/queuare jobs
+Ok.
+The code is free of duplicates, is organised in small classes and there is no breaking encapsulation.\\
+Moreover the methods are short. Some methods conduct the role of delegator or dispatcher and guarantee a low coupling.\\
+The cohesion is respected because all the methods are necessary to run or dequeue jobs.
 
 \subsection{Initialization and Declarations}
 
@@ -360,18 +346,18 @@ high cohesion -> tutti i metodi servono a runnare/queuare jobs
 All variables and class members are of the correct type and have the proper visibility.
 In line 305 the method 
 \begin{lstlisting} 
-public synchronized void reloadCrashedJobs()
+	public synchronized void reloadCrashedJobs()
 \end{lstlisting} 
 could be stated as protected.
 
 \paragraph{29. Proper scope.} 
-OK. All variables are declared in the proper scope
+Ok. All variables are declared in the proper scope
 
 \paragraph{30. New objects.} 
-OK. Each time a new object is desired the proper constructor is called
+Ok. Each time a new object is desired the proper constructor is called
 
 \paragraph{31. All object references are initialized before use.} 
-OK. All reference are initialized before any object uses it. 
+Ok. All reference are initialized before any object uses it. 
 
 \paragraph{32. Variables initialization.} 
 OK. All variables are initialized where they are declared, unless dependent upon a computation.
@@ -382,15 +368,15 @@ OK. All variables are initialized where they are declared, unless dependent upon
 
 \paragraph{34. Correct orders parameters}
 
-Sembra tutto bene
+Ok. All the methods are called with the parameters in the correct order.
 
 \paragraph{35. The called method is the right method}
 
-Sembra di si
+Ok. The methods called are the right one.
 
 \paragraph{36. The returned value from the method is used properly}
 
-Me pare de si
+Ok. The value returned from the method is used accurately.
 
 
 \subsection{Arrays}
@@ -413,26 +399,30 @@ There are no object comparisons.
 
 \subsection{Output Format}
 \paragraph{41. Displayed output is free of spelling and grammatical errors}
-2 minor mistakes:
+We found two minor mistakes:
 
-riga 156:
-Debug.logWarning(e, "Exception thrown while check lock on JobManager : " + instanceId, module);
-dovrebbe essere "while checking"
-
-riga 182:
-Debug.logWarning("Unable to locate DispatchContext object; not running job!", module);
-dovrebbe essere "job:", come negli altri log di debug
+\begin{itemize}
+	\item{Lines 156: 
+	\begin{lstlisting}
+		Debug.logWarning(e, "Exception thrown while check lock on JobManager : " + instanceId, module);
+	\end{lstlisting}
+	it should be "while checking".}
+	\item{Lines 156: 
+	\begin{lstlisting}
+		Debug.logWarning("Unable to locate DispatchContext object; not running job!", module);
+	\end{lstlisting}
+	it should be "job:", as in the other debug log.}
+\end{itemize}
 
 
 \paragraph{42. Error messages are comprehensive and useful}
-ok, all error messages clearly explain what type of problem has occurred
+Ok. All error messages clearly explain what type of problem has occurred
 
 \paragraph{43. Output is formatted correctly in terms of line breaks and spacing}
-Quasi ok, there are no outputs that need line breaks
-BUT Some debug outputs don't have a trailing space (spazio alla fine)
+There are no outputs that need line breaks but some debug outputs don't have a trailing space.
 
 \subsection{Computation, Comparisons and Assignments}
-\paragraph{44."Brutish programming".}the  avoids
+\paragraph{44."Brutish programming".}
 OK. The implementation avoids brute force solutions; the code is simple and concise.
 
 \paragraph{45. Operator precedence and parenthesizing.}
@@ -454,7 +444,7 @@ OK.
 OK. The error condition is always legitimate
 
 \paragraph{51. The code is free of any implicit type conversions.}
-OK. The code is free 
+OK. The code is free of any implicit type conversion.
 \subsection{Exceptions}
 
 \paragraph{52. Relevant exceptions are caught.}
@@ -476,20 +466,9 @@ Ok, no switch statements.
 Ok.
 All for loops are foreach, so no checks on bounds are needed
 
-Ok anche per il while loop at line 219:
-GenericValue jobValue = jobsIterator.next();
-while (jobValue != null) {
-jobValue = jobIterator.next();
-tutto ok, l'iteratore va avanti finche' non finiscono i valori, poi esce dal while
-
-while a riga 275 the same
-
-
-
 \subsection{Files}
 \paragraph{}
 The JobManager class does not have to handle files.
-% TODO mettiamo anche qua i paragrafi con i numeri?
 
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
