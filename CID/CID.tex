@@ -20,6 +20,7 @@
 \definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
 \definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
 \definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\definecolor{cornellred}{rgb}{0.7, 0.11, 0.11}
 
 \lstset{language=Java,
 	basicstyle=\ttfamily\small,
@@ -133,10 +134,14 @@ There are two relevant methods in the class that are not mentioned in the main J
 	\item \texttt{poll} is a protected method that checks the job queue and returns a list of all the jobs that are scheduled to run.
 \end{itemize}
 
+\newpage
 \section{List of Issues} % found by applying the checklist: <report the classes/code fragments that do not fulfill some points in the check list. Explain which point is not fulfilled and why.>
 % what are we gonna do
-We list here all the issues we have found in the code
-all the issues corresponding to each point in the checklist
+\paragraph{}
+We list here all the issues we have found in the code following the checklist that we where provided.
+
+\paragraph{}
+Points are labeled as "Not ok" if issues are present, and "Ok" if everything is fine.
 
 
 \subsection{Naming Conventions}
@@ -160,6 +165,8 @@ Ok. Every method name is a verb and every method name is camelCase and properly 
 Ok. Every class variable is in mixed case and properly capitalized.
 
 \paragraph{7. Constants}
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
 The field 
 \begin{lstlisting} 
 private static final module 
@@ -168,12 +175,14 @@ and
 \begin{lstlisting} 
 private static final instanceId 
 \end{lstlisting} 
-are immutable, so they can be considered as constant; they should be capitalized. \\
-Instead 
+are immutable, so they can be considered as constant; they should be capitalized. 
+
+\paragraph{}
+On the other hand
 \begin{lstlisting} 
 private static final registeredManagers 
 \end{lstlisting}
- is fine because it's mutable
+ is fine because it's a mutable HashMap.
 
 %https://stackoverflow.com/a/30789385
 
@@ -192,6 +201,8 @@ Ok.
 The code is consistently braced following the \textit{"Kernighan and Ritchie"} style.
 
 \paragraph{11. One-line statements bracing}
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
 In the code we can find the following statements that don't follow this rule:
 \begin{itemize}
 	\item 
@@ -217,10 +228,14 @@ Blank lines are present between each method, around imports and variable declara
 Most of the methods also begin with a Javadoc.
 
 \paragraph{13. Where practical, line length under 80 characters}
-There are a huge number of lines that exceed 80 characters.
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
+There is a huge number of lines that exceed 80 characters.
 
 \paragraph{14. Line length always under 120 characters}
-The lines \textit{74}, \textit{186], \textit{198], \textit{217}, \textit{221}, \textit{222}, \textit{261-264}, \textit{273}, \textit{311}, \textit{315}, \textit{317}, \textit{387}, \textit{409}, \textit{429}, \textit{453}, \textit{498}, \textit{543}, \textit{560}, \textit{561} don't follow this rule. The most long line is the number 221 with 234 characters:
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
+The lines \textit{74}, \textit{186}, \textit{198}, \textit{217}, \textit{221}, \textit{222}, \textit{261-264}, \textit{273}, \textit{311}, \textit{315}, \textit{317}, \textit{387}, \textit{409}, \textit{429}, \textit{453}, \textit{498}, \textit{543}, \textit{560}, \textit{561} don't follow this rule. The most long line is the number 221 with 234 characters:
 
 \begin{lstlisting}
 List<EntityExpr> updateExpression = UtilMisc.toList(EntityCondition.makeCondition("jobId", EntityOperator.EQUALS, jobValue.get("jobId")), EntityCondition.makeCondition("runByInstanceId", EntityOperator.EQUALS, null));
@@ -228,10 +243,12 @@ List<EntityExpr> updateExpression = UtilMisc.toList(EntityCondition.makeConditio
 
 \subsection{Wrapping Lines}
 \paragraph{15. Line breaks after commas and operators}
-The line \textit{152} doesn't follow this rule, the comma should be in the upper line.
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
+Line \textit{152} starts with a stray comma that should be moved to the previous line.
 
 \paragraph{16. Higher-level breaks are used}
- Ok. There aren't any line break with operators
+Ok. There are no operators that need line breaks.
 
 \paragraph{17. Statements are aligned to previous ones}
 Ok. All statements are aligned to previous ones.
@@ -239,16 +256,19 @@ Ok. All statements are aligned to previous ones.
 \subsection{Comments}
 
 \paragraph{18. Comments use}
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
 The method 
 \begin{lstlisting} 
 	public synchronized void reloadCrashedJobs() 
 \end{lstlisting}
 
- on line \textit{305} is not commented and so it isn't easy to understand. \\
+ on line \textit{305} is not commented and so it isn't easy to understand. 
+\paragraph{}
 The rest of the code is well commented.
 
 \paragraph{19. Commented out code}
-There aren't lines of code hidden in block of comments in the source code.
+Ok. There are no commented out lines of code in the source code.
 
 \subsection{Java Source Files}
 \paragraph{20. Single public class or interface}
@@ -262,16 +282,20 @@ Job manager is the only public class declared in the file.
 There are no other classes.
 
 \paragraph{22. External program interfaces are consistent with the Javadoc}
-Ok.
-The description in the first Javadoc is suitable and consistent with runJob and schedule interfaces.\\
-It should be a good idea to add also reloadCrashedJobs and poll to the Javadoc.
+\textit{Almost ok.}
+The description in the first Javadoc is suitable and consistent with the runJob and schedule interfaces.
+\paragraph{}
+It would be a good idea to also add the public and protected reloadCrashedJobs and poll  methods to the Javadoc.
 
+\newpage
 \paragraph{23. The Javadoc is complete}
-These are the issues we found about this rule:
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
+The javadoc is not complete:
 \begin{itemize}
-	\item There are no javadoc for 'module' line 71
-	\item There are no javadoc for 'instanceId' line 71
-	\item There are no javadoc for reloadCrashedJob line 304
+	\item There is no javadoc for 'module' line 71
+	\item There is no javadoc for 'instanceId' line 71
+	\item There is no javadoc for reloadCrashedJob line 304
 	\item Missing @return tag on getInstance, line 88
 	\item Missing @return tag on getDelegator, line 119
 	\item Missing @return tag on getDispatcher, line 124
@@ -285,13 +309,14 @@ These are the issues we found about this rule:
 \subsection{Package and Import Statements}
 \paragraph{24. Package statements are first, import statements second}
 Ok.
-One package statements.
-All import statements immediately follow.
+There is one package statement and all import statements immediately follow.
 
 \subsection{Class and Interface Declarations}
 \paragraph{25. The class declarations should follow a specific order}
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
 
-The method 
+The static method 
 \begin{lstlisting}
 	private static void assertIsRunning() {
 	        if (isShutDown) {
@@ -299,15 +324,16 @@ The method
 	        }
 	    }
 \end{lstlisting}
-should be moved under the method 
+should be moved under the method
 
 \begin{lstlisting}
 	public static JobManager getInstance(Delegator delegator, boolean enablePoller)
 \end{lstlisting}
+that works as the class constructor.
 
 \paragraph{26. Methods are grouped by functionality}
 Ok.
-We found the following group:
+Methods can be roughly grouped as follows:
 \begin{itemize}
 	\item Check status and constructors:
 	\begin{itemize}
@@ -336,13 +362,13 @@ We found the following group:
 
 \paragraph{27. The code is free of duplicates, long methods, big classes, breaking encapsulation, and coupling and cohesion are adequate}
 Ok.
-The code is free of duplicates, is organised in small classes and there is no breaking encapsulation.\\
+The code is free of duplicates, is organised in small classes and encapsulation is not broken.\\
 Moreover the methods are short. Some methods conduct the role of delegator or dispatcher and guarantee a low coupling.\\
-The cohesion is respected because all the methods are necessary to run or dequeue jobs.
+The cohesion is respected because all the methods are used to run or queue jobs.
 
 \subsection{Initialization and Declarations}
 
-\paragraph{28. Visibility}
+\paragraph{28. Visibility} \textit{Almost Ok.}
 All variables and class members are of the correct type and have the proper visibility.
 In line 305 the method 
 \begin{lstlisting} 
@@ -351,18 +377,18 @@ In line 305 the method
 could be stated as protected.
 
 \paragraph{29. Proper scope.} 
-Ok. All variables are declared in the proper scope
+Ok. All variables are declared in the proper scope.
 
 \paragraph{30. New objects.} 
-Ok. Each time a new object is desired the proper constructor is called
+Ok. Each time a new object is desired the proper constructor is called.
 
 \paragraph{31. All object references are initialized before use.} 
 Ok. All reference are initialized before any object uses it. 
 
 \paragraph{32. Variables initialization.} 
-OK. All variables are initialized where they are declared, unless dependent upon a computation.
+Ok. All variables are initialized where they are declared, unless dependent upon a computation.
 
-\paragraph{33. Declarations.} OK. Each declaration appear at the beginning of blocks.
+\paragraph{33. Declarations.} Ok. Each declaration appear at the beginning of blocks.
 
 \subsection{Method Calls}
 
@@ -372,17 +398,17 @@ Ok. All the methods are called with the parameters in the correct order.
 
 \paragraph{35. The called method is the right method}
 
-Ok. The methods called are the right one.
+Ok. The methods called are always the right ones.
 
 \paragraph{36. The returned value from the method is used properly}
 
-Ok. The value returned from the method is used accurately.
+Ok. The value returned from the method is always used accurately.
 
 
 \subsection{Arrays}
 \paragraph{37. No off-by-one errors in array indexing}
 Ok.
-The only indexing is with foreach, so there can't be off-by-one errors.
+The only indexing is made with foreach, so there can't be off-by-one errors.
 
 \paragraph{38. No out-of-bounds indexes}
 Ok.
@@ -397,8 +423,11 @@ There are no arrays, only collections. Every collection is created with the appr
 Ok.
 There are no object comparisons.
 
+\newpage
 \subsection{Output Format}
 \paragraph{41. Displayed output is free of spelling and grammatical errors}
+\textcolor{cornellred}{\textbf{Not ok.}}
+\paragraph{}
 We found two minor mistakes:
 
 \begin{itemize}
@@ -418,42 +447,42 @@ We found two minor mistakes:
 \paragraph{42. Error messages are comprehensive and useful}
 Ok. All error messages clearly explain what type of problem has occurred
 
-\paragraph{43. Output is formatted correctly in terms of line breaks and spacing}
+\paragraph{43. Output is formatted correctly in terms of line breaks and spacing} \textit{Almost Ok.}
 There are no outputs that need line breaks but some debug outputs don't have a trailing space.
 
 \subsection{Computation, Comparisons and Assignments}
 \paragraph{44."Brutish programming".}
-OK. The implementation avoids brute force solutions; the code is simple and concise.
+Ok. The implementation avoids brute force solutions; the code is simple and concise.
 
 \paragraph{45. Operator precedence and parenthesizing.}
-OK. Computation/evaluation of operator precedence and parentheses is in the proper order.
+Ok. Computation/evaluation of operator precedence and parentheses is in the proper order.
  
 \paragraph{46. The liberal use of parenthesis is used to avoid operator precedence problems.}
-OK. There aren't any parenthesis used in an appropriate way.
+Ok. There isn't any parenthesis used in an inappropriate way.
 
 \paragraph{47. All denominators of a division are prevented from being zero.}
-OK. There are no division.
+Ok. There are no divisions.
 
 \paragraph{48. Integer arithmetic, especially division, are used appropriately to avoid causing unexpected truncation/rounding.}
-OK. Integer arithmetic is used only to increment variable.
+Ok. Integer arithmetic is used only to increment variables.
 
 \paragraph{49. Comparison and Boolean operators are correct.}
-OK.
+Ok.
 
 \paragraph{50. Throw-catch expressions.}
-OK. The error condition is always legitimate
+Ok. The error conditions are always legitimate.
 
 \paragraph{51. The code is free of any implicit type conversions.}
-OK. The code is free of any implicit type conversion.
+Ok. The code is free of any implicit type conversion.
 \subsection{Exceptions}
 
 \paragraph{52. Relevant exceptions are caught.}
-OK.
+Ok.
 \paragraph{53. The appropriate action is taken for each catch block.}
-OK. There are two general
+Ok. There are two a little too general
 \begin{lstlisting}
 catch (Throwable t)
-\end{lstlisting} in order to guarantee a working jobPoller even when a database connection is not available.
+\end{lstlisting} statements, but this is justified as necessary to guarantee a working jobPoller even when a database connection is not available.
 
 \subsection{Flow of Control}
 \paragraph{54. All switch cases are addressed with a break}
@@ -468,26 +497,28 @@ All for loops are foreach, so no checks on bounds are needed
 
 \subsection{Files}
 \paragraph{}
-The JobManager class does not have to handle files.
+Ok.
+The JobManager class does not handle files.
 
+\newpage
 \section{Other Problems} % you have highlighted: <list here all the parts
 %of code that you think create or may create a bug and explain why.>
-The assigned class does not contain any other relevant problem.\\
-For the sake of accuracy, we suggest to substitute in line 576
+The assigned class does not contain any other significant problem.\\
+For the sake of accuracy, we suggest to replace in line 576
 \begin{lstlisting}
 jFields.put("currentRetryCount", new Long(0));\end{lstlisting}
 with the more efficient
 \begin{lstlisting}
  jFields.put("currentRetryCount", valueOf(0));
 \end{lstlisting}
-Using new Long() is guaranteed to always result in a new object whereas Integer.valueOf() allows caching of values to be done by the compiler, class library, or JVM. Using of cached values avoids object allocation and the code will be faster.\\
+Using \lstinline|new Long()| is guaranteed to always result in a new object whereas \lstinline|Integer.valueOf()| allows caching of values to be done by the compiler, class library, or JVM. Using of cached values avoids object allocation and the code will be faster.\\
 This might have to be considered in case of multiple new Long() calls.
 
 \section{Effort Spent}
 \begin{itemize}
-	\item{Pietro Ferretti:  hours of work}
-	\item{Nicole Gervasoni:  hours of work}
-	\item{Danilo Labanca:  hours of work}
+	\item{Pietro Ferretti: 7 hours of work}
+	\item{Nicole Gervasoni: 5 hours of work}
+	\item{Danilo Labanca: 5 hours of work}
 \end{itemize}
 
 
